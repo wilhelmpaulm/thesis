@@ -33,80 +33,72 @@
             <span id="pg-add-text">0% Completed</span>
         </div>
     </div>
+    
+    <form action="{{URL::to('complaints/store')}}" method="POST" enctype="multipart/form-data">
+        <!-- Tab panes -->
+        <div class="tab-content">
 
-    <form action="{{URL::to('agent/validate')}}" method="POST">
-    <!-- Tab panes -->
-    <div class="tab-content">
-
-        <div class="tab-pane  active" id="tab1">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-
-                    <p><i class="fa fa-user "></i> Complainant</p>
-
-                </div>
-                <div class="panel-body">
-                    <!--Panel content-->
-                    <div class="well">
-                        @include("gen.clients.create")
-                        @include("gen.client_addresses.create")
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!--END OF TAB 1-->
-
-
-        <div class="tab-pane fade" id="tab2">
             <div class="tab-pane  active" id="tab1">
                 <div class="panel panel-default">
-                    <div class="panel-heading clearfix">
-                        <span class=""><i class="fa fa-group"></i> Victims  </span>
-                        <button type="button"  id="add_victim_btn" class="pull-right btn btn-success"><i class="fa fa-plus"></i></button>
-                    </div>
-                    <div class="panel-body" id="add_victim_panel">
+                    <div class="panel-heading">
 
+                        <p><i class="fa fa-user "></i> Complainant</p>
+
+                    </div>
+                    <div class="panel-body">
+                        <!--Panel content-->
+                        <div class="">
+                            @include("gen.clients.create")
+                            <hr>
+                            @include("gen.client_addresses.create")
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--END OF TAB 2-->
-        <div class="tab-pane fade" id="tab3" >
-            <div class="tab-pane  active" id="tab1">
+
+
+            <!--END OF TAB 1-->
+
+
+            <div class="tab-pane fade" id="tab2">
+                <div class="tab-pane  active" id="tab1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            <span class=""><i class="fa fa-group"></i> Victims  </span>
+                            <button type="button"  id="add_victim_btn" class="pull-right btn btn-success"><i class="fa fa-plus"></i></button>
+                        </div>
+                        <div class="panel-body" id="add_victim_panel">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--END OF TAB 2-->
+            <div class="tab-pane fade" id="tab3" >
+                <div class="tab-pane  active" id="tab1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            <span class=""><i class="fa fa-chain"></i> Subjects </span>
+                            <button type="button" id="add_subject_btn" class="pull-right btn btn-success"><i class="fa fa-plus"></i></button>
+                        </div>
+                        <div class="panel-body" id="add_subject_panel">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--END OF TAB 3-->
+            <div class="tab-pane " id="tab4">
+
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
-                        <span class=""><i class="fa fa-chain"></i> Subjects </span>
-                        <button type="button" id="add_subject_btn" class="pull-right btn btn-success"><i class="fa fa-plus"></i></button>
+                        <span class=""><i class="fa fa-book"></i> Details</span>
                     </div>
-                    <div class="panel-body" id="add_subject_panel">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--END OF TAB 3-->
-        <div class="tab-pane " id="tab4">
-
-            <div class="panel panel-default">
-                <div class="panel-heading clearfix">
-                    <span class=""><i class="fa fa-book"></i> Details</span>
-                </div>
-                <div class="panel-body" id="">
+                    <div class="panel-body" id="">
+                        @include("gen.complaint_addresses.create")
+                        <hr>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group ">
-                                    <label for="nature_act">Nature of Act Complained</label>
-                                    <input type="text" class="form-control" id="nature_act" placeholder="Rape / Homicide / Robbery" name="nature_act">
-                                </div>
-                                <div class="form-group">
-                                    <label for="location_act">Where Act is Committed</label>
-                                    <input type="text" class="form-control" id="location_act" placeholder="Enter date" name="location_act">
-                                </div>
-                            </div>
-
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label for="date_commited">Date committed</label>
@@ -116,14 +108,30 @@
                                     <label for="date_reported">Date reported</label>
                                     <input type="date" class="form-control" id="date_reported" placeholder="Enter date" name="date_reported">
                                 </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading clearfix">
+                                        <span class=""><i class="fa fa-group"></i> Type Tags  </span>
+                                        <button type="button"  id="add_type_tags_btn" class="pull-right btn btn-success"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                    <div class="panel-body" id="add_type_tags_panel">
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        
+                       
+
+                        <button class="btn btn-success btn-block">SUBMIT</button>
                     </div>
-                <button>FUN</button>
+                </div>
             </div>
         </div>
-    </div>
-    
+
     </form>
     <!--FORM ENDS HERE-->
 
@@ -135,7 +143,8 @@
                 </div>
                 <div class="panel-body" id="">
                     @include("gen.clients.create_victim")
-
+                    <hr>
+                    @include("gen.client_addresses.create_victim")
                 </div>
             </div>
 
@@ -147,6 +156,20 @@
                 </div>
                 <div class="panel-body" id="">
                     @include("gen.clients.create_subject")
+                    <hr>
+                    @include("gen.client_addresses.create_subject")
+
+                </div>
+            </div>
+        </div>
+        <div id="add_type_tags_body">
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                    <button  type="button" class="remove btn btn-danger pull-right"><i class="fa fa-trash-o"></i></button>
+                </div>
+                <div class="panel-body" id="">
+                    @include("gen.complaint_type_tags.create")
+
 
                 </div>
             </div>
@@ -182,6 +205,10 @@
         $("#add_subject_btn").on("click", function() {
             var body = $("#add_subject_body").html();
             $("#add_subject_panel").append(body);
+        });
+        $("#add_type_tags_btn").on("click", function() {
+            var body = $("#add_type_tags_body").html();
+            $("#add_type_tags_panel").append(body);
         });
 
 

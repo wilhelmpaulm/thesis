@@ -12,8 +12,141 @@ class ComplaintsController extends BaseController {
 
     public function postStore() {
         $complaint = Complaint::create([
-            "nature_act" => ""
+                    "date_reported" => Input::get("date_reported"),
+                    "date_commited" => Input::get("date_commited")
         ]);
+        $complaint_address = Complaint_address::create([
+                    "complaint_id" => $complaint->id,
+                    "street" => Input::get("street_complaint"),
+                    "city" => Input::get("city_complaint"),
+                    "barangay" => Input::get("barangay_complaint"),
+                    "postal_code" => Input::get("postal_code_complaint"),
+                    "province" => Input::get("province_complaint")
+        ]);
+        for ($index = 0; $index < count(Input::get("type")); $index++) {
+            $complaint_type_tags = Complaint_type_tag::create([
+                        "complaint_id" => $complaint->id,
+                        "type" => Input::get("type")[$index]
+            ]);
+        }
+
+        $complainant = Client::create([
+                    "last_name" => Input::get("last_name_c"),
+                    "first_name" => Input::get("first_name_c"),
+                    "middle_name" => Input::get("middle_name_c"),
+                    "birthdate" => Input::get("birthdate_c"),
+                    "sex" => Input::get("sex_c"),
+                    "occupation" => Input::get("occupation_c"),
+                    "civil_status" => Input::get("civil_status_c")
+        ]);
+
+        $complaint->client_id = $complainant->id;
+        $complaint->save();
+
+        $complainant_contact = Client_contact::create([
+                    "client_id" => $complainant->id,
+                    "type" => Input::get("contact_type_c"),
+                    "contact" => Input::get("contact_c"),
+        ]);
+        $complainant_address = Client_address::create([
+                    "client_id" => $complainant->id,
+                    "street" => Input::get("street_client"),
+                    "city" => Input::get("city_client"),
+                    "barangay" => Input::get("barangay_client"),
+                    "postal_code" => Input::get("postal_code_client"),
+                    "province" => Input::get("province_client")
+        ]);
+        $client_type_tags = Client_type_tag::create([
+                    "client_id" => $complainant->id,
+                    "type" => "Complainant"
+        ]);
+        if (Input::hasFile('img_picture_c')[$index]) {
+            Input::file('img_picture_c')[$index]->move(public_path() . "/nbi/clients/pictures", "" . $complainant->id . "." . Input::file('img_picture_c')[$index]->getClientOriginalExtension());
+            $complainant->img_picture = "" . $complainant->id . "." . Input::file('img_picture_c')[$index]->getClientOriginalExtension();
+        }
+        $complainant->save();
+
+
+
+        for ($index = 0; $index < count(Input::get("last_name_v")); $index++) {
+            $complainant = Client::create([
+                        "last_name" => Input::get("last_name_v")[$index],
+                        "first_name" => Input::get("first_name_v")[$index],
+                        "middle_name" => Input::get("middle_name_v")[$index],
+                        "birthdate" => Input::get("birthdate_v")[$index],
+                        "sex" => Input::get("sex_v")[$index],
+                        "occupation" => Input::get("occupation_v")[$index],
+                        "civil_status" => Input::get("civil_status_v")[$index]
+            ]);
+            $complainant_contact = Client_contact::create([
+                        "client_id" => $complainant->id,
+                        "type" => Input::get("contact_type_v")[$index],
+                        "contact" => Input::get("contact_v")[$index],
+            ]);
+            $complainant_address = Client_address::create([
+                        "client_id" => $complainant->id,
+                        "street" => Input::get("street_v")[$index],
+                        "city" => Input::get("city_v")[$index],
+                        "barangay" => Input::get("barangay_v")[$index],
+                        "postal_code" => Input::get("postal_code_v")[$index],
+                        "province" => Input::get("province_v")[$index]
+            ]);
+            $client_type_tags = Client_type_tag::create([
+                        "client_id" => $complainant->id,
+                        "type" => "Victim"
+            ]);
+
+            $complaint_victims = Complaint_victim::create([
+                        "complaint_id" => $complaint->id,
+                        "client_id" => $complainant->id,
+            ]);
+            if (Input::hasFile('img_picture_v')[$index]) {
+                Input::file('img_picture_v')[$index]->move(public_path() . "/nbi/clients/pictures", "" . $complainant->id . "." . Input::file('img_picture_v')[$index]->getClientOriginalExtension());
+                $complainant->img_picture = "" . $complainant->id . "." . Input::file('img_picture_v')[$index]->getClientOriginalExtension();
+            }
+            $complainant->save();
+        }
+        for ($index = 0; $index < count(Input::get("last_name_s")); $index++) {
+            $complainant = Client::create([
+                        "last_name" => Input::get("last_name_s")[$index],
+                        "first_name" => Input::get("first_name_s")[$index],
+                        "middle_name" => Input::get("middle_name_s")[$index],
+                        "birthdate" => Input::get("birthdate_s")[$index],
+                        "sex" => Input::get("sex_s")[$index],
+                        "occupation" => Input::get("occupation_s")[$index],
+                        "civil_status" => Input::get("civil_status_s")[$index]
+            ]);
+            $complainant_contact = Client_contact::create([
+                        "client_id" => $complainant->id,
+                        "type" => Input::get("contact_type_s")[$index],
+                        "contact" => Input::get("contact_s")[$index],
+            ]);
+            $complainant_address = Client_address::create([
+                        "client_id" => $complainant->id,
+                        "street" => Input::get("street_s")[$index],
+                        "city" => Input::get("city_s")[$index],
+                        "barangay" => Input::get("barangay_s")[$index],
+                        "postal_code" => Input::get("postal_code_s")[$index],
+                        "province" => Input::get("province_s")[$index]
+            ]);
+            $client_type_tags = Client_type_tag::create([
+                        "client_id" => $complainant->id,
+                        "type" => "Subject"
+            ]);
+
+            $complaint_subjects = Complaint_subject::create([
+                        "complaint_id" => $complaint->id,
+                        "client_id" => $complainant->id,
+            ]);
+
+            if (Input::hasFile('img_picture_s')[$index]) {
+                Input::file('img_picture_s')[$index]->move(public_path() . "/nbi/clients/pictures", "" . $complainant->id . "." . Input::file('img_picture_s')[$index]->getClientOriginalExtension());
+                $complainant->img_picture = "" . $complainant->id . "." . Input::file('img_picture_s')[$index]->getClientOriginalExtension();
+            }
+            $complainant->save();
+        }
+
+        return Redirect::to("agent/dashboard");
     }
 
     public function getShow($id = null) {

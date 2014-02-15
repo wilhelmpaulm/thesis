@@ -1,6 +1,5 @@
 <div>
     <div class="row ">
-        street city postal code province barangay
         <div class="form-group col-md-4">
             <label for="street">Street</label>
             <input type="text" class="form-control" id="street" placeholder="1671 Pedro Gil St" name="street">
@@ -11,7 +10,7 @@
         </div>
         <div class="form-group col-md-4">
             <label for="city">Barangay</label>
-            <input type="text" class="form-control" id="city" placeholder="817" name="city">
+            <input type="text" class="form-control" id="city" placeholder="817" name="barangay">
         </div>
     </div>
     <div class="row ">

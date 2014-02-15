@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/wamp/www/nbi/app/database/seeds/Client_type_tagsTableSeeder.php</file>
+            <file>file:/D:/wamp/www/nbi/app/database/migrations/2014_02_12_042001_create_complaints_table.php</file>
             <file>file:/D:/wamp/www/nbi/app/controllers/ComplaintsController.php</file>
+            <file>file:/D:/wamp/www/nbi/app/database/migrations/2014_02_09_071854_create_client_type_tags_table.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/complaints/create.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/database/seeds/ComplaintsTableSeeder.php</file>
         </group>
     </open-files>
 </project-private>

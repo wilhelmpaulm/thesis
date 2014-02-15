@@ -13,10 +13,7 @@
             <input type="text" class="form-control" id="middle_name" placeholder="Ignacio" name="middle_name_v[]">
         </div>
     </div>
-    <!--            <div class="form-group">
-                    <label for="alias">Alias</label>
-                    <input type="text" class="form-control" id="alias" placeholder="Boy Bawang">
-                </div>-->
+    
     <div class="row">
         <div class="form-group col-md-6">
             <label for="birthdate">Date of Birth</label>
@@ -33,12 +30,7 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label for="address">Address</label>
-        <textarea class="form-control" name="address_v[]" rows="4" cols="20" placeholder="address"></textarea>
-    </div>
-
-     <div class="row">
+    <div class="row">
         <div class="form-group col-md-6">
 
             <div class="row">
@@ -75,9 +67,9 @@
 
 
             <div class="form-group ">
-                <label for="exampleInputFile">File input</label>
+                <label for="exampleInputFile">Victim picture</label>
                 <input type="file" id="exampleInputFile" name="img_picture_v[]">
-                <p class="help-block">Example block-level help text here.</p>
+                <p class="help-block">Please attach a photo of the victim.</p>
             </div>
         </div>
     </div>

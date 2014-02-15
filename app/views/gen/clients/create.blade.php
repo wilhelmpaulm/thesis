@@ -2,7 +2,7 @@
     <div class="row">
         <div class="form-group col-md-4">
             <label for="last_name">Last Name</label>
-            <input type="text" class="form-control" id="last_name" placeholder="De La Cruz" name="c_last_name">
+            <input type="text" class="form-control" id="last_name" placeholder="De La Cruz" name="last_name_c">
         </div>
         <div class="form-group col-md-4">
             <label for="first_name">First Name</label>
@@ -33,11 +33,7 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <label for="address">Address</label>
-        <textarea class="form-control" name="address_c" rows="4" cols="20" placeholder="address"></textarea>
-    </div>
-
+    
 
     <div class="row">
         <div class="form-group col-md-6">
@@ -76,9 +72,9 @@
 
 
             <div class="form-group ">
-                <label for="exampleInputFile">File input</label>
+                <label for="exampleInputFile">Complainant Photo</label>
                 <input type="file" id="exampleInputFile" name="img_picture_c">
-                <p class="help-block">Example block-level help text here.</p>
+                <p class="help-block">Please attach a photo of the victim.</p>
             </div>
         </div>
     </div>

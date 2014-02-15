@@ -14,6 +14,7 @@ class CreateComplaintsTable extends Migration {
 	{
 		Schema::create('complaints', function(Blueprint $table) {
 			$table->increments('id');
+			$table->string('client_id')->nullable();
 			$table->string('date_commited')->nullable();
 			$table->string('date_reported')->nullable();
 			$table->text('narration')->nullable();

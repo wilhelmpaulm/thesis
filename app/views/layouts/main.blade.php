@@ -12,18 +12,20 @@
         <title>PITCHIN</title>
 
         <!-- Bootstrap core CSS -->
-        {{HTML::style("css/flat.bootstrap.min.css")}}
+        {{HTML::style("css/fullcalendar.css")}}
+        {{HTML::style("css/dataTables.css")}}
+        {{HTML::style("css/lumen.bootstrap.min.css")}}
         {{HTML::style("css/font-awesome.css")}}
         {{HTML::style("css/wilhelmpaulm.css")}}
-        {{HTML::style("css/dataTables.css")}}
         {{HTML::script("js/jquery.js")}}
-        {{HTML::script("js/bootstrap.min.js")}}
         {{HTML::script("js/dataTables.min.js")}}
+        {{HTML::script("js/fullcalendar.js")}}
+        {{HTML::script("js/bootstrap.min.js")}}
         <style>
             body {
                 padding-top: 60px;
                 padding-bottom: 20px;
-                background: url('{{URL::asset("bg/stardust.png")}}')
+                /*background: url('{{URL::asset("bg/stardust.png")}}')*/
             }
 
             ul.dropdown-menu li div{

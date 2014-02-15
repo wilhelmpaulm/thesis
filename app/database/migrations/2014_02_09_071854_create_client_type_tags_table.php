@@ -15,7 +15,7 @@ class CreateClientTypeTagsTable extends Migration {
 		Schema::create('client_type_tags', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('client_id');
-			$table->string('client_type_id');
+			$table->string('type');
 			$table->timestamps();
 		});
 	}
