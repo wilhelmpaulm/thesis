@@ -1,0 +1,51 @@
+<?php
+
+class KasesController extends BaseController {
+
+    public function getIndex() {
+        
+    }
+
+    public function getCreate() {
+        
+    }
+
+    public function postStore() {
+        
+    }
+
+    public function getShow($id = null) {
+        $data = [
+            "case" => Kase::find($id),
+            "case_evidences" => Case_evidence::where("case_id", "=", $id)->get(),
+            "case_subjects" => Case_subject::where("case_id", "=", $id)->get(),
+            "case_type_tags" => Case_type_tag::where("case_id", "=", $id)->get(),
+            "case_victims" => Case_victim::where("case_id", "=", $id)->get(),
+//            "evidence_recordings" => Evidence_recording::where("case_id", "=", $id)->get(),
+//            "evidence_pictures" => Evidence_picture::where("case_id", "=", $id)->get(),
+//            "evidence_videos" => Evidence_video::where("case_id", "=", $id)->get(),
+//            "evidence_documents" => Evidence_document::where("case_id", "=", $id)->get(),
+//            "evidence_objects" => Evidence_object::where("case_id", "=", $id)->get(),
+            "evidence_recordings" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Recording")->join('evidence_recordings', 'case_evidences.evidence_id', '=', 'evidence_recordings.id')->get(),
+            "evidence_pictures" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Picture")->join('evidence_pictures', 'case_evidences.evidence_id', '=', 'evidence_pictures.id')->get(),
+            "evidence_videos" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Video")->join('evidence_videos', 'case_evidences.evidence_id', '=', 'evidence_videos.id')->get(),
+            "evidence_documents" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Document")->join('evidence_documents', 'case_evidences.evidence_id', '=', 'evidence_documents.id')->get(),
+            "evidence_objects" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Object")->join('evidence_objects', 'case_evidences.evidence_id', '=', 'evidence_objects.id')->get(),
+        ];
+
+        return View::make("gen.kases.show", $data);
+    }
+
+    public function getEdit($id = null) {
+        
+    }
+
+    public function postUpdate($id = null) {
+        
+    }
+
+    public function postDestroy($id = null) {
+        
+    }
+
+}

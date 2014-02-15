@@ -1,0 +1,18 @@
+<?php
+
+class Evidence_videosTableSeeder extends Seeder {
+
+	public function run()
+	{
+		// Uncomment the below to wipe the table clean before populating
+		// DB::table('evidence_videos')->truncate();
+
+		$evidence_videos = array(
+
+		);
+
+		// Uncomment the below to run the seeder
+		// DB::table('evidence_videos')->insert($evidence_videos);
+	}
+
+}
