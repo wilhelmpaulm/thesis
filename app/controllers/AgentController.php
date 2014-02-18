@@ -52,7 +52,7 @@ class AgentController extends BaseController {
         return View::make("base.cases.closed", $data);
     }
 
-    public function getCelendar() {
+    public function getCalendar() {
         $data = [
 //            "num" => $num,
         ];

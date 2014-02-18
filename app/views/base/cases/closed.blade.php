@@ -27,7 +27,7 @@
     </div>
 </div>
 
-
+{{$num = 5}}
 @if($num != null)
 <script>
 

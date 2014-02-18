@@ -12,15 +12,26 @@
         <title>PITCHIN</title>
 
         <!-- Bootstrap core CSS -->
+        <!--{{HTML::style("css/daterangepicker-bs3.css")}}-->
+        {{HTML::style("css/bootstrap-datetimepicker.css")}}
         {{HTML::style("css/fullcalendar.css")}}
         {{HTML::style("css/dataTables.css")}}
         {{HTML::style("css/lumen.bootstrap.min.css")}}
+        <!--{{HTML::style("css/bootstrap-modal-bs3patch.css")}}-->
+<!--        {{HTML::style("css/bootstrap-modal.css")}}-->
+        {{HTML::style("css/bootstrap-datetimepicker.css")}}
         {{HTML::style("css/font-awesome.css")}}
         {{HTML::style("css/wilhelmpaulm.css")}}
         {{HTML::script("js/jquery.js")}}
+        {{HTML::script("js/moment.js")}}
+        <!--{{HTML::script("js/daterangepicker.js")}}-->
         {{HTML::script("js/dataTables.min.js")}}
         {{HTML::script("js/fullcalendar.js")}}
         {{HTML::script("js/bootstrap.min.js")}}
+        <!--{{HTML::script("js/bootstrap-modalmanager.js")}}-->
+        <!--{{HTML::script("js/bootstrap-modal.js")}}-->
+        {{HTML::script("js/bootstrap-datetimepicker.min.js")}}
+        {{HTML::script("js/list.js")}}
         <style>
             body {
                 padding-top: 60px;
@@ -111,6 +122,9 @@
                 $("#alert-notifications").replaceWith(data);
             });
         });
+        
+        
+//        $('body').modalmanager('loading');
     </script>
 
 

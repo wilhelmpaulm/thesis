@@ -169,8 +169,6 @@
                 </div>
                 <div class="panel-body" id="">
                     @include("gen.complaint_type_tags.create")
-
-
                 </div>
             </div>
         </div>
