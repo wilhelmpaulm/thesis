@@ -15,6 +15,7 @@ class CreateEvidenceObjectsTable extends Migration {
 		Schema::create('evidence_objects', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('case_id');
+			$table->string('title')->nullable();
 			$table->text('details')->nullable();
 			$table->string('length')->nullable();
 			$table->string('width')->nullable();

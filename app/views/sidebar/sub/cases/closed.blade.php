@@ -1,6 +1,6 @@
 <div  id="list_plug" class="list-group" >
     <div class="list-group-item ">
-        <div class="input-group custom-search-form input-group-sm">
+        <div class="input-group  input-group-sm">
             <input type="text" class="search form-control " placeholder="Search...">
             <span class="input-group-btn">
                 <button class="btn btn-default sort" type="button" data-sort="list_name">

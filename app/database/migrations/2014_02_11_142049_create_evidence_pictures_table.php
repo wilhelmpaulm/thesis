@@ -15,6 +15,7 @@ class CreateEvidencePicturesTable extends Migration {
 		Schema::create('evidence_pictures', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('case_id');
+			$table->string('title')->nullable();
 			$table->text('details')->nullable();
 			$table->string('owner')->nullable();
 			$table->string('date_taken')->nullable();

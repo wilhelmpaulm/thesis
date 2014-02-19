@@ -15,7 +15,8 @@
         <!--{{HTML::style("css/daterangepicker-bs3.css")}}-->
         {{HTML::style("css/bootstrap-datetimepicker.css")}}
         {{HTML::style("css/fullcalendar.css")}}
-        {{HTML::style("css/dataTables.css")}}
+        {{HTML::style("css/dtable3.css")}}
+        <!--{{HTML::style("css/dataTables.css")}}-->
         {{HTML::style("css/lumen.bootstrap.min.css")}}
         <!--{{HTML::style("css/bootstrap-modal-bs3patch.css")}}-->
 <!--        {{HTML::style("css/bootstrap-modal.css")}}-->
@@ -26,6 +27,7 @@
         {{HTML::script("js/moment.js")}}
         <!--{{HTML::script("js/daterangepicker.js")}}-->
         {{HTML::script("js/dataTables.min.js")}}
+        {{HTML::script("js/dtable3.js")}}
         {{HTML::script("js/fullcalendar.js")}}
         {{HTML::script("js/bootstrap.min.js")}}
         <!--{{HTML::script("js/bootstrap-modalmanager.js")}}-->
@@ -36,7 +38,7 @@
             body {
                 padding-top: 60px;
                 padding-bottom: 20px;
-                /*background: url('{{URL::asset("bg/stardust.png")}}')*/
+                background: url('{{URL::asset("bg/stardust.png")}}')
             }
 
             ul.dropdown-menu li div{
@@ -47,6 +49,10 @@
             refresh.ul.dropdown-menu{
                 width: 310px;
 
+            }
+            
+            .clickable{
+                cursor: pointer
             }
 
         </style>
