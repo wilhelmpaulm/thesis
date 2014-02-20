@@ -9,6 +9,8 @@ class Message_recipientsTableSeeder extends Seeder {
 
 		$message_recipients = array(
 
+//			["id" => , "message_id" => , "user_id" =>],
+
 		);
 
 		// Uncomment the below to run the seeder

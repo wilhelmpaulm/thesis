@@ -11,13 +11,6 @@ class DatabaseSeeder extends Seeder {
         Eloquent::unguard();
 
 //        $this->call('UserTableSeeder');
-        $this->call('ClientsTableSeeder');
-        $this->call('Client_contactsTableSeeder');
-        $this->call('Client_typesTableSeeder');
-        $this->call('Client_type_tagsTableSeeder');
-        $this->call('Client_addressesTableSeeder');
-
-
         $this->call('UsersTableSeeder');
         $this->call('DivisionsTableSeeder');
         $this->call('Job_titlesTableSeeder');
@@ -28,8 +21,12 @@ class DatabaseSeeder extends Seeder {
         $this->call('User_addressesTableSeeder');
         $this->call('Contact_typesTableSeeder');
         $this->call('User_contactsTableSeeder');
-
+        $this->call('Client_contactsTableSeeder');
+        $this->call('ClientsTableSeeder');
+        $this->call('Client_typesTableSeeder');
+        $this->call('Client_type_tagsTableSeeder');
         $this->call('SexesTableSeeder');
+        $this->call('Client_addressesTableSeeder');
         $this->call('MessagesTableSeeder');
         $this->call('Message_recipientsTableSeeder');
         $this->call('Message_logsTableSeeder');
@@ -59,8 +56,6 @@ class DatabaseSeeder extends Seeder {
         $this->call('Complaint_subjectsTableSeeder');
         $this->call('Complaint_victimsTableSeeder');
         $this->call('Complaint_type_tagsTableSeeder');
-    	$this->call('Complaint_addressesTableSeeder');
-		$this->call('Case_addressesTableSeeder');
-	}
+    }
 
 }

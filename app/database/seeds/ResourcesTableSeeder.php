@@ -8,6 +8,7 @@ class ResourcesTableSeeder extends Seeder {
 		// DB::table('resources')->truncate();
 
 		$resources = array(
+//			["id" => , "name" => "", "division" => "", "details" => "", "amount" => ""],
                     
 		);
 

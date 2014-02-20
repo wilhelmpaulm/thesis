@@ -9,6 +9,8 @@ class User_calendarsTableSeeder extends Seeder {
 
 		$user_calendars = array(
 
+//			["id" => , "receiver_id" => , "sender_id" => , "action" => "", "details" => "", "date_start" => "", "date_end" => ""],
+
 		);
 
 		// Uncomment the below to run the seeder

@@ -19,28 +19,19 @@
     </div>-->
     <div class="row">
         <div class="col-md-12">
+@if($case == null )
             <div id="content">
+                
             </div>
+            @else
+            @include("gen.kases.show")
+            @endif
         </div>
 
 
     </div>
 </div>
 
-
-@if($num != null)
-<script>
-
-    $.get("{{URL::to('/content').'/'.$num}}", function(data) {
-        $("#content").replaceWith(data);
-    });
-
-//            window.history.pushState("#", "Title", window.location+"dashboard/1");
-
-    return false;
-
-</script>
-@endif
 
 
 @stop

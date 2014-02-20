@@ -9,6 +9,8 @@ class Evidence_historiesTableSeeder extends Seeder {
 
 		$evidence_histories = array(
 
+//			["id" => , "evidence_id" => , "date_held" => "", "date_released" => "", "holder" => "", "location" => "", "details" => ""],
+
 		);
 
 		// Uncomment the below to run the seeder

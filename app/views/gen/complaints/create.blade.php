@@ -65,7 +65,9 @@
                     <div class="panel panel-default">
                         <div class="panel-heading clearfix">
                             <span class=""><i class="fa fa-group"></i> Victims  </span>
+                            <span class="btn-group btn-group-sm pull-right">
                             <button type="button"  id="add_victim_btn" class="pull-right btn btn-success"><i class="fa fa-plus"></i></button>
+                            </span>
                         </div>
                         <div class="panel-body" id="add_victim_panel">
 
@@ -79,7 +81,9 @@
                     <div class="panel panel-default">
                         <div class="panel-heading clearfix">
                             <span class=""><i class="fa fa-chain"></i> Subjects </span>
+                              <span class="btn-group btn-group-sm pull-right">
                             <button type="button" id="add_subject_btn" class="pull-right btn btn-success"><i class="fa fa-plus"></i></button>
+                              </span>
                         </div>
                         <div class="panel-body" id="add_subject_panel">
 
@@ -115,7 +119,9 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading clearfix">
                                         <span class=""><i class="fa fa-group"></i> Type Tags  </span>
+                                        <span class="btn-group btn-group-sm pull-right">
                                         <button type="button"  id="add_type_tags_btn" class="pull-right btn btn-success"><i class="fa fa-plus"></i></button>
+                                        </span>
                                     </div>
                                     <div class="panel-body" id="add_type_tags_panel">
 
@@ -139,7 +145,9 @@
         <div id="add_victim_body" >
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">
+                      <span class="btn-group btn-group-sm pull-right">
                     <button type="button" class="remove btn btn-danger pull-right"><i class="fa fa-trash-o"></i></button>
+                      </span>
                 </div>
                 <div class="panel-body" id="">
                     @include("gen.clients.create_victim")
@@ -152,7 +160,9 @@
         <div id="add_subject_body">
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">
+                      <span class="btn-group btn-group-sm pull-right">
                     <button  type="button" class="remove btn btn-danger pull-right"><i class="fa fa-trash-o"></i></button>
+                      </span>
                 </div>
                 <div class="panel-body" id="">
                     @include("gen.clients.create_subject")
@@ -165,7 +175,9 @@
         <div id="add_type_tags_body">
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">
+                      <span class="btn-group btn-group-sm pull-right">
                     <button  type="button" class="remove btn btn-danger pull-right"><i class="fa fa-trash-o"></i></button>
+                      </span>
                 </div>
                 <div class="panel-body" id="">
                     @include("gen.complaint_type_tags.create")
@@ -211,7 +223,7 @@
 
 
         $("body").on("click", ".remove", function() {
-            $(this).parent().parent().remove();
+            $(this).parent().parent().parent().remove();
         });
 
 

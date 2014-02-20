@@ -9,6 +9,8 @@ class Message_logsTableSeeder extends Seeder {
 
 		$message_logs = array(
 
+//			["id" => , "message_id" => , "user_id" =>, "body" => ""],
+
 		);
 
 		// Uncomment the below to run the seeder

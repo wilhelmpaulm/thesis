@@ -97,6 +97,7 @@
         </div>
         <!--PICTURES TABLE-->  
         <div class="tab-pane" id="recording">
+            @include("gen.evidence_recordings.show")
 
         </div>
         <!--PICTURES TABLE-->  
@@ -105,6 +106,7 @@
         </div>
         <!--VIDEOS TABLE-->  
         <div class="tab-pane" id="video">
+            @include("gen.evidence_videos.show")
         </div>
         <!--DOCUMENTS TABLE-->  
         <div class="tab-pane" id="document">
@@ -112,7 +114,15 @@
         </div>
         <!--OBJECT TABLE-->
         <div class="tab-pane" id="object">
+            @include("gen.evidence_objects.show")
         </div>
+        <div class="tab-pane" id="victims">
+            @include("gen.case_victims.show")
+        </div>
+        <div class="tab-pane" id="subjects">
+            @include("gen.case_subjects.show")
+        </div>
+       
     </div>
 
 

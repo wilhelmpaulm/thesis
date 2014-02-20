@@ -9,6 +9,8 @@ class Complaint_victimsTableSeeder extends Seeder {
 
 		$complaint_victims = array(
 
+//			["id" => , "complaint_id" =>, "client_id" =>],
+
 		);
 
 		// Uncomment the below to run the seeder

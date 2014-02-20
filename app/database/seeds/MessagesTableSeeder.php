@@ -9,6 +9,8 @@ class MessagesTableSeeder extends Seeder {
 
 		$messages = array(
 
+//			["id" => , "sender" => "", "subject" =>""],
+
 		);
 
 		// Uncomment the below to run the seeder

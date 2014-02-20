@@ -9,6 +9,8 @@ class Appointment_receipientsTableSeeder extends Seeder {
 
 		$appointment_receipients = array(
 
+//			["case_id" => , "appointment_id" => , "user_id" => ],
+
 		);
 
 		// Uncomment the below to run the seeder

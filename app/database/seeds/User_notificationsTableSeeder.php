@@ -9,6 +9,7 @@ class User_notificationsTableSeeder extends Seeder {
 
 		$user_notifications = array(
 
+//			["id" => , "receiver_id" => , "sender_id" => , "action" => "", "details" => ""],
 		);
 
 		// Uncomment the below to run the seeder

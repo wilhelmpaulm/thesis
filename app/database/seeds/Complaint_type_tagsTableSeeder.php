@@ -9,6 +9,8 @@ class Complaint_type_tagsTableSeeder extends Seeder {
 
 		$complaint_type_tags = array(
 
+//			["id" => , "complaint_id" =>, "types" =>""],
+
 		);
 
 		// Uncomment the below to run the seeder

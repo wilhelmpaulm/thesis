@@ -1,7 +1,8 @@
 <?php
 
 class Evidence_typesController extends BaseController {
-public function getIndex() {
+
+    public function getIndex() {
         
     }
 

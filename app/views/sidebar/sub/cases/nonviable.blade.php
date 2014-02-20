@@ -18,7 +18,7 @@
         <?php $cases = Kase::where("status", "=", "Non-viable")->get(); ?>
          <ul class="list list-unstyled    ">
         @foreach($cases as $case)
-        <li><a  id="" href="#" data-case_id="{{$case->id}}" class="list-group-item c_link">
+        <li><a  id="" href="{{URL::to('agent/cases-non-viable/'.$case->id)}}" data-case_id="{{$case->id}}" class="list-group-item c_link">
             <h4 class="list-group-item-heading list_name ">{{$case->name}}</h4>
             <p class="list_created_at">{{$case->created_at}}</p>
             <p class="list-group-item-text list_details">{{$case->details}}</p>
@@ -38,20 +38,5 @@ var options = {
 
     var userList = new List('list_plug', options);
 
-    $(".c_link").on("click", function() {
-        var case_id = $(this).data("case_id");
-//        alert(case_id);
-
-        $.get("http://localhost:8000/cases/show/"+case_id, function(data) {
-//            alert("asdasd");
-            $("#content").replaceWith(data);
-        }
-
-        );
-
-//            window.history.pushState("#", "Title", window.location+"dashboard/1");
-
-        return false;
-    });
 
 </script>

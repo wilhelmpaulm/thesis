@@ -9,6 +9,8 @@ class Resource_historiesTableSeeder extends Seeder {
 
 		$resource_histories = array(
 
+//			["id" => , "resource_id" => , "user_id" =>, "details" =>"", "amount" =>"", "status" =>"", "date_requested" =>"", "date_approved" =>"", "date_due" =>"", "date_issued" =>"", "date_returned" =>""],
+
 		);
 
 		// Uncomment the below to run the seeder
