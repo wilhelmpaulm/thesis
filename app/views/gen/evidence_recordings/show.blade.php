@@ -1,9 +1,12 @@
 <div class="panel panel-default">
     <div class="panel-heading clearfix">
         <p class="pull-left"><i class="fa fa-table"></i> Recordings</p>
-        <button class="btn  btn-success pull-right" type="button" data-toggle="modal" data-target="#addEvidenceDocument">
-            <i class="fa fa-plus"></i> 
-        </button>
+        <span class="btn-group btn-group-sm pull-right">
+
+            <button class="btn  btn-success pull-right" type="button" data-toggle="modal" data-target="#addEvidenceRecording">
+                <i class="fa fa-plus"></i> 
+            </button>
+        </span>
     </div>
     <div class="panel-body">
         <table class="table table-responsive table-condensed table-bordered">
@@ -24,7 +27,7 @@
                     <td>{{$ed->date_recorded}}</td>
                     <td>{{$ed->date_received}}</td>
                     <td>
-                        <div class="btn-group btn-group-sm ">
+                        <div class="btn-group btn-group-sm pull-right">
                             <button class="btn btn-success"data-toggle="modal" data-target="#viewEvidenceRecording_{{$ed->id}}"><i class="fa fa-eye"></i></button>
                             <a class="btn btn-success"  href="{{URL::asset("nbi/evidences/recordings/".$ed->file_name)}}"><i class="fa fa-download"></i></a>
 
@@ -82,9 +85,12 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                                        <span class="btn-group btn-group-sm">
+
                     <a  id="evidence_recordings_destroy_{{$ed->id}}" class="btn btn-danger" >Delete</a>
                     <button type="" class="btn btn-primary">Save changes</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </span>
                 </div>
             </form>
         </div>
@@ -119,7 +125,10 @@
                 </audio>
             </div>
             <div class="modal-footer">
+                                    <span class="btn-group btn-group-sm">
+
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </span>
             </div>
         </div>
     </div>
@@ -160,8 +169,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                                        <span class="btn-group btn-group-sm">
+
                     <button type="" class="btn btn-primary">Save changes</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </span>
                 </div>
             </form>
         </div>

@@ -20,7 +20,7 @@ class Evidence_historiesController extends BaseController {
                     "location" => Input::get("location"),
                     "details" => Input::get("details"),
         ]);
-
+        return Redirect::back();
     }
 
     public function getShow($id = null) {
@@ -40,11 +40,13 @@ class Evidence_historiesController extends BaseController {
         $history->location = Input::get("location");
         $history->detiails = Input::get("details");
         $history->save();
+        return Redirect::back();
     }
 
     public function postDestroy($id = null) {
         $history = Evidence_history::find($id);
         $history->delete();
+        return Redirect::back();
     }
 
 }

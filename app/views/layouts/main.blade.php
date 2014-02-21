@@ -38,7 +38,7 @@
             body {
                 padding-top: 60px;
                 padding-bottom: 20px;
-                background: url('{{URL::asset("bg/stardust.png")}}')
+                /*background: url('{{URL::asset("bg/stardust.png")}}')*/
             }
 
             ul.dropdown-menu li div{

@@ -37,7 +37,7 @@ class AgentController extends BaseController {
             "evidence_pictures" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Picture")->join('evidence_pictures', 'case_evidences.evidence_id', '=', 'evidence_pictures.id')->get(),
             "evidence_videos" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Video")->join('evidence_videos', 'case_evidences.evidence_id', '=', 'evidence_videos.id')->get(),
             "evidence_documents" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Document")->join('evidence_documents', 'case_evidences.evidence_id', '=', 'evidence_documents.id')->get(),
-            "evidence_objects" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Object")->join('evidence_objects', 'case_evidences.evidence_id', '=', 'evidence_objects.id')->get(), F
+            "evidence_objects" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Object")->join('evidence_objects', 'case_evidences.evidence_id', '=', 'evidence_objects.id')->get(), 
         ];
         return View::make("base.cases.ongoing", $data);
     }

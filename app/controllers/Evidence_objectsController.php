@@ -24,10 +24,11 @@ class Evidence_objectsController extends BaseController {
         ]);
 
         if (Input::hasFile('file_name')) {
-            Input::file('file_name')->move(public_path() . "/nbi/evidences/objects", "" . $complainant->id . "." . Input::file('file_name')->getClientOriginalExtension());
+            Input::file('file_name')->move(public_path() . "/nbi/evidences/objects", "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension());
             $evidence->file_name = "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension();
         }
         $evidence->save();
+        return Redirect::back();
     }
 
     public function getShow($id = null) {
@@ -46,17 +47,20 @@ class Evidence_objectsController extends BaseController {
         $evidence->length = Input::get("length");
         $evidence->width = Input::get("width");
         $evidence->height = Input::get("height");
-        $evidence->date_recorded = Input::get("date_recorded");
+        $evidence->date_received = Input::get("date_received");
         if (Input::hasFile('file_name')) {
-            Input::file('file_name')->move(public_path() . "/nbi/evidences/objects", "" . $complainant->id . "." . Input::file('file_name')->getClientOriginalExtension());
+            Input::file('file_name')->move(public_path() . "/nbi/evidences/objects", "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension());
             $evidence->file_name = "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension();
         }
         $evidence->save();
+        
+        return Redirect::back();
     }
 
     public function postDestroy($id = null) {
         $evidence = Evidence_object::find($id);
         $evidence->delete();
+        return Redirect::back();
     }
 
 }

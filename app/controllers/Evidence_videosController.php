@@ -26,6 +26,7 @@ class Evidence_videosController extends BaseController {
             $evidence->file_name = "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension();
         }
         $evidence->save();
+        return Redirect::back();
     }
 
     public function getShow($id = null) {
@@ -48,11 +49,13 @@ class Evidence_videosController extends BaseController {
             $evidence->file_name = "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension();
         }
         $evidence->save();
+        return Redirect::back();
     }
 
     public function postDestroy($id = null) {
         $evidence = Evidence_video::find($id);
         $evidence->delete();
+        return Redirect::back();
     }
 
 }
