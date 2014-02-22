@@ -1,6 +1,6 @@
 <?php
 
-class Appointment_receipientsController extends BaseController {
+class Appointment_recipientsController extends BaseController {
 
 	public function getIndex() {
         

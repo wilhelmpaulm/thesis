@@ -28,7 +28,7 @@ Route::controller('message_recipients', 'Message_recipientsController');
 Route::controller('message_logs', 'Message_logsController');
 Route::controller('tasks', 'TasksController');
 Route::controller('appointments', 'AppointmentsController');
-Route::controller('appointment_receipients', 'Appointment_receipientsController');
+Route::controller('appointment_recipients', 'Appointment_recipientsController');
 Route::controller('user_notifications', 'User_notificationsController');
 Route::controller('user_calendars', 'User_calendarsController');
 Route::controller('resource_categories', 'Resource_categoriesController');

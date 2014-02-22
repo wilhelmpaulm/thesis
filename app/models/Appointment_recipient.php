@@ -1,6 +1,6 @@
 <?php
 
-class Appointment_receipient extends Eloquent {
+class Appointment_recipient extends Eloquent {
 	protected $guarded = array();
 
 	public static $rules = array(

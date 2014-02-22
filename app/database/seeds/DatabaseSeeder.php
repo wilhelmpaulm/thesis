@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('Message_logsTableSeeder');
         $this->call('TasksTableSeeder');
         $this->call('AppointmentsTableSeeder');
-        $this->call('Appointment_receipientsTableSeeder');
+        $this->call('Appointment_recipientsTableSeeder');
         $this->call('User_notificationsTableSeeder');
         $this->call('User_calendarsTableSeeder');
         $this->call('Resource_categoriesTableSeeder');

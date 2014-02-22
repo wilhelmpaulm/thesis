@@ -14,6 +14,7 @@
         <!-- Bootstrap core CSS -->
         <!--{{HTML::style("css/daterangepicker-bs3.css")}}-->
         {{HTML::style("css/bootstrap-datetimepicker.css")}}
+        <!--{{HTML::style("css/fullcalendar.print.css")}}-->
         {{HTML::style("css/fullcalendar.css")}}
         {{HTML::style("css/dtable3.css")}}
         <!--{{HTML::style("css/dataTables.css")}}-->
@@ -142,7 +143,7 @@
                 $("#alert-notifications").replaceWith(data);
             });
         });
-
+       
 
 //        $('body').modalmanager('loading');
     </script>

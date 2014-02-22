@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAppointmentReceipientsTable extends Migration {
+class CreateAppointmentRecipientsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateAppointmentReceipientsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('appointment_receipients', function(Blueprint $table) {
+		Schema::create('appointment_recipients', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('appointment_id');
 			$table->integer('user_id');
@@ -28,7 +28,7 @@ class CreateAppointmentReceipientsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('appointment_receipients');
+		Schema::drop('appointment_recipients');
 	}
 
 }
