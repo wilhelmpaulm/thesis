@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration {
 			$table->string('division');
 			$table->string('job_title');
 			$table->string('password');
+			$table->string('file_picture');
 			
 			$table->timestamps();
 		});

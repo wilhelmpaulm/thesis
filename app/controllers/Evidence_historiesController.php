@@ -12,7 +12,7 @@ class Evidence_historiesController extends BaseController {
 
     public function postStore() {
         $history = Evidence_history::create([
-                    "history_id" => Input::get("history_id"),
+                    "evidence_id" => Input::get("evidence_id"),
                     "type" => Input::get("type"),
                     "date_held" => Input::get("date_held"),
                     "date_released" => Input::get("date_released"),
@@ -33,12 +33,11 @@ class Evidence_historiesController extends BaseController {
 
     public function postUpdate($id = null) {
         $history = Evidence_history::find($id);
-        $history->evidence_id = Input::get("evidence_id");
         $history->date_held = Input::get("date_held");
         $history->date_released = Input::get("date_released");
         $history->holder = Input::get("holder");
         $history->location = Input::get("location");
-        $history->detiails = Input::get("details");
+        $history->details = Input::get("details");
         $history->save();
         return Redirect::back();
     }

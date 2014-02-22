@@ -33,6 +33,8 @@
 
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editEvidenceRecording_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
                             <button class="btn btn-info"data-toggle="modal" data-target="#historyEvidenceRecording_{{$ed->id}}"><i class="fa fa-list"></i></button>
+                                                  <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryRecording_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
+
                         </div>
                     </td>
                 </tr>
@@ -44,6 +46,58 @@
 
 
 
+@foreach($evidence_recordings as $ed)
+<?php $history = Evidence_history::where("evidence_id", "=", $ed->id)->where("type", "=", "Recording")->get(); ?>
+<div id="historyEvidenceRecording_{{$ed->id}}" class="modal container fade" tabindex="-1" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        </div>
+        <div class="modal-body">
+            <table class="table table-bordered table-hover ">
+                <thead>
+                    <tr>
+                        <th>Holder</th>
+                        <th>Locations</th>
+                        <th>Details</th>
+                        <th>Date Held</th>
+                        <th>Date Released</th>
+                        <th width=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($history as $h)
+                    <tr class="clickable" >
+                        <td>{{$h->holder}}</td>
+                        <td>{{$h->location}}</td>
+                        <td>{{$h->details}}</td>
+                        <td>{{$h->date_held}}</td>
+                        <td>{{$h->date_released}}</td>
+                        <td>
+                            <span class="btn-group btn-group-sm pull-right">
+                                <button class="btn btn-warning"data-toggle="modal" data-target="#editEvidenceHistory_{{$h->id}}"><i class="fa fa-wrench"></i></button>
+                            </span>
+                        </td>
+                    </tr>
+                    @include("gen.evidence_histories.edit")
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <span class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </span>
+        </div>
+    </div>
+</div>
+@endforeach
+
+
+@foreach($evidence_recordings as $ed)
+    @include("gen.evidence_histories.create_recording")
+@endforeach
 
 
 <!--RECORDINGS-->

@@ -18,8 +18,9 @@
         {{HTML::style("css/dtable3.css")}}
         <!--{{HTML::style("css/dataTables.css")}}-->
         {{HTML::style("css/lumen.bootstrap.min.css")}}
-        <!--{{HTML::style("css/bootstrap-modal-bs3patch.css")}}-->
-<!--        {{HTML::style("css/bootstrap-modal.css")}}-->
+        {{HTML::style("css/bootstrap-modal-bs3patch.css")}}
+        {{HTML::style("css/bootstrap-modal.css")}}
+        {{HTML::style("css/bootstrap-select.css")}}
         {{HTML::style("css/bootstrap-datetimepicker.css")}}
         {{HTML::style("css/font-awesome.css")}}
         {{HTML::style("css/wilhelmpaulm.css")}}
@@ -30,14 +31,16 @@
         {{HTML::script("js/dtable3.js")}}
         {{HTML::script("js/fullcalendar.js")}}
         {{HTML::script("js/bootstrap.min.js")}}
-        <!--{{HTML::script("js/bootstrap-modalmanager.js")}}-->
-        <!--{{HTML::script("js/bootstrap-modal.js")}}-->
+        {{HTML::script("js/bootstrap-modalmanager.js")}}
+        {{HTML::script("js/bootstrap-modal.js")}}
         {{HTML::script("js/bootstrap-datetimepicker.min.js")}}
+        {{HTML::script("js/bootstrap-select.js")}}
         {{HTML::script("js/list.js")}}
         <style>
             body {
                 padding-top: 60px;
                 padding-bottom: 20px;
+                zoom: 85%;
                 /*background: url('{{URL::asset("bg/stardust.png")}}')*/
             }
 
@@ -50,9 +53,18 @@
                 width: 310px;
 
             }
-            
+
             .clickable{
                 cursor: pointer
+            }
+            .img-fit {
+                width: 25px;
+                height : 25px;
+                max-height: 100%;
+                max-width: 100%;
+                margin: -20px ;
+                margin-right: 30px;
+                margin-left: 10px;
             }
 
         </style>
@@ -77,20 +89,22 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!--<li><a href="#" class="refresh"> <span class="c-lightblue"><i class="fa fa-refresh"></i></span></a></li>-->
                         <li class="dropdown">
-                            <a class="dropdown-toggle refresh " data-toggle="dropdown" href="#"><span class=""><i class="fa fa-envelope"></i> messages <i class="fa fa-caret-down"></i></span>                            </a>
+                            <a class="dropdown-toggle refresh " data-toggle="dropdown" href="#"><span class=""><i class="fa fa-envelope"></i> <i class="fa fa-caret-down"></i></span>                            </a>
                             <ul class="dropdown-menu"  id="alert-messages">
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle refresh " data-toggle="dropdown" href="#"><span class=""><i class="fa fa-bullhorn"></i> notifications <i class="fa fa-caret-down"></i></span>                            </a>
+                            <a class="dropdown-toggle refresh " data-toggle="dropdown" href="#"><span class=""><i class="fa fa-bullhorn"></i>  <i class="fa fa-caret-down"></i></span>                            </a>
                             <ul class="dropdown-menu"  id="alert-notifications">
                             </ul>
                         </li>
 
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class=""><i class="fa fa-user"></i> {{$user->last_name}} <i class="fa fa-caret-down"></i></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="clearfix">{{$user->last_name.", ".$user->first_name}} <img src="{{URL::to('nbi/agent/picture/'.$user->file_picture)}}"  class=" img-responsive img-fit " style="display: inline"  />  </span></a>
                             <ul class="dropdown-menu">
+                                <li> <img src="{{URL::to('nbi/agent/picture/'.$user->file_picture)}}"  class="img-circle img-responsive" style="width: 50%; margin: auto"  /></li>
+                                <li class="divider"></li>
                                 <li><a href="#"><i class="glyphicon glyphicon-book"></i>  Profile</a></li>
                                 <li><a href="#"><i class="glyphicon glyphicon-cog"></i>  Settings</a></li>
                                 <li class="divider"></li>
@@ -128,8 +142,8 @@
                 $("#alert-notifications").replaceWith(data);
             });
         });
-        
-        
+
+
 //        $('body').modalmanager('loading');
     </script>
 
