@@ -9,7 +9,7 @@
         </span>
     </div>
     <div class="panel-body">
-        <table class="table table-responsive table-condensed table-bordered">
+        <table id="lolt" class="table table-responsive table-condensed table-bordered">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -19,7 +19,7 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="lol">
                 @foreach($evidence_recordings as $ed)
                 <tr>
                     <td>{{$ed->id}}</td>

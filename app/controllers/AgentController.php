@@ -96,5 +96,12 @@ class AgentController extends BaseController {
         ];
         return View::make("base.calendar", $data);
     }
+   
+    public function getResourcesRequest() {
+        $data = [
+//            "num" => $num,
+        ];
+        return View::make("base.resources.request", $data);
+    }
 
 }

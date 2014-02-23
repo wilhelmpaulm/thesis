@@ -15,7 +15,7 @@
     </div>
     <div style="height: 450px; overflow-y: auto">
 
-        <?php $cases = Kase::where("status", "=", "Ongoing")->get(); ?>
+        <?php $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::user()->id)->get(); ?>
         <ul class="list list-unstyled    ">
             @foreach($cases as $case)
             <li><a  id="" href="{{URL::to('agent/cases-ongoing/'.$case->id)}}" data-case_id="{{$case->id}}" class="list-group-item c_link">

@@ -3,14 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/wamp/www/nbi/app/controllers/Evidence_historiesController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/evidence_documents/show.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/evidence_histories/edit.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/layouts/main.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/database/seeds/Evidence_historiesTableSeeder.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/evidence_documents/edit.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/evidence_objects/show.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/database/seeds/Evidence_documentsTableSeeder.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/kases/show.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/evidence_recordings/show.blade.php</file>
         </group>
     </open-files>
 </project-private>

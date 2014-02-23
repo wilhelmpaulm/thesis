@@ -21,9 +21,9 @@
         </div>
         <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#resources"><i class="fa fa-list-alt"></i> Resources</a>
         <div id="resources" class="collapse">
-            <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Request</a>
-            <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Current</a>
-            <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> History</a>
+            <a href="{{URL::to("/resources-request")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Request</a>
+            <a href="{{URL::to("/resources-current")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Current</a>
+            <a href="{{URL::to("/resources-history")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> History</a>
         </div>
         <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#directory"><i class="fa fa-group"></i> Directory</a>
         <div id="directory" class="collapse">

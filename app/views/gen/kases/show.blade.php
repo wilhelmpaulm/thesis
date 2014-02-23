@@ -122,14 +122,49 @@
         <div class="tab-pane" id="subjects">
             @include("gen.case_subjects.show")
         </div>
-       
+
     </div>
 
 
 
 
 </div>
-<script>
-    $("table").dataTable();
 
+<div class="">
+    <table >
+        <tbody id="trd">
+            <tr>
+                <td>sdfsdfsfd</td>
+                <td>sdfsdfsfd</td>
+                <td>sdfsdfsfd</td>
+                <td>sdfsdfsfd</td>
+                <td>sdfsdfsfd</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<script>
+
+//    alert("mega fox");
+
+//    alert("mega fox");
+//    
+//    $("table").removeClass("table");
+//    var xx = ["<td>asdasd</td>","<td>asdasd</td>","<td>asdasd</td>","<td>asdasd</td>","<td>asdasd</td>"];
+//    $("table tbody").append("<tr><td>asdasd</td><td>asdasd</td><td>asdasd</td><td>asdasd</td><td>asdasd</td></tr>")
+//    $("#trd tbody").append($("#trd").html());
+//    alert($("#trd").html());
+//    dt.fnDraw();
+//    $(".table").dataTable();
+
+//    $("table").removeClass("table");
+//    
+//    $(".table").dataTable();
+//    $("table").addClass("table");
+//    $(".table").dataTable();
 </script>
