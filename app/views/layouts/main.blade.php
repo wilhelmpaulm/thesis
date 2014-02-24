@@ -37,11 +37,12 @@
         {{HTML::script("js/bootstrap-datetimepicker.min.js")}}
         {{HTML::script("js/bootstrap-select.js")}}
         {{HTML::script("js/list.js")}}
+        {{HTML::script("js/list.fuzzysearch.min.js")}}
         <style>
             body {
                 padding-top: 60px;
                 padding-bottom: 20px;
-                zoom: 85%;
+                zoom: 87%;
                 /*background: url('{{URL::asset("bg/stardust.png")}}')*/
             }
 
