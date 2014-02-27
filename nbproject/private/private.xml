@@ -3,15 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/resources/cart.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/layouts/main.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/resources/request.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/kases/show.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/evidence_recordings/show.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/AgentController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/appointments/create.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/database/seeds/ResourcesTableSeeder.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/sidebar/main/agent.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/calendar.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/messages.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/messages.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/messages/show.blade.php</file>
         </group>
     </open-files>
 </project-private>

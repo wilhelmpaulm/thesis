@@ -2,7 +2,7 @@
 
 class Resource_historiesController extends BaseController {
 
-	public function getIndex() {
+    public function getIndex() {
         
     }
 
@@ -14,7 +14,23 @@ class Resource_historiesController extends BaseController {
         
     }
 
-    public function getShow($id = null) {
+    public function postRequest() {
+        $history = Resource_history::create([
+                    "resource_id" => Input::get("resource_id"),
+                    "user_id" => Auth::user()->id,
+                    "case_id" => Input::get("case_id"),
+                    "amount" => Input::get("amount"),
+                    "status" => "Pending",
+                    "date_requested" => Input::get("date_requested"),
+                    "date_due" => Input::get("date_due"),
+        ]);
+
+        return Redirect::back();
+    }
+
+    public function getApprove($id = null) {
+        $history = Resource_history::find($id);
+        $history->status = "Approved";
         
     }
 

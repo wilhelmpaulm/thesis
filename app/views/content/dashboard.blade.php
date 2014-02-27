@@ -2,7 +2,7 @@
     <div class="row">
 
         <div class="col-md-6" style="min-height: 400px">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <i class="fa fa-pencil fa-fw"></i> Notepad
                 </div>
@@ -11,9 +11,13 @@
                     <textarea class="form-control"  name="" rows="4" cols="20" style="min-height: 380px"></textarea>
                     <!-- /.list-group -->
                     <br>
-                    <a href="#" class="btn btn-success btn-block">Save Changes</a>
+
                 </div>
-                <!-- /.panel-body -->
+                <div class="panel-footer">
+                    <span class="btn-group btn-group-sm btn-group-justified">
+                        <a href="#" class="btn btn-success btn-block">Save Changes</a>
+                    </span>
+                </div>
             </div>
 
 
@@ -22,7 +26,7 @@
         <div class="col-md-6 " style="">
             <div class="row"> 
                 <div class="col-md-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-warning">
                         <div class="panel-heading">
                             <i class="fa fa-bell fa-fw"></i> Notifications Panel
                         </div>
@@ -49,7 +53,7 @@
                                 <a href="#" class=" list-group-item text-center ">View Notifications</a>
                             </div>
                             <!-- /.list-group -->
-                              
+
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -57,7 +61,7 @@
 
                 </div>
                 <div class="col-md-12" >
-                    <div class="panel panel-default" >
+                    <div class="panel panel-warning" >
                         <div class="panel-heading">
                             <i class="fa fa-calendar fa-fw"></i> February 6, 2014
                         </div>
@@ -90,10 +94,10 @@
                                     <span class="pull-right text-muted small"><em>3:30 PM</em>
                                     </span>
                                 </a>
-                                 <a href="#" class=" list-group-item text-center">View Calendar</a>
+                                <a href="#" class=" list-group-item text-center">View Calendar</a>
                             </div>
                             <!-- /.list-group -->
-                           
+
                         </div>
                         <!-- /.panel-body -->
                     </div>

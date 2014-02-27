@@ -1,66 +1,75 @@
-<div  id="list_plug" class="list-group" >
-    <div class="list-group-item">
-        <div class="input-group custom-search-form input-group-sm">
-            <input type="text" class="search form-control " placeholder="Search...">
-            <span class="input-group-btn">
-                <button class="btn btn-default sort" type="button" data-sort="list_id">
-                    <i class="fa fa-sort"></i> #
-                </button>
-                <button class="btn btn-default sort" type="button" data-sort="list_date">
-                    <i class="fa fa-sort"></i> <i class="fa fa-calendar"></i>
-                </button>
-                <button class="btn btn-default sort" type="button" data-sort="list_heading">
-                    <i class="fa fa-sort"></i> A
-                </button>
-                <button class="btn btn-success" type="button" data-toggle="modal" data-target="#addAppointment">
-                    <i class="fa fa-plus"></i> <i class="fa fa-group"></i> 
-                </button>
-                <button class="btn  btn-success" type="button" data-toggle="modal" data-target="#addTask">
-                    <i class="fa fa-plus"></i> <i class="fa fa-tasks"></i> 
-                </button>
-            </span>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-calendar"></i> Schedule</h3>
+    </div>
+    <!--<div class="panel-body"></div>-->
+    <div  id="list_plug" class="list-group" >
+        <div class="list-group-item">
+            <div class="input-group custom-search-form input-group-sm">
+                <input type="text" class="search form-control " placeholder="Search...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default sort" type="button" data-sort="list_id">
+                        <i class="fa fa-sort"></i> #
+                    </button>
+                    <button class="btn btn-default sort" type="button" data-sort="list_date">
+                        <i class="fa fa-sort"></i> <i class="fa fa-calendar"></i>
+                    </button>
+                    <button class="btn btn-default sort" type="button" data-sort="list_heading">
+                        <i class="fa fa-sort"></i> A
+                    </button>
+                    <button class="btn btn-success" type="button" data-toggle="modal" data-target="#addAppointment">
+                        <i class="fa fa-plus"></i> <i class="fa fa-group"></i> 
+                    </button>
+                    <button class="btn  btn-success" type="button" data-toggle="modal" data-target="#addTask">
+                        <i class="fa fa-plus"></i> <i class="fa fa-tasks"></i> 
+                    </button>
+                </span>
+
+            </div>
+
 
         </div>
+        <div style="height: 450px; overflow-y: auto">
+
+            <?php $tasks = Task::where("user_id", "=", Auth::user()->id)->get(); ?>
+            <?php $app_rs = Appointment_recipient::where("user_id", "=", Auth::user()->id)->get(); ?>
 
 
+            <ul class="list list-unstyled    ">
+                @foreach($tasks as $task)
+                <li>
+                    <a  id="" href="#"  class="list-group-item clearfix"  data-toggle="modal" data-target="#task_{{$task->id}}">
+                        <p class="hidden list_id">{{$task->id}}</p>
+                        <h4 class="list-group-item-heading list_heading">{{$task->title}}</h4>
+                        <p class="list-group-item-text pull-left list_date label label-success">Start: {{$task->date_start}}</p>
+                        <p class="list-group-item-text pull-right labe label-danger">End: {{$task->date_end}}</p>
+                    </a>
+                </li>
+                @include("gen.tasks.edit")
+                @endforeach
+
+
+                @foreach($app_rs as $ap)
+                <?php $a = Appointment::find($ap->appointment_id); ?>
+                <li>
+                    <a  id="" href="#"  class="list-group-item clearfix"  data-toggle="modal" data-target="#appointment_{{$a->id}}">
+                        <p class="hidden list_id">{{$a->id}}</p>
+                        <h4 class="list-group-item-heading list_heading">{{$a->title}}</h4>
+                        <p class="list-group-item-text pull-left list_date label label-success">Start: {{$a->date_start}}</p>
+                        <p class="list-group-item-text pull-right label label-danger">End: {{$a->date_end}}</p>
+                    </a>
+                </li>
+                @include("gen.appointments.edit")
+                @endforeach
+
+            </ul>
+
+        </div>
     </div>
-    <div style="height: 450px; overflow-y: auto">
 
-        <?php $tasks = Task::where("user_id", "=", Auth::user()->id)->get(); ?>
-        <?php $app_rs = Appointment_recipient::where("user_id", "=", Auth::user()->id)->get(); ?>
-        
-        
-        <ul class="list list-unstyled    ">
-            @foreach($tasks as $task)
-            <li>
-                <a  id="" href="#"  class="list-group-item clearfix"  data-toggle="modal" data-target="#task_{{$task->id}}">
-                    <p class="hidden list_id">{{$task->id}}</p>
-                    <h4 class="list-group-item-heading list_heading">{{$task->title}}</h4>
-                    <p class="list-group-item-text pull-left text-info list_date">Start: {{$task->date_start}}</p>
-                    <p class="list-group-item-text pull-right text-info">End: {{$task->date_end}}</p>
-                </a>
-            </li>
-            @include("gen.tasks.edit")
-            @endforeach
-            
-            
-            @foreach($app_rs as $ap)
-            <?php $a = Appointment::find($ap->appointment_id); ?>
-            <li>
-                <a  id="" href="#"  class="list-group-item clearfix"  data-toggle="modal" data-target="#appointment_{{$a->id}}">
-                    <p class="hidden list_id">{{$a->id}}</p>
-                    <h4 class="list-group-item-heading list_heading">{{$a->title}}</h4>
-                    <p class="list-group-item-text pull-left text-info list_date">Start: {{$a->date_start}}</p>
-                    <p class="list-group-item-text pull-right text-info">End: {{$a->date_end}}</p>
-                </a>
-            </li>
-            @include("gen.appointments.edit")
-            @endforeach
-
-        </ul>
-
-    </div>
 </div>
+
+
 
 
 <script>

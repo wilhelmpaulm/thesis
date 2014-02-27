@@ -1,20 +1,39 @@
-<div class="list-group">
-    <a href="{{URL::to("/dashboard")}}" class="list-group-item "><i class="fa fa-dashboard"></i> Dashboard</a>
-    <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#messages"><i class="fa fa-envelope"></i> Messages</a>
-    <div id="messages" class="collapse ">
-        <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Compose</a>
-        <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Inbox</a>
+<div class="list-group ">
+    <a href="#" type="button" class="list-group-item text-right" data-toggle="collapse" data-target="#sb-content"><i class="fa fa-bars"></i></a>
+    <div id="sb-content" class="collapse in">
+
+        <a href="{{URL::to("chief/dashboard")}}" class="list-group-item "><i class="fa fa-dashboard"></i> Dashboard</a>
+        <a href="{{URL::to("chief/calendar")}}" class="list-group-item "><i class="fa fa-calendar"></i> Calendar</a>
+        <a href="{{URL::to("chief/messages")}}" class="list-group-item "><i class="fa fa-envelope"></i> Messages</a>
+        
+<!--        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#messages"><i class="fa fa-envelope"></i> Messages</a>
+        <div id="messages" class="collapse ">
+            <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Compose</a>
+            <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Inbox</a>
+        </div>-->
+
+        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#cases"><i class="fa fa-suitcase"></i> Cases</a>
+        <div id="cases" class="collapse">
+            <a href="{{URL::to("chief/cases-add")}}" class="list-group-item " style=""><span style="margin-left: 20px"><i class="fa fa-chevron-right"></i> Add Complaint</span></a>
+            <a href="{{URL::to("chief/cases-pending")}}" class="list-group-item " style=""><span style="margin-left: 20px"><i class="fa fa-chevron-right"></i> Pending</span></a>
+            <a href="{{URL::to("chief/cases-ongoing")}}" class="list-group-item " style=""><span style="margin-left: 20px"><i class="fa fa-chevron-right"></i> Ongoing</span></a>
+            <a href="{{URL::to("chief/cases-closed")}}" class="list-group-item " style=""><span style="margin-left: 20px"><i class="fa fa-chevron-right"></i> Closed</span></a>
+            <a href="{{URL::to("chief/cases-non-viable")}}" class="list-group-item " style=""><span style="margin-left: 20px"><i class="fa fa-chevron-right"></i> Non-viable</span></a>
+        </div>
+        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#resources"><i class="fa fa-list-alt"></i> Resources</a>
+        <div id="resources" class="collapse">
+            <a href="{{URL::to("chief/resources-request")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Request</a>
+            <a href="{{URL::to("chief/resources-approval")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Current</a>
+            <a href="{{URL::to("chief/resources-current")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Current</a>
+            <a href="{{URL::to("chief/resources-history")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> History</a>
+        </div>
+        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#directory"><i class="fa fa-group"></i> Directory</a>
+        <div id="directory" class="collapse">
+            <a href="{{URL::to("chief/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> SIS</a>
+            <a href="{{URL::to("chief/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Clients</a>
+        </div>
+        <a href="#" class="list-group-item"><i class="fa fa-book"></i> Reports</a>
+        <a href="#" class="list-group-item"><i class="fa fa-bullhorn"></i> Notifications</a>
+        
     </div>
-    <!--<a href="#" id="toggle-messages" class="list-group-item"><i class="fa fa-envelope"></i> Messages </a>-->
-    <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#cases"><i class="fa fa-suitcase"></i> Cases</a>
-    <div id="cases" class="collapse">
-        <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Create new</a>
-        <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Pending</a>
-        <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> On going</a>
-        <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Closed</a>
-        <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Non-viable</a>
-    </div>
-    <a href="{{URL::to("/")}}" class="list-group-item"><i class="fa fa-list-alt"></i>  Resources</a>
-    <a href="#" class="list-group-item"><i class="fa fa-book"></i> Reports</a>
-    <a href="#" class="list-group-item"><i class="fa fa-bell"></i> Alerts</a>
 </div>

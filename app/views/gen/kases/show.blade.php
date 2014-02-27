@@ -166,5 +166,5 @@
 //    
 //    $(".table").dataTable();
 //    $("table").addClass("table");
-//    $(".table").dataTable();
+    $(".table").dataTable();
 </script>

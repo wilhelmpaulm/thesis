@@ -68,6 +68,20 @@
                 margin-right: 30px;
                 margin-left: 10px;
             }
+            .img-mess {
+                width: 40px;
+                height : 40px;
+                /*max-height: 100%;*/
+                /*max-width: 100%;*/
+                /*margin: -20px ;*/
+                /*margin-right: 30px;*/
+                /*margin-left: 10px;*/
+            }
+
+            a {
+                text-decoration: none !important;
+                cursor: pointer;
+            }
 
         </style>
 
@@ -120,7 +134,14 @@
         <div class="pad15">
             <div class="row">
                 <div class="col-md-2">
+                    @if(Auth::user()->job_title == "Agent")    
                     @include("sidebar.main.agent")
+                    @elseif(Auth::user()->job_title == "Chief")    
+                    @include("sidebar.main.chief")
+                    @elseif(Auth::user()->job_title == "Secretary")    
+                    @include("sidebar.main.secretary")
+
+                    @endif
                 </div>
                 <div class="col-md-10">
                     <div class="row">
@@ -144,7 +165,7 @@
                 $("#alert-notifications").replaceWith(data);
             });
         });
-       
+
 
 //        $('body').modalmanager('loading');
     </script>

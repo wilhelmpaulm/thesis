@@ -55,7 +55,7 @@
 
 
     <?php $resources = Resource::all(); ?>
-    <?php $resources_gadget = Resource::where("status", "=", "Available")->where("category", "=", "Gadget")->get(); ?>
+    <?php $resources_gadget = Resource::where("status", "=", "Available")->where("category", "=", "Gadget")->where("division", "=", Auth::user()->division)->get(); ?>
     <?php $resources_person = Resource::where("status", "=", "Available")->where("category", "=", "Person")->get(); ?>
     <?php $resources_vehicle = Resource::where("status", "=", "Available")->where("category", "=", "Vehicle")->get(); ?>
     <?php $resources_misc = Resource::where("status", "=", "Available")->where("category", "=", "miscellaneous")->get(); ?>
@@ -82,6 +82,9 @@
             <div style="height: 450px; overflow-y: auto">
                 <ul class="list list-unstyled    ">
                     @foreach($resources_gadget as $r)
+                    <?php $rr = Resource_history::where("status", "=", "Pending")->where("resource_id", "=", $r->id)->get() ?>
+
+                    @if(count($rr) > 0)
                     <li style="">
                         <a  id=""href="#" data-toggle="modal" data-target="#resource_{{$r->id}}"  data-case_id="{{$r->id}}" class="list-group-item c_link">
 
@@ -96,6 +99,7 @@
 
                         </a>
                     </li>
+                    @endif
                     @endforeach
                 </ul>
             </div>
@@ -119,6 +123,9 @@
             <div style="height: 450px; overflow-y: auto">
                 <ul class="list list-unstyled    ">
                     @foreach($resources_person as $r)
+                    <?php $rr = Resource_history::where("status", "=", "Pending")->where("resource_id", "=", $r->id)->get() ?>
+
+                    @if(count($rr) > 0)
                     <li style="">
                         <a  id="" href="#" data-toggle="modal" data-target="#resource_{{$r->id}}"  data-case_id="{{$r->id}}" class="list-group-item c_link">
 
@@ -133,6 +140,7 @@
 
                         </a>
                     </li>
+                    @endif
                     @endforeach
                 </ul>
             </div>
@@ -156,6 +164,9 @@
             <div style="height: 450px; overflow-y: auto">
                 <ul class="list list-unstyled    ">
                     @foreach($resources_vehicle as $r)
+                    <?php $rr = Resource_history::where("status", "=", "Pending")->where("resource_id", "=", $r->id)->get() ?>
+
+                    @if(count($rr) > 0)
                     <li style="">
                         <a  id="" href="#" data-toggle="modal" data-target="#resource_{{$r->id}}"  data-case_id="{{$r->id}}" class="list-group-item c_link">
 
@@ -170,6 +181,7 @@
 
                         </a>
                     </li>
+                    @endif
                     @endforeach
                 </ul>
             </div>
@@ -220,6 +232,12 @@
 </div>
 
 @foreach($resources as $r)
+<?php
+$rhs = Resource_history::where("resource_id", "=", $r->id)->where("status", "=", "Pending")->get();
+$rhs_copy = $rhs->toArray();
+?>
+
+@if(count($rhs) >= 1)
 <div class="modal fade  container" id="resource_{{$r->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-content">
         <div class="modal-header">
@@ -235,59 +253,101 @@
                     <p class="label label-info">{{$r->status}}</p>
                     <p class="label label-default">{{$r->division}}</p>
                 </div>
-                <div class="col-md-7">
-                    <?php $history = Resource_history::where("resource_id", "=", $r->id)->get(); ?>
-                    <?php $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::user()->id)->get(); ?>
+                <div class="col-md-10">
+                    <?php // $history = Resource_history::where("resource_id", "=", $r->id)->get(); ?>
+                    <?php // $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::user()->id)->get(); ?>
 
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Borrowed by</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Date Requested</th>
-                                <th>Date Due</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($history as $h)
-                            <tr>
-                                <td>{{$h->user_id}}</td>
-                                <td>{{$h->amount}}</td>
-                                <td>{{$h->status}}</td>
-                                <td>{{$h->date_requested}}</td>
-                                <td>{{$h->date_due}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
 
-                </div>
-                <div class="col-md-3">
-                    <form method="POST" action="{{URL::to('resource_histories/request')}}">
-                        <div class="form-group ">
-                            <input type="hidden" name="resource_id" value="{{$r->id}}">
-                            <label >Case</label>
-                            <select name="case_id" class="form-control">
-                                @foreach($cases as $c)
-                                <option value="{{$c->id}}">{{$c->name}}</option>
-                                @endforeach
-                            </select>
-                            <label >Date Requested</label>
-                            <input class="form-control" type="date" value="" name="date_requested">
-                            <label >Date Due</label>
-                            <input class="form-control" type="date" value="" name="date_due">
-                            <label >Amount</label>
-                            <input class="form-control" min="1" max="{{$r->amount}}"  type="number" value="1" name="amount">
+                    <?php while (count($rhs_copy) > 0) { ?>
+                        <?php
+                        $date1 = 0;
+                        $date2 = 0;
+                        $d1temp = 0;
+                        $d2temp = 0;
+                        ?>
+                        <div class="well">
+                            <form action="{{URL::to('chief/validate')}}" method="post">
+                                <table class="table table-condensed table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Request ID</th>
+                                            <th>Date Requested</th>
+
+                                            <th>Date Due</th>
+                                            <th>User ID</th>
+                                            <th>Amount</th>
+                                            <th>Choice</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($rhs_copy as $rh)
+                                        <?php
+                                        $d1temp = (int) Time::toNum($rh['date_requested']);
+                                        $d2temp = (int) Time::toNum($rh['date_due']);
+                                        ?>
+                                        @if($date1 ==0 && $date2 ==0)<?php
+                                        $date1 = $d1temp;
+                                        $date2 = $d2temp;
+                                        ?>
+
+                                        <tr>
+                                    <input type="hidden" class="form-control" name="request_group[]" value="{{$rh['id']}}">
+                                    <td>{{$rh['id']}}</td>
+                                    <td>{{$rh['date_requested']}}</td>
+                                    <td>{{$rh['date_due']}}</td>
+                                    <td>{{$rh['user_id']}}</td>
+                                    <td>{{$rh['amount']}}</td>
+                                    <td>
+                                        <input type="radio" class="" name="request_id" value="{{$rh['id']}}">
+                                    </td>
+                                    <?php array_shift($rhs_copy); ?>
+
+                                    @elseif(($d1temp <= $date1 && $date1 <= $d2temp)||($d1temp <= $date2 && $date2 <= $d2temp)
+                                    ||($date1 <= $d1temp && $date2 >= $d2temp)||($d1temp <= $date1 && $date2 <= $d2temp))
+                                    <input type="hidden" class="" name="request_group[]" value="{{$rh['id']}}">
+                                    <td>{{$rh['id']}}</td>
+                                    <td>{{$rh['date_requested']}}</td>
+                                    <td>{{$rh['date_due']}}</td>
+                                    <td>{{$rh['user_id']}}</td>
+                                    <td>{{$rh['amount']}}</td>
+                                    <td>
+                                        <input type="radio" class="" name="request_id" value="{{$rh['id']}}">
+                                    </td>
+                                    <?php
+                                    if ($date1 > $d1temp) {
+                                        $date1 = $d1temp;
+                                    }
+                                    if ($date2 < $d2temp) {
+                                        $date1 = $d1temp;
+                                    }
+                                    array_shift($rhs_copy);
+                                    ?>
+                                    @endif
+                                    </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <span class="btn-group btn-group-sm pull-right">
+                                                <button class="btn btn-success">Submit</button>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
                         </div>
+                    <?php }; ?>
                 </div>
-
-
             </div>
         </div>
         <div class="modal-footer">
             <div class="btn-group btn-group-sm">
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <!--<button type="submit" class="btn btn-primary">Save changes</button>-->
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
             </div>
@@ -298,6 +358,7 @@
 </div>
 
 
+@endif
 @endforeach
 
 
@@ -311,7 +372,7 @@
     };
 
 
-    $(".table").dataTable();
+//    $(".table").dataTable();
 
     var gadgetList = new List('gadget', options);
     var personList = new List('person', options);

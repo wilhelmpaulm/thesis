@@ -37,9 +37,9 @@
 }
 @font-face {
     font-family: 'osr';
-    src: url('../font/ostrich-rounded.ttf');
-    src: url('../font/ostrich-rounded.ttf') format('truetype');
-    font-weight: bold;
+    src: url('../font/ostrich-regular.ttf');
+    src: url('../font/ostrich-regular.ttf') format('truetype');
+    font-weight: normal;
     font-style: normal;
     /*font-size: x-large;*/
 }
@@ -55,7 +55,7 @@
 }
 .f-osr{
     font-family: 'osr', "Segoe UI";
-    font-size: 20px;
+    /*font-size: 20px;*/
 
 }
 .btn{

@@ -103,5 +103,19 @@ class AgentController extends BaseController {
         ];
         return View::make("base.resources.request", $data);
     }
+    
+    public function getMessages($id = null) {
+        $data = [
+//            "messages" => DB::table('messages')
+//                ->leftJoin('message_recipients','messages.id', '=', 'message_recipients.message_id')
+//                ->where("message_recipients.user_id", "=", Auth::user()->id)
+//                ->get(),
+            "messages" => Message_recipient::where("user_id", "=", Auth::user()->id)->get(),
+            "message" => Message::find($id),
+            "message_logs" => Message_log::where("message_id", "=", $id)->get(),
+            "message_recipients" => Message_recipient::where("message_id", "=", $id)->get(),
+        ];
+        return View::make("base.messages", $data);
+    }
 
 }
