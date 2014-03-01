@@ -234,6 +234,7 @@
 @foreach($resources as $r)
 <?php
 $rhs = Resource_history::where("resource_id", "=", $r->id)->where("status", "=", "Pending")->get();
+$rha = Resource_history::where("resource_id", "=", $r->id)->where("status", "=", "Approved")->get();
 $rhs_copy = $rhs->toArray();
 ?>
 
@@ -260,11 +261,60 @@ $rhs_copy = $rhs->toArray();
 
                     <?php while (count($rhs_copy) > 0) { ?>
                         <?php
+                        $amount_taken = $r->amount;
                         $date1 = 0;
                         $date2 = 0;
                         $d1temp = 0;
                         $d2temp = 0;
                         ?>
+
+
+                        <!--TEST SITE-->
+                        @foreach($rhs_copy as $rh)
+                        <?php
+                        $d1temp = (int) Time::toNum($rh['date_requested']);
+                        $d2temp = (int) Time::toNum($rh['date_due']);
+                        ?>
+                        @if($date1 ==0 && $date2 ==0)<?php
+                        $date1 = $d1temp;
+                        $date2 = $d2temp;
+                        ?>
+
+                        @elseif(($d1temp <= $date1 && $date1 <= $d2temp)||($d1temp <= $date2 && $date2 <= $d2temp)
+                        ||($date1 <= $d1temp && $date2 >= $d2temp)||($d1temp <= $date1 && $date2 <= $d2temp))
+                        <?php
+                        if ($date1 > $d1temp) {
+                            $date1 = $d1temp;
+                        }
+                        if ($date2 < $d2temp) {
+                            $date1 = $d1temp;
+                        }
+                        ?>
+                        @endif
+                        @endforeach
+                        @foreach($rha as $rh)
+                        <?php
+                        $d1temp = (int) Time::toNum($rh->date_requested);
+                        $d2temp = (int) Time::toNum($rh->date_due);
+                        ?>
+                        <?php
+                        if (($d1temp <= $date1 && $date1 <= $d2temp) || ($d1temp <= $date2 && $date2 <= $d2temp) || ($date1 <= $d1temp && $date2 >= $d2temp) || ($d1temp <= $date1 && $date2 <= $d2temp)) {
+                            $amount_taken -= $rh->amount;
+                        }
+                        ?>
+
+
+                        @endforeach
+                        <!--TEST SITE-->
+                        <?php
+//                        $amount_taken = 0;
+                        $date1 = 0;
+                        $date2 = 0;
+                        $d1temp = 0;
+                        $d2temp = 0;
+                        ?>
+
+
                         <div class="well">
                             <form action="{{URL::to('chief/validate')}}" method="post">
                                 <table class="table table-condensed table-hover">
@@ -281,16 +331,19 @@ $rhs_copy = $rhs->toArray();
                                     </thead>
                                     <tbody>
                                         @foreach($rhs_copy as $rh)
+
                                         <?php
                                         $d1temp = (int) Time::toNum($rh['date_requested']);
                                         $d2temp = (int) Time::toNum($rh['date_due']);
                                         ?>
-                                        @if($date1 ==0 && $date2 ==0)<?php
+                                        @if($date1 ==0 && $date2 ==0)
+                                        <?php
                                         $date1 = $d1temp;
                                         $date2 = $d2temp;
                                         ?>
 
                                         <tr>
+                                            @if($rh['amount'] <= $amount_taken)
                                     <input type="hidden" class="form-control" name="request_group[]" value="{{$rh['id']}}">
                                     <td>{{$rh['id']}}</td>
                                     <td>{{$rh['date_requested']}}</td>
@@ -300,10 +353,12 @@ $rhs_copy = $rhs->toArray();
                                     <td>
                                         <input type="radio" class="" name="request_id" value="{{$rh['id']}}">
                                     </td>
+                                    @endif
                                     <?php array_shift($rhs_copy); ?>
 
                                     @elseif(($d1temp <= $date1 && $date1 <= $d2temp)||($d1temp <= $date2 && $date2 <= $d2temp)
                                     ||($date1 <= $d1temp && $date2 >= $d2temp)||($d1temp <= $date1 && $date2 <= $d2temp))
+                                    @if($rh['amount'] <= $amount_taken)
                                     <input type="hidden" class="" name="request_group[]" value="{{$rh['id']}}">
                                     <td>{{$rh['id']}}</td>
                                     <td>{{$rh['date_requested']}}</td>
@@ -313,6 +368,8 @@ $rhs_copy = $rhs->toArray();
                                     <td>
                                         <input type="radio" class="" name="request_id" value="{{$rh['id']}}">
                                     </td>
+                                    
+                                    @endif
                                     <?php
                                     if ($date1 > $d1temp) {
                                         $date1 = $d1temp;
@@ -325,13 +382,19 @@ $rhs_copy = $rhs->toArray();
                                     @endif
                                     </tr>
                                     @endforeach
+
+
+
+
+
                                     <tr>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
+                                        <td>{{$amount_taken}}</td>
                                         <td>
+
                                             <span class="btn-group btn-group-sm pull-right">
                                                 <button class="btn btn-success">Submit</button>
                                             </span>
