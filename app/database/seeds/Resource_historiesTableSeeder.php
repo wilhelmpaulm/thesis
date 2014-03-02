@@ -9,7 +9,7 @@ class Resource_historiesTableSeeder extends Seeder {
 
 		$resource_histories = array(
 
-			["resource_id" => 14, "user_id" => 10930191 , "amount" =>"1", "status" =>"Approved", "date_requested" =>"2014-02-24", "date_approved" =>"2014-02-21", "date_due" =>"2014-02-27", "date_issued" =>"", "date_returned" =>""],
+//			["resource_id" => 14, "user_id" => 10930191 , "amount" =>"1", "status" =>"Approved", "date_requested" =>"2014-02-24", "date_approved" =>"2014-02-21", "date_due" =>"2014-02-27", "date_issued" =>"", "date_returned" =>""],
 
 		);
 

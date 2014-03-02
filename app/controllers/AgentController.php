@@ -104,6 +104,14 @@ class AgentController extends BaseController {
         return View::make("base.resources.request", $data);
     }
     
+       public function getResourcesCurrent() {
+        $data = [
+//            "num" => $num,
+        ];
+        return View::make("base.resources.current", $data);
+    }
+    
+    
     public function getMessages($id = null) {
         $data = [
 //            "messages" => DB::table('messages')

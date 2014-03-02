@@ -3,6 +3,8 @@
 class ChiefController extends BaseController {
 
     public function postValidate() {
+            
+        
           var_dump($_POST);
     }
     public function getIndex() {
@@ -109,6 +111,13 @@ class ChiefController extends BaseController {
 //            "num" => $num,
         ];
         return View::make("base.resources.approval", $data);
+    }
+    
+    public function getResourcesCurrent() {
+        $data = [
+//            "num" => $num,
+        ];
+        return View::make("base.resources.current", $data);
     }
     
     public function getMessages($id = null) {

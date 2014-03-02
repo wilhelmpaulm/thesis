@@ -48,6 +48,13 @@ class Time extends BaseController {
         return str_replace("-", "", $date);
         
     }
+    
+    public static function toDate($date){
+        $date = $date+"";
+        $date = substr($date, 0, 4).'-'.substr($date, 4, 2).'-'.substr($date, 6, 2);
+        return $date;
+        
+    }
 
     public static function hasPassed($date1) {
         date_default_timezone_set('Asia/Hong_kong');

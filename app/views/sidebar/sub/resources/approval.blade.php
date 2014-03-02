@@ -56,9 +56,9 @@
 
     <?php $resources = Resource::all(); ?>
     <?php $resources_gadget = Resource::where("status", "=", "Available")->where("category", "=", "Gadget")->where("division", "=", Auth::user()->division)->get(); ?>
-    <?php $resources_person = Resource::where("status", "=", "Available")->where("category", "=", "Person")->get(); ?>
-    <?php $resources_vehicle = Resource::where("status", "=", "Available")->where("category", "=", "Vehicle")->get(); ?>
-    <?php $resources_misc = Resource::where("status", "=", "Available")->where("category", "=", "miscellaneous")->get(); ?>
+    <?php $resources_person = Resource::where("status", "=", "Available")->where("category", "=", "Person")->where("division", "=", Auth::user()->division)->get(); ?>
+    <?php $resources_vehicle = Resource::where("status", "=", "Available")->where("category", "=", "Vehicle")->where("division", "=", Auth::user()->division)->get(); ?>
+    <?php $resources_misc = Resource::where("status", "=", "Available")->where("category", "=", "miscellaneous")->where("division", "=", Auth::user()->division)->get(); ?>
 
     <div class="tab-content">
         <div class="tab-pane active" id="gadget">
@@ -127,7 +127,7 @@
 
                     @if(count($rr) > 0)
                     <li style="">
-                        <a  id="" href="#" data-toggle="modal" data-target="#resource_{{$r->id}}"  data-case_id="{{$r->id}}" class="list-group-item c_link">
+                        <a  id=""href="#" data-toggle="modal" data-target="#resource_{{$r->id}}"  data-case_id="{{$r->id}}" class="list-group-item c_link">
 
 
 
@@ -168,7 +168,7 @@
 
                     @if(count($rr) > 0)
                     <li style="">
-                        <a  id="" href="#" data-toggle="modal" data-target="#resource_{{$r->id}}"  data-case_id="{{$r->id}}" class="list-group-item c_link">
+                        <a  id=""href="#" data-toggle="modal" data-target="#resource_{{$r->id}}"  data-case_id="{{$r->id}}" class="list-group-item c_link">
 
 
 
@@ -261,51 +261,12 @@ $rhs_copy = $rhs->toArray();
 
                     <?php while (count($rhs_copy) > 0) { ?>
                         <?php
-                        $amount_taken = $r->amount;
-                        $date1 = 0;
-                        $date2 = 0;
-                        $d1temp = 0;
-                        $d2temp = 0;
+                        $amount_t = $r->amount;
+                     
                         ?>
 
 
-                        <!--TEST SITE-->
-                        @foreach($rhs_copy as $rh)
-                        <?php
-                        $d1temp = (int) Time::toNum($rh['date_requested']);
-                        $d2temp = (int) Time::toNum($rh['date_due']);
-                        ?>
-                        @if($date1 ==0 && $date2 ==0)<?php
-                        $date1 = $d1temp;
-                        $date2 = $d2temp;
-                        ?>
 
-                        @elseif(($d1temp <= $date1 && $date1 <= $d2temp)||($d1temp <= $date2 && $date2 <= $d2temp)
-                        ||($date1 <= $d1temp && $date2 >= $d2temp)||($d1temp <= $date1 && $date2 <= $d2temp))
-                        <?php
-                        if ($date1 > $d1temp) {
-                            $date1 = $d1temp;
-                        }
-                        if ($date2 < $d2temp) {
-                            $date1 = $d1temp;
-                        }
-                        ?>
-                        @endif
-                        @endforeach
-                        @foreach($rha as $rh)
-                        <?php
-                        $d1temp = (int) Time::toNum($rh->date_requested);
-                        $d2temp = (int) Time::toNum($rh->date_due);
-                        ?>
-                        <?php
-                        if (($d1temp <= $date1 && $date1 <= $d2temp) || ($d1temp <= $date2 && $date2 <= $d2temp) || ($date1 <= $d1temp && $date2 >= $d2temp) || ($d1temp <= $date1 && $date2 <= $d2temp)) {
-                            $amount_taken -= $rh->amount;
-                        }
-                        ?>
-
-
-                        @endforeach
-                        <!--TEST SITE-->
                         <?php
 //                        $amount_taken = 0;
                         $date1 = 0;
@@ -316,7 +277,9 @@ $rhs_copy = $rhs->toArray();
 
 
                         <div class="well">
-                            <form action="{{URL::to('chief/validate')}}" method="post">
+                            <!--<form action="{{URL::to('chief/validate')}}" method="post">-->
+                            <form action="{{URL::to('resource_histories/approve')}}" method="post">
+                                <input name="resource_id" type="hidden" value="{{$r->id}}">
                                 <table class="table table-condensed table-hover">
                                     <thead>
                                         <tr>
@@ -326,6 +289,7 @@ $rhs_copy = $rhs->toArray();
                                             <th>Date Due</th>
                                             <th>User ID</th>
                                             <th>Amount</th>
+                                            <th>Available</th>
                                             <th>Choice</th>
                                         </tr>
                                     </thead>
@@ -336,40 +300,80 @@ $rhs_copy = $rhs->toArray();
                                         $d1temp = (int) Time::toNum($rh['date_requested']);
                                         $d2temp = (int) Time::toNum($rh['date_due']);
                                         ?>
-                                        @if($date1 ==0 && $date2 ==0)
+                                        <!--CREATES THE DATE_TEKA N-->
+                                        <!--CREATES THE DATE_TEKA N-->
+                                        <!--CREATES THE DATE_TEKA N-->
                                         <?php
-                                        $date1 = $d1temp;
-                                        $date2 = $d2temp;
-                                        ?>
+                                        $amount_taken = $r->amount;
 
+                                        $hcs = Resource_history::where('resource_id', "=", $r->id)->where('status', '=', 'Approved')->get();
+                                        $datemp = 0;
+                                        $dbtemp = 0;
+                                        $datea = Time::toNum($rh['date_requested']);
+                                        $dateb = Time::toNum($rh['date_due']);
+
+
+                                        foreach ($hcs as $hc) {
+                                            $datem = Time::toNum($hc->date_requested);
+                                            $dbtemp = Time::toNum($hc->date_due);
+
+                                            if (($datemp <= $datea && $datea <= $dbtemp) || ($datemp <= $dateb && $dateb <= $dbtemp) || ($datea <= $datemp && $dateb >= $dbtemp) || ($datemp <= $datea && $dateb <= $dbtemp)) {
+                                                $amount_taken -= $hc->amount;
+                                            }
+                                        }
+                                        ?>
+                                        <!--CREATES THE DATE_TEKA N-->
+                                        <!--CREATES THE DATE_TEKA N-->
+                                        <!--CREATES THE DATE_TEKA N-->
+
+
+
+
+
+
+                                        
+
+
+
+                                    @if($date1 ==0 && $date2 ==0)
                                         <tr>
-                                            @if($rh['amount'] <= $amount_taken)
                                     <input type="hidden" class="form-control" name="request_group[]" value="{{$rh['id']}}">
                                     <td>{{$rh['id']}}</td>
+                                    <td>{{$rh['user_id']}}</td>
                                     <td>{{$rh['date_requested']}}</td>
                                     <td>{{$rh['date_due']}}</td>
-                                    <td>{{$rh['user_id']}}</td>
                                     <td>{{$rh['amount']}}</td>
+                                    <td>{{$amount_taken}}</td>
                                     <td>
+                                        @if($rh['amount'] < $amount_taken)
                                         <input type="radio" class="" name="request_id" value="{{$rh['id']}}">
+                                        @endif
                                     </td>
-                                    @endif
-                                    <?php array_shift($rhs_copy); ?>
+                                   
+                                     <?php
+                                    $date1 = $d1temp;
+                                    $date2 = $d2temp;
+                                    array_shift($rhs_copy);
+                                    ?>
+
+
+
 
                                     @elseif(($d1temp <= $date1 && $date1 <= $d2temp)||($d1temp <= $date2 && $date2 <= $d2temp)
                                     ||($date1 <= $d1temp && $date2 >= $d2temp)||($d1temp <= $date1 && $date2 <= $d2temp))
-                                    @if($rh['amount'] <= $amount_taken)
                                     <input type="hidden" class="" name="request_group[]" value="{{$rh['id']}}">
                                     <td>{{$rh['id']}}</td>
+                                    <td>{{$rh['user_id']}}</td>
                                     <td>{{$rh['date_requested']}}</td>
                                     <td>{{$rh['date_due']}}</td>
-                                    <td>{{$rh['user_id']}}</td>
                                     <td>{{$rh['amount']}}</td>
+                                    <td>{{$amount_taken}}</td>
                                     <td>
+
+                                        @if($rh['amount'] < $amount_taken)
                                         <input type="radio" class="" name="request_id" value="{{$rh['id']}}">
+                                        @endif
                                     </td>
-                                    
-                                    @endif
                                     <?php
                                     if ($date1 > $d1temp) {
                                         $date1 = $d1temp;
@@ -378,7 +382,15 @@ $rhs_copy = $rhs->toArray();
                                         $date1 = $d1temp;
                                     }
                                     array_shift($rhs_copy);
+//                                    array_shift($rhs_copy);
                                     ?>
+                                    @else
+                                    <?php 
+                                    
+                                    array_push($rhs_copy, array_shift($rhs_copy));
+                                    
+                                    ?>
+                                    
                                     @endif
                                     </tr>
                                     @endforeach
@@ -386,13 +398,21 @@ $rhs_copy = $rhs->toArray();
 
 
 
-
+            <!--                                    <tr>
+                                                   <td></td>
+                                                   <td>Date Range of Requests</td>
+                                                    <td>{{Time::toDate($d1temp)}}</td>
+                                                    <td>{{Time::toDate($d2temp)}}</td>
+                                                   <td></td>
+                                                   <td></td>
+                                                </tr>-->
                                     <tr>
                                         <td></td>
+                                        <td>Date Range of Approved</td>
+                                        <td>{{Time::toDate($date1)}}</td>
+                                        <td>{{Time::toDate($date2)}}</td>
                                         <td></td>
                                         <td></td>
-                                        <td></td>
-                                        <td>{{$amount_taken}}</td>
                                         <td>
 
                                             <span class="btn-group btn-group-sm pull-right">
