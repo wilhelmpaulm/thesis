@@ -18,6 +18,7 @@ class CreateKasesTable extends Migration {
 			$table->string('name')->nullable();
 			$table->text('details')->nullable();
 			$table->integer('agent_id');
+			$table->string('division');
 			$table->integer('complainant_id');
 			$table->string('status')->nullable();
 			$table->string('date_assigned')->nullable();

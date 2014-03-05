@@ -11,7 +11,11 @@ class ComplaintsController extends BaseController {
     }
 
     public function postStore() {
+//        return var_dump($_POST);
+
         $complaint = Complaint::create([
+                    "status" => "Pending",
+                    "division" => Auth::user()->division,
                     "date_reported" => Input::get("date_reported"),
                     "date_commited" => Input::get("date_commited")
         ]);
@@ -60,9 +64,10 @@ class ComplaintsController extends BaseController {
                     "client_id" => $complainant->id,
                     "type" => "Complainant"
         ]);
-        if (Input::hasFile('img_picture_c')[$index]) {
-            Input::file('img_picture_c')[$index]->move(public_path() . "/nbi/clients/pictures", "" . $complainant->id . "." . Input::file('img_picture_c')[$index]->getClientOriginalExtension());
-            $complainant->img_picture = "" . $complainant->id . "." . Input::file('img_picture_c')[$index]->getClientOriginalExtension();
+        if (Input::hasFile('img_picture_c')) {
+
+            Input::file('img_picture_c')->move(public_path() . "/nbi/clients/pictures", "" . $complainant->id . "." . Input::file('img_picture_c')->getClientOriginalExtension());
+            $complainant->img_picture = "" . $complainant->id . "." . Input::file('img_picture_c')->getClientOriginalExtension();
         }
         $complainant->save();
 
@@ -100,10 +105,18 @@ class ComplaintsController extends BaseController {
                         "complaint_id" => $complaint->id,
                         "client_id" => $complainant->id,
             ]);
-            if (Input::hasFile('img_picture_v')[$index]) {
+
+//            if (Input::hasFile('img_picture_v')[$index]) {
+//                Input::file('img_picture_v')[$index]->move(public_path() . "/nbi/clients/pictures", "" . $complainant->id . "." . Input::file('img_picture_v')[$index]->getClientOriginalExtension());
+//                $complainant->img_picture = "" . $complainant->id . "." . Input::file('img_picture_v')[$index]->getClientOriginalExtension();
+//            }
+            if (Input::file('img_picture_v')[$index]) {
+//                var_dump(Input::file('img_picture_v')[$index]->getClientOriginalExtension());
                 Input::file('img_picture_v')[$index]->move(public_path() . "/nbi/clients/pictures", "" . $complainant->id . "." . Input::file('img_picture_v')[$index]->getClientOriginalExtension());
-                $complainant->img_picture = "" . $complainant->id . "." . Input::file('img_picture_v')[$index]->getClientOriginalExtension();
+                $complainant->img_picture = "".$complainant->id.".".Input::file('img_picture_v')[$index]->getClientOriginalExtension();
+                $complainant->save();
             }
+
             $complainant->save();
         }
         for ($index = 0; $index < count(Input::get("last_name_s")); $index++) {
@@ -139,14 +152,64 @@ class ComplaintsController extends BaseController {
                         "client_id" => $complainant->id,
             ]);
 
-            if (Input::hasFile('img_picture_s')[$index]) {
+            if (Input::file('img_picture_s')[$index]) {
+
                 Input::file('img_picture_s')[$index]->move(public_path() . "/nbi/clients/pictures", "" . $complainant->id . "." . Input::file('img_picture_s')[$index]->getClientOriginalExtension());
+
                 $complainant->img_picture = "" . $complainant->id . "." . Input::file('img_picture_s')[$index]->getClientOriginalExtension();
+            
+                $complainant->save();
             }
+//            if (Input::hasFile('img_picture_s')[$index]) {
+//                Input::file('img_picture_s')[$index]->move(public_path() . "/nbi/clients/pictures", "" . $complainant->id . "." . Input::file('img_picture_s')[$index]->getClientOriginalExtension());
+//                $complainant->img_picture = "" . $complainant->id . "." . Input::file('img_picture_s')[$index]->getClientOriginalExtension();
+//            }
             $complainant->save();
         }
 
         return Redirect::to("agent/dashboard");
+    }
+
+    public function postStoreChief($id = null) {
+        $c = Complaint::find($id);
+        $c->name = Input::get("complaint_name");
+        $c->agency_reported = Input::get("agency_reported");
+        $c->agency_report_details = Input::get("agency_report_details");
+        $c->agency_report_status = Input::get("agency_report_status");
+        $c->court_action_details = Input::get("court_action_details");
+        $c->considerations = Input::get("considerations");
+        $c->narration = Input::get("narration");
+        $c->status = "Completed";
+        $c->save();
+        if (Input::hasFile('img_signature')) {
+
+            Input::file('img_signature')->move(public_path() . "/nbi/complaints/signature", "" . $c->id . "." . Input::file('img_signature')->getClientOriginalExtension());
+            $c->img_signature = "" . $c->id . "." . Input::file('img_signature')->getClientOriginalExtension();
+            $c->save();
+        }
+        if (Input::hasFile('img_right_thumb')) {
+
+            Input::file('img_right_thumb')->move(public_path() . "/nbi/complaints/right_thumb", "" . $c->id . "." . Input::file('img_right_thumb')->getClientOriginalExtension());
+            $c->img_right_thumb = "" . $c->id . "." . Input::file('img_right_thumb')->getClientOriginalExtension();
+            $c->save();
+            
+        }
+        
+        $case = Kase::create([
+           "status" => "Pending", 
+           "complaint_id" => $c->id, 
+           "name" => $c->name, 
+           "complainant_id" => $c->client_id, 
+           "details" => $c->narration, 
+           "division" => $c->division, 
+           "date_reported" => $c->date_reported, 
+        ]);
+        
+        
+        
+        
+        return Redirect::back();
+//        var_dump($_POST);
     }
 
     public function getShow($id = null) {

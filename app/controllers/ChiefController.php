@@ -7,6 +7,15 @@ class ChiefController extends BaseController {
         
           var_dump($_POST);
     }
+    
+    
+     public function postMemo() {
+        $u = User::find(Auth::user()->id);
+        $u->memo = Input::get("memo");
+        $u->save();
+        
+        return Redirect::back();
+    }
     public function getIndex() {
         return View::make("content.test");
 //        return Redirect::to("agent/dashboard");
@@ -19,9 +28,11 @@ class ChiefController extends BaseController {
         return View::make("base.agent.dashboard", $data);
     }
 
-    public function getCasesAdd() {
+    public function getCasesAdd($id = null) {
         $data = [
-//            "num" => $num,
+            "complaint" => Complaint::find($id),
+            "complaint_victims" => Complaint_victim::where("complaint_id", "=", $id)->get(),
+            "complaint_subjects" => Complaint_subject::where("complaint_id", "=", $id)->get(),
         ];
         return View::make("base.cases.add", $data);
     }
@@ -58,6 +69,22 @@ class ChiefController extends BaseController {
             "evidence_objects" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Object")->join('evidence_objects', 'case_evidences.evidence_id', '=', 'evidence_objects.id')->get(),
         ];
         return View::make("base.cases.nonviable", $data);
+    }
+
+    public function getCasesAssign($id = null) {
+        $data = [
+            "case" => Kase::find($id),
+            "case_evidences" => Case_evidence::where("case_id", "=", $id)->get(),
+            "case_subjects" => Case_subject::where("case_id", "=", $id)->get(),
+            "case_type_tags" => Case_type_tag::where("case_id", "=", $id)->get(),
+            "case_victims" => Case_victim::where("case_id", "=", $id)->get(),
+            "evidence_recordings" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Recording")->join('evidence_recordings', 'case_evidences.evidence_id', '=', 'evidence_recordings.id')->get(),
+            "evidence_pictures" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Picture")->join('evidence_pictures', 'case_evidences.evidence_id', '=', 'evidence_pictures.id')->get(),
+            "evidence_videos" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Video")->join('evidence_videos', 'case_evidences.evidence_id', '=', 'evidence_videos.id')->get(),
+            "evidence_documents" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Document")->join('evidence_documents', 'case_evidences.evidence_id', '=', 'evidence_documents.id')->get(),
+            "evidence_objects" => DB::table('case_evidences')-> where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Object")->join('evidence_objects', 'case_evidences.evidence_id', '=', 'evidence_objects.id')->get(),
+        ];
+        return View::make("base.cases.assign", $data);
     }
 
     public function getCasesPending($id = null) {

@@ -1,6 +1,6 @@
-<div class="panel panel-primary">
+<div class="panel panel-warning">
     <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-calendar"></i> Schedule</h3>
+        <h3 class="panel-title"><i class="fa fa-bookmark"></i> Schedule</h3>
     </div>
     <!--<div class="panel-body"></div>-->
     <div  id="list_plug" class="list-group" >

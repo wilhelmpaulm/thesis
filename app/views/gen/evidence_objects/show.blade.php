@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-info">
     <div class="panel-heading clearfix">
         <p class="pull-left"><i class="fa fa-table"></i> Objects</p>
         <span class="btn-group btn-group-sm pull-right">

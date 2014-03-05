@@ -19,6 +19,7 @@
         {{HTML::style("css/dtable3.css")}}
         <!--{{HTML::style("css/dataTables.css")}}-->
         {{HTML::style("css/lumen.bootstrap.min.css")}}
+        {{HTML::style("css/bootstrap-tagsinput.css")}}
         {{HTML::style("css/bootstrap-modal-bs3patch.css")}}
         {{HTML::style("css/bootstrap-modal.css")}}
         {{HTML::style("css/bootstrap-select.css")}}
@@ -27,8 +28,11 @@
         {{HTML::style("css/wilhelmpaulm.css")}}
         {{HTML::script("js/jquery.js")}}
         {{HTML::script("js/moment.js")}}
+        {{HTML::script("js/bootstrap-tagsinput.js")}}
         <!--{{HTML::script("js/daterangepicker.js")}}-->
         {{HTML::script("js/dataTables.min.js")}}
+        {{HTML::script("js/bootstrap3-typeahead.js")}}
+        <!--{{HTML::script("js/typeahead.js")}}-->
         {{HTML::script("js/dtable3.js")}}
         {{HTML::script("js/fullcalendar.js")}}
         {{HTML::script("js/bootstrap.min.js")}}
@@ -43,7 +47,7 @@
                 padding-top: 60px;
                 padding-bottom: 20px;
                 zoom: 87%;
-                /*background: url('{{URL::asset("bg/stardust.png")}}')*/
+                background: url('{{URL::asset("bg/robots.png")}}')
             }
 
             ul.dropdown-menu li div{

@@ -55,8 +55,12 @@ Route::controller('complaint_type_tags', 'Complaint_type_tagsController');
 Route::controller('case_statuses', 'Case_statusesController');
 Route::controller('complaint_addresses', 'Complaint_addressesController');
 Route::controller('case_addresses', 'Case_addressesController');
+Route::controller('tags', 'TagsController');
+
+Route::controller('case_observations', 'Case_observationsController');
 
 
 Route::controller('', 'MainController');
+
 
 

@@ -43,7 +43,7 @@ class Resource_historiesController extends BaseController {
             if ($rg[$index] != $ri) {
                 $amount_taken = $r->amount;
                 $resource_history = Resource_history::find($rg[$index]);
-                $hcs = Resource_history::where('resource_id', "=", $r->id)->where('status', '=', 'Approved')->get();
+                $hcs = Resource_history::where('resource_id', "=", $r->id)->where('status', '=', 'Approved')->orWhere('status', '=', 'Received')->get();
                 $d1temp = 0;
                 $d2temp = 0;
                 $date1 = Time::toNum($resource_history->date_requested);
@@ -66,6 +66,22 @@ class Resource_historiesController extends BaseController {
             }
         }
         return Redirect::back();
+    }
+    
+    public function postReceive($id = null){
+        $rh = Resource_history::find($id);
+        $rh->status = "Received";
+        $rh->save();
+        return Redirect::back();
+        
+    }
+    
+    public function postReturn($id = null){
+        $rh = Resource_history::find($id);
+        $rh->status = "Returned";
+        $rh->save();
+        return Redirect::back();
+        
     }
 
     public function getEdit($id = null) {

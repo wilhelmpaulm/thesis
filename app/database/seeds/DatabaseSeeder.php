@@ -56,6 +56,8 @@ class DatabaseSeeder extends Seeder {
         $this->call('Complaint_subjectsTableSeeder');
         $this->call('Complaint_victimsTableSeeder');
         $this->call('Complaint_type_tagsTableSeeder');
-    }
+    	$this->call('TagsTableSeeder');
+		$this->call('Case_observationsTableSeeder');
+	}
 
 }

@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/resources/cart.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/ChiefController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/base/resources/current.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/resources/current.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/AgentController.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/layouts/main.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/kases/show.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/case_observations/show.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/controllers/TagsController.php</file>
+            <file>file:/D:/wamp/www/nbi/app/routes.php</file>
+            <file>file:/D:/wamp/www/nbi/app/controllers/Case_observationsController.php</file>
         </group>
     </open-files>
 </project-private>

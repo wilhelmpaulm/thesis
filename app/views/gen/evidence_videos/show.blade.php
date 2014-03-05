@@ -1,6 +1,6 @@
-<div class="panel panel-default">
+<div class="panel panel-info">
     <div class="panel-heading clearfix">
-        <p class="pull-left"><i class="fa fa-table"></i> Videos</p>
+        <p class="panel-title pull-left"><i class="fa fa-table"></i> Videos</p>
         <span class="btn-group btn-group-sm pull-right">
 
             <button class="btn  btn-success pull-right" type="button" data-toggle="modal" data-target="#addEvidenceVideo">

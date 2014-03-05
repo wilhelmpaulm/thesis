@@ -7,15 +7,16 @@
                     <i class="fa fa-pencil fa-fw"></i> Notepad
                 </div>
                 <!-- /.panel-heading -->
+                <form action="{{URL::to(strtolower(Auth::user()->job_title).'/memo')}}" method="POST">
                 <div class="panel-body">
-                    <textarea class="form-control"  name="" rows="4" cols="20" style="min-height: 380px"></textarea>
+                    <textarea class="form-control"  name="memo" rows="4" cols="20" style="min-height: 380px">{{Auth::user()->memo}}</textarea>
                     <!-- /.list-group -->
                     <br>
 
                 </div>
-                <div class="panel-footer">
-                    <span class="btn-group btn-group-sm btn-group-justified">
-                        <a href="#" class="btn btn-success btn-block">Save Changes</a>
+                <div class="panel-footer clearfix">
+                    <span class="btn-group btn-group-sm pull-right">
+                        <button  class="btn btn-success btn-block">Save Changes</button>
                     </span>
                 </div>
             </div>

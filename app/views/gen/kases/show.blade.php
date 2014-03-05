@@ -11,6 +11,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#details" data-toggle="tab">Case No. {{$case->id}}</a></li>
+                <li class=""><a href="#observations" data-toggle="tab">Observations</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Evidences <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -61,11 +62,9 @@
 
     <div class="tab-content">
         <div class="tab-pane active" id="details">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
-
-                    <p class="lead">{{$case->name}}</p>
-
+                    <h3 class="panel-title">{{$case->name}}</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -96,6 +95,13 @@
 
         </div>
         <!--PICTURES TABLE-->  
+        <div class="tab-pane" id="observations">
+            @include("gen.case_observations.show")
+
+        </div>
+        
+        
+        
         <div class="tab-pane" id="recording">
             @include("gen.evidence_recordings.show")
 
@@ -130,22 +136,6 @@
 
 </div>
 
-<div class="">
-    <table >
-        <tbody id="trd">
-            <tr>
-                <td>sdfsdfsfd</td>
-                <td>sdfsdfsfd</td>
-                <td>sdfsdfsfd</td>
-                <td>sdfsdfsfd</td>
-                <td>sdfsdfsfd</td>
-            </tr>
-
-        </tbody>
-
-    </table>
-
-</div>
 
 
 <script>

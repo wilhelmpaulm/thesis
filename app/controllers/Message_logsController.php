@@ -2,7 +2,7 @@
 
 class Message_logsController extends BaseController {
 
-	public function getIndex() {
+    public function getIndex() {
         
     }
 

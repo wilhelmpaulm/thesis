@@ -1,47 +1,52 @@
 <?php $resources = Resource::all(); ?>
 <?php $resources_history = Resource_history::where("status", "=", "Pending")->where("user_id", "=", Auth::user()->id)->get(); ?>
-<div   class="list-group" >
-    <div class="">
-        <div class="list-group-item">
-            <div class="input-group input-group-sm">
-                <input type="text" class="search form-control " placeholder="Search...">
-                <span class="input-group-btn ">
-                    <button class="btn btn-default sort" type="button" data-sort="list_name">
-                        <i class="fa fa-sort"></i> A
-                    </button>
-                    <button class="btn btn-default sort" type="button" data-sort="list_created_at">
-                        <i class="fa fa-sort"></i> #
-                    </button>
-                    <button class="btn btn-default sort" type="button" data-sort="list_category">
-                        <i class="fa fa-sort"></i> Category
-                    </button>
-                </span>
+<div class="panel panel-warning">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-bell"></i> Pending Resource Requests</h3>
+    </div>
+    <div   class="list-group" >
+        <div class="">
+            <div class="list-group-item">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="search form-control " placeholder="Search...">
+                    <span class="input-group-btn ">
+                        <button class="btn btn-default sort" type="button" data-sort="list_name">
+                            <i class="fa fa-sort"></i> A
+                        </button>
+                        <button class="btn btn-default sort" type="button" data-sort="list_created_at">
+                            <i class="fa fa-sort"></i> #
+                        </button>
+                        <button class="btn btn-default sort" type="button" data-sort="list_category">
+                            <i class="fa fa-sort"></i> Category
+                        </button>
+                    </span>
 
+                </div>
             </div>
+            <div style="height: 450px; overflow-y: auto">
+                <ul class="list list-unstyled    ">
+                    @foreach($resources_history as $r)
+                    <?php $res = Resource::find($r->resource_id); ?>
+                    <li style="">
+                        <a  id=""href="#" data-toggle="modal" data-target="#user_resource_{{$r->id}}"  data-case_id="{{$r->id}}" class="list-group-item c_link">
+
+
+
+
+                            <h4 class=" list_name ">{{$res->name}}</h4>
+                            <p class="label label-info list_status">{{$r->status}}</p>
+                            <p class="label label-default list_category">{{$res->category}}</p>
+                            <p class="list_created_at label label-info">{{$res->created_at}}</p>
+
+
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+
+
         </div>
-        <div style="height: 450px; overflow-y: auto">
-            <ul class="list list-unstyled    ">
-                @foreach($resources_history as $r)
-                <?php $res = Resource::find($r->resource_id); ?>
-                <li style="">
-                    <a  id=""href="#" data-toggle="modal" data-target="#user_resource_{{$r->id}}"  data-case_id="{{$r->id}}" class="list-group-item c_link">
-
-
-
-
-                        <h4 class=" list_name ">{{$res->name}}</h4>
-                        <p class="label label-info list_status">{{$r->status}}</p>
-                        <p class="label label-default list_category">{{$res->category}}</p>
-                        <p class="list_created_at label label-info">{{$res->created_at}}</p>
-
-
-                    </a>
-                </li>
-                @endforeach
-            </ul>
-        </div>
-
-
     </div>
 </div>
 
@@ -141,7 +146,7 @@
     };
 
 
-        $(".table").dataTable();
+    $(".table").dataTable();
 
     var resList = new List('userResource', options);
 

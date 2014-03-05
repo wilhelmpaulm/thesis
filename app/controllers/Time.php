@@ -55,6 +55,18 @@ class Time extends BaseController {
         return $date;
         
     }
+    
+    public static function getDateToday(){
+        date_default_timezone_set('Asia/Hong_kong');
+        $d = new DateTime();
+        return $d->format("Y").'-'.$d->format("m").'-'.$d->format("d"); 
+    }
+    
+    public static function getDateTodayInt(){
+        date_default_timezone_set('Asia/Hong_kong');
+        $d = new DateTime();
+        return (int) $d->format("Ymd").""; 
+    }
 
     public static function hasPassed($date1) {
         date_default_timezone_set('Asia/Hong_kong');

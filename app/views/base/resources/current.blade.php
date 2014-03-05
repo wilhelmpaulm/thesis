@@ -9,7 +9,7 @@
             @include("sidebar.sub.resources.current")
         </div>
         <div class="col-md-6">
-            <!--@include("sidebar.sub.resources.cart")-->
+            @include("sidebar.sub.resources.history")
         </div>
 
 

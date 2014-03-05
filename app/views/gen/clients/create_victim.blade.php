@@ -68,7 +68,7 @@
 
             <div class="form-group ">
                 <label for="exampleInputFile">Victim picture</label>
-                <input type="file" id="exampleInputFile" name="img_picture_v[]">
+                <input type="file" id="exampleInputFile" name="img_picture_v[]" multiple="">
                 <p class="help-block">Please attach a photo of the victim.</p>
             </div>
         </div>

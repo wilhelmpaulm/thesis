@@ -1,58 +1,71 @@
 <?php $resources = Resource::all(); ?>
-<?php $resources_history = Resource_history::where("status", "=", "Approved")->where("user_id", "=", Auth::user()->id)->get(); ?>
-<div   class="list-group" >
-    <div class="">
-        <div class="list-group-item">
-            <div class="input-group input-group-sm">
-                <input type="text" class="search form-control " placeholder="Search...">
-                <span class="input-group-btn ">
-                    <button class="btn btn-default sort" type="button" data-sort="list_name">
-                        <i class="fa fa-sort"></i> A
-                    </button>
-                    <button class="btn btn-default sort" type="button" data-sort="list_created_at">
-                        <i class="fa fa-sort"></i> #
-                    </button>
-                    <button class="btn btn-default sort" type="button" data-sort="list_category">
-                        <i class="fa fa-sort"></i> Category
-                    </button>
-                </span>
+<?php $resources_history = Resource_history::where("status", "=", "Approved")->orWhere("status", "=", "Received")->where("user_id", "=", Auth::user()->id)->get(); ?>
 
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-exchange"></i> Current Resources</h3>
+    </div>
+    <div id="userResource"  class="list-group" >
+        <div class="">
+            <div class="list-group-item">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="search form-control " placeholder="Search...">
+                    <span class="input-group-btn ">
+                        <button class="btn btn-default sort" type="button" data-sort="list_name">
+                            <i class="fa fa-sort"></i> A
+                        </button>
+                        <button class="btn btn-default sort" type="button" data-sort="list_created_at">
+                            <i class="fa fa-sort"></i> #
+                        </button>
+                        <button class="btn btn-default sort" type="button" data-sort="list_category">
+                            <i class="fa fa-sort"></i> <i class="fa fa-list-alt"></i>
+                        </button>
+                        <button class="btn btn-default sort" type="button" data-sort="list_division">
+                            <i class="fa fa-sort"></i> <i class="fa fa-check"></i>
+                        </button>
+                    </span>
+
+                </div>
             </div>
-        </div>
-        <div style="height: 450px; overflow-y: auto">
-            <ul class="list list-unstyled    ">
-                @foreach($resources_history as $r)
-                <?php $res = Resource::find($r->resource_id); ?>
-                <li style="">
-                    <a  id=""href="#" data-toggle="modal" data-target="#user_resource_{{$r->id}}"  data-case_id="{{$r->id}}" class="list-group-item c_link">
+            <div style="height: 450px; overflow-y: auto">
+                <ul class="list list-unstyled    ">
+                    @foreach($resources_history as $r)
+                    <?php $res = Resource::find($r->resource_id); ?>
+                    <li style="">
+                        <a  id=""href="#" data-toggle="modal" data-target="#user_resource_{{$r->id}}"  data-case_id="{{$r->id}}" class="list-group-item c_link ">
 
 
 
 
-                        <h4 class=" list_name ">{{$res->name}} ({{$r->amount}} pc/s.) </h4>
-                        <p class="list_created_at label label-primary"> {{$res->division}}</p>
+                            <h4 class=" list_name ">{{$res->name}} ({{$r->amount}} pc/s.) </h4>
+                            <p class="list_division label label-primary"> {{$res->division}}</p>
                             @if($r->status == 'Approved')<p class="label label-success list_status"><i class="fa fa-check"></i> 
-                            @elseif($r->status == 'Disapproved')<p class="label label-danger list_status"><i class="fa fa-times"></i> 
-                            @elseif($res->category == 'Pending')<p class="label label-warning list_status"><i class="fa fa-clock-o"></i> 
-                            @endif
-                            {{$r->status}}</p>
-                        <p class="label label-default list_category">
-                            @if($res->category == 'Gadget')<i class="fa fa-gamepad"></i> 
-                            @elseif($res->category == 'Money')<i class="fa fa-money"></i> 
-                            @elseif($res->category == 'Vehicle')<i class="fa fa-truck"></i> 
-                            @elseif($res->category == 'Person')<i class="fa fa-user"></i> 
-                            @endif
-                            {{$res->category}}</p>
-                        <p class="list_created_at label label-info"> <i class="fa fa-calendar"></i> {{$r->date_requested}} - {{$r->date_due}}</p>
+                                @elseif($r->status == 'Disapproved')<p class="label label-danger list_status"><i class="fa fa-times"></i> 
+                                @elseif($r->status == 'Pending' || $r->status == "Received")<p class="label label-warning list_status"><i class="fa fa-clock-o"></i> 
+                                @endif
+                                {{$r->status}}</p>
+                            <p class="label label-default list_category">
+                                @if($res->category == 'Gadget')<i class="fa fa-gamepad"></i> 
+                                @elseif($res->category == 'Money')<i class="fa fa-money"></i> 
+                                @elseif($res->category == 'Vehicle')<i class="fa fa-truck"></i> 
+                                @elseif($res->category == 'Person')<i class="fa fa-user"></i> 
+                                @endif
+                                {{$res->category}}</p>
+                            @if(Time::toNum($r->date_due)< Time::getDateTodayInt())<p class="list_created_at label label-danger"> 
+                            @elseif(Time::toNum($r->date_due) == Time::getDateTodayInt())<p class="list_created_at label label-warning"> 
+                            @else<p class="list_created_at label label-info"> 
+                                @endif
+                                START {{$r->date_requested}} - END {{$r->date_due}}</p>
 
 
-                    </a>
-                </li>
-                @endforeach
-            </ul>
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+
+
         </div>
-
-
     </div>
 </div>
 
@@ -60,8 +73,8 @@
 
 
 @foreach($resources_history as $rh)
-<?php $resource = Resource::find($rh->id); ?>
-<div class="modal fade  container" id="user_resource_{{$r->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<?php $resource = Resource::find($rh->resource_id); ?>
+<div class="modal fade  container" id="user_resource_{{$rh->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -78,7 +91,7 @@
                 </div>
                 <div class="col-md-7">
                     <?php $history = Resource_history::where("resource_id", "=", $resource->id)->get(); ?>
-                    <?php $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::user()->id)->get(); ?>
+                    <?php $case = Kase::find($rh->case_id); ?>
 
                     <table class="table table-bordered table-hover">
                         <thead>
@@ -92,7 +105,9 @@
                         </thead>
                         <tbody>
                             @foreach($history as $h)
-                            <tr>
+                            @if($h->id == $rh->id)<tr class="info">
+                                @else <tr class="">    
+                                @endif
                                 <td>{{$h->user_id}}</td>
                                 <td>{{$h->amount}}</td>
                                 <td>{{$h->status}}</td>
@@ -105,60 +120,70 @@
 
                 </div>
                 <div class="col-md-3">
-                    <form method="POST" action="{{URL::to('resource_histories/request')}}">
-                        <div class="form-group ">
-                            <input type="hidden" name="resource_id" value="{{$r->id}}">
-                            <label >Case</label>
-                            <select name="case_id" class="form-control">
-                                @foreach($cases as $c)
-                                <option value="{{$c->id}}">{{$c->name}}</option>
-                                @endforeach
-                            </select>
-                            <label >Date Requested</label>
-                            <input class="form-control" type="date" value="{{$r->date_requested}}" name="date_requested">
-                            <label >Date Due</label>
-                            <input class="form-control" type="date" value="{{$r->date_due}}" name="date_due">
-                            <label >Amount</label>
-                            <input class="form-control" min="1" max="{{$r->amount}}"  type="number" value="1" name="amount">
-                        </div>
+                    @if(Time::toNum($rh->date_due)< Time::getDateTodayInt() || $rh->status == "Received")
+                    <form method="POST" action="{{URL::to('resource_histories/return/'.$rh->id)}}">
+                        <!--passed-->
+                        @elseif(Time::toNum($rh->date_requested) <= Time::getDateTodayInt())
+                        <form method="POST" action="{{URL::to('resource_histories/receive/'.$rh->id)}}">
+                            <!--pwede pa-->
+                            @else
+                            <!--LOLOLOL-->
+                            @endif
+                            <p>Requested for:</p>
+                            <p>{{$case->name}}</p>
+                            <p>Date Requested:</p>
+                            <p>{{$rh->date_requested}}</p>
+                            <p>Date Due:</p>
+                            <p>{{$rh->date_due}}</p>
+                            <p>Amount:</p>
+                            <p>{{$rh->amount}}</p>
+
+                            </div>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="btn-group btn-group-sm">
+                                    @if(Time::toNum($rh->date_due)< Time::getDateTodayInt())
+                                    <button type="submit" class="btn btn-danger">Return / Cancel</button>
+                                    @elseif($rh->status == "Received" || Time::toNum($rh->date_due)== Time::getDateTodayInt())
+                                    <button type="submit" class="btn btn-warning">Return / Cancel</button>
+                                    <!--passed-->
+                                    @elseif(Time::toNum($rh->date_requested) <= Time::getDateTodayInt())
+                                    <button type="submit" class="btn btn-primary">Receive</button>
+                                    <!--pwede pa-->
+                                    @else
+                                    <!--LOLOLOL-->
+                                    @endif
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                </div>
+                        </form>
                 </div>
-
-
             </div>
+
         </div>
-        <div class="modal-footer">
-            <div class="btn-group btn-group-sm">
-                <button type="submit" class="btn btn-primary">Save changes</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-            </div>
-            </form>
-        </div>
-    </div>
-
-</div>
 
 
-@endforeach
+        @endforeach
 
 
 
 
 
-<script>
-    var options = {
-        valueNames: ['list_name', 'list_status', 'list_category'],
-        //        plugins: [ListFuzzySearch()]
-    };
+        <script>
+            var options = {
+                valueNames: ['list_name', 'list_division', 'list_created_at', 'list_category'],
+                //        plugins: [ListFuzzySearch()]
+            };
 
 
-        $(".table").dataTable();
+            $(".table").dataTable();
 
-    var resList = new List('userResource', options);
+            var resList = new List('userResource', options);
 
-    //    $.fn.modal.defaults.maxHeight = function(){
-    // subtract the height of the modal header and footer
-    //    return $(window).height() - 165; 
-    //}
+            //    $.fn.modal.defaults.maxHeight = function(){
+            // subtract the height of the modal header and footer
+            //    return $(window).height() - 165; 
+            //}
 
-</script>
+        </script>

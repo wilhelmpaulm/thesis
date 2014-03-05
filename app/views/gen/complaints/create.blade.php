@@ -131,8 +131,10 @@
                         </div>
                         
                        
-
-                        <button class="btn btn-success btn-block">SUBMIT</button>
+                        <hr>
+                        <div class="btn-group btn-group-sm pull-right">
+                            <button type="submit" class="btn btn-default  btn-success">Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -195,7 +197,7 @@
         $('a').on("click", function() {
             var x = 4;//number of forms
             var xx = ($(this).attr("href")).substring(4, 8); //would be the # tab based on href 
-            xx *= (100 / x);
+            xx *= (100 / x).toFixed(2);
             $("#pg-add").css({width: xx + "%"}).removeClass("progress-bar-success");
             $("#pg-add-text").text(xx + "% Completed");
 
