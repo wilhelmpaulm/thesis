@@ -28,6 +28,7 @@ class Evidence_objectsController extends BaseController {
             $evidence->file_name = "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension();
         }
         $evidence->save();
+        Case_evidencesController::addCaseEvidence($evidence->case_id, "Object", $evidence->id);
         return Redirect::back();
     }
 

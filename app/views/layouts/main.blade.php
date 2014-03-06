@@ -26,6 +26,10 @@
         {{HTML::style("css/bootstrap-datetimepicker.css")}}
         {{HTML::style("css/font-awesome.css")}}
         {{HTML::style("css/wilhelmpaulm.css")}}
+        {{HTML::style("css/timeline.css")}}
+        
+        
+        
         {{HTML::script("js/jquery.js")}}
         {{HTML::script("js/moment.js")}}
         {{HTML::script("js/bootstrap-tagsinput.js")}}
@@ -47,7 +51,7 @@
                 padding-top: 60px;
                 padding-bottom: 20px;
                 zoom: 87%;
-                background: url('{{URL::asset("bg/robots.png")}}')
+                /*background: url('{{URL::asset("bg/robots.png")}}')*/
             }
 
             ul.dropdown-menu li div{

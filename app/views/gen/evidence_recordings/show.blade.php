@@ -33,7 +33,9 @@
 
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editEvidenceRecording_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
                             <button class="btn btn-info"data-toggle="modal" data-target="#historyEvidenceRecording_{{$ed->id}}"><i class="fa fa-list"></i></button>
-                                                  <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryRecording_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
+                            <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryRecording_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
+                            <button class="btn btn-default"data-toggle="modal" data-target="#crossEvidenceRecording_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
+                            <button class="btn btn-default"data-toggle="modal" data-target="#addCrossEvidenceRecording_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
 
                         </div>
                     </td>
@@ -81,7 +83,7 @@
                         </td>
                     </tr>
                     @include("gen.evidence_histories.edit")
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -96,7 +98,7 @@
 
 
 @foreach($evidence_recordings as $ed)
-    @include("gen.evidence_histories.create_recording")
+@include("gen.evidence_histories.create_recording")
 @endforeach
 
 
@@ -139,12 +141,12 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                                        <span class="btn-group btn-group-sm">
+                    <span class="btn-group btn-group-sm">
 
-                    <a  id="evidence_recordings_destroy_{{$ed->id}}" class="btn btn-danger" >Delete</a>
-                    <button type="" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </span>
+                        <a  id="evidence_recordings_destroy_{{$ed->id}}" class="btn btn-danger" >Delete</a>
+                        <button type="" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </span>
                 </div>
             </form>
         </div>
@@ -179,10 +181,10 @@
                 </audio>
             </div>
             <div class="modal-footer">
-                                    <span class="btn-group btn-group-sm">
+                <span class="btn-group btn-group-sm">
 
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </span>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </span>
             </div>
         </div>
     </div>
@@ -201,6 +203,7 @@
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <form action="{{URL::to('evidence_recordings/store')}}" method="POST" enctype="multipart/form-data">
+                <input type="hidden" value="{{$case->id}}" name="case_id">
                 <div class="modal-body">
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -223,11 +226,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                                        <span class="btn-group btn-group-sm">
+                    <span class="btn-group btn-group-sm">
 
-                    <button type="" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </span>
+                        <button type="" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </span>
                 </div>
             </form>
         </div>
@@ -243,3 +246,51 @@
 <!--RECORDINGS-->
 <!--RECORDINGS-->
 <!--RECORDINGS-->
+
+@foreach($evidence_recordings as $co)
+<?php
+$case_id = $case->id;
+$table = "evidence_recordings";
+$reference_id = $co->id;
+?>
+<div id="addCrossEvidenceRecording_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Cross References</h4>
+        </div>
+
+        <div class="modal-body">
+            @include("gen.cross_references.create")
+        </div>
+        <div class="modal-footer">
+            <span class="btn-group btn-group-sm">
+
+                <!--<button type="" class="btn btn-primary">Save changes</button>-->
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div id="crossEvidenceRecording_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Cross References</h4>
+        </div>
+
+        <div class="modal-body">
+            @include("gen.cross_references.show")
+        </div>
+        <div class="modal-footer">
+            <span class="btn-group btn-group-sm">
+
+                <!--<button type="" class="btn btn-primary">Save changes</button>-->
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+@endforeach

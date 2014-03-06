@@ -3,12 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/wamp/www/nbi/app/views/layouts/main.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/database/seeds/TagsTableSeeder.php</file>
+            <file>file:/D:/wamp/www/nbi/app/database/migrations/2014_03_04_044919_create_tags_table.php</file>
             <file>file:/D:/wamp/www/nbi/app/views/gen/kases/show.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/case_observations/show.blade.php</file>
             <file>file:/D:/wamp/www/nbi/app/controllers/TagsController.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/case_observations/show.blade.php</file>
             <file>file:/D:/wamp/www/nbi/app/routes.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/cross_references/create.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/database/seeds/Case_observationsTableSeeder.php</file>
             <file>file:/D:/wamp/www/nbi/app/controllers/Case_observationsController.php</file>
+            <file>file:/D:/wamp/www/nbi/app/database/seeds/Cross_referencesTableSeeder.php</file>
         </group>
     </open-files>
 </project-private>

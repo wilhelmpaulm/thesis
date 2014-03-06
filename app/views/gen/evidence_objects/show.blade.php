@@ -33,7 +33,9 @@
                             <a class="btn btn-success"  href="{{URL::asset("nbi/evidences/objects/".$ed->file_name)}}"><i class="fa fa-download"></i></a>
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editEvidenceObjects_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
                             <button class="btn btn-info"data-toggle="modal" data-target="#historyEvidenceObject_{{$ed->id}}"><i class="fa fa-list"></i></button>
-                                                   <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryObject_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
+                            <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryObject_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
+                            <button class="btn btn-default"data-toggle="modal" data-target="#crossEvidenceObject_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
+                            <button class="btn btn-default"data-toggle="modal" data-target="#addCrossEvidenceObject_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
 
                         </div>
                     </td>
@@ -85,7 +87,7 @@
                         </td>
                     </tr>
                     @include("gen.evidence_histories.edit")
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -100,7 +102,7 @@
 
 
 @foreach($evidence_objects as $ed)
-    @include("gen.evidence_histories.create_object")
+@include("gen.evidence_histories.create_object")
 @endforeach
 <!--OBJECTS-->
 <!--OBJECTS-->
@@ -141,9 +143,9 @@
                 </div>
                 <div class="modal-footer">
                     <span class="btn-group btn-group-sm">
-                    <a  id="evidence_object_destroy_{{$ed->id}}" class="btn btn-danger" >Delete</a>
-                    <button type="" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <a  id="evidence_object_destroy_{{$ed->id}}" class="btn btn-danger" >Delete</a>
+                        <button type="" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </span>
                 </div>
             </form>
@@ -174,10 +176,10 @@
                 <img src="{{URL::asset('nbi/evidences/objects/'.$ed->file_name)}}" class="img-responsive center-block">
             </div>
             <div class="modal-footer">
-                                    <span class="btn-group btn-group-sm">
+                <span class="btn-group btn-group-sm">
 
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </span>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </span>
             </div>
         </div>
     </div>
@@ -220,11 +222,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                                        <span class="btn-group btn-group-sm">
+                    <span class="btn-group btn-group-sm">
 
-                    <button type="" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </span>
+                        <button type="" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </span>
                 </div>
             </form>
         </div>
@@ -237,3 +239,51 @@
 <!--OBJECTS-->
 <!--OBJECTS-->
 <!--OBJECTS-->
+
+@foreach($evidence_objects as $co)
+<?php
+$case_id = $case->id;
+$table = "evidence_objects";
+$reference_id = $co->id;
+?>
+<div id="addCrossEvidenceObject_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Cross References</h4>
+        </div>
+
+        <div class="modal-body">
+            @include("gen.cross_references.create")
+        </div>
+        <div class="modal-footer">
+            <span class="btn-group btn-group-sm">
+
+                <!--<button type="" class="btn btn-primary">Save changes</button>-->
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div id="crossEvidenceObject_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Cross References</h4>
+        </div>
+
+        <div class="modal-body">
+            @include("gen.cross_references.show")
+        </div>
+        <div class="modal-footer">
+            <span class="btn-group btn-group-sm">
+
+                <!--<button type="" class="btn btn-primary">Save changes</button>-->
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+@endforeach

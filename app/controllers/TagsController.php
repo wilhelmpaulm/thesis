@@ -22,6 +22,7 @@ class TagsController extends BaseController {
            "reference_id" => $reference_id, 
            "table" => $table, 
            "tags" => $tags, 
+           "user_id" => Auth::user()->id, 
         ]);
     }
 

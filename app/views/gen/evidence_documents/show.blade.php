@@ -32,6 +32,8 @@
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editEvidenceDocument_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
                             <button class="btn btn-info"data-toggle="modal" data-target="#historyEvidenceDocument_{{$ed->id}}"><i class="fa fa-list"></i></button>
                             <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryDocument_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
+                             <button class="btn btn-default"data-toggle="modal" data-target="#crossEvidenceDocument_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
+                            <button class="btn btn-default"data-toggle="modal" data-target="#addCrossEvidenceDocument_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
                         </div>
                     </td>
 
@@ -203,3 +205,50 @@
 </div>
 
 
+@foreach($evidence_documents as $co)
+<?php
+$case_id = $case->id;
+$table = "evidence_documents";
+$reference_id = $co->id;
+?>
+<div id="addCrossCaseObservation_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Cross References</h4>
+        </div>
+
+        <div class="modal-body">
+            @include("gen.cross_references.create")
+        </div>
+        <div class="modal-footer">
+            <span class="btn-group btn-group-sm">
+                
+                <!--<button type="" class="btn btn-primary">Save changes</button>-->
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div id="crossCaseObservation_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Cross References</h4>
+        </div>
+
+        <div class="modal-body">
+            @include("gen.cross_references.show")
+        </div>
+        <div class="modal-footer">
+            <span class="btn-group btn-group-sm">
+                
+                <!--<button type="" class="btn btn-primary">Save changes</button>-->
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+@endforeach

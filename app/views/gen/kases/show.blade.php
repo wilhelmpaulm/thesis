@@ -33,7 +33,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Timeline</a></li>
+                        <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
                         <li><a href="#">Activity log</a></li>
                     </ul>
                 </li>
@@ -99,9 +99,9 @@
             @include("gen.case_observations.show")
 
         </div>
-        
-        
-        
+
+
+
         <div class="tab-pane" id="recording">
             @include("gen.evidence_recordings.show")
 
@@ -127,6 +127,9 @@
         </div>
         <div class="tab-pane" id="subjects">
             @include("gen.case_subjects.show")
+        </div>
+        <div class="tab-pane" id="timeline">
+            @include("content.reports.case_timeline")
         </div>
 
     </div>
@@ -157,4 +160,14 @@
 //    $(".table").dataTable();
 //    $("table").addClass("table");
     $(".table").dataTable();
+
+    var url = document.location.toString();
+    if (url.match('#')) {
+        $(' a[href=#' + url.split('#')[1] + ']').tab('show');
+    }
+
+// Change hash for page-reload
+//    $('a').on('shown', function(e) {
+//        window.location.hash = e.target.hash;
+//    });
 </script>

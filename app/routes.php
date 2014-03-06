@@ -56,11 +56,13 @@ Route::controller('case_statuses', 'Case_statusesController');
 Route::controller('complaint_addresses', 'Complaint_addressesController');
 Route::controller('case_addresses', 'Case_addressesController');
 Route::controller('tags', 'TagsController');
-
 Route::controller('case_observations', 'Case_observationsController');
+Route::controller('cross_references', 'Cross_referencesController');
+
 
 
 Route::controller('', 'MainController');
+
 
 
 

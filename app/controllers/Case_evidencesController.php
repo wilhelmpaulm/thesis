@@ -10,8 +10,12 @@ class Case_evidencesController extends BaseController {
         
     }
 
-    public function postStore() {
-        
+    public static function addCaseEvidence($case_id, $type, $evidence_id) {
+        Case_evidence::create([
+            "case_id"=> $case_id,
+            "type"=> $type,
+            "evidence_id"=> $evidence_id,
+        ]);
     }
 
     public function getShow($id = null) {

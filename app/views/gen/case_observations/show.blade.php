@@ -14,7 +14,7 @@
         <table class="table table-bordered table-hover ">
             <thead>
                 <tr>
-                    <th>Date Created</th>
+                    <th>Date</th>
                     <th>Observation</th>
                     <th>Tags</th>
                     <th width=""></th>
@@ -22,13 +22,25 @@
             </thead>
             <tbody>
                 @foreach($case_observations  as $ed)
+                <?php
+                $tags = TagsController::getTags($ed->id, "case_observations");
+                ?>
                 <tr class="clickable" >
-                    <td>{{$ed->date_created}}</td>
+                    <td>{{$ed->created_at}}</td>
                     <td>{{$ed->observation}}</td>
-                    <td>{{$ed->tags}}</td>
                     <td>
+                        <?php 
+                            $ar = explode(",", $tags->tags);
+                        ?>
+                        @foreach($ar as $a)
+                        <p class="label label-info">{{$a}}</p>
+                        @endforeach
+                    </td>
+                    <td width="15%">
                         <div class="btn-group btn-group-sm pull-right">
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editCaseObservation_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
+                            <button class="btn btn-default"data-toggle="modal" data-target="#crossCaseObservation_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
+                            <button class="btn btn-default"data-toggle="modal" data-target="#addCrossCaseObservation_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
                         </div>
                     </td>
 
@@ -41,8 +53,11 @@
 
 
 
+
 @foreach($case_observations as $ed)
-<?php $tags = TagsController::getTags($ed->id, "case_observations")?>
+<?php
+$tags = TagsController::getTags($ed->id, "case_observations");
+?>
 
 <div id="editCaseObservation_{{$ed->id}}" class="modal fade" tabindex="-1" style="display: none;">
     <div class="modal-content">
@@ -55,21 +70,19 @@
             <input type="hidden" name="case_id" value="{{$case->id}}">
 
             <div class="modal-body">
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="details">Observation</label>
-                        <textarea  id='details' class="form-control " name="observation" rows="4" cols="20">$ed->observation</textarea>
-                        <label for="observation_tags">Tags</label><br>
-                        <input class="form-control"  data-role="tagsinput"  autocomplete="off"  class="observation_tags" type="text" value="" name="tags" />
+                <div class="form-group ">
+                    <label for="details">Observation</label>
+                    <textarea  id='details' class="form-control " name="observation" rows="4" cols="20">{{$ed->observation}}</textarea>
 
+                    <label for="observation_tags">Tags</label><br>
+                    <input class="form-control"  data-role="tagsinput"  autocomplete="off"  class="observation_tags" type="text" value="{{$tags->tags}}" name="tags" />
 
-                    </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <span class="btn-group btn-group-sm">
 
-                    <a  id="evidence_document_destroy_{{$ed->id}}" class="btn btn-danger" >Delete</a>
+                    <a  id="case_observation_destroy_{{$ed->id}}" class="btn btn-danger" >Delete</a>
                     <button type="" class="btn btn-primary">Save changes</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </span>
@@ -79,12 +92,63 @@
 </div>
 
 <script>
-    $("#evidence_document_destroy_{{$ed->id}}").on("click", function() {
-        $.post("{{URL::to('evidence_documents/destroy/'.$ed->id)}}", function(data) {
+    $("#case_observation_destroy_{{$ed->id}}").on("click", function() {
+        $.post("{{URL::to('case_observations/destroy/'.$ed->id)}}", function(data) {
             location.reload();
         });
     });
 </script>
+
+
+
+@endforeach
+
+
+@foreach($case_observations as $co)
+<?php
+$case_id = $case->id;
+$table = "case_observations";
+$reference_id = $co->id;
+?>
+<div id="addCrossCaseObservation_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Cross References</h4>
+        </div>
+
+        <div class="modal-body">
+            @include("gen.cross_references.create")
+        </div>
+        <div class="modal-footer">
+            <span class="btn-group btn-group-sm">
+                
+                <!--<button type="" class="btn btn-primary">Save changes</button>-->
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div id="crossCaseObservation_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Cross References</h4>
+        </div>
+
+        <div class="modal-body">
+            @include("gen.cross_references.show")
+        </div>
+        <div class="modal-footer">
+            <span class="btn-group btn-group-sm">
+                
+                <!--<button type="" class="btn btn-primary">Save changes</button>-->
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </span>
+        </div>
+    </div>
+</div>
 
 @endforeach
 
@@ -131,10 +195,10 @@
 //example_collection.json
 // ["item1","item2","item3]
 
-$('#observation_tags').tagsinput({
-  typeahead: {
-    source: ['Amsterdam', 'Washington', 'Sydney', 'Beijing', 'Cairo'],
-    freeInput: true
-  }
-});
+    $('#observation_tags').tagsinput({
+        typeahead: {
+            source: ['Amsterdam', 'Washington', 'Sydney', 'Beijing', 'Cairo'],
+            freeInput: true
+        }
+    });
 </script>

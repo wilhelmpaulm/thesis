@@ -17,7 +17,7 @@ class Case_observationsController extends BaseController {
             "observation" => Input::get("observation"),
         ]);
         
-        TagsController::addTags($co->id, "case_observations", Input::get("tags"));
+        TagsController::addTags($co->id, "case_observations", Input::get("tags").", ".$co->created_at);
         return Redirect::back();
 //        var_dump($_POST);
     }
@@ -35,7 +35,10 @@ class Case_observationsController extends BaseController {
     }
 
     public function postDestroy($id = null) {
-        
+        $co  = Case_observation::find($id);
+        Tag::where("reference_id", "=", $co->id)->where("table", "=", "case_observations")->delete();
+        $co->delete();
+        return Redirect::back();
     }
 
 }

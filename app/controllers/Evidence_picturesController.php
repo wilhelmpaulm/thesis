@@ -22,10 +22,11 @@ class Evidence_picturesController extends BaseController {
         ]);
 
         if (Input::hasFile('file_name')) {
-            Input::file('file_name')->move(public_path() . "/nbi/evidences/pictures", "" . $complainant->id . "." . Input::file('file_name')->getClientOriginalExtension());
+            Input::file('file_name')->move(public_path() . "/nbi/evidences/pictures", "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension());
             $evidence->file_name = "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension();
         }
         $evidence->save();
+         Case_evidencesController::addCaseEvidence($evidence->case_id, "Picture", $evidence->id);
         return Redirect::back();
     }
 
