@@ -32,12 +32,16 @@
                 <a href="{{URL::to("chief/resources-approval")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Approve</a>
                 <a href="{{URL::to("chief/resources-current")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Current / History</a>
             </div>
+            <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#reports"><i class="fa fa-book"></i> Reports</a>
+            <div id="reports" class="collapse">
+                <a href="{{URL::to("chief/reports-agents")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Agents</a>
+            </div>
             <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#directory"><i class="fa fa-group"></i> Directory</a>
             <div id="directory" class="collapse">
                 <a href="{{URL::to("chief/directory-sis")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> SIS</a>
                 <a href="{{URL::to("chief/directory-clients")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Clients</a>
             </div>
-            <a href="{{URL::to('chief/reports')}}" class="list-group-item"><i class="fa fa-book"></i> Reports</a>
+            <!--<a href="{{URL::to('chief/reports')}}" class="list-group-item"><i class="fa fa-book"></i> Reports</a>-->
             <a href="{{URL::to('chief/notifications')}}" class="list-group-item"><i class="fa fa-bullhorn"></i> Notifications</a>
 
         </div>

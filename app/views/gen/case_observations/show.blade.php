@@ -1,4 +1,4 @@
-<?php $case_observations = Case_observation::where("user_id", "=", $case->agent_id)->where("case_id", "=", $case->id)->get(); ?>
+<?php // $case_observations = Case_observation::where("user_id", "=", $case->agent_id)->where("case_id", "=", $case->id)->get(); ?>
 
 <div class="panel panel-primary">
     <div class="panel-heading clearfix">

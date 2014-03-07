@@ -37,8 +37,8 @@
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editEvidencePictures_{{$ep->id}}"><i class="fa fa-wrench"></i></button>
                             <button class="btn btn-info"data-toggle="modal" data-target="#historyEvidencePictures_{{$ep->id}}"><i class="fa fa-list"></i></button>
                             <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryPicture_{{$ep->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
-                            <button class="btn btn-default"data-toggle="modal" data-target="#crossEvidencePicture_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
-                            <button class="btn btn-default"data-toggle="modal" data-target="#addCrossEvidencePicture_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
+                            <button class="btn btn-default"data-toggle="modal" data-target="#crossEvidencePicture_{{$ep->id}}"><i class="fa fa-sitemap"></i></button>
+                            <button class="btn btn-default"data-toggle="modal" data-target="#addCrossEvidencePicture_{{$ep->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
                         </div>
                     </td>
                 </tr>

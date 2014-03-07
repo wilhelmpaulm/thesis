@@ -8,6 +8,7 @@ class Case_type_tagsTableSeeder extends Seeder {
 
         $case_type_tags = array(
             ["case_id" => 1, "type" => "Petty Theft"],
+            ["case_id" => 1, "type" => "Robbery"],
             ["case_id" => 2, "type" => "Rape"],
             ["case_id" => 3, "type" => "Uncategorized"],
             ["case_id" => 4, "type" => "Prostitution"],

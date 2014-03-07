@@ -44,13 +44,22 @@ class Time extends BaseController {
     }
     
     
+    public static function toNumString($date){
+        return str_replace("-", "", substr($date, 0, 10))."";
+        
+    }
     public static function toNum($date){
-        return str_replace("-", "", $date);
+        return str_replace("-", "", substr($date, 0, 10));
         
     }
     
+    public static function getDateOnly($date){
+        return substr( Time::toDate(str_replace("-", "",$date)), 0, 10);
+        
+    } 
+    
     public static function toDate($date){
-        $date = $date+"";
+        $date = $date."";
         $date = substr($date, 0, 4).'-'.substr($date, 4, 2).'-'.substr($date, 6, 2);
         return $date;
         

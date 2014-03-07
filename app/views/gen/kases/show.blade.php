@@ -1,3 +1,5 @@
+<?php  $case_observations = Case_observation::where("user_id", "=", $case->agent_id)->where("case_id", "=", $case->id)->get();?>
+
 <div id="content">
     <div class="navbar navbar-default ">
         <div class="navbar-header">

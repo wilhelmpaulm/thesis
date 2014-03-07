@@ -10,7 +10,7 @@ class AgentController extends BaseController {
         $u = User::find(Auth::user()->id);
         $u->memo = Input::get("memo");
         $u->save();
-        
+
         return Redirect::back();
     }
 
