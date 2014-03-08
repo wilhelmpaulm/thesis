@@ -167,5 +167,11 @@ class ChiefController extends BaseController {
         ];
         return View::make("base.reports.chief_agents", $data);
     }
+    public function getReportsComplaints(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.chief_complaints", $data);
+    }
 
 }

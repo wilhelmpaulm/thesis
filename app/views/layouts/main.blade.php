@@ -28,6 +28,7 @@
         {{HTML::style("css/wilhelmpaulm.css")}}
         {{HTML::style("css/timeline.css")}}
         {{HTML::style("css/nv.d3.css")}}
+        {{HTML::style("css/morris.css")}}
         
         
         
@@ -49,6 +50,9 @@
         {{HTML::script("js/list.fuzzysearch.min.js")}}
         {{HTML::script("js/d3.v3.js")}}
         {{HTML::script("js/nv.d3.js")}}
+        {{HTML::script("js/raphael.js")}}
+        {{HTML::script("js/morris.js")}}
+        {{HTML::script("js/colorbrewer.js")}}
         <style>
             body {
                 padding-top: 60px;
