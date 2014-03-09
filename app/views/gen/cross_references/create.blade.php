@@ -3,7 +3,7 @@
             <h3 class="panel-title"><i class="fa fa-suitcase"></i> Cross References</h3>
         </div>-->
 
-    <div  id="cross_plug" class="list-group" >
+    <div  id="cross_plug{{$table}}{{$reference_id}}" class="list-group" >
         <div class="list-group-item ">
             <div class="input-group custom-search-form input-group-sm">
                 <input type="text" class="search form-control " placeholder="Search...">
@@ -83,7 +83,7 @@
         valueNames: ['list_name', 'list_created_at', 'list_details', 'list_tags']
     };
 
-    var crossList = new List('cross_plug', options);
+    var crossList{{$table}}{{$reference_id}} = new List('cross_plug{{$table}}{{$reference_id}}', options);
 
 
 </script>

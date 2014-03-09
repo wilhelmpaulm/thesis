@@ -199,7 +199,7 @@ $case_types = array(
 
 ["type" => "Light coercions"],
 
-["type" => "Robbery"],
+
 
 ["type" => "False keys"],
 

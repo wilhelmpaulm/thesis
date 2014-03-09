@@ -58,11 +58,11 @@ Route::controller('case_addresses', 'Case_addressesController');
 Route::controller('tags', 'TagsController');
 Route::controller('case_observations', 'Case_observationsController');
 Route::controller('cross_references', 'Cross_referencesController');
-
+Route::controller('system_logs', 'System_logsController');
+Route::controller('case_keys', 'Case_keysController');
+Route::controller('case_requirements', 'Case_requirementsController');
 
 
 Route::controller('', 'MainController');
-
-
 
 

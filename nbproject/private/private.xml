@@ -3,17 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/wamp/www/nbi/app/controllers/Time.php</file>
             <file>file:/D:/wamp/www/nbi/app/views/layouts/main.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/ChiefController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/base/index2.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/kases/show.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/MessagesController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/base/index.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/cases/closed.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/public/js/highcharts/highcharts.js</file>
             <file>file:/D:/wamp/www/nbi/app/views/content/reports/chief_complaints.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/MainController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/base/reports/chief_agents.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/AgentController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/content/reports/chief_agents_test.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/database/migrations/2014_02_10_040444_create_case_type_tags_table.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/content/reports/chief_locations.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/main/chief.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/database/seeds/Case_typesTableSeeder.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/cases/nonviable.blade.php</file>
         </group>
     </open-files>
 </project-private>

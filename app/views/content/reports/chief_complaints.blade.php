@@ -1,6 +1,6 @@
 <?php
 $case_types = Case_type::all();
-$t = "";
+$t =[];
 $d1 = "";
 $d2 = "";
 
@@ -45,7 +45,7 @@ if(Input::get("type")!= null){
                     </div>
 
                 </div>
-                <div class="panel-footer clearfix">
+                <div class="panel-footer clearfix hidden-print">
                     <div class="btn-group btn-group-sm pull-right">
                         <button class="btn btn-success">Send</button>
                     </div>
@@ -92,18 +92,18 @@ if(Input::get("type")!= null){
 
 
 
-    <div class="col-md-6">
+    <div class="col-md-6" style="">
         <div class="panel panel-info ">
             <div class="panel-heading">
                 <h3 class="panel-title">{{$a->last_name.", ".$a->first_name}} </h3>
             </div>
-            <div class="panel-body ">
+            <div class="panel-body " style="height: fit-content">
 
-                <div class="text-center ">
+                <div class="text-center " >
                     @if(count($caseStatus) == 0)
                     <h4 >No Case/s Found</h4>
                     @else
-                    <svg id="status{{$a->id}}" class="mypiechart"></svg>
+                    <svg id="status{{$a->id}}" class="mypiechart zoom-100" style="display: block"></svg>
                     @endif
                 </div>
 
@@ -122,8 +122,8 @@ if(Input::get("type")!= null){
             {key: "{{$value." ".$key}}", y: {{$value}}},
                 @endforeach
         ];
-                var width = $("#status{{$a->id}}").parent().width(),
-                height = 400;
+                var width = $("#status{{$a->id}}").width(),
+                height = $("#status{{$a->id}}").parent().height()*2;
         var chart2 = nv.models.pieChart()
                 .x(function(d) {
                     return d.key
@@ -159,3 +159,5 @@ if(Input::get("type")!= null){
     $(".selectpicker").selectpicker();
 
 </script>
+
+

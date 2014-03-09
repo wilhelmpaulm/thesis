@@ -57,8 +57,12 @@ class DatabaseSeeder extends Seeder {
         $this->call('Complaint_victimsTableSeeder');
         $this->call('Complaint_type_tagsTableSeeder');
     	$this->call('TagsTableSeeder');
+    	$this->call('Case_addressesTableSeeder');
 		$this->call('Case_observationsTableSeeder');
 		$this->call('Cross_referencesTableSeeder');
+		$this->call('System_logsTableSeeder');
+		$this->call('Case_keysTableSeeder');
+		$this->call('Case_requirementsTableSeeder');
 	}
 
 }

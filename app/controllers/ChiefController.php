@@ -38,7 +38,6 @@ class ChiefController extends BaseController {
     }
 
     public function getCasesOngoing($id = null) {
-        if ($id != null) {
             $data = [
                 "case" => Kase::find($id),
                 "case_evidences" => Case_evidence::where("case_id", "=", $id)->get(),
@@ -51,7 +50,6 @@ class ChiefController extends BaseController {
                 "evidence_documents" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Document")->join('evidence_documents', 'case_evidences.evidence_id', '=', 'evidence_documents.id')->get(),
                 "evidence_objects" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Object")->join('evidence_objects', 'case_evidences.evidence_id', '=', 'evidence_objects.id')->get(),
             ];
-        }
         return View::make("base.cases.ongoing", $data);
     }
 
@@ -172,6 +170,30 @@ class ChiefController extends BaseController {
             "agents" => User::where("division", "=", Auth::user()->division)->get()
         ];
         return View::make("base.reports.chief_complaints", $data);
+    }
+    public function getReportsTrends(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.chief_trends", $data);
+    }
+    public function getReportsLocations(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.chief_locations", $data);
+    }
+    public function getReportsDemographics(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.chief_demographics", $data);
+    }
+    public function getReportsDemographicsSubjects(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.chief_demographics_subjects", $data);
     }
 
 }

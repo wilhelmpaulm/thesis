@@ -29,14 +29,13 @@
                     <ul class="dropdown-menu">
                         <li><a href="#victims" data-toggle="tab">Victims</a></li>
                         <li><a href="#subjects" data-toggle="tab">Subjects</a></li>
-                        <li><a href="#witness" data-toggle="tab">Witness</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-                        <li><a href="#">Activity log</a></li>
+                        <li><a href="#activity">Activity log</a></li>
                     </ul>
                 </li>
             </ul>
@@ -132,6 +131,9 @@
         </div>
         <div class="tab-pane" id="timeline">
             @include("content.reports.case_timeline")
+        </div>
+        <div class="tab-pane" id="activity">
+            <!--ACTIVITY HERE-->
         </div>
 
     </div>

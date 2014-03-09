@@ -11,6 +11,7 @@
 
         <title>PITCHIN</title>
 
+        {{HTML::style("css/morris.css")}}
         <!-- Bootstrap core CSS -->
         <!--{{HTML::style("css/daterangepicker-bs3.css")}}-->
         {{HTML::style("css/bootstrap-datetimepicker.css")}}
@@ -28,11 +29,13 @@
         {{HTML::style("css/wilhelmpaulm.css")}}
         {{HTML::style("css/timeline.css")}}
         {{HTML::style("css/nv.d3.css")}}
-        {{HTML::style("css/morris.css")}}
-        
-        
-        
+        {{HTML::style("css/printer.css")}}
+
+
+
+        {{HTML::script("js/raphael.js")}}
         {{HTML::script("js/jquery.js")}}
+        {{HTML::script("js/morris.js")}}
         {{HTML::script("js/moment.js")}}
         {{HTML::script("js/bootstrap-tagsinput.js")}}
         <!--{{HTML::script("js/daterangepicker.js")}}-->
@@ -50,15 +53,31 @@
         {{HTML::script("js/list.fuzzysearch.min.js")}}
         {{HTML::script("js/d3.v3.js")}}
         {{HTML::script("js/nv.d3.js")}}
-        {{HTML::script("js/raphael.js")}}
-        {{HTML::script("js/morris.js")}}
         {{HTML::script("js/colorbrewer.js")}}
+        {{HTML::script("js/highcharts/highcharts.js")}}
+        {{HTML::script("js/highcharts/modules/data.js")}}
+        {{HTML::script("js/highcharts/modules/exporting.js")}}
         <style>
+            
+            
             body {
                 padding-top: 60px;
                 padding-bottom: 20px;
                 zoom: 87%;
+                /*zoom: 90%;*/
+                /*transform: scale(.80);*/
+                /*transform-origin: 10% 10%;*/
+                /*font-size: 100%;*/
                 /*background: url('{{URL::asset("bg/robots.png")}}')*/
+            }
+
+            .zoom-80{
+                /*zoom: 87%;*/
+
+            }
+            .zoom-100{
+                zoom: 115%;
+
             }
 
             ul.dropdown-menu li div{
@@ -104,7 +123,7 @@
 
     <body>
 
-        <div class="navbar navbar-default navbar-fixed-top " role="navigation">
+        <div class="navbar navbar-default navbar-fixed-top hidden-print" role="navigation">
             <div class="">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -148,7 +167,7 @@
         </div>
         <div class="pad15">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2 hidden-print">
                     @if(Auth::user()->job_title == "Agent")    
                     @include("sidebar.main.agent")
                     @elseif(Auth::user()->job_title == "Chief")    
@@ -189,6 +208,10 @@
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
+    <script>
+//        $("body").addClass("zoom-80");
+    </script>
+
     <!-- Placed at the end of the document so the pages load faster -->
 </body>
 </html>
