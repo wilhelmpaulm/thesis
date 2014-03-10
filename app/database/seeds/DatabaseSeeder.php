@@ -63,6 +63,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('System_logsTableSeeder');
 		$this->call('Case_keysTableSeeder');
 		$this->call('Case_requirementsTableSeeder');
+		$this->call('Form_subpoenasTableSeeder');
 	}
 
 }

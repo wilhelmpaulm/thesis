@@ -14,6 +14,37 @@ class KasesController extends BaseController {
         
     }
 
+    public function postClose($id = null) {
+        if (Hash::check(Input::get("password"), Auth::user()->password)) {
+            $case = Kase::find($id);
+            $case->status = Input::get("status");
+            $case->save();
+            return Redirect::to(strtolower(Auth::user()->job_title) . "/cases-ongoing");
+        }
+        return Redirect::back();
+    }
+
+    public function postReassign($id = null) {
+        if (Hash::check(Input::get("password"), Auth::user()->password)) {
+            $case = Kase::find($id);
+            $case->status = "Ongoing";
+            $case->agent_id = Input::get("agent_id");
+            $case->save();
+            return Redirect::to(strtolower(Auth::user()->job_title) . "/cases-ongoing");
+        }
+        return Redirect::back();
+    }
+
+    public function postReopen($id = null) {
+        if (Hash::check(Input::get("password"), Auth::user()->password)) {
+            $case = Kase::find($id);
+            $case->status = "Ongoing";
+            $case->save();
+            return Redirect::to(strtolower(Auth::user()->job_title) . "/cases-closed");
+        }
+        return Redirect::back();
+    }
+
     public function postAssign($id = null) {
         $case = Kase::find($id);
         $case->status = "Ongoing";
@@ -42,6 +73,7 @@ class KasesController extends BaseController {
             "evidence_documents" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Document")->join('evidence_documents', 'case_evidences.evidence_id', '=', 'evidence_documents.id')->get(),
             "evidence_objects" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Object")->join('evidence_objects', 'case_evidences.evidence_id', '=', 'evidence_objects.id')->get(),
             "case_observations" => Case_observation::where("user_id", "=", Kase::find($id)->agent_id)->where("case_id", "=", Kase::find($id)->id)->get(),
+            "case_keys" => Case_key::where("case_id", "=", $id)->get(),
         ];
 
         return View::make("gen.kases.show", $data);

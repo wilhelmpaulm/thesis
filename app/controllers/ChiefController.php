@@ -38,18 +38,18 @@ class ChiefController extends BaseController {
     }
 
     public function getCasesOngoing($id = null) {
-            $data = [
-                "case" => Kase::find($id),
-                "case_evidences" => Case_evidence::where("case_id", "=", $id)->get(),
-                "case_subjects" => Case_subject::where("case_id", "=", $id)->get(),
-                "case_type_tags" => Case_type_tag::where("case_id", "=", $id)->get(),
-                "case_victims" => Case_victim::where("case_id", "=", $id)->get(),
-                "evidence_recordings" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Recording")->join('evidence_recordings', 'case_evidences.evidence_id', '=', 'evidence_recordings.id')->get(),
-                "evidence_pictures" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Picture")->join('evidence_pictures', 'case_evidences.evidence_id', '=', 'evidence_pictures.id')->get(),
-                "evidence_videos" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Video")->join('evidence_videos', 'case_evidences.evidence_id', '=', 'evidence_videos.id')->get(),
-                "evidence_documents" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Document")->join('evidence_documents', 'case_evidences.evidence_id', '=', 'evidence_documents.id')->get(),
-                "evidence_objects" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Object")->join('evidence_objects', 'case_evidences.evidence_id', '=', 'evidence_objects.id')->get(),
-            ];
+        $data = [
+            "case" => Kase::find($id),
+            "case_evidences" => Case_evidence::where("case_id", "=", $id)->get(),
+            "case_subjects" => Case_subject::where("case_id", "=", $id)->get(),
+            "case_type_tags" => Case_type_tag::where("case_id", "=", $id)->get(),
+            "case_victims" => Case_victim::where("case_id", "=", $id)->get(),
+            "evidence_recordings" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Recording")->join('evidence_recordings', 'case_evidences.evidence_id', '=', 'evidence_recordings.id')->get(),
+            "evidence_pictures" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Picture")->join('evidence_pictures', 'case_evidences.evidence_id', '=', 'evidence_pictures.id')->get(),
+            "evidence_videos" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Video")->join('evidence_videos', 'case_evidences.evidence_id', '=', 'evidence_videos.id')->get(),
+            "evidence_documents" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Document")->join('evidence_documents', 'case_evidences.evidence_id', '=', 'evidence_documents.id')->get(),
+            "evidence_objects" => DB::table('case_evidences')->where("case_evidences.case_id", "=", $id)->where("case_evidences.type", "=", "Object")->join('evidence_objects', 'case_evidences.evidence_id', '=', 'evidence_objects.id')->get(),
+        ];
         return View::make("base.cases.ongoing", $data);
     }
 
@@ -158,42 +158,56 @@ class ChiefController extends BaseController {
         ];
         return View::make("base.messages", $data);
     }
-    
-    public function getReportsAgents(){
+
+    public function getReportsAgents() {
         $data = [
             "agents" => User::where("division", "=", Auth::user()->division)->get()
         ];
         return View::make("base.reports.chief_agents", $data);
     }
-    public function getReportsComplaints(){
+
+    public function getReportsComplaints() {
         $data = [
             "agents" => User::where("division", "=", Auth::user()->division)->get()
         ];
         return View::make("base.reports.chief_complaints", $data);
     }
-    public function getReportsTrends(){
+
+    public function getReportsTrends() {
         $data = [
             "agents" => User::where("division", "=", Auth::user()->division)->get()
         ];
         return View::make("base.reports.chief_trends", $data);
     }
-    public function getReportsLocations(){
+
+    public function getReportsLocations() {
         $data = [
             "agents" => User::where("division", "=", Auth::user()->division)->get()
         ];
         return View::make("base.reports.chief_locations", $data);
     }
-    public function getReportsDemographics(){
+
+    public function getReportsDemographics() {
         $data = [
             "agents" => User::where("division", "=", Auth::user()->division)->get()
         ];
         return View::make("base.reports.chief_demographics", $data);
     }
-    public function getReportsDemographicsSubjects(){
+
+    public function getReportsDemographicsSubjects() {
         $data = [
             "agents" => User::where("division", "=", Auth::user()->division)->get()
         ];
         return View::make("base.reports.chief_demographics_subjects", $data);
+    }
+    
+    public function getFormSubpoena(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.forms.subpoena", $data);
+        
+        
     }
 
 }

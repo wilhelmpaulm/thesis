@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCaseKeysTable extends Migration {
+class CreateFormSubpoenasTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,15 @@ class CreateCaseKeysTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('case_keys', function(Blueprint $table) {
+		Schema::create('form_subpoenas', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('case_id');
-			$table->string('owner');
-			$table->string('status');
-			$table->string('key');
+			$table->integer('agent_id');
+			$table->string('location');
+			$table->string('time');
+			$table->string('date_requested');
+			$table->string('date_signed');
+			$table->string('chief')->nullable();
 			$table->timestamps();
 		});
 	}
@@ -30,7 +33,7 @@ class CreateCaseKeysTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('case_keys');
+		Schema::drop('form_subpoenas');
 	}
 
 }

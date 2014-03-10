@@ -1,4 +1,7 @@
-<?php  $case_observations = Case_observation::where("user_id", "=", $case->agent_id)->where("case_id", "=", $case->id)->get();?>
+<?php $case_observations = Case_observation::where("user_id", "=", $case->agent_id)->where("case_id", "=", $case->id)->get(); ?>
+<?php $case_keys = Case_key::where("case_id", "=", $case->id)->get(); ?>
+<?php $case_requirements = Case_requirement::where("case_id", "=", $case->id)->get(); ?>
+<?php $case_resources = Resource_history::where("case_id", "=", $case->id)->where("status", "=", "Approved")->orWhere("status", "=", "Received")->orWhere("status", "=", "Returned")->get(); ?>
 
 <div id="content">
     <div class="navbar navbar-default ">
@@ -14,6 +17,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#details" data-toggle="tab">Case No. {{$case->id}}</a></li>
                 <li class=""><a href="#observations" data-toggle="tab">Observations</a></li>
+                <li><a href="#res" data-toggle="tab">Resources</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Evidences <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -29,15 +33,18 @@
                     <ul class="dropdown-menu">
                         <li><a href="#victims" data-toggle="tab">Victims</a></li>
                         <li><a href="#subjects" data-toggle="tab">Subjects</a></li>
+                        <li><a href="#keys" data-toggle="tab">Generated Keys</a></li>
+                        <li><a href="#requests" data-toggle="tab">Requested Documents</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-                        <li><a href="#activity">Activity log</a></li>
+                        <li><a href="#activity" data-toggle="tab">Activity log</a></li>
                     </ul>
                 </li>
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -46,7 +53,15 @@
                     <ul class="dropdown-menu">
                         <li><a href="#">Edit Details</a></li>
                         <li><a href="#">Set Permissions</a></li>
-                        <li><a href="#">Delete Case</a></li>
+                        @if($case->status == "Ongoing")
+                        <li><a href="#" data-toggle="modal" data-target="#caseClose">Close Case</a></li>
+                        @endif
+                        @if($case->status != "Ongoing")
+                        <li><a href="#" data-toggle="modal" data-target="#caseReopen">Reopen Case</a></li>
+                        @endif
+                        @if(Auth::user()->job_title == "Chief")
+                        <li><a href="#" data-toggle="modal" data-target="#caseReassign">Reassign Case</a></li>
+                        @endif
                     </ul>
                 </li>
             </ul>
@@ -123,6 +138,7 @@
         <div class="tab-pane" id="object">
             @include("gen.evidence_objects.show")
         </div>
+
         <div class="tab-pane" id="victims">
             @include("gen.case_victims.show")
         </div>
@@ -135,6 +151,17 @@
         <div class="tab-pane" id="activity">
             <!--ACTIVITY HERE-->
         </div>
+        <div class="tab-pane" id="keys">
+            @include("gen.case_keys.show")
+            <!--ACTIVITY HERE-->
+        </div>
+        <div class="tab-pane" id="requests">
+            @include("gen.case_requirements.show")
+            <!--ACTIVITY HERE-->
+        </div>
+        <div class="tab-pane" id="res">
+            @include("gen.resources.show")
+        </div>
 
     </div>
 
@@ -142,8 +169,6 @@
 
 
 </div>
-
-
 
 <script>
 
@@ -175,3 +200,84 @@
 //        window.location.hash = e.target.hash;
 //    });
 </script>
+
+
+
+
+<div class="modal fade" id="caseClose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Close Case</h4>
+        </div>
+        <form action="{{URL::to("cases/close/".$case->id)}}" method="post">
+            <div class="modal-body">
+                <label>password</label>
+                <input class="form-control" name="password" type="text">
+                {{Auth::user()->password}}
+                <label>Status</label>
+                <select class="form-control" name="status">
+                    <option>Non-viable</option>
+                    <option>Closed_Unfinished</option>
+                    <option>Closed_Finished</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <span class="btn-group btn-group-sm pull-right">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="caseReopen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Reopen Case</h4>
+        </div>
+        <form action="{{URL::to("cases/reopen/".$case->id)}}" method="post">
+            <div class="modal-body">
+                <label>password</label>
+                <input class="form-control" name="password" type="password">
+
+            </div>
+            <div class="modal-footer">
+                <span class="btn-group btn-group-sm pull-right">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="caseReassign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Reassign Case</h4>
+        </div>
+        <form action="{{URL::to("cases/reassign/".$case->id)}}" method="post">
+            <div class="modal-body">
+                <label>password</label>
+                <input class="form-control" name="password" type="password">
+                <label>Agent</label>
+                <select class="form-control" name="agent_id">
+                    @foreach(User::where("division", "=", Auth::user()->division)->get() as $a)
+                    <option>{{$a->id." ".$a->last_name.", ".$a->first_name}}</option>
+                    @endforeach
+                </select>
+
+            </div>
+            <div class="modal-footer">
+                <span class="btn-group btn-group-sm pull-right">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>

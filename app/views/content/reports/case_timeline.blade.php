@@ -2,36 +2,38 @@
 $dateLoop = [];
 
 foreach ($case_observations as $co) {
-    if (!in_array(Time::toNum($co->created_at), $dateLoop)) {
-        array_push($dateLoop, Time::toNum($co->created_at));
+    if (!in_array($co->created_at, $dateLoop)) {
+        array_push($dateLoop, $co->created_at);
     }
 }
 
 foreach($evidence_videos as $co){
-    if(!in_array(Time::toNum($co->created_at), $dateLoop)){
-        array_push($dateLoop, Time::toNum($co->created_at));
+    if(!in_array($co->created_at, $dateLoop)){
+        array_push($dateLoop, $co->created_at);
     }
 }
 foreach($evidence_pictures as $co){
-    if(!in_array(Time::toNum($co->created_at), $dateLoop)){
-        array_push($dateLoop, Time::toNum($co->created_at));
+    if(!in_array($co->created_at, $dateLoop)){
+        array_push($dateLoop, $co->created_at);
     }
 }
 foreach ($evidence_documents as $co) {
-    if (!in_array(Time::toNum($co->created_at), $dateLoop)) {
-        array_push($dateLoop, Time::toNum($co->created_at));
+    if (!in_array($co->created_at, $dateLoop)) {
+        array_push($dateLoop, $co->created_at);
     }
 }
 foreach($evidence_recordings as $co){
-    if(!in_array(Time::toNum($co->created_at), $dateLoop)){
-        array_push($dateLoop, Time::toNum($co->created_at));
+    if(!in_array($co->created_at, $dateLoop)){
+        array_push($dateLoop, $co->created_at);
     }
 }
 foreach($evidence_objects as $co){
-    if(!in_array(Time::toNum($co->created_at), $dateLoop)){
-        array_push($dateLoop, Time::toNum($co->created_at));
+    if(!in_array($co->created_at, $dateLoop)){
+        array_push($dateLoop, $co->created_at);
     }
 }
+
+//var_dump($evidence_pictures);
 ?>
 
 
@@ -50,7 +52,7 @@ rsort($dateLoop);
                 <div class="timeline-badge "><i class="fa fa-calendar"></i></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h4 class="timeline-title">{{Time::toDate($dl)}}</h4>
+                        <h4 class="timeline-title">{{$dl}}</h4>
                     </div>
                     <div class="timeline-body">
                         <!--<p>Mu num gostis.</p>-->
@@ -64,7 +66,7 @@ rsort($dateLoop);
 
             @for($i = 0; $i < count($case_observations); $i++)
 
-            @if($dl == Time::toNum($case_observations[$i]['created_at'])) 
+            @if($dl == $case_observations[$i]['created_at']) 
             @if($i % 2 == 0 ) 
             <li class="timeline-inverted">
                 @else
@@ -90,7 +92,7 @@ rsort($dateLoop);
             
             @for($i = 0; $i < count($evidence_recordings); $i++)
 
-            @if($dl == Time::toNum($evidence_recordings[$i]->created_at)) 
+            @if($dl == $evidence_recordings[$i]->created_at) 
             @if($i % 2 == 0 && $i != 0) 
             <li class="timeline-inverted">
                 @else
@@ -111,37 +113,14 @@ rsort($dateLoop);
             </li>
             @endif
             @endfor
+           
             
-            <!--ENDLOOP-->
-            @for($i = 0; $i < count($evidence_pictures); $i++)
-
-            @if($dl == Time::toNum($evidence_pictures[$i]['created_at'])) 
-            @if($i % 2 == 0 && $i != 0) 
-            <li class="timeline-inverted">
-                @else
-            <li>
-                @endif
-                @if($i == 0)
-                <div class="timeline-badge info"><i class="fa fa-picture-o"></i></div>
-                @endif
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4 class="timeline-title">{{$evidence_pictures[$i]->title}}</h4>
-                    </div>
-                    <div class="timeline-body">
-                        <p>{{$evidence_pictures[$i]->details}}</p>
-                        <p><small class="text-muted label label-info"><i class="fa fa-clock-o"></i> {{$evidence_pictures[$i]->created_at}}</small></p>
-                    </div>
-                </div>
-            </li>
-            @endif
-            @endfor
             
             <!--ENDLOOP-->
             <!--ENDLOOP-->
             @for($i = 0; $i < count($evidence_objects); $i++)
 
-            @if($dl == Time::toNum($evidence_objects[$i]->created_at)) 
+            @if($dl == $evidence_objects[$i]->created_at) 
             @if($i % 2 == 0 && $i != 0) 
             <li class="timeline-inverted">
                 @else
@@ -167,7 +146,7 @@ rsort($dateLoop);
             <!--ENDLOOP-->
             @for($i = 0; $i < count($evidence_documents); $i++)
 
-            @if($dl == Time::toNum($evidence_documents[$i]->created_at)) 
+            @if($dl == $evidence_documents[$i]->created_at) 
             @if($i % 2 == 0 && $i != 0) 
             <li class="timeline-inverted">
                 @else
@@ -191,9 +170,42 @@ rsort($dateLoop);
             
             <!--ENDLOOP-->
             <!--ENDLOOP-->
+            
+            
+            <!--ENDLOOP-->
+            <!--ENDLOOP-->
+            @for($i = 0; $i < count($evidence_pictures); $i++)
+
+            @if($dl == $evidence_pictures[$i]->created_at) 
+            @if($i % 2 == 0 && $i != 0) 
+            <li class="timeline-inverted">
+                @else
+            <li>
+                @endif
+                @if($i == 0)
+                <div class="timeline-badge info"><i class="fa fa-picture-o"></i></div>
+                @endif
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">{{$evidence_pictures[$i]->title}}</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p>{{$evidence_pictures[$i]->details}}</p>
+                        <p><small class="text-muted label label-info"><i class="fa fa-clock-o"></i> {{$evidence_pictures[$i]->created_at}}</small></p>
+                    </div>
+                </div>
+            </li>
+            @endif
+            @endfor
+            
+            <!--ENDLOOP-->
+            <!--ENDLOOP-->
+            
+            <!--ENDLOOP-->
+            <!--ENDLOOP-->
             @for($i = 0; $i < count($evidence_videos); $i++)
 
-            @if($dl == Time::toNum($evidence_videos[$i]['created_at'])) 
+            @if($dl == $evidence_videos[$i]->created_at) 
             @if($i % 2 == 0 && $i != 0) 
             <li class="timeline-inverted">
                 @else
@@ -214,6 +226,10 @@ rsort($dateLoop);
             </li>
             @endif
             @endfor
+            
+            <!--ENDLOOP-->
+            <!--ENDLOOP-->
+           
             
             <!--ENDLOOP-->
             @endforeach
