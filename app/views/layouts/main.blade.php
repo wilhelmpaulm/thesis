@@ -7,10 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="wilhelm paul martinezz">
-        <link rel="shortcut icon" href="{{URL::asset('apple-touch-icon-144.png')}}">
+        <!--<link rel="shortcut icon" href="{{URL::asset('apple-touch-icon-144.png')}}">-->
+<!--&#128269;-->
+        <title>SHERLOCK</title>
 
-        <title>PITCHIN</title>
-
+        {{HTML::style("css/ColumnFilterWidgets.css")}}
         {{HTML::style("css/morris.css")}}
         <!-- Bootstrap core CSS -->
         <!--{{HTML::style("css/daterangepicker-bs3.css")}}-->
@@ -57,6 +58,7 @@
         {{HTML::script("js/highcharts/highcharts.js")}}
         {{HTML::script("js/highcharts/modules/data.js")}}
         {{HTML::script("js/highcharts/modules/exporting.js")}}
+        {{HTML::script("js/ColumnFilterWidgets.js")}}
         <style>
             
             
@@ -68,7 +70,7 @@
                 /*transform: scale(.80);*/
                 /*transform-origin: 10% 10%;*/
                 /*font-size: 100%;*/
-                /*background: url('{{URL::asset("bg/robots.png")}}')*/
+                background: url('{{URL::asset("img/intro-bg.jpg")}}')
             }
 
             .zoom-80{

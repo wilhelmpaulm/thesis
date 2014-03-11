@@ -116,6 +116,13 @@ class ChiefController extends BaseController {
         ];
         return View::make("base.cases.closed", $data);
     }
+    
+    public function getCasesList() {
+        $data = [
+            "cases" => Kase::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.cases.list", $data);
+    }
 
     public function getCalendar() {
         $data = [
@@ -199,6 +206,13 @@ class ChiefController extends BaseController {
             "agents" => User::where("division", "=", Auth::user()->division)->get()
         ];
         return View::make("base.reports.chief_demographics_subjects", $data);
+    }
+    
+    public function getReportsCaseTimelineComparison() {
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.case_timeline_comparison", $data);
     }
     
     public function getFormSubpoena(){

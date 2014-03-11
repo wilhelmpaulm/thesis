@@ -2,9 +2,11 @@
     <div class="panel-heading clearfix">
         <p class="pull-left"><i class="fa fa-table"></i>Case Victims</p>
         <span class="btn-group btn-group-sm pull-right">
+             @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
             <button class="btn  btn-success pull-right" type="button" data-toggle="modal" data-target="#addCaseVictim">
                 <i class="fa fa-plus"></i> 
             </button>
+             @endif
         </span>
     </div>
     <div class="panel-body">
@@ -29,12 +31,14 @@
                     <td>{{$cs->birthdate}} </td>
                     <td>{{Time::getAge($cs->birthdate)}} </td>
                     <td>
+                         @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
                         <div class="btn-group btn-group-sm pull-right pull-right">
-
+                            
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editCaseVictim_{{$cs->id}}"><i class="fa fa-wrench"></i></button>
                             <button class="btn btn-default"data-toggle="modal" data-target="#crossCaseVictim_{{$cs->id}}"><i class="fa fa-sitemap"></i></button>
                             <button class="btn btn-default"data-toggle="modal" data-target="#addCrossCaseVictim_{{$cs->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
                         </div>
+                         @endif
                     </td>
                 </tr>
                 @endforeach

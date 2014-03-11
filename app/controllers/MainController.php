@@ -5,6 +5,10 @@ class MainController extends BaseController {
     public function getIndex() {
         return View::make('base.index');
     }
+    
+    public function getCaseTracking() {
+        return View::make('base.tracking');
+    }
 
     public function postLogin() {
         Auth::attempt(array('id' => Input::get("username"), 'password' => Input::get("password")));

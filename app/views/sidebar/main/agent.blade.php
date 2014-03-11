@@ -31,12 +31,26 @@
                 <a href="{{URL::to("agent/resources-request")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Request</a>
                 <a href="{{URL::to("agent/resources-current")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Current / History</a>
             </div>
+             <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#reports"><i class="fa fa-book"></i> Reports</a>
+            <div id="reports" class="collapse">
+                <a href="{{URL::to("agent/reports-agents")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Agents</a>
+                <a href="{{URL::to("agent/reports-complaints")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Cases</a>
+                <a href="{{URL::to("agent/reports-trends")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Trends</a>
+                <a href="{{URL::to("agent/reports-demographics")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Demographics Victims</a>
+                <a href="{{URL::to("agent/reports-demographics-subjects")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Demographics Subjects</a>
+                <a href="{{URL::to("agent/reports-locations")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Locations</a>
+            </div>
+            <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#forms"><i class="fa fa-file"></i> Form Generation</a>
+            <div id="forms" class="collapse">
+                <a href="{{URL::to("agent/form-subpoena")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Subpoena</a>
+                <a href="{{URL::to("agent/form-subpoena")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Coordination</a>
+            </div>
             <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#directory"><i class="fa fa-group"></i> Directory</a>
             <div id="directory" class="collapse">
                 <a href="{{URL::to("agent/directory-sis")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> SIS</a>
                 <a href="{{URL::to("agent/directory-clients")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Clients</a>
             </div>
-            <a href="{{URL::to('agent/reports')}}" class="list-group-item"><i class="fa fa-book"></i> Reports</a>
+            <!--<a href="{{URL::to('agent/reports')}}" class="list-group-item"><i class="fa fa-book"></i> Reports</a>-->
             <a href="{{URL::to('agent/notifications')}}" class="list-group-item"><i class="fa fa-bullhorn"></i> Notifications</a>
 
         </div>

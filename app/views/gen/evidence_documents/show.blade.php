@@ -2,10 +2,11 @@
     <div class="panel-heading clearfix">
         <p class="pull-left"><i class="fa fa-table"></i> Documents</p>
         <span class="btn-group btn-group-sm pull-right">
-
+             @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
             <button class="btn  btn-success  pull-right" type="button" data-toggle="modal" data-target="#addEvidenceDocument">
                 <i class="fa fa-plus"></i> 
             </button>
+             @endif
         </span>
     </div>
     <div class="panel-body">
@@ -16,7 +17,7 @@
                     <th>Owner</th>
                     <th>Details</th>
                     <th>Date Received</th>
-                    <th width=""></th>
+                    <th ></th>
                 </tr>
             </thead>
             <tbody>
@@ -29,11 +30,17 @@
                     <td>
                         <div class="btn-group btn-group-sm pull-right">
                             <a class="btn btn-default"  href="{{URL::asset("nbi/evidences/documents/".$ed->file_name)}}"><i class="fa fa-download"></i></a>
+                            @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
+                            
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editEvidenceDocument_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
+                            <button class="btn btn-info"data-toggle="modal" data-target="#versionEvidenceDocument_{{$ed->id}}"><i class="fa fa-book"></i></button>
+                            <br>
                             <button class="btn btn-info"data-toggle="modal" data-target="#historyEvidenceDocument_{{$ed->id}}"><i class="fa fa-list"></i></button>
                             <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryDocument_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
-                             <button class="btn btn-default"data-toggle="modal" data-target="#crossEvidenceDocument_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
+                            <br>
+                            <button class="btn btn-default"data-toggle="modal" data-target="#crossEvidenceDocument_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
                             <button class="btn btn-default"data-toggle="modal" data-target="#addCrossEvidenceDocument_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
+                            @endif
                         </div>
                     </td>
 
@@ -49,6 +56,68 @@
 
 
 
+
+@foreach($evidence_documents as $ed)
+<div id="versionEvidenceDocument_{{$ed->id}}" class="modal container fade" tabindex="-1" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Edit Evidence</h4>
+        </div>
+
+        <input type="hidden" name="case_id" value="{{$case->id}}">
+
+        <div class="modal-body">
+            <table class="table table-bordered table-hover ">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Owner</th>
+                        <th>Details</th>
+                        <th>Date Received</th>
+                        <th>Updated At</th>
+                        <th width=""></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $evidence_document_versions = Evidence_document::where("origin_id", "=", $ed->origin_id)->get(); ?>
+                    @foreach($evidence_document_versions as $eh)
+                    <tr class="clickable" >
+                        <td>{{$eh->id}}</td>
+                        <td>{{$eh->title}}</td>
+                        <td>{{$eh->owner}}</td>
+                        <td>{{$eh->details}}</td>
+                        <td>{{$eh->date_received}}</td>
+                        <td>{{$eh->updated_at}}</td>
+                        <td>
+                            <form action="{{URL::to("evidence_documents/set-current/".$eh->id)}}" method="post">
+                                <input type="hidden" name="current_id" value="{{$ed->id}}">
+                                <input type="hidden" name="case_id" value="{{$case->id}}">
+                                <div class="btn-group btn-group-sm pull-right">
+                                    <button class="btn btn-warning" ><i class="fa fa-chain"></i></button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+        </div>
+        <div class="modal-footer">
+            <span class="btn-group btn-group-sm">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+
+
+@endforeach
 
 @foreach($evidence_documents as $ed)
 <div id="editEvidenceDocument_{{$ed->id}}" class="modal container fade" tabindex="-1" style="display: none;">
@@ -143,7 +212,7 @@
                         </td>
                     </tr>
                     @include("gen.evidence_histories.edit")
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -158,7 +227,7 @@
 
 
 @foreach($evidence_documents as $ed)
-    @include("gen.evidence_histories.create_document")
+@include("gen.evidence_histories.create_document")
 @endforeach
 
 
@@ -223,7 +292,7 @@ $reference_id = $co->id;
         </div>
         <div class="modal-footer">
             <span class="btn-group btn-group-sm">
-                
+
                 <!--<button type="" class="btn btn-primary">Save changes</button>-->
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </span>
@@ -243,7 +312,7 @@ $reference_id = $co->id;
         </div>
         <div class="modal-footer">
             <span class="btn-group btn-group-sm">
-                
+
                 <!--<button type="" class="btn btn-primary">Save changes</button>-->
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </span>

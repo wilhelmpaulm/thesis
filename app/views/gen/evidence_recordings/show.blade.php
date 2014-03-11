@@ -2,10 +2,11 @@
     <div class="panel-heading clearfix">
         <p class="pull-left"><i class="fa fa-table"></i> Recordings</p>
         <span class="btn-group btn-group-sm pull-right">
-
+ @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
             <button class="btn  btn-success pull-right" type="button" data-toggle="modal" data-target="#addEvidenceRecording">
                 <i class="fa fa-plus"></i> 
             </button>
+ @endif
         </span>
     </div>
     <div class="panel-body">
@@ -30,13 +31,13 @@
                         <div class="btn-group btn-group-sm pull-right">
                             <button class="btn btn-success"data-toggle="modal" data-target="#viewEvidenceRecording_{{$ed->id}}"><i class="fa fa-eye"></i></button>
                             <a class="btn btn-success"  href="{{URL::asset("nbi/evidences/recordings/".$ed->file_name)}}"><i class="fa fa-download"></i></a>
-
+                             @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editEvidenceRecording_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
                             <button class="btn btn-info"data-toggle="modal" data-target="#historyEvidenceRecording_{{$ed->id}}"><i class="fa fa-list"></i></button>
                             <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryRecording_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
                             <button class="btn btn-default"data-toggle="modal" data-target="#crossEvidenceRecording_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
                             <button class="btn btn-default"data-toggle="modal" data-target="#addCrossEvidenceRecording_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
-
+                            @endif
                         </div>
                     </td>
                 </tr>

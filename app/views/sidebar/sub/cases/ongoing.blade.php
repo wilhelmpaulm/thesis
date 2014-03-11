@@ -23,7 +23,7 @@
                 @foreach($cases as $case)
                 <li><a  id="" href="{{URL::to(strtolower(Auth::user()->job_title).'/cases-ongoing/'.$case->id)}}" data-case_id="{{$case->id}}" class="list-group-item c_link">
                         <h4 class="list-group-item-heading list_name ">{{$case->name}}</h4>
-                        <p class="list_created_at">{{$case->created_at}}</p>
+                        <p class="list_created_at label label-info">{{$case->created_at}}</p>
                         <p class="list-group-item-text list_details">{{$case->details}}</p>
                     </a></li>
                 @endforeach

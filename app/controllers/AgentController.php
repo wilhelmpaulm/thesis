@@ -96,6 +96,12 @@ class AgentController extends BaseController {
         ];
         return View::make("base.cases.closed", $data);
     }
+public function getCasesList() {
+        $data = [
+            "cases" => Kase::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.cases.list", $data);
+    }
 
     public function getCalendar() {
         $data = [
@@ -109,6 +115,13 @@ class AgentController extends BaseController {
 //            "num" => $num,
         ];
         return View::make("base.resources.request", $data);
+    }
+
+    public function getResourcesApproval() {
+        $data = [
+//            "num" => $num,
+        ];
+        return View::make("base.resources.approval", $data);
     }
 
     public function getResourcesCurrent() {
@@ -130,6 +143,64 @@ class AgentController extends BaseController {
             "message_recipients" => Message_recipient::where("message_id", "=", $id)->get(),
         ];
         return View::make("base.messages", $data);
+    }
+
+    public function getReportsAgents() {
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.chief_agents", $data);
+    }
+
+    public function getReportsComplaints() {
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.chief_complaints", $data);
+    }
+
+    public function getReportsTrends() {
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.chief_trends", $data);
+    }
+
+    public function getReportsLocations() {
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.chief_locations", $data);
+    }
+
+    public function getReportsDemographics() {
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.chief_demographics", $data);
+    }
+
+    public function getReportsDemographicsSubjects() {
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.chief_demographics_subjects", $data);
+    }
+    
+    public function getReportsCaseTimelineComparison() {
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.case_timeline_comparison", $data);
+    }
+    
+    public function getFormSubpoena(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.forms.subpoena", $data);
+        
+        
     }
 
 }

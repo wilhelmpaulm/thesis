@@ -1,18 +1,10 @@
-@extends("layouts.base")
+@extends("layouts.base2")
 @section("main")
 
 
-<div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
+
         
-        <div class="col-md-offset-3 col-md-6">
-            <div class="panel panel-info">
-                <div class="panel-body">
-                    <div id="loginhead" class="text-center c-belizehole fs50">
-                        <!--<i class="fa fa-cog fa-cog fa-fw fa-spin"></i>-->
-                        <p>LOG IN</p>
-                    </div>
+                    
                     <div id="loginbody">
                         <form  class="" action="{{URL::to("login")}}" method="POST">
                             <div class="row ">
@@ -41,11 +33,7 @@
                         </form>
 
                     </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
+              
     <style>
 /*        #signuphead, #loginhead :hover{
             cursor: pointer;

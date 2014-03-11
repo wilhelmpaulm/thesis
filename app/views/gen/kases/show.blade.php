@@ -51,12 +51,14 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                         @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
                         <li><a href="#">Edit Details</a></li>
                         <li><a href="#">Set Permissions</a></li>
-                        @if($case->status == "Ongoing")
+                        @endif
+                        @if($case->status == "Ongoing" && $case->agent_id == Auth::user()->id)
                         <li><a href="#" data-toggle="modal" data-target="#caseClose">Close Case</a></li>
                         @endif
-                        @if($case->status != "Ongoing")
+                        @if($case->status != "Ongoing" && Auth::user()->job_title == "Chief")
                         <li><a href="#" data-toggle="modal" data-target="#caseReopen">Reopen Case</a></li>
                         @endif
                         @if(Auth::user()->job_title == "Chief")

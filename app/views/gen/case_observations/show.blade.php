@@ -4,10 +4,11 @@
     <div class="panel-heading clearfix">
         <p class="pull-left"><i class="fa fa-search"></i> Case Observation</p>
         <span class="btn-group btn-group-sm pull-right">
-
+@if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
             <button class="btn  btn-success  pull-right" type="button" data-toggle="modal" data-target="#addCaseObservation">
                 <i class="fa fa-plus"></i> 
             </button>
+@endif
         </span>
     </div>
     <div class="panel-body">
@@ -38,9 +39,11 @@
                     </td>
                     <td width="15%">
                         <div class="btn-group btn-group-sm pull-right">
+                            @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editCaseObservation_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
                             <button class="btn btn-default"data-toggle="modal" data-target="#crossCaseObservation_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
                             <button class="btn btn-default"data-toggle="modal" data-target="#addCrossCaseObservation_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
+                            @endif
                         </div>
                     </td>
 

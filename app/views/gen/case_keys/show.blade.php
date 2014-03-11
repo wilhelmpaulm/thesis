@@ -2,9 +2,11 @@
     <div class="panel-heading clearfix">
         <p class="pull-left"><i class="fa fa-table"></i>Case Keys</p>
         <span class="btn-group btn-group-sm pull-right">
+             @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
             <button class="btn  btn-success pull-right" type="button" data-toggle="modal" data-target="#addCaseKey">
                 <i class="fa fa-plus"></i> 
             </button>
+             @endif
         </span>
     </div>
     <div class="panel-body">
@@ -31,8 +33,9 @@
                             {{$ck->status}}</p></td>
                     <td>
                         <div class="btn-group btn-group-sm pull-right pull-right">
-
+                             @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editCaseKey_{{$ck->id}}"><i class="fa fa-wrench"></i></button>
+                            @endif
                         </div>
                     </td>
                 </tr>

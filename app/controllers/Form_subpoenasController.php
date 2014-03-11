@@ -24,7 +24,7 @@ class Form_subpoenasController extends BaseController {
     }
 
     public function getShow($id = null) {
-        
+        return View::make("forms.subpoena");
     }
 
     public function getEdit($id = null) {
