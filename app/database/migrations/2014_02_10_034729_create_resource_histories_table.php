@@ -16,7 +16,7 @@ class CreateResourceHistoriesTable extends Migration {
             $table->integer('case_id');
             $table->integer('resource_id');
             $table->integer('user_id');
-            $table->text('deatils')->nullable();
+            $table->text('details')->nullable();
             $table->float('amount')->nullable();
             $table->string('status');
             $table->string('date_requested');

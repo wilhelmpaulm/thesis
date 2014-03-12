@@ -31,6 +31,7 @@
         {{HTML::style("css/timeline.css")}}
         {{HTML::style("css/nv.d3.css")}}
         {{HTML::style("css/printer.css")}}
+        {{HTML::style("css/wilhelm-panel.css")}}
 
 
 
@@ -123,7 +124,7 @@
 
     </head>
 
-    <body>
+    <body class="">
 
         <div class="navbar navbar-default navbar-fixed-top hidden-print" role="navigation">
             <div class="">

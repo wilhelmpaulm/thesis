@@ -37,7 +37,7 @@
 
     </head>
 
-    <body>
+    <body class="f-rl">
 
         <div class="navbar navbar-default navbar-fixed-top " role="navigation">
             <div class="">

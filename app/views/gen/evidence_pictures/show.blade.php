@@ -261,25 +261,7 @@ $case_id = $case->id;
 $table = "evidence_pictures";
 $reference_id = $co->id;
 ?>
-<div id="addCrossEvidencePicture_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Cross References</h4>
-        </div>
 
-        <div class="modal-body">
-            @include("gen.cross_references.create")
-        </div>
-        <div class="modal-footer">
-            <span class="btn-group btn-group-sm">
-
-                <!--<button type="" class="btn btn-primary">Save changes</button>-->
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </span>
-        </div>
-    </div>
-</div>
 
 <div id="crossEvidencePicture_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
     <div class="modal-content">

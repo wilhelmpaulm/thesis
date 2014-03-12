@@ -2,6 +2,7 @@
 <?php $case_keys = Case_key::where("case_id", "=", $case->id)->get(); ?>
 <?php $case_requirements = Case_requirement::where("case_id", "=", $case->id)->get(); ?>
 <?php $case_resources = Resource_history::where("case_id", "=", $case->id)->where("status", "=", "Approved")->orWhere("status", "=", "Received")->orWhere("status", "=", "Returned")->get(); ?>
+<?php $complaint = Complaint::find($case->complaint_id); ?>
 
 <div id="content">
     <div class="navbar navbar-default ">
@@ -51,7 +52,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                         @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
+                        @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
                         <li><a href="#">Edit Details</a></li>
                         <li><a href="#">Set Permissions</a></li>
                         @endif
@@ -80,33 +81,113 @@
 
     <div class="tab-content">
         <div class="tab-pane active" id="details">
+            
+
+
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">{{$case->name}}</h3>
                 </div>
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <h4>Date Assigned</h4>
-                            <p>{{$case->date_assigned}}</p>
-                        </div>
-                        <div class="col-lg-3">
-                            <h4>Details</h4>
-                            <p>{{$case->details}}</p>
-                        </div>
-                        <div class="col-lg-3">
-                            <h4>Complainant</h4>
-                            <?php $complainant = Client::find($case->complainant_id); ?>
-                            <p>{{$complainant->last_name.", ".$complainant->first_name}}</p>
-                            <p>{{$complainant->gender}}</p>
-                        </div>
-                        <div class="col-lg-3">
-                            <h4>Date Assigned</h4>
-                            <p>{{$case->date_assigned}}</p>
-                        </div>
+                    <!--                    <div class="row">
+                                            <div class="col-lg-3">
+                                                <h4>Date Reported</h4>
+                                                <p>{{$complaint->date_reported}}</p>
+                                                <h4>Date Committed</h4>
+                                                <p>{{$complaint->date_commited}}</p>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <h4>Narration of Facts</h4>
+                                                <p>{{$complaint->narration}}</p>
+                                            </div>
+                                            
+                                            <div class="col-lg-3">
+                                                @if($complaint->agency_reported == "")
+                                                
+                                                @else
+                                                <h4>Agency Reported</h4>
+                                                <p>{{$complaint->agency_reported}}</p>
+                                                <h4>Details</h4>
+                                                <p>{{$complaint->agency_report_details}}</p>
+                                                @endif
+                                            </div>
+                                            <div class="col-lg-3">
+                                                 @if($complaint->considerations== "")
+                                                
+                                                @else
+                                                <h4>Considerations</h4>
+                                                <p>{{$complaint->considerations}}</p>
+                                                @endif
+                                            </div>
+                    
+                    
+                                        </div>-->
 
 
-                    </div>
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Date Assigned</strong></th>
+                                <td>{{$case->date_reported}}</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Details</strong></th>
+                                <td>{{$case->details}}</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Date Reported</strong></th>
+                                <td>{{$complaint->date_reported}}</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Date Committed</strong></td>
+                                <td>{{$complaint->date_commited}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Agent Assigned</strong></th>
+                                <td>
+                                    <?php $a = User::find($case->agent_id); ?>
+                                    <p>{{$a->id}}</p>
+                                    <p>{{$a->last_name.", ".$a->first_name." ".$a->middle_name}}</p>
+                                    </th>
+                            </tr>
+                            <tr>
+                                <td><strong>Complainant</strong></th>
+                                <td>
+                                    <?php $complainant = Client::find($case->complainant_id); ?>
+                                    <p>{{$complainant->last_name.", ".$complainant->first_name." ".$complainant->middle_name}}</p>
+                                    <p>{{Time::getAge($complainant->birthdate)}} years old</p>
+                                    <p><strong>Sex:</strong> {{$complainant->sex}} </p>
+                                    <p><strong>Birthdate: </strong> {{$complainant->birthdate}} </p>
+                                    <p><strong>Civil Status:</strong> {{$complainant->civil_status}} </p>
+                                    <p><strong>Citizenship:</strong> {{$complainant->citizenship}}  </p>
+                                    <p><strong>Occupation: </strong>{{$complainant->occupation}} </p>
+                                    </th>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td><strong>Narration</strong></td>
+                                <td>{{$complaint->narration}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Considerations</strong></td>
+                                <td>{{$complaint->considerations}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Agency Reported</strong></td>
+                                <td>{{$complaint->agency_reported}}</td>
+                                <td>{{$complaint->agency_report_details}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
                 </div>
             </div>
 
@@ -281,5 +362,44 @@
                 </span>
             </div>
         </form>
+    </div>
+</div>
+
+
+<script>
+    var table = "";
+    var reference_id = "";
+    
+    $(".addCross").on("click", function(){
+        table = $(this).data("table");
+        reference_id = $(this).data("reference_id");
+        $(".cross_reference_id").val(reference_id);
+        $(".cross_table").val(table);
+    });
+
+</script>
+<?php 
+$case_id = $case->id;
+
+
+?>
+
+<div id="addCross" class="modal fade container" tabindex="-1" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Cross References</h4>
+        </div>
+
+        <div class="modal-body">
+            @include("gen.cross_references.create")
+        </div>
+        <div class="modal-footer">
+            <span class="btn-group btn-group-sm">
+                
+                <!--<button type="" class="btn btn-primary">Save changes</button>-->
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </span>
+        </div>
     </div>
 </div>

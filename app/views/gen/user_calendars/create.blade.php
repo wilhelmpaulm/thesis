@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-calendar"></i> Calendar</h3>
     </div>

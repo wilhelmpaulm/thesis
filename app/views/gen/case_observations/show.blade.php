@@ -42,7 +42,7 @@
                             @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editCaseObservation_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
                             <button class="btn btn-default"data-toggle="modal" data-target="#crossCaseObservation_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
-                            <button class="btn btn-default"data-toggle="modal" data-target="#addCrossCaseObservation_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
+                            <button class="btn btn-default addCross"data-table="case_observations" data-reference_id="{{$ed->id}}" data-toggle="modal"  data-target="#addCross"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
                             @endif
                         </div>
                     </td>
@@ -113,25 +113,6 @@ $case_id = $case->id;
 $table = "case_observations";
 $reference_id = $co->id;
 ?>
-<div id="addCrossCaseObservation_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Cross References</h4>
-        </div>
-
-        <div class="modal-body">
-            @include("gen.cross_references.create")
-        </div>
-        <div class="modal-footer">
-            <span class="btn-group btn-group-sm">
-                
-                <!--<button type="" class="btn btn-primary">Save changes</button>-->
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </span>
-        </div>
-    </div>
-</div>
 
 <div id="crossCaseObservation_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
     <div class="modal-content">

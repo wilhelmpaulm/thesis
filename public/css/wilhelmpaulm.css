@@ -5,23 +5,23 @@
 
 @font-face {
     font-family: 'suil';
-    src: url('../font/Roboto-Light.ttf');
-    src: url('../font/Roboto-Light.ttf') format('truetype');
+    src: url('../fonts/Roboto-Light.ttf');
+    src: url('../fonts/Roboto-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'qsb';
-    src: url('../font/Quicksand_Book.otf');
+    src: url('../fonts/Quicksand_Book.otf');
     /*src: url('../font/Quicksand_Book.ttf') format('truetype');*/
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'osb';
-    src: url('../font/ostrich-black.ttf');
-    src: url('../font/ostrich-black.ttf') format('truetype');
+    src: url('../fonts/ostrich-black.ttf');
+    src: url('../fonts/ostrich-black.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-size: x-large;
@@ -29,8 +29,8 @@
 
 @font-face {
     font-family: 'rl';
-    src: url('../font/Roboto-Light.ttf');
-    src: url('../font/Roboto-Light.ttf') format('truetype');
+    src: url('../fonts/Roboto-Regular.ttf');
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-size: x-large;
@@ -44,13 +44,18 @@
     /*font-size: x-large;*/
 }
 
-.f-qsb{
-    font-family: 'qsb', "Segoe UI";
+.f-rob{
+    font-family: 'suil', "Segoe UI", "Arial";
+
+}
+
+.f-rl{
+    font-family: 'rl', "Segoe UI";
 
 }
 .f-osb{
-    font-family: 'osb', "Segoe UI";
-    font-size: 20px;
+    font-family: 'osb', "Segoe UI", "Arial";
+    /*font-size: 20px;*/
 
 }
 .f-osr{

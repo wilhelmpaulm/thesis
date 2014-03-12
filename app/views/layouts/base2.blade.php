@@ -9,7 +9,7 @@
         <meta name="author" content="wilhelm paul martinezz">
         <link rel="shortcut icon" href="{{URL::asset('apple-touch-icon-144.png')}}">
 
-        <title>PITCHIN</title>
+        <title>SHERLOCK</title>
 
         <!-- Bootstrap core CSS -->
         {{HTML::style("css/lumen.bootstrap.min.css")}}
@@ -42,7 +42,7 @@
     </head>
 
    
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+    <body class="f-rob" id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
@@ -51,7 +51,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="#page-top">
-                    <i class="fa fa-search"></i>  <span class="light"></span>SHERLOCK
+                    <i class="fa fa-search"></i>  <span class="fs20 f-osb">SHERLOCK</span>
                 </a>
             </div>
 
@@ -72,7 +72,7 @@
                         <a href="#download">Contact</a>
                     </li>
                     <li class="">
-                        <a href="/case-tracking">Case Tracking</a>
+                        <a href="/case-tracking">TRACK CASE</a>
                     </li>
                 </ul>
             </div>
@@ -86,7 +86,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">SHERLOCK</h1>
+                        <h1 class="brand-heading f-osb">SHERLOCK</h1>
                         <p class="intro-text">An Investigative Case Management System for <br>National Bureau of Investigation</p>
                         <div class="page-scroll">
                             <a href="#about" class="btn btn-circle">

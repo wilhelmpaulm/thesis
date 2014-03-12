@@ -163,7 +163,7 @@ $cases = Kase::all();
                         @endif   
                         },
                 @endforeach
-                {y: 'LOLOL', Male: 54, Female: 90}
+//                {y: 'LOLOL', Male: 54, Female: 90}
 //                {y: '2012', c: 100, b: 90}
             ],
             xkey: 'y',

@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-suitcase"></i> Pending Cases</h3>
     </div>
@@ -21,11 +21,19 @@
         <div style="height: 450px; overflow-y:auto">
             <?php $cases = Kase::where("status", "=", "Pending")->where("division", "=", Auth::user()->division)->get(); ?>
             <ul class="list list-unstyled    ">
-                @foreach($cases as $case)
-                <li><a  id="" href="{{URL::to(strtolower(Auth::user()->job_title).'/cases-assign/'.$case->id)}}" data-case_id="{{$case->id}}" class="list-group-item c_link">
-                        <h4 class="list-group-item-heading list_name ">{{$case->name}}</h4>
-                        <p class=" list_created_at text-muted label label-info">{{$case->created_at}}</p>
-                        <p class="list-group-item-text list_details">{{$case->details}}</p>
+                @foreach($cases as $c) <?php
+                $la = "";
+
+                if ($case != null) {
+                    if ($c->id == $case->id) {
+                        $la = "active";
+                    }
+                }
+                ?>
+                <li><a  id="" href="{{URL::to(strtolower(Auth::user()->job_title).'/cases-assign/'.$c->id)}}" data-case_id="{{$c->id}}" class="list-group-item c_link {{$la}}">
+                        <h4 class="list-group-item-heading list_name ">{{$c->name}}</h4>
+                        <p class=" list_created_at text-muted label label-info">{{$c->created_at}}</p>
+                        <p class="list-group-item-text list_details">{{$c->details}}</p>
                     </a></li>
                 @endforeach
             </ul>

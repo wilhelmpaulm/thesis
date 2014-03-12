@@ -131,6 +131,12 @@ class ChiefController extends BaseController {
         return View::make("base.calendar", $data);
     }
 
+    public function getResourcesList() {
+        $data = [
+//            "num" => $num,
+        ];
+        return View::make("base.resources.list", $data);
+    }
     public function getResourcesRequest() {
         $data = [
 //            "num" => $num,

@@ -2,17 +2,155 @@
 
 class Case_observationsTableSeeder extends Seeder {
 
-	public function run()
-	{
-		// Uncomment the below to wipe the table clean before populating
-		 DB::table('case_observations')->truncate();
+    public function run() {
+        // Uncomment the below to wipe the table clean before populating
+        DB::table('case_observations')->truncate();
 
-		$case_observations = array(
+        $case_observations = array(
+            //83 ALL JANINE
+            ["case_id" => 1, "user_id" => 10930216, "observation" => "The subject hates working for the principal as an assistant."],
+            ["case_id" => 1, "user_id" => 10930216, "observation" => "The subject left the key in the vault keyhole. His fingerprints were on the keys."],
+            ["case_id" => 1, "user_id" => 10930216, "observation" => "The subject is right-handed."],
+            ["case_id" => 1, "user_id" => 10930216, "observation" => "More than Php 100,000 of the funds was stolen."],
+            ["case_id" => 2, "user_id" => 10930216, "observation" => "The subject is badly bruised in the face, suffering physical blows in the stomach as well."],
+            ["case_id" => 2, "user_id" => 10930216, "observation" => "The medico-legal is a fake."],
+            ["case_id" => 5, "user_id" => 10930216, "observation" => "The victim has a chronic heart disease."],
+            ["case_id" => 5, "user_id" => 10930216, "observation" => "The apartment is identified to be the Sweep apartment in Quezon City."],
+            ["case_id" => 5, "user_id" => 10930216, "observation" => "The subject and victim were fighting about the morning trash and which to recycle. The victim got angry and all of a sudden the subject stabbed her."],
+            ["case_id" => 6, "user_id" => 10930216, "observation" => "The 2 engineers just finished their shift that night and they were meeting with up with the principal when they were attacked by the subjects."],
+            //11
+            ["case_id" => 6, "user_id" => 10930216, "observation" => "The tags left are believed to belong to the army and the subjects' names are engraved."],
+            ["case_id" => 6, "user_id" => 10930216, "observation" => "Machine gun cartidges left belong to the alleged weapons used in the attack, also from the army."],
+            ["case_id" => 7, "user_id" => 10930216, "observation" => "The victim has been depressed for months."],
+            ["case_id" => 7, "user_id" => 10930216, "observation" => "The victim left a supposed suicide note to his parents, telling them about his problems in school."],
+            ["case_id" => 7, "user_id" => 10930216, "observation" => "The victim thinks that he no longer has purpose in life which resulted to the gruesome suicide."],
+            ["case_id" => 8, "user_id" => 10930216, "observation" => "The victim is an assistant lecturer for education students, and the subject is believed to have been her student."],
+            ["case_id" => 8, "user_id" => 10930216, "observation" => "The subject did not want to give up on the victim in terms of showing signs of affection."],
+            ["case_id" => 9, "user_id" => 10930216, "observation" => "The subject used her balisong for cutting her plants to stab her children while they were sleeping."],
+            ["case_id" => 9, "user_id" => 10930216, "observation" => "The subject didn't eat her children because she was hungry, she wanted them out of her life so that she can pay the bills well."],
+            ["case_id" => 9, "user_id" => 10930216, "observation" => "Their family has been suffering from financial debts in the past 2 years."],
+            //21
+            ["case_id" => 10, "user_id" => 10930216, "observation" => "The subjects have been uplholding their illegal association and extending membership to foreign nationals in the country."],
+            ["case_id" => 10, "user_id" => 10930216, "observation" => "The subjects' hideout is an abandoned hospital in San Juan City, named St. James Hospital in the 1900s."],
+            ["case_id" => 10, "user_id" => 10930216, "observation" => "Drugs involved include coke, cocaine, marijuana and a couple of samples of weed."],
+            ["case_id" => 10, "user_id" => 10930216, "observation" => "Traces of weed wrappers have been identified to scatter in the community."],
+            ["case_id" => 12, "user_id" => 10930216, "observation" => "Liberty Dollar is a private money used by the native Americans in the 1800s."],
+            ["case_id" => 12, "user_id" => 10930216, "observation" => "The Chinese subjects are believed to have started the ordeal and the house husband was just involved recently in the scam."],
+            ["case_id" => 13, "user_id" => 10930216, "observation" => "The subject is believed to have been kidnapping kids in China before."],
+            ["case_id" => 13, "user_id" => 10930216, "observation" => "The subject frequents grade schools and high schools to look for his next target."],
+            ["case_id" => 13, "user_id" => 10930216, "observation" => "Sources say he is a maniac and child adulterer in nature."],
+            ["case_id" => 15, "user_id" => 10930217, "observation" => "The subject has dealt drugs to politicians and actors in the past."],
+            //31
+            ["case_id" => 15, "user_id" => 10930217, "observation" => "The subject gets the drugs from a source in Atlanta, Georgia."],
+            ["case_id" => 23, "user_id" => 10930217, "observation" => "The subject has been targeting the victim as she holds a grudge against her."],
+            ["case_id" => 27, "user_id" => 10930217, "observation" => "Tecson is a computer professor and Lee and Park are science professors in DLSU."],
+            ["case_id" => 27, "user_id" => 10930217, "observation" => "The subjects are all believed to be friends. Tecson and Lee go way back when they started as prostitutes before being professors."],
+            ["case_id" => 28, "user_id" => 10930217, "observation" => "The subjects have been dealing drugs to teenagers in U-belt area."],
+            ["case_id" => 29, "user_id" => 10930217, "observation" => "Waters has been a sex offender in his hometown and was tempted when he visited his family in the Philippines."],
+            ["case_id" => 30, "user_id" => 10930217, "observation" => "The Samsung S4 units all lack the Google Maps feature and do not respond to the motion sensors."],
+            ["case_id" => 31, "user_id" => 10916644, "observation" => "The victim was badly wasted and came from Sherwood Place."],
+            ["case_id" => 35, "user_id" => 10916644, "observation" => "The gift certificates acquired do not have a barcode."],
+            ["case_id" => 36, "user_id" => 10916645, "observation" => "The receipt for cash transferral is dated 2 months before the transaction was made."],
+            //41
+            ["case_id" => 37, "user_id" => 10916645, "observation" => "The fingerprints found on the cash box appear to belong to the taxi driver who is a subject."],
+            ["case_id" => 37, "user_id" => 10916645, "observation" => "Both subjects have been inquiring about cash withdrawal and deposits a month before the incident."],
+            ["case_id" => 38, "user_id" => 10916645, "observation" => "The victim's uncle is part of a case investigation about theft and murder regarding the subject in the past."],
+            ["case_id" => 39, "user_id" => 10916645, "observation" => "The victim was the only one inside the house at that time, and her family members were out when the fire started."],
+            ["case_id" => 39, "user_id" => 10916645, "observation" => "The victim could not call for help as their phone lines were dead and she was sleeping."],
+            ["case_id" => 43, "user_id" => 10916646, "observation" => "The subject has been adbucting kids back in China. He has been doing this without being caught for years now and has been changing his identity."],
+            ["case_id" => 44, "user_id" => 10916646, "observation" => "The victim was a willing party at first."],
+            ["case_id" => 45, "user_id" => 10916647, "observation" => "The subject has been kidnapping kids for his selfish purposes, he mostly targets children who are orphaned."],
+            ["case_id" => 45, "user_id" => 10916647, "observation" => "The subject maltreats children either by beating them with electrical cords and or baseball bats, usually on their backside and or their limbs if they disobey."],
+            ["case_id" => 45, "user_id" => 10916647, "observation" => "The subject still send the children to school and pays for their meals."],
+            //51
+            ["case_id" => 47, "user_id" => 10916647, "observation" => "Coke and cocaine are usually the drugs distributed to other dealers by the subject."],
+            ["case_id" => 47, "user_id" => 10916647, "observation" => "The subject hands over the drug for free and lets her customers pay for it by manipulating them through prostitution and seduction."],
+            ["case_id" => 49, "user_id" => 10916647, "observation" => "The victim has been with the subject for over 7 years already only to break it off on their anniversary due to unknown reasons."],
+            ["case_id" => 49, "user_id" => 10916647, "observation" => "The subject has been speculated to have been cheating on the victim by hooking up with a drug pusher."],
+            ["case_id" => 50, "user_id" => 10916647, "observation" => "The subject has been reported to check in Senate International Hotel, a hotel frequently visited by Asians especially the Chinese."],
+            ["case_id" => 51, "user_id" => 10916648, "observation" => "It has been found out that the subject maltreats his own son alongside punishing him when his orders are not followed."],
+            ["case_id" => 51, "user_id" => 10916648, "observation" => "The subject sometimes locks his son inside his room when he does comply to what his father wishes."],
+            ["case_id" => 52, "user_id" => 10916648, "observation" => "The subjects are part of an organized crime group called Batsi Gang who rob people in random places."],
+            ["case_id" => 52, "user_id" => 10916648, "observation" => "Matching outfits are usually their trademark when they commit crime."],
+            ["case_id" => 53, "user_id" => 10916648, "observation" => "While one of the subjects snuck into the bank, the other members of the organized crime group Batsi Gang were waiting inside the cab."],
+            //61
+            ["case_id" => 52, "user_id" => 10916648, "observation" => "The subjects principally target banks. It is unknown if they deploy themselves in a fixed time where there are people or not."],
+            ["case_id" => 56, "user_id" => 10916649, "observation" => "The subject has been charged of arson in the past, and his target places are getting larger. Last time, he only targeted a house, now he has targetted a whole community."],
+            ["case_id" => 57, "user_id" => 10916649, "observation" => "The pregnancy test of the victim showed positive."],
+            ["case_id" => 58, "user_id" => 10916649, "observation" => "The laboratory tests of the victim has shown signs that she had undergone sexual intercourse and has been indeed raped."],
+            ["case_id" => 58, "user_id" => 10916649, "observation" => "The victim has handcuff marks on her wrists."],
+            ["case_id" => 60, "user_id" => 10916649, "observation" => "The subject's strategy has been reported to be luring children into fancying material things such as clothes and candies he shows them."],
+            ["case_id" => 62, "user_id" => 10916650, "observation" => "The subject has been reported to love his son very much, but abhorred him all of a sudden on the week of the incident."],
+            ["case_id" => 63, "user_id" => 10916650, "observation" => "The victim has bruises on her left arm and right leg which are believed to be hit by the subject."],
+            ["case_id" => 65, "user_id" => 10916650, "observation" => "The victim has been shot in the head and blood was all over the driver seat and passenger seat of the car."],
+            ["case_id" => 68, "user_id" => 10916651, "observation" => "The drug lord is identified to be a part of a Korean gang in Quezon City."],
+            //71
+            ["case_id" => 68, "user_id" => 10916651, "observation" => "The subject has a stash of marijuana found in his closet, and he must have needed more of it, thus the assualt to his son."],
+            ["case_id" => 69, "user_id" => 10916651, "observation" => "The victim has been attending bingo nights at Shoe Salon bingo hall every Fridays after her shift where she was targeted by the subject."],
+            ["case_id" => 69, "user_id" => 10916651, "observation" => "The subject is speculated to have had a relationship with the victim in the past and sought revenge by murdering her."],
+            ["case_id" => 71, "user_id" => 10916652, "observation" => "The subject has been said to have started the fire in the kitchen of his mistress after visiting her home."],
+            ["case_id" => 74, "user_id" => 10916652, "observation" => "The subjects, as speculated to be part of the organized crime group Batsi Gang has now been experimenting on plotting devices on machines to obtain information about card holders as well as money from their accounts."],
+            ["case_id" => 74, "user_id" => 10916652, "observation" => "The subjects have been reported to have been building their own skimming machines for various ATM machines nationwide. However, this is their first attempt for this year."],
+            ["case_id" => 74, "user_id" => 10916652, "observation" => "The target location is still a bank, which relates to all of their past crimes."],
+            ["case_id" => 75, "user_id" => 10916652, "observation" => "The subject has a habit of manipulating and raping women in boarding houses across the nation."],
+            ["case_id" => 75, "user_id" => 10916652, "observation" => "The subject is most likely a porn addict."],
+            ["case_id" => 77, "user_id" => 10916653, "observation" => "The victim was probably going to rat on the subject's drug dealing, that's why he was killed."],
+            //81
+            ["case_id" => 78, "user_id" => 10916653, "observation" => "The subjects have been mass counterfeiting Indian brands even in other countries. A iPhone 5S unit does not operate like an original iPhone 5S and it missing a chip uniquely obtained from Apple."],
+            ["case_id" => 78, "user_id" => 10916653, "observation" => "The fake $50 bills' signatory of Ulysses Grant has been altered to make it look like his."],
+            ["case_id" => 80, "user_id" => 10916653, "observation" => "Judging from the truck's plate number, it does indeed belong to the subject. The truck has been used for company operations such as procurement of goods."],
+            //84 START KIER
+            ["case_id" => 81, "user_id" => 10930204, "observation" => "The agent found out that the ballpen used was Pilot brand"],
+            ["case_id" => 81, "user_id" => 10930204, "observation" => "The case happened in the house of the subject"],
+            ["case_id" => 81, "user_id" => 10930204, "observation" => "The house of the subject is located at Davao City"],
+            ["case_id" => 82, "user_id" => 10930204, "observation" => "There are 2 dice and 3 decks of card used"],
+            ["case_id" => 82, "user_id" => 10930204, "observation" => "Gambling place is located at Eermita, Manila"],
+            ["case_id" => 83, "user_id" => 10930204, "observation" => "There are alot of bruises found on the body of the victim"],
+            ["case_id" => 83, "user_id" => 10930204, "observation" => "The underwear of the victim was torn into pieces"],
+            ["case_id" => 84, "user_id" => 10930205, "observation" => "A signage was found broken at the crime scene"],
+            ["case_id" => 85, "user_id" => 10930205, "observation" => "Timi Gatdula has autism"],
+            ["case_id" => 86, "user_id" => 10930205, "observation" => "The victim suffer from a broken nose"],
+            ["case_id" => 86, "user_id" => 10930205, "observation" => "Black-eye on the right eye of the victim was founded"],
+            ["case_id" => 89, "user_id" => 10930206, "observation" => "The drug being distributed was Marijuana"],
+            ["case_id" => 90, "user_id" => 10930206, "observation" => "The name of mistress is Mara Medios"],
+            ["case_id" => 91, "user_id" => 10930201, "observation" => "The subject was found mute"],
+            ["case_id" => 92, "user_id" => 10930201, "observation" => "The subject reavealed the secret to 4 persons"],
+            ["case_id" => 92, "user_id" => 10930201, "observation" => "Top secret was revealed"],
+            ["case_id" => 93, "user_id" => 10930201, "observation" => "The subject used knuckles to punch the victim"],
+            ["case_id" => 93, "user_id" => 10930201, "observation" => "The subject punched the victim 10 times in the face"],
+            ["case_id" => 93, "user_id" => 10930201, "observation" => "Bruises on the right thigh was found"],
+            ["case_id" => 95, "user_id" => 10930202, "observation" => "A random guy talks to James Martinez and tell not to jump"],
+            ["case_id" => 95, "user_id" => 10930202, "observation" => "It took 10 minutes for James Martinez to decide to jump in the building"],
+            ["case_id" => 97, "user_id" => 10930202, "observation" => "Poison was being used to kill the baby"],
+            ["case_id" => 98, "user_id" => 10930202, "observation" => "Total of 20 people was killed by the subject"],
+            ["case_id" => 99, "user_id" => 10930203, "observation" => "The subject rode a motorcycle after kidnapping an infant"],
+            ["case_id" => 101, "user_id" => 10930207, "observation" => "The car used by the subject was Subaru Forester"],
+            ["case_id" => 102, "user_id" => 10930207, "observation" => "Shabu was the drug involved in the case"],
+            ["case_id" => 102, "user_id" => 10930207, "observation" => "Total weight of Shabu was 10 lbs."],
+            ["case_id" => 102, "user_id" => 10930207, "observation" => "The shabu was found inside a car"],
+            ["case_id" => 103, "user_id" => 10930207, "observation" => "Fraternity logo was drawn in the wall"],
+            ["case_id" => 104, "user_id" => 10930208, "observation" => "Luis Vuitton was the brand of the bag being stolen"],
+            ["case_id" => 105, "user_id" => 10930208, "observation" => "The agent found out that the subject was not really a spy of his own country"],
+            ["case_id" => 106, "user_id" => 10930208, "observation" => "The agent foun out that the subject is a fake spy"],
+            ["case_id" => 107, "user_id" => 10930208, "observation" => "The car of the victim was a Honda Civic"],
+            ["case_id" => 108, "user_id" => 10930208, "observation" => "The incident happened in a motel"],
+            ["case_id" => 111, "user_id" => 10930210, "observation" => "No supporting evidence can be given by the victim"],
+            ["case_id" => 112, "user_id" => 10930210, "observation" => "There are 3 people involved in the expulsion but the victim only complained"],
+            ["case_id" => 113, "user_id" => 10930210, "observation" => "Ricardo Aglido was an ex convicted person"],
+            ["case_id" => 114, "user_id" => 10930210, "observation" => "Benigno Afrilami was drunk when he entered the court room"],
+            ["case_id" => 115, "user_id" => 10930211, "observation" => "Daniel Bercasio was heart broken, it is one of the factors why he commit rebellion"],
+            ["case_id" => 118, "user_id" => 10930212, "observation" => "Non-licensed tool was used to assemble the pieces"],
+            ["case_id" => 119, "user_id" => 10930212, "observation" => "The subject used a pistol in order to assault the victim"],
+            ["case_id" => 121, "user_id" => 10930213, "observation" => "The agent found out that Aubrey Cantindig has a brain damage"],
+            ["case_id" => 122, "user_id" => 10930213, "observation" => "A red ballpen was used to forge the signature"],
+            ["case_id" => 123, "user_id" => 10930213, "observation" => "The subject has a pending case in the Philippine National Police"],
+            ["case_id" => 124, "user_id" => 10930214, "observation" => "The subject victimized alot of people in the same place"],
+            ["case_id" => 126, "user_id" => 10930214, "observation" => "1 Million pesos worth was used by the subject in bribing"],
+            ["case_id" => 127, "user_id" => 10930214, "observation" => "The subject is in need of money because his wife was pregnant"],
+        );
 
-		);
-
-		// Uncomment the below to run the seeder
-		 DB::table('case_observations')->insert($case_observations);
-	}
+        // Uncomment the below to run the seeder
+        DB::table('case_observations')->insert($case_observations);
+    }
 
 }

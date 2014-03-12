@@ -6,7 +6,7 @@
     <!--END OF MESSAGES-->
     <!--END OF MESSAGES-->
     <div class="col-lg-4">
-        <div class="panel panel-warning">
+        <div class="panel panel-black">
             <div class="panel-heading">
                 <h3 class="panel-title">Message Info</h3>
             </div>
@@ -32,9 +32,9 @@
     <!--END OF MESSAGES-->
     <!--END OF MESSAGES-->
     <div class="col-lg-8">
-        <div class="panel panel-info">
+        <div class="panel panel-black">
             <div class="panel-heading">
-                <h3 class="panel-title">{{$message->subject}}</h3>
+                <h3 class="panel-title">Subject - {{$message->subject}}</h3>
             </div>
             <div class="panel-body" style="max-height: 450px; overflow: auto">
                 <ul class="media-list">

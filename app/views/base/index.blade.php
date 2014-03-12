@@ -11,7 +11,7 @@
                                 <div class="col-md-6 col-md-offset-3">
                                     <div class="input-group">
                                         <span class="input-group-addon input-lg c-belizehole"><i class="fa fa-user"></i></span>
-                                        <input class="form-control input-lg  c-belizehole" placeholder="juan_delacruz@gmail.com"  type="text" name="username" value="" /><br>
+                                        <input class="form-control input-lg  c-belizehole" placeholder="Username"  type="text" name="username" value="" /><br>
                                     </div>
                                 </div>
                             </div>
@@ -20,14 +20,14 @@
                                 <div class="col-md-6 col-md-offset-3">
                                     <div class="input-group">
                                         <span class="input-group-addon input-lg c-belizehole"><i class="fa fa-key"></i></span>
-                                        <input class="form-control input-lg c-belizehole" placeholder="bayanihan123" type="password" name="password" value="" /><br>
+                                        <input class="form-control input-lg c-belizehole" placeholder="Password" type="password" name="password" value="" /><br>
                                     </div>
                                 </div>
                             </div>
                             <br>
                             <div class="row">
                                 <div class="col-md-6 col-md-offset-3">
-                                    <input class="btn btn-info btn-block " type="submit" value="login" />
+                                    <input class="btn btn-primary btn-block " type="submit" value="login" />
                                 </div>
                             </div>
                         </form>

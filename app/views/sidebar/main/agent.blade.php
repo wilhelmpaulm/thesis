@@ -1,6 +1,7 @@
-<div class="panel panel-primary">
+<!--<div class="panel panel-primary">-->
+<div class="panel panel-black">
     <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-shield"></i> {{Auth::user()->division}} Agent {{Auth::user()->id}}<a href="#" type="button" class="text-right pull-right" data-toggle="collapse" data-target="#sb-content"><i class="fa fa-bars"></i></a>  </h3>
+        <h3 class="panel-title"> {{Auth::user()->division}} Agent {{Auth::user()->id}}<a href="#" type="button" class="text-right pull-right" data-toggle="collapse" data-target="#sb-content"><i class="fa fa-bars"></i></a>  </h3>
           
     </div>
 
@@ -39,6 +40,7 @@
                 <a href="{{URL::to("agent/reports-demographics")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Demographics Victims</a>
                 <a href="{{URL::to("agent/reports-demographics-subjects")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Demographics Subjects</a>
                 <a href="{{URL::to("agent/reports-locations")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Locations</a>
+                <a href="{{URL::to("agent/reports-case-timeline-comparison")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Timeline Comparison</a>
             </div>
             <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#forms"><i class="fa fa-file"></i> Form Generation</a>
             <div id="forms" class="collapse">

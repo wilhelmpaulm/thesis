@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <div class="panel panel-info">
+        <div class="panel panel-black">
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-users"></i> {{Auth::user()->division}} Agents</h3>
             </div>

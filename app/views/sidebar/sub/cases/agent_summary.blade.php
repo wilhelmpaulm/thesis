@@ -1,5 +1,5 @@
 
-<div class="panel panel-warning">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-list-ul"></i> Assignment Summary</h3>
     </div>

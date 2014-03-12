@@ -9,7 +9,8 @@ class Resource_categoriesTableSeeder extends Seeder {
 
 		$resource_categories = array(
                     ["name" => "Gadget"],
-                    ["name" => "Money"],
+                    ["name" => "Equipment"],
+                    ["name" => "Miscellaneous"],
                     ["name" => "Vehicle"],
                     ["name" => "Person"],
 		);

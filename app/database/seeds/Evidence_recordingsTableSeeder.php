@@ -2,28 +2,42 @@
 
 class Evidence_recordingsTableSeeder extends Seeder {
 
-	public function run()
-	{
-		// Uncomment the below to wipe the table clean before populating
-		 DB::table('evidence_recordings')->truncate();
+    public function run() {
+        // Uncomment the below to wipe the table clean before populating
+        DB::table('evidence_recordings')->truncate();
 
-		$evidence_recordings = array(
+        $evidence_recordings = array(
+            ["case_id" => 7, "details" => "Raymond Cadang's suicide message saying he's tired of his life, can't maintain his scholarship and he doesn't want to add to his parents' financial problems.", "owner" => "Raymond Cadang",
+                "date_recorded" => "2012-12-20", "date_received" => "2013-02-10", "file_name" => "1.mp3"],
+            ["case_id" => 83, "details" => "Actual voice record of the victim asking for help", "owner" => "Natasha Ocampo", "date_recorded" => "2008-10-11", "date_received" => "2008-11-05",
+                "file_name" => "2.mp3"],
+            ["case_id" => 84, "details" => "Voice record of the suspect in the Grave Scandal case", "owner" => "Katherine Pascual", "date_recorded" => "2010-10-12", "date_received" => "2010-11-03",
+                "file_name" => "3.mp3"],
+            ["case_id" => 86, "details" => "Voice record of the victime punched by the subject", "owner" => "Mia Serra", "date_recorded" => "2011-10-14", "date_received" => "2011-11-05",
+                "file_name" => "4.mp3"],
+            ["case_id" => 89, "details" => "Voice record of the subject talking to an old man", "owner" => "Judith Pasay", "date_recorded" => "2011-10-18", "date_received" => "2011-11-09",
+                "file_name" => "5.mp3"],
+            ["case_id" => 92, "details" => "Voice record of the subject telling the top secret to a person", "owner" => "Jesebel Osmena", "date_recorded" => "2011-12-04", "date_received" => "2011-11-20",
+                "file_name" => "6.mp3"],
+            //6
+            ["case_id" => 98, "details" => "Voice record of Janet Lim Napoles talking to a man", "owner" => "Janet Lim Napoes", "date_recorded" => "2013-12-13", "date_received" => "2013-11-19",
+                "file_name" => "7.mp3"],
+            ["case_id" => 98, "details" => "Phone call voice record by Janet Lim Napoles", "owner" => "", "date_recorded" => "2013-12-13", "date_received" => "2013-11-19",
+                "file_name" => "8.mp3"],
+            ["case_id" => 105, "details" => "Voice record of Algeirn Cupido", "owner" => "Algeirn Cupido", "date_recorded" => "2011-05-07", "date_received" => "2011-05-08",
+                "file_name" => "9.mp3"],
+            ["case_id" => 112, "details" => "Voice record of Samuel Aglipay talking to his wife", "owner" => "Samuel Aglipay", "date_recorded" => "2010-02-01", "date_received" => "2010-02-03",
+                "file_name" => "10.mp3"],
+            ["case_id" => 115, "details" => "Daniel Bercasio voice record in the phone oh his girlfriend", "owner" => "Daniel Bercasio", "date_recorded" => "2011-02-09", "date_received" => "2011-02-11",
+                "file_name" => "11.mp3"],
+            ["case_id" => 127, "details" => "Voice record of Rosanne Fuentes talking to a man", "owner" => "Rosanne Fuentes", "date_recorded" => "2012-10-12", "date_received" => "2012-10-19",
+                "file_name" => "12.mp3"],
+            ["case_id" => 130, "details" => "Voice record of Lovely Bueno and Leslie Antonio planning to forge a signature", "owner" => "Lovely Bueno", "date_recorded" => "2013-10-26", "date_received" => "2013-11-05",
+                "file_name" => "13.mp3"],
+        );
 
-			["id" => 1, "case_id" => 1, "details" => "Voice record of a man calling.", "owner" => "Eloisa Lucban", "date_recorded" => "2013-12-20", "date_received" => "2014-02-16", "file_name" => "1.mp3"],
-			["id" => 2, "case_id" => 2, "details" => "Voice record of the suspect inside the condominium", "owner" => "Elmer Reyes", "date_recorded" => "2014-01-01", "date_received" => "2014-02-10", "file_name" => "1.mp3"],
-			["id" => 3, "case_id" => 3, "details" => "Voice record of two guys fighting over a bulalo", "owner" => "Rene Casimiro", "date_recorded" => "2013-12-10", "date_received" => "2014-02-13", "file_name" => "1.mp3"],
-			["id" => 4, "case_id" => 4, "details" => "Voice record of the a girl talking to a man", "owner" => "Lita Solis", "date_recorded" => "2009-02-12", "date_received" => "2009-04-09", "file_name" => "1.mp3"],
-			["id" => 5, "case_id" => 5, "details" => "Voice record of the a boy crying", "owner" => "Joselito CUevas", "date_recorded" => "2013-03-22", "date_received" => "2013-05-11", "file_name" => "1.mp3"],
-			["id" => 6, "case_id" => 6, "details" => "Voice record of a gun", "owner" => "Ashley Pamintuan", "date_recorded" => "2012-12-29", "date_received" => "2013-03-22", "file_name" => "1.mp3"],
-			["id" => 7, "case_id" => 7, "details" => "Voice record of a lady walking", "owner" => "James Ramos", "date_recorded" => "2013-01-20", "date_received" => "2013-02-01", "file_name" => "1.mp3"],
-			["id" => 8, "case_id" => 8, "details" => "Voice record of a skidding car", "owner" => "Karla Fuentes", "date_recorded" => "2012-12-20", "date_received" => "2013-05-22", "file_name" => "1.mp3"],
-			["id" => 9, "case_id" => 9, "details" => "Voice record of a korean fighting with the police", "owner" => "Ramon Baustista", "date_recorded" => "2013-01-13", "date_received" => "2013-07-01", "file_name" => "1.mp3"],
-			["id" => 10, "case_id" => 10, "details" => "Voice record of a lady calling for help", "owner" => "Piolo Navarro", "date_recorded" => "2012-11-12", "date_received" => "2013-05-22", "file_name" => "1.mp3"],
-
-		);
-
-		// Uncomment the below to run the seeder
-		 DB::table('evidence_recordings')->insert($evidence_recordings);
-	}
+        // Uncomment the below to run the seeder
+        DB::table('evidence_recordings')->insert($evidence_recordings);
+    }
 
 }

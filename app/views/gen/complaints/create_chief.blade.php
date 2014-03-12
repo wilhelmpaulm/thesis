@@ -1,16 +1,19 @@
-<div id="content well">
-
+<div class="panel panel-black">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Steps</h3>
+                </div>
+                <div class="panel-body">
     <ul class="nav nav-pills nav-justified">
 
         <li class="active">
             <a href="#tab1" data-toggle="tab">
-                <h4> Step 1 - 4</h4>
+                <h4> Steps 1 - 4</h4>
                 <p class="">Complainant Details</p>
             </a>
         </li>
         <li class="">
             <a href="#tab2" data-toggle="tab">
-                <h4> Step 2 </h4>
+                <h4> Step 5 </h4>
                 <p class="">Sworn Statement</p>
             </a>
         </li>
@@ -19,9 +22,11 @@
     </ul>
     <br>
     <div class="progress progress-striped active">
-        <div id="pg-add" class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 25%">
-            <span id="pg-add-text">0% Completed</span>
+        <div id="pg-add" class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+            <span id="pg-add-text"></span>
         </div>
+    </div>
+    </div>
     </div>
 
 
@@ -29,7 +34,7 @@
     <div class="tab-content">
 
         <div class="tab-pane   active" id="tab1">
-            <div class="panel panel-primary">
+            <div class="panel panel-black">
                 <div class="panel-heading">
                     <h3 class="panel-title">Complaint Details</h3>
                 </div>
@@ -48,7 +53,7 @@
 
         <!--END OF TAB 3-->
         <div class="tab-pane fade" id="tab2">
-            <div class="panel panel-warning">
+            <div class="panel panel-black">
                 <div class="panel-heading">
                     <h3 class="panel-title">Sworn Statement</h3>
                 </div>
@@ -61,11 +66,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="agency_reported">Agency Reported to</label>
+                                    <label for="agency_reported">HAS THE MATTER BEEN REPORTED TO ANY AGENCY? IF SO, TO WHAT POLICE AGENCY?</label>
                                     <input type="text" class="form-control" id="agency_reported" name="agency_reported" placeholder="Agency name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="agency_report_details">Agency Report Details</label>
+                                    <label for="agency_report_details">IS THE MATTER COMPLAINED OF THE SUBJECT OF ANY COURT ACTION OR PROCEEDINGS? IF SO, WHERE?</label>
                                     <textarea class="form-control" name="agency_report_details" rows="4" cols="20" placeholder="Details . . . "></textarea>
                                 </div>
                                 <div class="form-group">
@@ -79,7 +84,7 @@
                                     <input type="text" class="form-control" id="court_action_details" name="court_action_details" placeholder="eg. Pending / Accomplished / On Hold">
                                 </div>
                                 <div class="form-group">
-                                    <label for="consoiderations">Considerations</label>
+                                    <label for="consoiderations">WHAT CONSIDERATION/S IMPELLED YOU TO REPORT TO THE NBI?</label>
                                     <textarea class="form-control" name="considerations" rows="4" cols="20" placeholder="I chose to report this incident bacause . . ."></textarea>
                                 </div>
                             </div>
@@ -88,7 +93,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <label for="narration">Narration of Facts</label>
+                                    <label for="narration">NARRATION OF FACTS</label>
                                     <textarea class="form-control" name="narration" rows="10" cols="20" placeholder="I swoore . . ."></textarea>
                                 </div>
                             </div>
@@ -119,7 +124,6 @@
 
 
 
-</div>
 
 
 <script>
@@ -128,7 +132,7 @@
         var xx = ($(this).attr("href")).substring(4, 8); //would be the # tab based on href 
         xx *= (100 / x).toFixed(2);
         $("#pg-add").css({width: xx + "%"}).removeClass("progress-bar-success");
-        $("#pg-add-text").text(xx + "% Completed");
+        $("#pg-add-text").text("");
 
         if (xx == 100) {
             $("#pg-add").addClass("progress-bar-success");

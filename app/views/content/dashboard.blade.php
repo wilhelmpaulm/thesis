@@ -2,7 +2,7 @@
     <div class="row">
 
         <div class="col-md-6" style="min-height: 400px">
-            <div class="panel panel-primary">
+            <div class="panel panel-black">
                 <div class="panel-heading">
                     <i class="fa fa-pencil fa-fw"></i> Notepad
                 </div>
@@ -16,7 +16,7 @@
                 </div>
                 <div class="panel-footer clearfix">
                     <span class="btn-group btn-group-sm pull-right">
-                        <button  class="btn btn-success btn-block">Save Changes</button>
+                        <button  class="btn btn-primary btn-block">Save Changes</button>
                     </span>
                 </div>
             </div>
@@ -27,7 +27,7 @@
         <div class="col-md-6 " style="">
             <div class="row"> 
                 <div class="col-md-12">
-                    <div class="panel panel-warning">
+                    <div class="panel panel-black">
                         <div class="panel-heading">
                             <i class="fa fa-bell fa-fw"></i> Notifications Panel
                         </div>
@@ -62,7 +62,7 @@
 
                 </div>
                 <div class="col-md-12" >
-                    <div class="panel panel-warning" >
+                    <div class="panel panel-black" >
                         <div class="panel-heading">
                             <i class="fa fa-calendar fa-fw"></i> February 6, 2014
                         </div>

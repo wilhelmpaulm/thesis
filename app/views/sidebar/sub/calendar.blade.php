@@ -1,4 +1,4 @@
-<div class="panel panel-warning">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-bookmark"></i> Schedule</h3>
     </div>

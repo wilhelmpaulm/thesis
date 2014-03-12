@@ -7,7 +7,7 @@
 
 
 
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <!-- Default panel contents -->
     <div class="panel-heading ">
         <h3 class="panel-title"><i class="fa fa-envelope"></i> Messages</h3>

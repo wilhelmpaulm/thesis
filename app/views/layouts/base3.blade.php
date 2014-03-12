@@ -9,7 +9,7 @@
         <meta name="author" content="wilhelm paul martinezz">
         <link rel="shortcut icon" href="{{URL::asset('apple-touch-icon-144.png')}}">
 
-        <title>PITCHIN</title>
+        <title>SHERLOCK</title>
 
         <!-- Bootstrap core CSS -->
         {{HTML::style("css/lumen.bootstrap.min.css")}}
@@ -17,6 +17,8 @@
         {{HTML::style("css/wilhelmpaulm.css")}}
         {{HTML::style("css/dtable3.css")}}
         {{HTML::style("css/grayscale.css")}}
+        {{HTML::style("css/wilhelm-panel.css")}}
+        
         {{HTML::script("js/jquery.js")}}
         {{HTML::script("js/grayscale.js")}}
         {{HTML::script("js/bootstrap.min.js")}}
@@ -44,7 +46,7 @@
     </head>
 
 
-    <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+    <body class="f-rob" id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
         <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
             <div class="container">
@@ -53,7 +55,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="{{URL::to("")}}">
-                        <i class="fa fa-search"></i>  <span class="light"></span>SHERLOCK
+                          <span class="fs20 f-osb"><i class="fa fa-search"></i> SHERLOCK</span>
                     </a>
                 </div>
                 <!-- /.navbar-collapse -->

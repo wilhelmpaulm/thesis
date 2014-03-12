@@ -2,25 +2,25 @@
     <div class="row">
         <div class="form-group col-md-4">
             <label for="last_name">Last Name</label>
-            <input type="text" class="form-control" id="last_name" placeholder="De La Cruz" name="last_name_s[]">
+            <input required type="text" class="form-control" id="last_name" placeholder="De La Cruz" name="last_name_s[]">
         </div>
         <div class="form-group col-md-4">
             <label for="first_name">First Name</label>
-            <input type="text" class="form-control" id="first_name" placeholder="Juan" name="first_name_s[]">
+            <input required type="text" class="form-control" id="first_name" placeholder="Juan" name="first_name_s[]">
         </div>
         <div class="form-group col-md-4">
             <label for="middle_name">Middle Name</label>
-            <input type="text" class="form-control" id="middle_name" placeholder="Ignacio" name="middle_name_s[]">
+            <input required type="text" class="form-control" id="middle_name" placeholder="Ignacio" name="middle_name_s[]">
         </div>
     </div>
     <!--            <div class="form-group">
                     <label for="alias">Alias</label>
-                    <input type="text" class="form-control" id="alias" placeholder="Boy Bawang">
+                    <input required type="text" class="form-control" id="alias" placeholder="Boy Bawang">
                 </div>-->
     <div class="row">
         <div class="form-group col-md-6">
             <label for="birthdate">Date of Birth</label>
-            <input type="date" class="form-control" id="birthdate" placeholder="factory worker" name="birthdate_s[]">
+            <input required type="date" class="form-control" id="birthdate" placeholder="factory worker" name="birthdate_s[]">
         </div>
         <div class="form-group col-md-6">
             <label for="sex">Sex</label>
@@ -38,24 +38,19 @@
         <div class="form-group col-md-6">
 
             <div class="row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-4 hidden">
                     <label for="contact_type">Contact Type</label>
-                    <?php $contact_types = Contact_type::all(); ?>
-                    <select name="contact_type_s[]" class="form-control">
-                        @foreach($contact_types as $ct)
-                        <option value="{{$ct->type}}">{{$ct->type}}</option>
-                        @endforeach
-                    </select>
+                    <input required name="contact_type_s[]" value="Mobile" type="hidden">
                 </div>
-                <div class="form-group col-md-8">
+                <div class="form-group col-md-12">
                     <label for="contact">Contact</label>
-                    <input type="text" class="form-control" id="contact" placeholder="+639999999999" name="contact_s[]">
+                    <input required type="text" class="form-control" id="contact" placeholder="+631234567890" name="contact_s[]">
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-12">
                     <label for="occupation">Occupation</label>
-                    <input type="text" class="form-control" id="occupation" placeholder="factory worker" name="occupation_s[]">
+                    <input required type="text" class="form-control" id="occupation" placeholder="Factory worker" name="occupation_s[]">
 
                     <label for="contact_type">Civil Status</label>
                     <?php $civil_statuses = Civil_status::all(); ?>

@@ -1,0 +1,22 @@
+
+.panel-black {
+  border-color: #dddddd;
+}
+
+.panel-black > .panel-heading {
+  color: #f5f5f5;
+  background-color: #333333;
+  border-color: #dddddd;
+}
+
+.panel-black > .panel-heading + .panel-collapse .panel-body {
+  border-top-color: #dddddd;
+}
+
+.panel-black > .panel-heading > .dropdown .caret {
+  border-color: #333333 transparent;
+}
+
+.panel-black > .panel-footer + .panel-collapse .panel-body {
+  border-bottom-color: #dddddd;
+}

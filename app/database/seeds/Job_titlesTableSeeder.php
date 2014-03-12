@@ -12,7 +12,6 @@ class Job_titlesTableSeeder extends Seeder {
                     ["name"=>"Agent"],
                     ["name"=>"Chief"],
                     ["name"=>"Executive Officer"],
-                    ["name"=>"Deputy Director"],
 		);
 
 		// Uncomment the below to run the seeder

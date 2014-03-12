@@ -9,17 +9,18 @@ if (Input::get("key") != null) {
 
 
 
-<div class="panel panel-primary">
+<div class="panel panel-black c-black">
     <div class="panel-heading">
         <h3 class="panel-title">Case Tracking</h3>
     </div>
     <form>
         <div class="panel-body">
-            <input type="text" name="key" class="form-control" value="{{$key}}">
+            <label>Enter tracking number </label>
+            <input type="text" name="key" placeholder="" class="form-control" value="{{$key}}">
         </div>
         <div class="panel-footer clearfix">
             <span class="btn-group btn-group-sm pull-right">
-                <button class="btn btn-primary">Save changes</button>
+                <button class="btn btn-primary">Submit</button>
             </span>
         </div>
     </form>
