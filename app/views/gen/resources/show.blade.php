@@ -1,4 +1,4 @@
-<div class="panel panel-info">
+<div class="panel panel-black">
     <div class="panel-heading clearfix">
         <p class="pull-left"><i class="fa fa-table"></i> Case Resources</p>
         

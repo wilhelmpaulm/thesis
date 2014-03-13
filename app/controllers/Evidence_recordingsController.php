@@ -14,6 +14,7 @@ class Evidence_recordingsController extends BaseController {
         $evidence = Evidence_recording::create([
                     "case_id" => Input::get("case_id"),
                     "title" => Input::get("title"),
+                    "user_id" => Auth::user()->id,
                     "details" => Input::get("details"),
                     "owner" => Input::get("owner"),
                     "date_recorded" => Input::get("date_recorded"),
@@ -26,7 +27,10 @@ class Evidence_recordingsController extends BaseController {
             $evidence->file_name = "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension();
         }
         $evidence->save();
-         Case_evidencesController::addCaseEvidence($evidence->case_id, "Recording", $evidence->id);
+        Case_evidencesController::addCaseEvidence($evidence->case_id, "Recording", $evidence->id);
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Uploaded new recording to " . $evidence->case_id, "evidence_recordings");
+
         return Redirect::back();
     }
 
@@ -50,12 +54,17 @@ class Evidence_recordingsController extends BaseController {
             $evidence->file_name = "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension();
         }
         $evidence->save();
-        
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Updated recording " . $evidence->id . "from " . $evidence->case_id, "evidence_recordings");
+
         return Redirect::back();
     }
 
     public function postDestroy($id = null) {
         $evidence = Evidence_recording::find($id);
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Deleted recording" . $evidence->id . "from " . $evidence->case_id, "evidence_recordings");
+
         $evidence->delete();
         return Redirect::back();
     }

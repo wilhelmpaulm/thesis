@@ -96,10 +96,16 @@ class AgentController extends BaseController {
         ];
         return View::make("base.cases.closed", $data);
     }
-public function getCasesList() {
+    public function getCasesList() {
+        
+        $data = [
+            "cases" => Kase::where("agent_id", "=", Auth::user()->id)->get()
+        ];
+        if(Auth::user()->job_title == "Chief"){
         $data = [
             "cases" => Kase::where("division", "=", Auth::user()->division)->get()
         ];
+        }
         return View::make("base.cases.list", $data);
     }
 
@@ -110,6 +116,7 @@ public function getCasesList() {
         return View::make("base.calendar", $data);
     }
 
+ 
     public function getResourcesRequest() {
         $data = [
 //            "num" => $num,
@@ -202,5 +209,32 @@ public function getCasesList() {
         
         
     }
-
+    public function getAgents(){
+        $data = [
+        ];
+        return View::make("base.agents", $data);
+        
+        
+    }
+    public function getClients(){
+        $data = [
+        ];
+        return View::make("base.clients", $data);
+        
+        
+    }
+    public function getResourcesList(){
+        $data = [
+        ];
+        return View::make("base.resources", $data);
+        
+        
+    }
+    public function getNotifications(){
+        $data = [
+        ];
+        return View::make("base.notifications", $data);
+        
+        
+    }
 }

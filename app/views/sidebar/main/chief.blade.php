@@ -1,6 +1,6 @@
 <div class="panel panel-black">
     <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-shield"></i> {{Auth::user()->division}} Chief {{Auth::user()->id}}<a href="#" type="button" class="text-right pull-right" data-toggle="collapse" data-target="#sb-content"><i class="fa fa-bars"></i></a>  </h3>
+        <h3 class="panel-title"> {{Auth::user()->division}} Chief {{Auth::user()->id}}<a href="#" type="button" class="text-right pull-right" data-toggle="collapse" data-target="#sb-content"><i class="fa fa-bars"></i></a>  </h3>
 
     </div>
     <div class="list-group ">
@@ -10,6 +10,8 @@
             <a href="{{URL::to("chief/dashboard")}}" class="list-group-item "><i class="fa fa-dashboard"></i> Dashboard</a>
             <a href="{{URL::to("chief/calendar")}}" class="list-group-item "><i class="fa fa-calendar"></i> Calendar</a>
             <a href="{{URL::to("chief/messages")}}" class="list-group-item "><i class="fa fa-envelope"></i> Messages</a>
+            <a href="{{URL::to("chief/agents")}}" class="list-group-item "><i class="fa fa-shield"></i> Agents</a>
+            <a href="{{URL::to("chief/clients")}}" class="list-group-item "><i class="fa fa-users"></i> Clients</a>
 
 <!--        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#messages"><i class="fa fa-envelope"></i> Messages</a>
 <div id="messages" class="collapse ">
@@ -49,11 +51,7 @@
                 <a href="{{URL::to("chief/form-subpoena")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Subpoena</a>
                 <a href="{{URL::to("chief/form-subpoena")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Coordination</a>
             </div>
-            <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#directory"><i class="fa fa-group"></i> Directory</a>
-            <div id="directory" class="collapse">
-                <a href="{{URL::to("chief/directory-sis")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> SIS</a>
-                <a href="{{URL::to("chief/directory-clients")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Clients</a>
-            </div>
+           
             <!--<a href="{{URL::to('chief/reports')}}" class="list-group-item"><i class="fa fa-book"></i> Reports</a>-->
             <a href="{{URL::to('chief/notifications')}}" class="list-group-item"><i class="fa fa-bullhorn"></i> Notifications</a>
 

@@ -1,6 +1,6 @@
-<div class="panel panel-info">
+<div class="panel panel-black">
     <div class="panel-heading clearfix">
-        <p class="pull-left"><i class="fa fa-table"></i> Case Requirements</p>
+        <p class="pull-left"><i class="fa fa-clipboard"></i> Case Requirements</p>
         <span class="btn-group btn-group-sm pull-right">
              @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
             <button class="btn  btn-success pull-right" type="button" data-toggle="modal" data-target="#addCaseRequirement">

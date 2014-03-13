@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder {
         $this->call('User_languagesTableSeeder');
 
         $this->call('Civil_statusesTableSeeder');
+        $this->call('Case_addressesTableSeeder');
+        $this->call('Complaint_addressesTableSeeder');
         $this->call('User_addressesTableSeeder');
         $this->call('Contact_typesTableSeeder');
         $this->call('User_contactsTableSeeder');

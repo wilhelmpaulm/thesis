@@ -12,7 +12,7 @@ if (Input::get("case1") != null && Input::get("case2") != null) {
 
 <div class="row ">
     <div class="col-md-12">
-        <div class="panel panel-primary">
+        <div class="panel panel-black">
             <div class="panel-heading">
                 <h3 class="panel-title">Case Timeline Comparison</h3>
             </div>

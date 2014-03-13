@@ -113,7 +113,7 @@ class ComplaintsController extends BaseController {
             if (Input::file('img_picture_v')[$index]) {
 //                var_dump(Input::file('img_picture_v')[$index]->getClientOriginalExtension());
                 Input::file('img_picture_v')[$index]->move(public_path() . "/nbi/clients/pictures", "" . $complainant->id . "." . Input::file('img_picture_v')[$index]->getClientOriginalExtension());
-                $complainant->img_picture = "".$complainant->id.".".Input::file('img_picture_v')[$index]->getClientOriginalExtension();
+                $complainant->img_picture = "" . $complainant->id . "." . Input::file('img_picture_v')[$index]->getClientOriginalExtension();
                 $complainant->save();
             }
 
@@ -157,7 +157,7 @@ class ComplaintsController extends BaseController {
                 Input::file('img_picture_s')[$index]->move(public_path() . "/nbi/clients/pictures", "" . $complainant->id . "." . Input::file('img_picture_s')[$index]->getClientOriginalExtension());
 
                 $complainant->img_picture = "" . $complainant->id . "." . Input::file('img_picture_s')[$index]->getClientOriginalExtension();
-            
+
                 $complainant->save();
             }
 //            if (Input::hasFile('img_picture_s')[$index]) {
@@ -166,6 +166,10 @@ class ComplaintsController extends BaseController {
 //            }
             $complainant->save();
         }
+
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, 0, $complaint->id, Auth::user()->id . " Added complaint " . $complaint->id, "complaints");
+
 
         return Redirect::to("agent/dashboard");
     }
@@ -192,22 +196,23 @@ class ComplaintsController extends BaseController {
             Input::file('img_right_thumb')->move(public_path() . "/nbi/complaints/right_thumb", "" . $c->id . "." . Input::file('img_right_thumb')->getClientOriginalExtension());
             $c->img_right_thumb = "" . $c->id . "." . Input::file('img_right_thumb')->getClientOriginalExtension();
             $c->save();
-            
         }
-        
+
         $case = Kase::create([
-           "status" => "Pending", 
-           "complaint_id" => $c->id, 
-           "name" => $c->name, 
-           "complainant_id" => $c->client_id, 
-           "details" => $c->narration, 
-           "division" => $c->division, 
-           "date_reported" => $c->date_reported, 
+                    "status" => "Pending",
+                    "complaint_id" => $c->id,
+                    "name" => $c->name,
+                    "complainant_id" => $c->client_id,
+                    "details" => $c->narration,
+                    "division" => $c->division,
+                    "date_reported" => $c->date_reported,
         ]);
-        
-        
-        
-        
+
+
+ $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, 0, $c->id, Auth::user()->id . " Added complaint " . $c->id, "complaints");
+
+
         return Redirect::back();
 //        var_dump($_POST);
     }

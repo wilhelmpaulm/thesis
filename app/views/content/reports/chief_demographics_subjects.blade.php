@@ -36,7 +36,7 @@ $cases = Kase::all();
 </style>
 <div class="row ">
     <div class="col-md-12">
-        <div class="panel panel-primary">
+        <div class="panel panel-black">
             <div class="panel-heading">
                 <h3 class="panel-title">Case Trends</h3>
             </div>

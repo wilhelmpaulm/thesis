@@ -1,7 +1,7 @@
 <?php $resources = Resource::all(); ?>
 <?php $resources_history = Resource_history::where("user_id", "=", Auth::user()->id)->get(); ?>
 
-<div class="panel panel-info">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-bookmark"></i> Request History</h3>
     </div>
@@ -39,7 +39,7 @@
 
                             <h4 class=" list_name ">{{$res->name}} ({{$r->amount}} pc/s.) </h4>
                             <p class="list_division label label-primary"> {{$res->division}}</p>
-                            @if($r->status == 'Approved')<p class="label label-success list_status"><i class="fa fa-check"></i> 
+                            @if($r->status == 'Approved' || $r->status == 'Returned')<p class="label label-success list_status"><i class="fa fa-check"></i> 
                                 @elseif($r->status == 'Disapproved')<p class="label label-danger list_status"><i class="fa fa-times"></i> 
                                 @elseif($r->status == 'Pending' || $r->status == "Received")<p class="label label-warning list_status"><i class="fa fa-clock-o"></i> 
                                 @endif

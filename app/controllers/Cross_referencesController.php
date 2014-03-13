@@ -17,6 +17,10 @@ class Cross_referencesController extends BaseController {
                     "table" => Input::get("table"),
                     "tags_id" => Input::get("tags_id"),
         ]);
+        
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $cr->case_id, $cr->id, Auth::user()->id . " Added cross reference " . $cr->id . "to ".Input::get("table")." ". $cr->case_id, "cross_references");
+
         return Redirect::back();
     }
 
@@ -33,7 +37,11 @@ class Cross_referencesController extends BaseController {
     }
 
     public function postDestroy($id = null) {
-        Cross_reference::find($id)->delete();
+        $cr = Cross_reference::find($id);
+          $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $cr->case_id, $cr->id, Auth::user()->id . " Added cross reference " . $cr->id . "to ".Input::get("table")." ". $cr->case_id, "cross_references");
+        $cr->delete();
+
         return Redirect::back();
     }
 

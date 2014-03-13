@@ -16,10 +16,10 @@
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label for="title">title</label>
-            <input type="text" class="form-control" id="title" placeholder="fraptiousday!" name="title">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Title Here" name="title">
             <label for="body">Body</label>
-            <textarea class="form-control" name="body" rows="4" cols="20" placeholder="this event is for . . ."></textarea>
+            <textarea class="form-control" name="body" rows="4" cols="20" placeholder="This task is for. . ."></textarea>
         </div>
 
 

@@ -16,15 +16,37 @@ foreach (Case_address::all() as $ca) {
 
 if (Input::get("type") != null && Input::get("status") != null && Input::get("location") != null) {
     $locations_get = Input::get("location");
+
+
     $case_status_get = Input::get("status");
+
     $case_type_get = Input::get("type");
+
+
     $date1 = Input::get("date_start");
     $date2 = Input::get("date_end");
 }
+
+    if($date1 ==""){
+        $date1 = "1999-01-01";
+    }
+    if($date2 ==""){
+        $date2 = "2014-01-01";
+    }
+
+
+
+    if (count($locations_get) == 0) {
+        $locations_get = $locations;
+    }
+    if (count($case_status_get) == 0) {
+        $case_status_get = ["Ongoing", "Pending", "Closed_Finished", "Closed_Unfinished", "Non-viable"];
+    }
+   
 ?>
 
 
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title">Choices</h3>
     </div>
@@ -86,7 +108,7 @@ if (Input::get("type") != null && Input::get("status") != null && Input::get("lo
     </form>
 </div>
 
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title">Locations Report</h3>
     </div>
@@ -96,7 +118,7 @@ if (Input::get("type") != null && Input::get("status") != null && Input::get("lo
 </div>
 
 
-<div class="panel panel-info">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title">Case Breakdown</h3>
     </div>
@@ -116,17 +138,17 @@ if (Input::get("type") != null && Input::get("status") != null && Input::get("lo
                 <tr>
                     <th>{{$l}}</th>
                     @foreach($case_type_get as $ct)
-                    <?php $cnum = 0;?>
-                    <?php $case_types = Case_type_tag::where("type", "=", $ct)->get();?>
-                        @foreach($case_types as $c)
-                            <?php $case_ad = Case_address::find($c->case_id);?>
-                            <?php $case = Kase::where("id", "=", $c->case_id)->whereIn("status", $case_status_get)->first();?>
-                                @if($case != null)
-                                @if($case_ad->city == $l && $case->date_assigned >= $date1 && $case->date_assigned <= $date2)
-                                <?php $cnum++;?>
-                                @endif
-                                @endif
-                        @endforeach
+                    <?php $cnum = 0; ?>
+                    <?php $case_types = Case_type_tag::where("type", "=", $ct)->get(); ?>
+                    @foreach($case_types as $c)
+                    <?php $case_ad = Case_address::find($c->case_id); ?>
+                    <?php $case = Kase::where("id", "=", $c->case_id)->whereIn("status", $case_status_get)->first(); ?>
+                    @if($case != null)
+                    @if($case_ad->city == $l && $case->date_assigned >= $date1 && $case->date_assigned <= $date2)
+                    <?php $cnum++; ?>
+                    @endif
+                    @endif
+                    @endforeach
                     <td>{{$cnum}}</td>
                     @endforeach
                 </tr>

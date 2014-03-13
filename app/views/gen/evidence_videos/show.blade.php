@@ -1,6 +1,6 @@
-<div class="panel panel-info">
+<div class="panel panel-black">
     <div class="panel-heading clearfix">
-        <p class="panel-title pull-left"><i class="fa fa-table"></i> Videos</p>
+        <p class="panel-title pull-left"><i class="fa fa-video-camera"></i> Videos</p>
         <span class="btn-group btn-group-sm pull-right">
              @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
             <button class="btn  btn-success pull-right" type="button" data-toggle="modal" data-target="#addEvidenceVideo">
@@ -14,7 +14,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Added by</th>
                     <th>Owner</th>
+                    <th>Title</th>
                     <th>Date Recorded</th>
                     <th>Date Received</th>
                     <th></th>
@@ -24,7 +26,9 @@
                 @foreach($evidence_videos as $ed)
                 <tr>
                     <td>{{$ed->id}}</td>
+                    <td>{{$ed->user_id}}</td>
                     <td>{{$ed->owner}}</td>
+                    <td>{{$ed->title}}</td>
                     <td>{{$ed->date_recorded}}</td>
                     <td>{{$ed->date_received}}</td>
                     <td>
@@ -198,11 +202,11 @@
 
 
 <div id="addEvidenceVideo" class="modal container fade" tabindex="-1" style="display: none;">
-    <div class="modal-dialog " style="width: 100%">
+    
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">Add Video</h4>
             </div>
             <form action="{{URL::to('evidence_videos/store')}}" method="POST"  enctype="multipart/form-data">
                 <input type="hidden" value="{{$case->id}}" name="case_id">
@@ -216,7 +220,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="owner">Owner</label>
-                            <input type="text" class="form-control" id="title" placeholder="fraptiousday!" name="owner" value="">
+                            <input type="text" class="form-control" id="title" placeholder="Owner" name="owner" value="">
                             <label for="date_recorded">Date Recorded</label>
                             <input type="date" class="form-control" id="date_recorded" placeholder="fraptiousday!" name="date_recorded" value="">
                             <label for="date_received">Date Received</label>
@@ -236,7 +240,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    
 </div>
 
 <!--VIDEO-->

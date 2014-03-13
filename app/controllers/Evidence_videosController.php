@@ -14,6 +14,7 @@ class Evidence_videosController extends BaseController {
         $evidence = Evidence_video::create([
                     "case_id" => Input::get("case_id"),
                     "title" => Input::get("title"),
+                    "user_id" => Auth::user()->id,
                     "details" => Input::get("details"),
                     "owner" => Input::get("owner"),
                     "date_recorded" => Input::get("date_recorded"),
@@ -27,8 +28,10 @@ class Evidence_videosController extends BaseController {
         }
         $evidence->save();
         Case_evidencesController::addCaseEvidence($evidence->case_id, "Video", $evidence->id);
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Uploaded new video to ".$evidence->case_id ,"evidence_videos");
+
         return Redirect::back();
-        
     }
 
     public function getShow($id = null) {
@@ -51,11 +54,18 @@ class Evidence_videosController extends BaseController {
             $evidence->file_name = "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension();
         }
         $evidence->save();
+        
+       $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Updated new video ".$evidence->id." from ".$evidence->case_id ,"evidence_videos");
+
+        
         return Redirect::back();
     }
 
     public function postDestroy($id = null) {
         $evidence = Evidence_video::find($id);
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Deleted video ".$evidence->id." from ".$evidence->case_id ,"evidence_videos");
         $evidence->delete();
         return Redirect::back();
     }

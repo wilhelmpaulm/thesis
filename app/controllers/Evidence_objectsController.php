@@ -15,6 +15,7 @@ class Evidence_objectsController extends BaseController {
                     "case_id" => Input::get("case_id"),
                     "title" => Input::get("title"),
                     "details" => Input::get("details"),
+            "user_id" => Auth::user()->id,
                     "owner" => Input::get("owner"),
                     "length" => Input::get("length"),
                     "width" => Input::get("width"),
@@ -29,6 +30,9 @@ class Evidence_objectsController extends BaseController {
         }
         $evidence->save();
         Case_evidencesController::addCaseEvidence($evidence->case_id, "Object", $evidence->id);
+          $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Uploaded object record" . $evidence->id . "to " . $evidence->case_id, "evidence_objects");
+
         return Redirect::back();
     }
 
@@ -54,12 +58,17 @@ class Evidence_objectsController extends BaseController {
             $evidence->file_name = "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension();
         }
         $evidence->save();
-        
+         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Updated object record" . $evidence->id . "to " . $evidence->case_id, "evidence_objects");
+
         return Redirect::back();
     }
 
     public function postDestroy($id = null) {
         $evidence = Evidence_object::find($id);
+         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Deleted object record " . $evidence->id . "to " . $evidence->case_id, "evidence_objects");
+
         $evidence->delete();
         return Redirect::back();
     }

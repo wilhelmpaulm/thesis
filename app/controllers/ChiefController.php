@@ -12,7 +12,7 @@ class ChiefController extends BaseController {
         $u = User::find(Auth::user()->id);
         $u->memo = Input::get("memo");
         $u->save();
-
+        System_logsController::createLog(Auth::user()->id, 0, $u->id, "Updated memo", "users");
         return Redirect::back();
     }
 
@@ -118,9 +118,15 @@ class ChiefController extends BaseController {
     }
     
     public function getCasesList() {
+        
+        $data = [
+            "cases" => Kase::where("agent_id", "=", Auth::user()->id)->get()
+        ];
+        if(Auth::user()->job_title == "Chief"){
         $data = [
             "cases" => Kase::where("division", "=", Auth::user()->division)->get()
         ];
+        }
         return View::make("base.cases.list", $data);
     }
 
@@ -131,12 +137,7 @@ class ChiefController extends BaseController {
         return View::make("base.calendar", $data);
     }
 
-    public function getResourcesList() {
-        $data = [
-//            "num" => $num,
-        ];
-        return View::make("base.resources.list", $data);
-    }
+ 
     public function getResourcesRequest() {
         $data = [
 //            "num" => $num,
@@ -226,6 +227,34 @@ class ChiefController extends BaseController {
             "agents" => User::where("division", "=", Auth::user()->division)->get()
         ];
         return View::make("base.forms.subpoena", $data);
+        
+        
+    }
+    public function getAgents(){
+        $data = [
+        ];
+        return View::make("base.agents", $data);
+        
+        
+    }
+    public function getClients(){
+        $data = [
+        ];
+        return View::make("base.clients", $data);
+        
+        
+    }
+    public function getResourcesList(){
+        $data = [
+        ];
+        return View::make("base.resources", $data);
+        
+        
+    }
+    public function getNotifications(){
+        $data = [
+        ];
+        return View::make("base.notifications", $data);
         
         
     }

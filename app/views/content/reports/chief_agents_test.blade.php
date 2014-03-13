@@ -35,7 +35,7 @@ $caseStatusCount = array_count_values($caseStatus);
 
 
 
-<div class="panel panel-primary ">
+<div class="panel panel-black ">
     <div class="panel-heading">
         <h3 class="panel-title">{{$a->last_name.", ".$a->first_name}}</h3>
     </div>

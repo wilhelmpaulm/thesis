@@ -1,6 +1,6 @@
-<div class="panel panel-info">
+<div class="panel panel-black">
     <div class="panel-heading clearfix">
-        <p class="pull-left"><i class="fa fa-table"></i> Objects</p>
+        <p class="pull-left"><i class="fa fa-cogs"></i> Objects</p>
         <span class="btn-group btn-group-sm pull-right">
              @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
             <button class="btn  btn-success pull-right" type="button" data-toggle="modal" data-target="#addEvidenceObject">
@@ -14,6 +14,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Added by</th>
                     <th>Owner</th>
                     <th>Details</th>
                     <th>Date Received</th>
@@ -24,6 +25,7 @@
                 @foreach($evidence_objects as $ed)
                 <tr class="clickable" type="button" >
                     <td>{{$ed->id}}</td>
+                    <td>{{$ed->user_id}}</td>
                     <td>{{$ed->owner}}</td>
                     <td>{{$ed->details}}</td>
                     <td>{{$ed->date_received}}</td>
@@ -191,11 +193,11 @@
 
 
 <div id="addEvidenceObject" class="modal container fade" tabindex="-1" style="display: none;">
-    <div class="modal-dialog " style="width: 100%">
+    
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Add Object Evidence</h4>
+                <h4 class="modal-title" id="myModalLabel">Add Object</h4>
             </div>
             <form action="{{URL::to('evidence_objects/store')}}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="case_id" value="{{$case->id}}">
@@ -210,11 +212,11 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="length">Length</label>
-                            <input type="text" class="form-control" id="length" placeholder="fraptiousday!" name="length" value="">
+                            <input type="text" class="form-control" id="length" placeholder="Length" name="length" value="">
                             <label for="width">Width</label>
-                            <input type="text" class="form-control" id="width" placeholder="fraptiousday!" name="width" value="">
+                            <input type="text" class="form-control" id="width" placeholder="Width" name="width" value="">
                             <label for="height">Height</label>
-                            <input type="text" class="form-control" id="height" placeholder="fraptiousday!" name="height" value="">
+                            <input type="text" class="form-control" id="height" placeholder="Height" name="height" value="">
                             <label for="date_received">Date Received</label>
                             <input type="date" class="form-control" id="date_received" placeholder="fraptiousday!" name="date_received"  value="">
                             <label for="file_name">File Upload</label>
@@ -232,7 +234,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    
 </div>
 
 

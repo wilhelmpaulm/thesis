@@ -18,6 +18,10 @@ class Case_requirementsController extends BaseController {
                     "date_due" => Input::get("date_due"),
                     "status" => "Active",
         ]);
+        
+         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, Input::get("case_id"), $r->id, Auth::user()->id . " Added case requirement" , "case_requirements");
+
 
         return Redirect::back();
     }
@@ -38,13 +42,17 @@ class Case_requirementsController extends BaseController {
         $r->status = Input::get("status");
         $r->save();
 
+         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $r->case_id, $r->id, Auth::user()->id . " Added updated requirement" , "case_requirements");
         return Redirect::back();
     }
 
     public function postDestroy($id = null) {
         $r = Case_requirement::find($id);
-        $r->delete();
         
+         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $r->case_id, $r->id, Auth::user()->id . " Added deleted requirement" , "case_requirements");
+        $r->delete();
         return Redirect::back();
     }
 

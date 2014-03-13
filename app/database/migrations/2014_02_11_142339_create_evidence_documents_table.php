@@ -16,6 +16,7 @@ class CreateEvidenceDocumentsTable extends Migration {
             $table->integer('case_id');
             $table->integer('origin_id');
             $table->string('title')->nullable();
+              $table->integer('user_id')->nullable();
             $table->text('details')->nullable();
             $table->string('owner')->nullable();
             $table->string('date_received')->nullable();

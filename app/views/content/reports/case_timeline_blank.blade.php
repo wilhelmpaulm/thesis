@@ -61,7 +61,7 @@ foreach($evidence_objects as $co){
 rsort($dateLoop);
 //var_dump($dateLoop);
 ?>
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title">{{$case->name}}</h3>
     </div>

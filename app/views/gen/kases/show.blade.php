@@ -3,6 +3,7 @@
 <?php $case_requirements = Case_requirement::where("case_id", "=", $case->id)->get(); ?>
 <?php $case_resources = Resource_history::where("case_id", "=", $case->id)->where("status", "=", "Approved")->orWhere("status", "=", "Received")->orWhere("status", "=", "Returned")->get(); ?>
 <?php $complaint = Complaint::find($case->complaint_id); ?>
+<?php $logs = System_log::where("case_id", "=", $case->id)->orderBy("created_at", "desc")->get(); ?>
 
 <div id="content">
     <div class="navbar navbar-default ">
@@ -53,8 +54,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
-                        <li><a href="#">Edit Details</a></li>
-                        <li><a href="#">Set Permissions</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#editDetails">Edit Details</a></li>
+                        <!--<li><a href="#">Set Permissions</a></li>-->
+                        @endif
+                        @if($case->status == "Pending" && "Chief" == Auth::user()->job_title)
+                        <li><a href="#" data-toggle="modal" data-target="#caseSet">Set Case</a></li>
                         @endif
                         @if($case->status == "Ongoing" && $case->agent_id == Auth::user()->id)
                         <li><a href="#" data-toggle="modal" data-target="#caseClose">Close Case</a></li>
@@ -84,7 +88,7 @@
             
 
 
-            <div class="panel panel-primary">
+            <div class="panel panel-black">
                 <div class="panel-heading">
                     <h3 class="panel-title">{{$case->name}}</h3>
                 </div>
@@ -232,6 +236,7 @@
             @include("content.reports.case_timeline")
         </div>
         <div class="tab-pane" id="activity">
+            @include("content.reports.case_logs")
             <!--ACTIVITY HERE-->
         </div>
         <div class="tab-pane" id="keys">
@@ -287,6 +292,30 @@
 
 
 
+<div class="modal fade" id="caseSet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Case set to non-viable</h4>
+        </div>
+        <form action="{{URL::to("cases/close/".$case->id)}}" method="post">
+            <div class="modal-body">
+                <label>password</label>
+                <input class="form-control" name="password" type="password">
+                <label>Status</label>
+                <select class="form-control" name="status">
+                    <option>Non-viable</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <span class="btn-group btn-group-sm pull-right">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
 <div class="modal fade" id="caseClose" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-content">
         <div class="modal-header">
@@ -296,8 +325,7 @@
         <form action="{{URL::to("cases/close/".$case->id)}}" method="post">
             <div class="modal-body">
                 <label>password</label>
-                <input class="form-control" name="password" type="text">
-                {{Auth::user()->password}}
+                <input class="form-control" name="password" type="password">
                 <label>Status</label>
                 <select class="form-control" name="status">
                     <option>Non-viable</option>
@@ -321,6 +349,8 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title" id="myModalLabel">Reopen Case</h4>
         </div>
+        <?php $aaa = User::find($case->agent_id);?>
+        @if($aaa->status != "Active")
         <form action="{{URL::to("cases/reopen/".$case->id)}}" method="post">
             <div class="modal-body">
                 <label>password</label>
@@ -334,6 +364,27 @@
                 </span>
             </div>
         </form>
+        @else
+        <form action="{{URL::to("cases/reassign/".$case->id)}}" method="post">
+            <div class="modal-body">
+                <label>password</label>
+                <input class="form-control" name="password" type="password">
+                <label>Agent</label>
+                <select class="form-control" name="agent_id">
+                    @foreach(User::where("division", "=", Auth::user()->division)->get() as $a)
+                    <option>{{$a->id." ".$a->last_name.", ".$a->first_name}}</option>
+                    @endforeach
+                </select>
+
+            </div>
+            <div class="modal-footer">
+                <span class="btn-group btn-group-sm pull-right">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </span>
+            </div>
+        </form>
+        @endif
     </div>
 </div>
 
@@ -354,6 +405,29 @@
                     @endforeach
                 </select>
 
+            </div>
+            <div class="modal-footer">
+                <span class="btn-group btn-group-sm pull-right">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="editDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Edit Details</h4>
+        </div>
+        <form action="{{URL::to("cases/details/".$case->id)}}" method="post">
+            <div class="modal-body">
+                <label>password</label>
+                <input class="form-control" name="password" type="password">
+                <label>Details</label>
+                <textarea name="details" class="form-control" rows="4" cols="20">{{$case->details}}</textarea>
             </div>
             <div class="modal-footer">
                 <span class="btn-group btn-group-sm pull-right">

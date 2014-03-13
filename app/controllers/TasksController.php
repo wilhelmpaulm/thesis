@@ -18,6 +18,7 @@ class TasksController extends BaseController {
                     "date_start" => Input::get("date_start"),
                     "date_end" => Input::get("date_end"),
         ]);
+        System_logsController::createLog(Auth::user()->id, 0, $task->id, "Created a task for ".Input::get('date_start'), "tasks");
 
         return Redirect::to("agent/calendar");
     }
@@ -37,11 +38,14 @@ class TasksController extends BaseController {
         $task->date_start = Input::get("date_start");
         $task->date_end = Input::get("date_end");
         $task->save();
+        
+        System_logsController::createLog(Auth::user()->id, 0, $task->id, "Updated task ".$id, "tasks");
         return Redirect::to("agent/calendar");
     }
 
     public function postDestroy($id = null) {
         $task = Task::find($id);
+        System_logsController::createLog(Auth::user()->id, 0, $task->id, "Deleted task ".$id, "tasks");
         $task->delete();
         return Redirect::to("agent/calendar");
     }

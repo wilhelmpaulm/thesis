@@ -17,6 +17,11 @@ class Case_keysController extends BaseController {
             "key" =>  Hash::make(Input::get("owner")),
         ]);
         
+        
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $key->case_id, $key->id, Auth::user()->id . " Created case key for " . $key->case_id, "case_keys");
+ 
+        
         return Redirect::back();
     }
 
@@ -33,14 +38,22 @@ class Case_keysController extends BaseController {
         $key->status = Input::get("status");
         $key->save();
         
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $key->case_id, $key->id, Auth::user()->id . " Updated case key of " . $key->case_id, "case_keys");
+
+        
         return Redirect::back();
         
     }
 
     public function postDestroy($id = null) {
         $key = Case_key::find($id);
-        $key->delete();
         
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $key->case_id, $key->id, Auth::user()->id . " Deleted case key from " . $key->case_id, "case_keys");
+
+        
+        $key->delete();
         return Redirect::back();
         
     }

@@ -7,8 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="wilhelm paul martinezz">
-        <!--<link rel="shortcut icon" href="{{URL::asset('apple-touch-icon-144.png')}}">-->
-<!--&#128269;-->
+        <link rel="shortcut icon" href="{{URL::asset('apple-touch-icon-144.png')}}">
+        <!--&#128269;-->
         <title>SHERLOCK</title>
 
         {{HTML::style("css/ColumnFilterWidgets.css")}}
@@ -61,8 +61,8 @@
         {{HTML::script("js/highcharts/modules/exporting.js")}}
         {{HTML::script("js/ColumnFilterWidgets.js")}}
         <style>
-            
-            
+
+
             body {
                 padding-top: 60px;
                 padding-bottom: 20px;
@@ -88,8 +88,8 @@
 
             }
 
-            refresh.ul.dropdown-menu{
-                width: 310px;
+            .long-down{
+                width: 360px;
 
             }
 
@@ -143,12 +143,12 @@
                         <!--<li><a href="#" class="refresh"> <span class="c-lightblue"><i class="fa fa-refresh"></i></span></a></li>-->
                         <li class="dropdown">
                             <a class="dropdown-toggle refresh " data-toggle="dropdown" href="#"><span class=""><i class="fa fa-envelope"></i> <i class="fa fa-caret-down"></i></span>                            </a>
-                            <ul class="dropdown-menu"  id="alert-messages">
+                            <ul class="dropdown-menu long-down"  id="alert-messages">
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle refresh " data-toggle="dropdown" href="#"><span class=""><i class="fa fa-bullhorn"></i>  <i class="fa fa-caret-down"></i></span>                            </a>
-                            <ul class="dropdown-menu"  id="alert-notifications">
+                            <ul class="dropdown-menu long-down"  id="alert-notifications">
                             </ul>
                         </li>
 
@@ -158,10 +158,10 @@
                             <ul class="dropdown-menu">
                                 <li> <img src="{{URL::to('nbi/agent/picture/'.$user->file_picture)}}"  class="img-circle img-responsive" style="width: 50%; margin: auto"  /></li>
                                 <li class="divider"></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-book"></i>  Profile</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-cog"></i>  Settings</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+                                <!--<li><a href="#"><i class="glyphicon glyphicon-book"></i>  Profile</a></li>-->
+                                <!--<li><a href="#"><i class="glyphicon glyphicon-cog"></i>  Settings</a></li>-->
+                                <!--<li class="divider"></li>-->
+                                <li><a href="{{URL::to("logout")}}"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -195,10 +195,10 @@
 
     <script>
         $(".refresh").on("click", function() {
-            $.get("{{URL::to('/alerts/messages')}}", function(data) {
+            $.get("{{URL::to('alerts-messages')}}", function(data) {
                 $("#alert-messages").replaceWith(data);
             });
-            $.get("{{URL::to('/alerts/notifications')}}", function(data) {
+            $.get("{{URL::to('alerts-notifications')}}", function(data) {
                 $("#alert-notifications").replaceWith(data);
             });
         });
@@ -214,6 +214,26 @@
     <script>
 //        $("body").addClass("zoom-80");
     </script>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
+                </div>
+                <form action="{{URL::to('users/update')}}">
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </form>
+            </div>
+    </div>
+
+
+
 
     <!-- Placed at the end of the document so the pages load faster -->
 </body>

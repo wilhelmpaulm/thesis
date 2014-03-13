@@ -1,7 +1,7 @@
 <?php $resources = Resource::all(); ?>
 <?php $resources_history = Resource_history::where("status", "=", "Approved")->orWhere("status", "=", "Received")->where("user_id", "=", Auth::user()->id)->get(); ?>
 
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-exchange"></i> Current Resources</h3>
     </div>
@@ -52,8 +52,8 @@
                                 @endif
                                 {{$res->category}}</p>
                             @if(Time::toNum($r->date_due)< Time::getDateTodayInt())<p class="list_created_at label label-danger"> 
-                            @elseif(Time::toNum($r->date_due) == Time::getDateTodayInt())<p class="list_created_at label label-warning"> 
-                            @else<p class="list_created_at label label-info"> 
+                                @elseif(Time::toNum($r->date_due) == Time::getDateTodayInt())<p class="list_created_at label label-warning"> 
+                                @else<p class="list_created_at label label-info"> 
                                 @endif
                                 START {{$r->date_requested}} - END {{$r->date_due}}</p>
 
@@ -68,6 +68,7 @@
         </div>
     </div>
 </div>
+
 
 
 
@@ -108,7 +109,10 @@
                             @if($h->id == $rh->id)<tr class="info">
                                 @else <tr class="">    
                                 @endif
-                                <td>{{$h->user_id}}</td>
+                                <?php $u = User::find($h->user_id)?>
+                            
+                                <td>{{$u->last_name.", ".$u->first_name}}</td>
+                                
                                 <td>{{$h->amount}}</td>
                                 <td>{{$h->status}}</td>
                                 <td>{{$h->date_requested}}</td>
@@ -157,33 +161,33 @@
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
                                 </div>
+                            </div>
                         </form>
                 </div>
+
             </div>
 
-        </div>
 
-
-        @endforeach
+            @endforeach
 
 
 
 
 
-        <script>
-            var options = {
-                valueNames: ['list_name', 'list_division', 'list_created_at', 'list_category'],
-                //        plugins: [ListFuzzySearch()]
-            };
+            <script>
+                var options = {
+                    valueNames: ['list_name', 'list_division', 'list_created_at', 'list_category'],
+                    //        plugins: [ListFuzzySearch()]
+                };
 
 
-            $(".table").dataTable();
+                $(".table").dataTable();
 
-            var resList = new List('userResource', options);
+                var resList = new List('userResource', options);
 
-            //    $.fn.modal.defaults.maxHeight = function(){
-            // subtract the height of the modal header and footer
-            //    return $(window).height() - 165; 
-            //}
+                //    $.fn.modal.defaults.maxHeight = function(){
+                // subtract the height of the modal header and footer
+                //    return $(window).height() - 165; 
+                //}
 
-        </script>
+            </script>

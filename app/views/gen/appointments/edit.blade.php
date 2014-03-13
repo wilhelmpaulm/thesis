@@ -22,17 +22,17 @@
                         </div>
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="title">title</label>
-                        <input type="text" class="form-control" id="title" placeholder="fraptiousday!" name="title" value="{{$a->title}}">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Title here!" name="title" value="{{$a->title}}">
                         <label for="body">Body</label>
-                        <textarea class="form-control" name="body" rows="4" cols="20" placeholder="this event is for . . .">{{$a->body}}</textarea>
+                        <textarea class="form-control" name="body" rows="4" cols="20" placeholder="This appointment is for. . .">{{$a->body}}</textarea>
                     </div>
 
                     <div class="form-group col-md-6">
                         <?php $str = "selected"; ?>
                         <?php $agents = User::all(); ?>
                         <?php $rec = Appointment_recipient::where("appointment_id", "=", $a->id)->get(); ?>
-                        <label for="title">title</label>
+                        <label for="title">Send To</label>
                         <select name="recipient_id[]" class="selectpicker form-control " multiple data-live-search="true" multiple data-selected-text-format="count">
                             @foreach($agents as $ag)
                             <?php $str = ""?>
@@ -42,7 +42,7 @@
                                 @endif
                             @endforeach
                             @if($ag->id != Auth::user()->id)
-                            <option value="{{$ag->id}}" {{$str}}><span class="pull-left">{{$ag->id." ".$a->last_name.", ".$ag->first_name}}</span><span class="hidden">{{"(".$ag->division.": ".$ag->job_title.")"}}</span></option>
+                            <option value="{{$ag->id}}" {{$str}}><span class="pull-left">{{$ag->id." ".$a->last_name.", ".$ag->first_name}}</span><span class="hidden"> {{"(".$ag->division.": ".$ag->job_title.")"}}</span></option>
                             @endif
                         @endforeach
                         </select>

@@ -13,12 +13,27 @@ class KasesController extends BaseController {
     public function postStore() {
         
     }
+    
+    public function postDetails($id = null) {
+        if (Hash::check(Input::get("password"), Auth::user()->password)) {
+            $case = Kase::find($id);
+            $case->details = Input::get("details");
+            $case->save();
+            $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+            System_logsController::createLog($chief->id, $case->id, $case->id, Auth::user()->id . " edited details of the case " . $case->id, "kases");
+
+        }
+        return Redirect::back();
+    }
 
     public function postClose($id = null) {
         if (Hash::check(Input::get("password"), Auth::user()->password)) {
             $case = Kase::find($id);
             $case->status = Input::get("status");
             $case->save();
+            $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+            System_logsController::createLog($chief->id, $case->id, $case->id, Auth::user()->id . " closed case " . $case->id, "kases");
+
             return Redirect::to(strtolower(Auth::user()->job_title) . "/cases-ongoing");
         }
         return Redirect::back();
@@ -30,6 +45,7 @@ class KasesController extends BaseController {
             $case->status = "Ongoing";
             $case->agent_id = Input::get("agent_id");
             $case->save();
+            System_logsController::createLog($case->agent_id, $case->id, $case->id, Auth::user()->id . " assigned case " . $case->id, "kases");
             return Redirect::to(strtolower(Auth::user()->job_title) . "/cases-ongoing");
         }
         return Redirect::back();
@@ -40,6 +56,7 @@ class KasesController extends BaseController {
             $case = Kase::find($id);
             $case->status = "Ongoing";
             $case->save();
+            System_logsController::createLog($case->agent_id, $case->id, $case->id, Auth::user()->id . " reoppened case " . $case->id, "kases");
             return Redirect::to(strtolower(Auth::user()->job_title) . "/cases-closed");
         }
         return Redirect::back();
@@ -52,6 +69,7 @@ class KasesController extends BaseController {
         $case->save();
 
 
+        System_logsController::createLog($case->agent_id, $case->id, $case->id, Auth::user()->id . " assigned case " . $case->id, "kases");
         return Redirect::back();
     }
 
@@ -75,7 +93,10 @@ class KasesController extends BaseController {
             "case_observations" => Case_observation::where("user_id", "=", Kase::find($id)->agent_id)->where("case_id", "=", Kase::find($id)->id)->get(),
             "case_keys" => Case_key::where("case_id", "=", $id)->get(),
         ];
-
+        if($id!= null){
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $id, $id, Auth::user()->id . " viewed case " .$id, "kases");
+        }
         return View::make("gen.kases.show", $data);
     }
 

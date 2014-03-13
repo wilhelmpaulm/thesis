@@ -1,6 +1,6 @@
 <?php // $case_observations = Case_observation::where("user_id", "=", $case->agent_id)->where("case_id", "=", $case->id)->get(); ?>
 
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <div class="panel-heading clearfix">
         <p class="pull-left"><i class="fa fa-search"></i> Case Observation</p>
         <span class="btn-group btn-group-sm pull-right">
@@ -16,6 +16,7 @@
             <thead>
                 <tr>
                     <th>Date</th>
+                    <th>Added by</th>
                     <th>Observation</th>
                     <th>Tags</th>
                     <th width=""></th>
@@ -28,6 +29,7 @@
                 ?>
                 <tr class="clickable" >
                     <td>{{$ed->created_at}}</td>
+                    <td>{{$ed->user_id}}</td>
                     <td>{{$ed->observation}}</td>
                     <td>
                         <?php 

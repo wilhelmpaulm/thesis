@@ -24,7 +24,9 @@ class Resource_historiesController extends BaseController {
                     "date_requested" => Input::get("date_requested"),
                     "date_due" => Input::get("date_due"),
         ]);
-
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        
+        System_logsController::createLog($chief->id, $history->case_id, $history->id, "Requested for resource -  ".Input::get('resource_id'), "resource_histories");
         return Redirect::back();
     }
 
@@ -37,6 +39,10 @@ class Resource_historiesController extends BaseController {
             $resource_history = Resource_history::find($ri);
             $resource_history->status = "Approved";
             $resource_history->save();
+            
+            
+        
+        System_logsController::createLog($resource_history->user_id, $resource_history->case_id, $resource_history->id, "Request for resource approved - id ".$resource_history->id, "resource_histories");
         }
 
         for ($index = 0; $index < count($rg); $index++) {
@@ -62,9 +68,15 @@ class Resource_historiesController extends BaseController {
                 if ($amount_taken < $resource_history->amount) {
                     $resource_history->status = "Disapproved";
                     $resource_history->save();
+                    
+                    
+        System_logsController::createLog($resource_history->user_id, $resource_history->case_id, $resource_history->id, "Request for resource dissapproved - id ".$resource_history->id, "resource_histories");
                 }
             }
         }
+        
+        
+        
         return Redirect::back();
     }
     
@@ -72,6 +84,9 @@ class Resource_historiesController extends BaseController {
         $rh = Resource_history::find($id);
         $rh->status = "Received";
         $rh->save();
+        
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $rh->case_id, $rh->id, "Received resource item - id ".$rh->id, "resource_histories");
         return Redirect::back();
         
     }
@@ -80,6 +95,8 @@ class Resource_historiesController extends BaseController {
         $rh = Resource_history::find($id);
         $rh->status = "Returned";
         $rh->save();
+         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $rh->case_id, $rh->id, "Returned resource item - id ".$rh->id, "resource_histories");
         return Redirect::back();
         
     }

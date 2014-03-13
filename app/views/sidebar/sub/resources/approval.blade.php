@@ -1,5 +1,5 @@
 
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-list"></i> Resource Approval</h3>
     </div>
@@ -289,10 +289,10 @@ $rhs_copy = $rhs->toArray();
                                     <thead>
                                         <tr>
                                             <th>Request ID</th>
+                                            <th>Requested By</th>
                                             <th>Date Requested</th>
 
                                             <th>Date Due</th>
-                                            <th>User ID</th>
                                             <th>Amount</th>
                                             <th>Available</th>
                                             <th>Choice</th>
@@ -344,7 +344,8 @@ $rhs_copy = $rhs->toArray();
                                         <tr>
                                     <input type="hidden" class="form-control" name="request_group[]" value="{{$rh['id']}}">
                                     <td>{{$rh['id']}}</td>
-                                    <td>{{$rh['user_id']}}</td>
+                                       <?php $u = User::find($rh['user_id'])?>
+                                    <td>{{$u->last_name.", ".$u->first_name}}</td>
                                     <td>{{$rh['date_requested']}}</td>
                                     <td>{{$rh['date_due']}}</td>
                                     <td>{{$rh['amount']}}</td>
@@ -368,7 +369,8 @@ $rhs_copy = $rhs->toArray();
                                     ||($date1 <= $d1temp && $date2 >= $d2temp)||($d1temp <= $date1 && $date2 <= $d2temp))
                                     <input type="hidden" class="" name="request_group[]" value="{{$rh['id']}}">
                                     <td>{{$rh['id']}}</td>
-                                    <td>{{$rh['user_id']}}</td>
+                                    <?php $u = User::find($rh['user_id'])?>
+                                    <td>{{$u->last_name.", ".$u->first_name}}</td>
                                     <td>{{$rh['date_requested']}}</td>
                                     <td>{{$rh['date_due']}}</td>
                                     <td>{{$rh['amount']}}</td>

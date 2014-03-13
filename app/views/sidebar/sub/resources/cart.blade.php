@@ -1,6 +1,6 @@
 <?php $resources = Resource::all(); ?>
 <?php $resources_history = Resource_history::where("status", "=", "Pending")->where("user_id", "=", Auth::user()->id)->get(); ?>
-<div class="panel panel-warning">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-bell"></i> Pending Resource Requests</h3>
     </div>
@@ -54,8 +54,8 @@
 
 
 @foreach($resources_history as $rh)
-<?php $resource = Resource::find($rh->id); ?>
-<div class="modal fade  container" id="user_resource_{{$r->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<?php $resource = Resource::find($rh->resource_id); ?>
+<div class="modal fade  container" id="user_resource_{{$rh->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -86,8 +86,9 @@
                         </thead>
                         <tbody>
                             @foreach($history as $h)
+                            <?php $u = User::find($h->user_id)?>
                             <tr>
-                                <td>{{$h->user_id}}</td>
+                                <td>{{$u->last_name.", ".$u->first_name}}</td>
                                 <td>{{$h->amount}}</td>
                                 <td>{{$h->status}}</td>
                                 <td>{{$h->date_requested}}</td>

@@ -16,6 +16,7 @@ class CreateEvidenceObjectsTable extends Migration {
             $table->integer('case_id');
             $table->string('owner')->nullable();
             $table->string('title')->nullable();
+              $table->integer('user_id')->nullable();
             $table->text('details')->nullable();
             $table->string('length')->nullable();
             $table->string('width')->nullable();

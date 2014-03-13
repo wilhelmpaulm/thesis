@@ -28,6 +28,7 @@ class AppointmentsController extends BaseController {
                         "appointment_id" => $appointment->id,
                         "user_id" => Input::get("recipient_id")[$index]
             ]);
+            System_logsController::createLog(Input::get("recipient_id")[$index], 0, $appointment->id, Auth::user()->id . " Created an appointment - ".Input::get('title'), "appointments");
         }
 
         return Redirect::to("agent/calendar");
@@ -48,7 +49,7 @@ class AppointmentsController extends BaseController {
         $task->date_start = Input::get("date_start");
         $task->date_end = Input::get("date_end");
         $task->save();
-        
+
         $ar = Appointment_recipient::where("appointment_id", "=", $task->id)->delete();
         $appointment_recipients = Appointment_recipient::create([
                     "appointment_id" => $task->id,
@@ -59,6 +60,7 @@ class AppointmentsController extends BaseController {
                         "appointment_id" => $task->id,
                         "user_id" => Input::get("recipient_id")[$index]
             ]);
+            System_logsController::createLog(Input::get("recipient_id")[$index], 0, $task->id, Auth::user()->id . " Updated the appointment - ".Input::get('title'), "appointments");
         }
 
 
@@ -68,8 +70,12 @@ class AppointmentsController extends BaseController {
     public function postDestroy($id = null) {
         $task = Appointment::find($id);
         $ar = Appointment_recipient::where("appointment_id", "=", $task->id)->delete();
+        $ar = Appointment_recipient::where("appointment_id", "=", $task->id)->get();
+        foreach($ar as $r){
+         System_logsController::createLog($r->user_id, 0, $task->id, Auth::user()->id . " Closed the appointment ", "appointments");
+        }
         $task->delete();
-        return Redirect::to("agent/calendar");
+         return Redirect::to("agent/calendar");
     }
 
 }

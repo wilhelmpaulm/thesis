@@ -34,29 +34,17 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group" style="">
+                                <?php $notifications = System_log::where("target_id", "=", Auth::user()->id)->orderBy('created_at', 'desc')->take(10)->get()?>
+                                @foreach($notifications as $n)
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                                    <i class="fa fa-comment fa-fw"></i> {{$n->action}}
+                                    <span class="pull-right text-muted small"><em>{{$n->created_at}}</em>
                                     </span>
                                 </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                                    </span>
-                                </a>
-
-
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-money fa-fw"></i> Payment Received
-                                    <span class="pull-right text-muted small"><em>Yesterday</em>
-                                    </span>
-                                </a>
-                                <a href="#" class=" list-group-item text-center ">View Notifications</a>
+                               @endforeach
+                                <a href="{{URL::to(strtolower(Auth::user()->job_title)."/notifications")}}" class=" list-group-item text-center ">View Notifications</a>
                             </div>
-                            <!-- /.list-group -->
-
                         </div>
-                        <!-- /.panel-body -->
                     </div>
 
 
@@ -64,43 +52,24 @@
                 <div class="col-md-12" >
                     <div class="panel panel-black" >
                         <div class="panel-heading">
-                            <i class="fa fa-calendar fa-fw"></i> February 6, 2014
+                            <i class="fa fa-calendar fa-fw"></i> Tasks
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body" >
                             <div class="list-group" style="">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-cutlery fa-fw"></i> Eat breakfast
-                                    <span class="pull-right text-muted small"><em>7:00 AM</em>
+                               <?php $cal = Task::where("user_id", "=", Auth::user()->id)->orderBy('created_at', 'desc')->take(10)->get()?>
+                                @foreach($cal as $c)
+                                <a href="{{URL::to(strtolower(Auth::user()->job_title)."/calendar")}}" class="list-group-item">
+                                    <i class="fa fa-comment fa-fw"></i> {{$c->title}}
+                                    <span class="pull-right text-muted small"><em>{{$c->date_start}} to {{$c->date_end}}</em>
                                     </span>
                                 </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-clock-o fa-fw"></i> Attend thesis meeting
-                                    <span class="pull-right text-muted small"><em>11:00 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-cutlery fa-fw"></i> Have lunch with Janine
-                                    <span class="pull-right text-muted small"><em>12:00 PM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-clock-o fa-fw"></i> Meeting with Ms. Stef
-                                    <span class="pull-right text-muted small"><em>2:00 PM</em>
-                                    </span>
-                                </a>
-
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> Design DB (thesis)
-                                    <span class="pull-right text-muted small"><em>3:30 PM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class=" list-group-item text-center">View Calendar</a>
+                               @endforeach
+                                
+                                <a href="{{URL::to(strtolower(Auth::user()->job_title)."/calendar")}}" class=" list-group-item text-center">View Calendar</a>
                             </div>
                             <!-- /.list-group -->
-
                         </div>
-                        <!-- /.panel-body -->
                     </div>
 
 

@@ -14,6 +14,7 @@ class Evidence_picturesController extends BaseController {
         $evidence = Evidence_picture::create([
                     "case_id" => Input::get("case_id"),
                     "title" => Input::get("title"),
+                    "user_id" => Auth::user()->id,
                     "details" => Input::get("details"),
                     "owner" => Input::get("owner"),
                     "date_taken" => Input::get("date_taken"),
@@ -26,7 +27,11 @@ class Evidence_picturesController extends BaseController {
             $evidence->file_name = "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension();
         }
         $evidence->save();
-         Case_evidencesController::addCaseEvidence($evidence->case_id, "Picture", $evidence->id);
+        Case_evidencesController::addCaseEvidence($evidence->case_id, "Picture", $evidence->id);
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Uploaded picture" . $evidence->id . "to " . $evidence->case_id, "evidence_pictures");
+
+
         return Redirect::back();
     }
 
@@ -50,12 +55,18 @@ class Evidence_picturesController extends BaseController {
             $evidence->file_name = "" . $evidence->id . "." . Input::file('file_name')->getClientOriginalExtension();
         }
         $evidence->save();
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Updated picture" . $evidence->id . "to " . $evidence->case_id, "evidence_pictures");
+
 
         return Redirect::back();
     }
 
     public function postDestroy($id = null) {
         $evidence = Evidence_picture::find($id);
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Deleted picture" . $evidence->id . "to " . $evidence->case_id, "evidence_pictures");
+
         $evidence->delete();
         return Redirect::back();
     }

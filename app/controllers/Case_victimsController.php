@@ -49,6 +49,9 @@ class Case_victimsController extends BaseController {
             $complainant->img_picture = "" . $complainant->id . "." . Input::file('img_picture_c')->getClientOriginalExtension();
             $complainant->save();
         }
+         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, Input::get("case_id"), $complainant->id, Auth::user()->id . " Added case victim to" . $complainant->id, "case_victims");
+
 
         return Redirect::back();
     }

@@ -42,9 +42,14 @@
                 $mess = Message::find($m->message_id);
 //                $sender = User::find($message->sender);
                 $recipients = Message_recipient::where("message_id", "=", $mess->id)->get();
+                $active = "";
+                if($message->id == $mess->id){
+                    $active = "active";
+                }
+                
                 ?>
                 <li style="" class="">
-                    <a  id=""href="{{URL::to(strtolower(Auth::user()->job_title)."/messages/".$mess->id)}}"class=" list-group-item ">
+                    <a  id=""href="{{URL::to(strtolower(Auth::user()->job_title)."/messages/".$mess->id)}}"class=" list-group-item {{$active}} ">
                         <h4 class=" list_subject">{{$mess->subject}}</h4>
                         <p class="list_date label label-info"><i class="fa fa-calendar"></i> {{$mess->created_at}}</p>
                         <p class="label label-success list_status"> <i class="fa fa-user"></i> {{$mess->sender}}</p>
@@ -75,7 +80,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Add message</h4>
+            <h4 class="modal-title" id="myModalLabel">Add Message</h4>
         </div>
         <form action="{{URL::to('messages/store')}}" method="POST">
             <div class="modal-body">

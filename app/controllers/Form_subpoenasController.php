@@ -20,6 +20,7 @@ class Form_subpoenasController extends BaseController {
             "chief" => Input::get("chief"),
         ]);
         
+        
         return Redirect::to(strtolower(Auth::user()->job_title)."/cases-ongoing/".Input::get("case_id"));
     }
 

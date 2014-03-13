@@ -18,6 +18,12 @@ class Case_observationsController extends BaseController {
         ]);
         
         TagsController::addTags($co->id, "case_observations", Input::get("tags").", ".$co->created_at);
+        
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, Input::get("case_id"), $co->id, Auth::user()->id . " Added case observations to" . $co->id, "case_observations");
+
+        
+        
         return Redirect::back();
 //        var_dump($_POST);
     }
@@ -37,7 +43,13 @@ class Case_observationsController extends BaseController {
     public function postDestroy($id = null) {
         $co  = Case_observation::find($id);
         Tag::where("reference_id", "=", $co->id)->where("table", "=", "case_observations")->delete();
+        
+        
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, Input::get("case_id"), $co->id, Auth::user()->id . " Deleted case observations to" . $co->id, "case_observations");
         $co->delete();
+
+        
         return Redirect::back();
     }
 

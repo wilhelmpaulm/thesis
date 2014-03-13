@@ -1,6 +1,14 @@
 <?php
 $dateLoop = [];
 
+
+
+foreach ($logs as $co) {
+    if (!in_array($co->created_at, $dateLoop)) {
+        array_push($dateLoop, $co->created_at);
+    }
+}
+
 foreach ($case_observations as $co) {
     if (!in_array($co->created_at, $dateLoop)) {
         array_push($dateLoop, $co->created_at);
@@ -41,7 +49,7 @@ foreach($evidence_objects as $co){
 rsort($dateLoop);
 //var_dump($dateLoop);
 ?>
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title">Timeline</h3>
     </div>
@@ -63,6 +71,32 @@ rsort($dateLoop);
 
 
 
+
+            @for($i = 0; $i < count($logs); $i++)
+
+            @if($dl == $logs[$i]['created_at']) 
+            @if($i % 2 == 0 ) 
+            <li class="timeline-inverted">
+                @else
+            <li>
+                @endif
+                @if($i == 0)
+                <div class="timeline-badge info"><i class="fa fa-list"></i></div>
+                @endif
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Case action</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p>{{$logs[$i]['action']}}</p>
+                        <p><small class="text-muted label label-info"><i class="fa fa-clock-o"></i> {{$logs[$i]["created_at"]}}</small></p>
+                    </div>
+                </div>
+            </li>
+            @endif
+            @endfor
+            
+            <!--ENDLOOP-->
 
             @for($i = 0; $i < count($case_observations); $i++)
 

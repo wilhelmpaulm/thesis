@@ -37,11 +37,13 @@ if (Input::get("key") != null) {
 
 
 
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title">{{$case_key->owner." - ".$case->name}}</h3>
     </div>
     <div class="panel-body c-black">
+        
+        @if($case_key->status == "Active")
          <table class="table table-condensed table-bordered ">
             <thead>
                 <tr>
@@ -69,7 +71,10 @@ if (Input::get("key") != null) {
                 @endforeach
             </tbody>
         </table>
-    </div>
+        @else
+        <p class="lead">Your key has been deactivated please contact your assigned agent</p>
+        @endif
+     </div>
 </div>
 @endif
 @endif

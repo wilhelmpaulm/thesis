@@ -1,5 +1,5 @@
 
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-download"></i> Request Resource</h3>
     </div>
@@ -96,6 +96,7 @@
                                 <h4 class=" list_name ">{{$r->name}}</h4>
                                 <p class="label label-info list_status">{{$r->status}}</p>
                                 <p class="label label-default list_category">{{$r->category}}</p>
+                                <p class="label label-default list_info">{{$r->division}}</p>
                                 <p class="list_created_at label label-info">{{$r->created_at}}</p>
 
 
@@ -133,6 +134,7 @@
                                 <h4 class=" list_name ">{{$r->name}}</h4>
                                 <p class="label label-info list_status">{{$r->status}}</p>
                                 <p class="label label-default list_category">{{$r->category}}</p>
+                                <p class="label label-default list_info">{{$r->division}}</p>
                                 <p class="list_created_at label label-info">{{$r->created_at}}</p>
 
 
@@ -170,6 +172,7 @@
                                 <h4 class=" list_name ">{{$r->name}}</h4>
                                 <p class="label label-info list_status">{{$r->status}}</p>
                                 <p class="label label-default list_category">{{$r->category}}</p>
+                                <p class="label label-default list_info">{{$r->division}}</p>
                                 <p class="list_created_at label label-info">{{$r->created_at}}</p>
 
 
@@ -207,6 +210,7 @@
                                 <h4 class=" list_name ">{{$r->name}}</h4>
                                 <p class="label label-info list_status">{{$r->status}}</p>
                                 <p class="label label-default list_category">{{$r->category}}</p>
+                                <p class="label label-default list_info">{{$r->division}}</p>
                                 <p class="list_created_at label label-info">{{$r->created_at}}</p>
 
 
@@ -257,8 +261,9 @@
                         </thead>
                         <tbody>
                             @foreach($history as $h)
+                           <?php $u = User::find($h->user_id)?>
                             <tr>
-                                <td>{{$h->user_id}}</td>
+                                <td>{{$u->last_name.", ".$u->first_name}}</td>
                                 <td>{{$h->amount}}</td>
                                 <td>{{$h->status}}</td>
                                 <td>{{$h->date_requested}}</td>

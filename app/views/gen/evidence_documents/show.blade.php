@@ -1,6 +1,6 @@
-<div class="panel panel-info">
+<div class="panel panel-black">
     <div class="panel-heading clearfix">
-        <p class="pull-left"><i class="fa fa-table"></i> Documents</p>
+        <p class="pull-left"><i class="fa fa-file"></i> Documents</p>
         <span class="btn-group btn-group-sm pull-right">
              @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
             <button class="btn  btn-success  pull-right" type="button" data-toggle="modal" data-target="#addEvidenceDocument">
@@ -14,6 +14,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Added by</th>
                     <th>Owner</th>
                     <th>Details</th>
                     <th>Date Received</th>
@@ -24,6 +25,7 @@
                 @foreach($evidence_documents as $ed)
                 <tr class="clickable" >
                     <td>{{$ed->id}}</td>
+                    <td>{{$ed->user_id}}</td>
                     <td>{{$ed->owner}}</td>
                     <td>{{$ed->details}}</td>
                     <td>{{$ed->date_received}}</td>
@@ -236,7 +238,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <h4 class="modal-title" id="myModalLabel">Add Document</h4>
         </div>
         <form action="{{URL::to('evidence_documents/store')}}" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="case_id" value="{{$case->id}}">
@@ -251,7 +253,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="owner">Owner</label>
-                        <input type="text" class="form-control" id="title" placeholder="fraptiousday!" name="owner" value="">
+                        <input type="text" class="form-control" id="title" placeholder="Owner" name="owner" value="">
                         <label for="date_received">Date Received</label>
                         <input type="date" class="form-control" id="date_received" placeholder="fraptiousday!" name="date_received" value="">
                         <label for="file_name">File Upload</label>

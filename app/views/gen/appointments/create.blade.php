@@ -16,18 +16,18 @@
             </div>
         </div>
         <div class="form-group col-md-3">
-            <label for="title">title</label>
-            <input type="text" class="form-control" id="title" placeholder="fraptiousday!" name="title">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Title here" name="title">
             <label for="body">Body</label>
-            <textarea class="form-control" name="body" rows="4" cols="20" placeholder="this event is for . . ."></textarea>
+            <textarea class="form-control" name="body" rows="4" cols="20" placeholder="This appointment is for. . ."></textarea>
         </div>
         <div class="form-group col-md-6">
             <?php $agents = User::all(); ?>
-            <label for="title">title</label>
+            <label for="title">Send To</label>
             <select name="recipient_id[]" class="selectpicker form-control " multiple data-live-search="true" multiple data-selected-text-format="count">
                 @foreach($agents as $a)
                 @if($a->id != Auth::user()->id)
-                <option value="{{$a->id}}" ><span class="pull-left">{{$a->id." ".$a->last_name.", ".$a->first_name}}</span><span class="hidden">{{"(".$a->division.": ".$a->job_title.")"}}</span></option>
+                <option value="{{$a->id}}" ><span class="pull-left">{{$a->id." ".$a->last_name.", ".$a->first_name}}</span><span class="hidden"> {{"(".$a->division.": ".$a->job_title.")"}}</span></option>
                 @endif
                 @endforeach
             </select>
