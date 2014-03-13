@@ -351,21 +351,13 @@
         </div>
         <?php $aaa = User::find($case->agent_id);?>
         @if($aaa->status != "Active")
-        <form action="{{URL::to("cases/reopen/".$case->id)}}" method="post">
-            <div class="modal-body">
-                <label>password</label>
-                <input class="form-control" name="password" type="password">
-
-            </div>
-            <div class="modal-footer">
-                <span class="btn-group btn-group-sm pull-right">
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </span>
-            </div>
-        </form>
-        @else
-        <form action="{{URL::to("cases/reassign/".$case->id)}}" method="post">
+        <div class=" text-center">
+            <hr>
+        <p class="lead">The current assigned agents is {{$aaa->status}}</p>
+        <p class="lead">Please assign a new agent for the case.</p>
+            <hr>
+        </div>
+         <form action="{{URL::to("cases/reassign/".$case->id)}}" method="post">
             <div class="modal-body">
                 <label>password</label>
                 <input class="form-control" name="password" type="password">
@@ -375,6 +367,21 @@
                     <option>{{$a->id." ".$a->last_name.", ".$a->first_name}}</option>
                     @endforeach
                 </select>
+
+            </div>
+            <div class="modal-footer">
+                <span class="btn-group btn-group-sm pull-right">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </span>
+            </div>
+        </form>
+        
+        @else
+       <form action="{{URL::to("cases/reopen/".$case->id)}}" method="post">
+            <div class="modal-body">
+                <label>password</label>
+                <input class="form-control" name="password" type="password">
 
             </div>
             <div class="modal-footer">

@@ -71,7 +71,13 @@ class ComplaintsController extends BaseController {
         }
         $complainant->save();
 
-
+         if(Input::get("complainant_victim") == "Yes"){
+            $complaint_victims = Complaint_victim::create([
+                        "complaint_id" => $complaint->id,
+                        "client_id" => $complainant->id,
+            ]);
+            
+        }
 
         for ($index = 0; $index < count(Input::get("last_name_v")); $index++) {
             $complainant = Client::create([
@@ -119,6 +125,9 @@ class ComplaintsController extends BaseController {
 
             $complainant->save();
         }
+        
+       
+        
         for ($index = 0; $index < count(Input::get("last_name_s")); $index++) {
             $complainant = Client::create([
                         "last_name" => Input::get("last_name_s")[$index],

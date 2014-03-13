@@ -22,12 +22,12 @@
             <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#cases"><i class="fa fa-suitcase"></i> Cases</a>
             <div id="cases" class="collapse ">
                 <a href="{{URL::to("secretary/cases-list")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Case List</a>
-                <a href="{{URL::to("secretary/cases-add")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Continue Complaint</a>
+                <a href="{{URL::to("secretary/cases-add")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Add Complaint</a>
             </div>
-            <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#resources"><i class="fa fa-list-alt"></i> Resources</a>
-            <div id="resources" class="collapse">
-                <a href="{{URL::to("secretary/resources-list")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Resource List</a>
-            </div>
+            <!--<a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#resources"><i class="fa fa-list-alt"></i> Resources</a>-->
+            <!--<div id="resources" class="collapse">-->
+                <!--<a href="{{URL::to("secretary/resources-list")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Resource List</a>-->
+            <!--</div>-->
            
             <!--<a href="{{URL::to('secretary/reports')}}" class="list-group-item"><i class="fa fa-book"></i> Reports</a>-->
             <a href="{{URL::to('secretary/notifications')}}" class="list-group-item"><i class="fa fa-bullhorn"></i> Notifications</a>

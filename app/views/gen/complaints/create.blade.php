@@ -87,7 +87,13 @@
                         </span>
                     </div>
                     <div class="panel-body" id="add_victim_panel">
-
+                        <label>Is the complainant also a victim?</label>
+                        <select name="complainant_victim" class="form-control" >
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                        <br>
+                        <br>
                     </div>
                     <div class="panel-footer clearfix">
                         <div class="btn-group btn-group-sm pull-right">

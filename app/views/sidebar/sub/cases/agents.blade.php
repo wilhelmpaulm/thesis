@@ -68,6 +68,7 @@
         "cases_ongoing" => $ucs_ongoing->count(),
         "cases_finished" => $ucs_finished->count(),
     ];
+        $cases_held = $ucs->count();
 
     array_push($aCom, $criteria);
     ?>
@@ -104,18 +105,50 @@
                     <div class="col-lg-6">
                         <h4 class="">Cases Breakdown</h4>
                         <div class="progress progress-striped active">
-                            <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{($ucs_ongoing->count()    /$ucs->count())*100}}%">
-                                <span class="">{{round($ucs_ongoing->count()    /$ucs->count(), 2)*100}}%</span>
+                            @if($ucs_ongoing->count() == 0)
+                            <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                <span class="">0%</span>
                             </div>
-                            <div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{($ucs_finished->count()    /$ucs->count())*100}}%">
-                                <span class="">{{round($ucs_finished->count()    /$ucs->count(),2)*100}}%</span>
+                            
+                            @else
+                            <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{($ucs_ongoing->count()/$cases_held)*100}}%">
+                                <span class="">{{round($ucs_ongoing->count()    /$cases_held, 2)*100}}%</span>
                             </div>
-                            <div class="progress-bar progress-bar-warning"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{($ucs_unfinished->count()    /$ucs->count())*100}}%">
-                                <span class="">{{round($ucs_unfinished->count()    /$ucs->count(), 2)*100}}%</span>
+                            @endif
+                            
+                            
+                             @if($ucs_finished->count() == 0)
+                            <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                <span class="">0%</span>
                             </div>
-                            <div class="progress-bar progress-bar-info"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{($ucs_nonviable->count()    /$ucs->count())*100}}%">
-                                <span class="">{{round($ucs_nonviable->count()    /$ucs->count(),2)*100}}%</span>
+                            
+                            @else
+                            <div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{($ucs_finished->count()/$cases_held)*100}}%">
+                                <span class="">{{round($ucs_finished->count()    /$cases_held,2)*100}}%</span>
                             </div>
+                            @endif
+                            
+                             @if($ucs_unfinished->count() == 0)
+                            <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                <span class="">0%</span>
+                            </div>
+                            
+                            @else
+                            <div class="progress-bar progress-bar-warning"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{($ucs_unfinished->count()    /$cases_held)*100}}%">
+                                <span class="">{{round($ucs_unfinished->count()    /$cases_held, 2)*100}}%</span>
+                            </div>
+                            @endif
+                            
+                                 @if($ucs_nonviable->count()  == 0)
+                            <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                <span class="">0%</span>
+                            </div>
+                            
+                            @else
+                            <div class="progress-bar progress-bar-info"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: {{($ucs_nonviable->count()    /$cases_held)*100}}%">
+                                <span class="">{{round($ucs_nonviable->count()    /$cases_held,2)*100}}%</span>
+                            </div>
+                            @endif
                         </div>
                         <p class="label label-primary">Ongoing </p>
                         <p  class="label label-success">Closed Finished </p>

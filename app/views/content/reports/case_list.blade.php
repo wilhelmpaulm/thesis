@@ -26,7 +26,14 @@
                         @else<p class="label label-danger">
                         @endif
                         {{$c->status}}</p></td>
-                    <td>{{$c->name}}</td>
+                    <td>
+                        @if($c->status == "Pending")<a href="{{URL::to(strtolower(Auth::user()->job_title).'/cases-pending/'.$c->id)}}">
+                        @elseif($c->status == "Ongoing")<a href="{{URL::to(strtolower(Auth::user()->job_title).'/cases-ongoing/'.$c->id)}}">
+                        @elseif($c->status == "Non-viable")<a href="{{URL::to(strtolower(Auth::user()->job_title).'/cases-non-viable/'.$c->id)}}">
+                        @else<a href="{{URL::to(strtolower(Auth::user()->job_title).'/cases-closed/'.$c->id)}}">
+                        @endif
+                        
+                        {{$c->name}}</a></td>
                     <td>{{$c->agent_id}}</td>
                     <td>{{$c->date_reported}}</td>
                     <td>{{$c->date_assigned}}</td>

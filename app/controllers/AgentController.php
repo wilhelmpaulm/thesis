@@ -96,16 +96,13 @@ class AgentController extends BaseController {
         ];
         return View::make("base.cases.closed", $data);
     }
-    public function getCasesList() {
+     public function getCasesList() {
         
-        $data = [
-            "cases" => Kase::where("agent_id", "=", Auth::user()->id)->get()
-        ];
-        if(Auth::user()->job_title == "Chief"){
+        
         $data = [
             "cases" => Kase::where("division", "=", Auth::user()->division)->get()
         ];
-        }
+        
         return View::make("base.cases.list", $data);
     }
 
