@@ -16,14 +16,23 @@ class MainController extends BaseController {
 //            BadgesController::addBadge(Auth::user()->id, 1);
             $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
             System_logsController::createLog($chief->id, 0, 0, "Logged in the system", "main");
-            return Redirect::to('agent/dashboard');
+
+            if (Auth::user()->job_title == "Chief") {
+                return Redirect::to('chief/dashboard');
+            } else if (Auth::user()->job_title == "Agent") {
+                return Redirect::to('agent/dashboard');
+            } else if (Auth::user()->job_title == "Secretary") {
+                return Redirect::to('secretary/dashboard');
+            } else {
+                return Redirect::to('agent/dashboard');
+            }
         } else {
             return Redirect::to('index');
         }
     }
 
     public function getLogout() {
-            $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
         System_logsController::createLog($chief->id, 0, 0, "Logged out of the system", "main");
         Auth::logout();
         return Redirect::to("index");
@@ -55,14 +64,13 @@ class MainController extends BaseController {
 
         return Redirect::to("me/index");
     }
-    
-    
-    public function getAlertsNotifications(){
+
+    public function getAlertsNotifications() {
         return View::make("alerts.notifications");
     }
-    public function getAlertsMessages(){
+
+    public function getAlertsMessages() {
         return View::make("alerts.messages");
     }
-    
 
 }

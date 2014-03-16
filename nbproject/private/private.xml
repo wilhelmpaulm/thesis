@@ -3,19 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/resources/approval.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/base/cases/add.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/Cross_referencesController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/calendar.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/resources/request.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/Resource_historiesController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/complaints/create_chief.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/base/tracking.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/database/seeds/Case_addressesTableSeeder.php</file>
-            <file>file:/D:/wamp/www/nbi/app/database/seeds/Complaint_addressesTableSeeder.php</file>
-            <file>file:/D:/wamp/www/nbi/app/database/seeds/Resource_historiesTableSeeder.php</file>
-            <file>file:/D:/wamp/www/nbi/app/database/seeds/DatabaseSeeder.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/complaints/create.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/layouts/base2.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/messages.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/messages.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/layouts/base.blade.php</file>
         </group>
     </open-files>
 </project-private>

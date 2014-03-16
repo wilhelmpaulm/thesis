@@ -172,7 +172,7 @@ class ChiefController extends BaseController {
 
     public function getReportsAgents() {
         $data = [
-            "agents" => User::where("division", "=", Auth::user()->division)->get()
+            "agents" => User::where("division", "=", Auth::user()->division)->where("job_title", "!=", "Secretary")->get()
         ];
         return View::make("base.reports.chief_agents", $data);
     }

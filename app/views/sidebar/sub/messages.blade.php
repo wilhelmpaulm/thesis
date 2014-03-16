@@ -1,5 +1,5 @@
-<?php // $resources = Resource::all();     ?>
-<?php // $resources_history = Resource_history::where("status", "=", "Pending")->where("user_id", "=", Auth::user()->id)->get();   ?>
+<?php // $resources = Resource::all();      ?>
+<?php // $resources_history = Resource_history::where("status", "=", "Pending")->where("user_id", "=", Auth::user()->id)->get();    ?>
 <style>
 
 
@@ -43,10 +43,12 @@
 //                $sender = User::find($message->sender);
                 $recipients = Message_recipient::where("message_id", "=", $mess->id)->get();
                 $active = "";
-                if($message->id == $mess->id){
-                    $active = "active";
+
+                if ($message != null) {
+                    if ($message->id == $mess->id) {
+                        $active = "active";
+                    }
                 }
-                
                 ?>
                 <li style="" class="">
                     <a  id=""href="{{URL::to(strtolower(Auth::user()->job_title)."/messages/".$mess->id)}}"class=" list-group-item {{$active}} ">

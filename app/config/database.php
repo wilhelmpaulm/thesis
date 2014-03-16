@@ -62,6 +62,16 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
+		'mysql2' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'wilhelmp_sherlock',
+			'username'  => 'wilhelmp_admin',
+			'password'  => 'pawie2062',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

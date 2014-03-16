@@ -111,9 +111,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>About SHERLOCK</h2>
-                <p>SHERLOCK is a premium quality, free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, all you need to do is download the template on the preview page. You can use this template for any purpose, personal or commercial.</p>
-                <p>This striking, black and white theme features stock photographs by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Map skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>With this template, just the slightest splash of color can make a huge impact on the overall presentation and design.</p>
+                <p>This project is in partial fulfillment of THSIS01 for BS Information Systems students.</p>
+                <p>The system was developed by <a href="http://wilhelmpaulm.com/">wilhelmpaulm</a> along with his group mates <a href="http://twitter.com/janinekau">@janinekau</a></p>
+                <p><a href="http://twitter.com/kieruntalan">@kieruntalan</a> and <a href="https://twitter.com/enricoespenesin">@enricoespenesin</a></p>
             </div>
         </div>
     </section>
@@ -122,14 +122,14 @@
         <div class="download-section">
             <div class="container">
                <h2>Contact TEAM PAYASO</h2>
-                <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
+                <p>Feel free to email us to provide some feedback on our project!</p>
                 <p>teampayaso@wilhelmpaulm.com</p>
                 <ul class="list-inline banner-social-buttons">
-                    <li><a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    <li><a href="https://twitter.com/wilhelmpaulm" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
                     </li>
-                    <li><a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    <li><a href="https://github.com/wilhelmpaulm" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
                     </li>
-                    <li><a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                    <li><a href="https://plus.google.com/wilhelmpaulm/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
                     </li>
                 </ul>
             </div>
