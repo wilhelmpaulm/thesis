@@ -21,22 +21,42 @@ $finished_cases = Kase::where("agent_id", "=", $a->id)->where("status", "=", "Cl
         <div class="row ">
             <div class="col-md-4">
                 <!--style="min-width: 310px; height: 400px; margin: 0 auto"-->
+                
+                @if($agent_cases->count() != 0)
                 <div id="container{{$a->id}}" ></div>
-
+                @else
+                <div class="text-center lead">
+                    <p>No cases found</p>
+                </div>
+                @endif
+                
+                
                 <table id="datatable{{$a->id}}" class="table table-hover table-bordered table-striped">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Jane</th>
+                            <th>Number of cases</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <tr>
-                            <th>Apples</th>
-                            <td>3</td>
+                            <th>Ongoing</th>
+                            <td>{{$ongoing_cases->count()}}</td>
                         </tr>
-
+                        <tr>
+                            <th>Finished</th>
+                            <td>{{$finished_cases->count()}}</td>
+                        </tr>
+                        <tr>
+                            <th>Unfinished</th>
+                            <td>{{$unfinished_cases->count()}}</td>
+                        </tr>
+                        <tr>
+                            <th>Non-viable</th>
+                            <td>{{$nonviable_cases->count()}}</td>
+                        </tr>
+                       
                     </tbody>
                 </table>
             </div>
@@ -59,7 +79,7 @@ $finished_cases = Kase::where("agent_id", "=", $a->id)->where("status", "=", "Cl
                 table: document.getElementById('datatable{{$a->id}}')
             },
             chart: {
-                type: 'pie'
+                type: 'column'
             },
             title: {
                 text: 'Case status ratio'
@@ -78,7 +98,7 @@ $finished_cases = Kase::where("agent_id", "=", $a->id)->where("status", "=", "Cl
                         enabled: true,
                         color: '#000000',
                         connectorColor: '#000000',
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        format: '<b>{point.name}</b>: <br>{point.y}'
                     },
 //                    startAngle: -90,
 //                    endAngle: 90,
