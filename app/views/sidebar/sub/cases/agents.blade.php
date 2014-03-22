@@ -32,7 +32,7 @@
                                         <img src="{{URL::asset('nbi/agent/picture/'.$a->file_picture)}}" width="100%" class="img-rounded">
                                     </div>
                                     <div class="col-lg-8">
-                                        <h4 class="list-group-item-heading list_name ">{{$a->last_name.", ".$a->first_name}}</h4>
+                                        <strong class="list-group-item-heading list_name ">{{$a->last_name.", ".$a->first_name}}</strong>
                                         <p class="list-group-item-text ">{{$a->id}}</p>
                                         <p class="list-group-item-text list_details">{{$a->job_title}}</p>
                                         <!--<p class=" list_created_at text-muted">{{$a->created_at}}</p>-->

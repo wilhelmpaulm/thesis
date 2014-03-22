@@ -1,41 +1,78 @@
-@extends('layouts.scaffold')
+<?php $d = new DateTime($subpoena->date_requested); ?>
+<?php $d2 = new DateTime($subpoena->date_signed); ?>
+<?php $a = User::find($subpoena->agent_id); ?>
 
-@section('main')
+<html>
+    <title>
+        Subpoena
+    </title>
+    <style>
+        .indent {
+            padding-left: 30px;
+            
+        }
+     
+    </style>
+<!--{{HTML::style("css/bootstrap.min.css")}}-->
+    <body>
+        <div style="width: 600px; margin-left: 80px; " class="">
 
-<h1>Show Form_subpoena</h1>
 
-<p>{{ link_to_route('form_subpoenas.index', 'Return to all form_subpoenas') }}</p>
+            <br>
+            <br>
+            <img  src="{{URL::asset('nbi/forms/images/nbi_header.png')}}" height="90" width="380" style="margin: auto; display: block">
 
-<table class="table table-striped table-bordered">
-	<thead>
-		<tr>
-			<th>Case_id</th>
-				<th>Agent_id</th>
-				<th>Location</th>
-				<th>Time</th>
-				<th>Date_requested</th>
-				<th>Date_signed</th>
-				<th>Chief</th>
-		</tr>
-	</thead>
+            <br>
+            <br>
 
-	<tbody>
-		<tr>
-			<td>{{{ $form_subpoena->case_id }}}</td>
-					<td>{{{ $form_subpoena->agent_id }}}</td>
-					<td>{{{ $form_subpoena->location }}}</td>
-					<td>{{{ $form_subpoena->time }}}</td>
-					<td>{{{ $form_subpoena->date_requested }}}</td>
-					<td>{{{ $form_subpoena->date_signed }}}</td>
-					<td>{{{ $form_subpoena->chief }}}</td>
-                    <td>{{ link_to_route('form_subpoenas.edit', 'Edit', array($form_subpoena->id), array('class' => 'btn btn-info')) }}</td>
-                    <td>
-                        {{ Form::open(array('method' => 'DELETE', 'route' => array('form_subpoenas.destroy', $form_subpoena->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                        {{ Form::close() }}
-                    </td>
-		</tr>
-	</tbody>
-</table>
+            <div id="" style="text-align:center; font-size:30px;"> SUBPOENA</div>
 
-@stop
+          
+            <div style="margin:40px">
+                <div id="" style="text-align: justify;  "> GREETING:</div><br>
+
+                <p style="text-align: justify">
+                    <i class="indent" > Under and by virtue of the authority vested in me by Republic Act No. 157, 
+                        you are hereby commanded to be and appear in the </i>
+                    {{$subpoena->location}}, Philippines, at 
+
+                    {{$d->format("jS")}}
+
+                    day of
+                    {{$d->format("F")}},
+                    {{$d->format("Y")}}
+                    <i>
+                        then and there to give your evidence in a certain investigation to be held at that 
+                        time and place, conducted by the undersigned. 
+                    </i>
+                    <br>
+                    <br>
+                    <i class="indent">
+                        Fail not, under the penalty of the law.
+                    </i>
+                    <br>
+                    <i class="indent">
+                        Witness my hand and seal this
+                    </i>
+                    {{$d2->format("jS")}}
+
+                    day of
+                    {{$d2->format("F")}},
+                    {{$d2->format("Y")}}
+
+                    <br>
+                   
+                    <br>
+
+
+                </p>
+                <p style="text-align: right"> By  {{$a->last_name.", ".$a->first_name}}</p>
+                
+                <br>
+            <p style="text-align: left">NBI FORM No. 11</p>
+            </div>
+
+        </div>
+
+    </body>
+</html>	

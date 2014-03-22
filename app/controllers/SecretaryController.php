@@ -112,6 +112,16 @@ class SecretaryController extends BaseController {
         ];
         return View::make("base.calendar", $data);
     }
+    public function getCalendarAgents($id = null) {
+        
+        
+        $data = [
+            "id" => $id,
+        ];
+        return View::make("base.calendar_agents", $data);
+    
+        
+    }
 
  
     public function getResourcesRequest() {

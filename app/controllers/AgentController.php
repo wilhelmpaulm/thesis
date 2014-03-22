@@ -206,6 +206,30 @@ class AgentController extends BaseController {
         
         
     }
+    public function getFormDisposition(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.forms.disposition", $data);
+        
+        
+    }
+    public function getFormCoordination(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.forms.coordination", $data);
+        
+        
+    }
+    public function getFormTransmital(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.forms.transmital", $data);
+        
+        
+    }
     public function getAgents(){
         $data = [
         ];

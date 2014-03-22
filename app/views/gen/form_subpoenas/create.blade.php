@@ -3,7 +3,7 @@ $chief = User::where("division", "=", Auth::user()->division)->where("job_title"
 $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::user()->id)->get();
 ?>
 
-<div class="panel panel-primary">
+<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title">Create Subpoena</h3>
     </div>
@@ -42,3 +42,18 @@ $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::use
     </div>
     </form>
 </div>
+<!--
+<div class="panel panel-black">
+    <div class="panel-heading">
+        <h3 class="panel-title">Subpoena</h3>
+    </div>
+    <div class="panel-body clearfix" style="margin: auto; position: relative">
+        @include("forms.subpoena")
+    </div>
+    <div class="panel-footer clearfix">
+        <span class="btn-group btn-group-sm pull-right">
+            <button class="btn btn-success"><i class="fa fa-print"></i> Print</button>
+        </span>
+    </div>
+    </form>
+</div>-->

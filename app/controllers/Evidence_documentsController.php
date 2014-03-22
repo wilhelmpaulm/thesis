@@ -59,12 +59,21 @@ class Evidence_documentsController extends BaseController {
 
         $evidence1 = Evidence_document::find($id);
         $case_evidence = Case_evidence::where("case_id", "=", Input::get("case_id"))->where("type", "=", "Document")->where("evidence_id", "=", $id)->first();
-
+        $x = $evidence1->version;
+        if(Input::get("version") == "Major"){
+            $x += 1;
+        }else{
+            $x += 0.1;
+            
+        }
+        
 
         $evidence = Evidence_document::create([
                     "case_id" => Input::get("case_id"),
                     "origin_id" => $evidence1->origin_id,
+                    "version" => $x,
                     "title" => Input::get("title"),
+                    "user_id" => Auth::user()->id,
                     "details" => Input::get("details"),
                     "owner" => Input::get("owner"),
                     "date_received" => Input::get("date_received"),

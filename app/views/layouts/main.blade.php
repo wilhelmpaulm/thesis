@@ -1,4 +1,5 @@
-<?php $user = Auth::user(); ?>
+<?php $user = Auth::user();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -147,7 +148,7 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle refresh " data-toggle="dropdown" href="#"><span class=""><i class="fa fa-bullhorn"></i>  <i class="fa fa-caret-down"></i></span>                            </a>
+                            <a class="dropdown-toggle refresh " data-toggle="dropdown" href="#"><span class="" id="notifSpan"><i class="fa fa-bullhorn"></i> <span id="notifNum"></span>  <i class="fa fa-caret-down"></i></span>                            </a>
                             <ul class="dropdown-menu long-down"  id="alert-notifications">
                             </ul>
                         </li>
@@ -168,6 +169,11 @@
                 </div><!--/.navbar-collapse -->
             </div>
         </div>
+        <!--        <div class="pad10">
+                    <img src="{{URL::to('img/banner.png')}}"  class=" img-responsive" height="50" style="margin: auto; width: 100%; height: 50px;"  />
+                    
+                </div>-->
+
         <div class="pad15">
             <div class="row">
                 <div class="col-md-2 hidden-print">
@@ -193,6 +199,33 @@
 
     </div> <!-- /container -->
 
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script>
+//        $("body").addClass("zoom-80");
+    </script>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
+            </div>
+            <form action="{{URL::to('users/update')}}">
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary ">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         $(".refresh").on("click", function() {
             $.get("{{URL::to('alerts-messages')}}", function(data) {
@@ -204,35 +237,36 @@
         });
 
 
-//        $('body').modalmanager('loading');
+        //        $('body').modalmanager('loading');
     </script>
-
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
     <script>
-//        $("body").addClass("zoom-80");
+        $.get("{{URL::to(strtolower($user->job_title).'/notifications-num')}}", function(data) {
+            if (data > 0) {
+                $("#notifNum").text(data);
+                $("#notifSpan").addClass("c-alizarin");
+            } else {
+                $("#notifNum").text("");
+                $("#notifSpan").removeClass("c-alizarin");
+            }
+//                alert(data);
+        });
+
+
+        setInterval(function() {
+            $.get("{{URL::to('notifications-num')}}", function(data) {
+                if (data > 0) {
+                    $("#notifNum").text(data);
+                    $("#notifSpan").addClass("c-alizarin");
+                } else {
+                    $("#notifNum").text("");
+                    $("#notifSpan").removeClass("c-alizarin");
+                }
+//                alert(data);
+            });
+
+        }, 5000);
+
     </script>
-
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Edit Profile</h4>
-                </div>
-                <form action="{{URL::to('users/update')}}">
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-                </form>
-            </div>
-    </div>
-
-
 
 
     <!-- Placed at the end of the document so the pages load faster -->

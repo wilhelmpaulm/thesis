@@ -15,9 +15,10 @@
                 <tr>
                     <th>ID</th>
                     <th>Added by</th>
+                    <th>Title</th>
                     <th>Owner</th>
-                    <th>Details</th>
                     <th>Date Received</th>
+                    <th>Version</th>
                     <th ></th>
                 </tr>
             </thead>
@@ -26,9 +27,10 @@
                 <tr class="clickable" >
                     <td>{{$ed->id}}</td>
                     <td>{{$ed->user_id}}</td>
-                    <td>{{$ed->owner}}</td>
-                    <td>{{$ed->details}}</td>
+                    <td>{{$ed->title}}</td>
+                    <td>{{$ed->owner}}</td> 
                     <td>{{$ed->date_received}}</td>
+                    <td><p class="label label-info">ver. {{round($ed->version,2)}}</p></td>
                     <td>
                         <div class="btn-group btn-group-sm pull-right">
                             <a class="btn btn-default"  href="{{URL::asset("nbi/evidences/documents/".$ed->file_name)}}"><i class="fa fa-download"></i></a>
@@ -41,7 +43,7 @@
                             <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryDocument_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
                             <br>
                             <button class="btn btn-default"data-toggle="modal" data-target="#crossEvidenceDocument_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
-                            <button class="btn btn-default"data-toggle="modal" data-target="#addCrossEvidenceDocument_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
+                            <button  class="btn btn-default addCross"data-table="evidence_documents" data-reference_id="{{$ed->id}}" data-toggle="modal"  data-target="#addCross"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
                             @endif
                         </div>
                     </td>
@@ -74,6 +76,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Version</th>
                         <th>Title</th>
                         <th>Owner</th>
                         <th>Details</th>
@@ -87,6 +90,7 @@
                     @foreach($evidence_document_versions as $eh)
                     <tr class="clickable" >
                         <td>{{$eh->id}}</td>
+                         <td><p class="label label-info">ver. {{round($ed->version,2)}}</p></td>
                         <td>{{$eh->title}}</td>
                         <td>{{$eh->owner}}</td>
                         <td>{{$eh->details}}</td>
@@ -139,6 +143,13 @@
                         <input id='title' type='text' class="form-control " name="title" value="{{$ed->title}}"/>
                         <label for="details">Details</label>
                         <textarea  id='details' class="form-control " name="details" rows="4" cols="20">{{$ed->details}}</textarea>
+                        
+                        <label>Revision Type</label>
+                        <select name="version" class="form-control">
+                            <option>Minor</option>
+                            <option>Major</option>
+                        </select>
+                        
                     </div>
                     <div class="form-group col-md-6">
                         <label for="owner">Owner</label>
@@ -284,7 +295,7 @@ $reference_id = $co->id;
 ?>
 
 
-<div id="crossCaseObservation_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
+<div id="crossEvidenceDocument_{{$co->id}}" class="modal fade container" tabindex="-1" style="display: none;">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

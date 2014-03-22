@@ -64,6 +64,22 @@ Route::controller('case_requirements', 'Case_requirementsController');
 Route::controller('form_subpoenas', 'Form_subpoenasController');
 
 
+Route::controller('case_forms', 'Case_formsController');
+
+Route::controller('form_coordinations', 'Form_coordinationsController');
+
+Route::controller('coordination_members', 'Coordination_membersController');
+
+Route::controller('coordination_vehicles', 'Coordination_vehiclesController');
+
+Route::controller('form_dispositions', 'Form_dispositionsController');
+
+Route::controller('disposition_anexxes', 'Disposition_anexxesController');
+
+
+Route::controller('form_transmitals', 'Form_transmitalsController');
+
+Route::controller('transmital_anexxes', 'Transmital_anexxesController');
 Route::controller('', 'MainController');
 
 

@@ -4,6 +4,7 @@
 <?php $case_resources = Resource_history::where("case_id", "=", $case->id)->where("status", "=", "Approved")->orWhere("status", "=", "Received")->orWhere("status", "=", "Returned")->get(); ?>
 <?php $complaint = Complaint::find($case->complaint_id); ?>
 <?php $logs = System_log::where("case_id", "=", $case->id)->orderBy("created_at", "desc")->get(); ?>
+<?php $forms = Case_form::where("case_id", "=", $case->id)->orderBy("created_at", "desc")->get(); ?>
 
 <div id="content">
     <div class="navbar navbar-default ">
@@ -20,6 +21,7 @@
                 <li class="active"><a href="#details" data-toggle="tab">Case No. {{$case->id}}</a></li>
                 <li class=""><a href="#observations" data-toggle="tab">Observations</a></li>
                 <li><a href="#res" data-toggle="tab">Resources</a></li>
+                
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Evidences <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -42,6 +44,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href="#form" data-toggle="tab">Forms</a></li>
                         <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
                         <li><a href="#activity" data-toggle="tab">Activity log</a></li>
                     </ul>
@@ -249,6 +252,10 @@
         </div>
         <div class="tab-pane" id="res">
             @include("gen.resources.show")
+        </div>
+        <div class="tab-pane" id="form">
+            
+            @include("gen.case_forms.show")
         </div>
 
     </div>

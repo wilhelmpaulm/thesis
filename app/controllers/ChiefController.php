@@ -190,6 +190,13 @@ class ChiefController extends BaseController {
         ];
         return View::make("base.reports.chief_trends", $data);
     }
+    
+    public function getReportsTrendsStatus() {
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.reports.chief_trends_status", $data);
+    }
 
     public function getReportsLocations() {
         $data = [
@@ -227,6 +234,30 @@ class ChiefController extends BaseController {
         
         
     }
+    public function getFormDisposition(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.forms.disposition", $data);
+        
+        
+    }
+    public function getFormCoordination(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.forms.coordination", $data);
+        
+        
+    }
+    public function getFormTransmital(){
+        $data = [
+            "agents" => User::where("division", "=", Auth::user()->division)->get()
+        ];
+        return View::make("base.forms.transmital", $data);
+        
+        
+    }
     public function getAgents(){
         $data = [
         ];
@@ -255,5 +286,6 @@ class ChiefController extends BaseController {
         
         
     }
+    
 
 }

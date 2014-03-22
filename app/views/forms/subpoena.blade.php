@@ -1,13 +1,9 @@
-<html>
-<title>
-	Subpoena
-</title>
 
-<body>
+<div>
 
-<div id="" style="position:relative; left:100px ">
+<div id=""class="" style="position:relative;">
 
-	<img src="nbi_header.png" height="90" width="380" style="position:absolute; top:5px; left:70px">
+	<img src="../thesis forms/nbi_header.png" height="90" width="380" style="position:absolute; top:5px; left:70px">
 
 	<div id="" style="text-align:left; position:absolute; top:110px; left:195px "> _______________ </div>
 
@@ -70,6 +66,4 @@
 	<div id="" style="text-align:left; font-size:12px; position:absolute; top:580px">NBI FORM No. 11</div>
 
 </div>
-
-</body>
-</html>	
+</div>

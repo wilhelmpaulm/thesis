@@ -14,7 +14,7 @@ class Case_keysController extends BaseController {
             "case_id" => Input::get("case_id"),
             "owner" => Input::get("owner"),
             "status" => "Active",
-            "key" =>  Hash::make(Input::get("owner")),
+            "key" => substr(Hash::make(Input::get("owner"))."", 0,20),
         ]);
         
         

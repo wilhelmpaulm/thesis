@@ -4,7 +4,7 @@
         
     </div>
     <div class="panel-body">
-        <table class="table  table-condensed table-bordered">
+        <table class="table  table-condensed table-bordered table-striped">
             <thead>
                 <tr>
                     <th>category</th>

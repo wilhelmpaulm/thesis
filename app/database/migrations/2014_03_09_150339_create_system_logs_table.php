@@ -18,6 +18,7 @@ class CreateSystemLogsTable extends Migration {
             $table->integer('case_id')->nullable();
             $table->integer('reference_id')->nullable();
             $table->string('table')->nullable();
+            $table->string('status')->nullable()->default("unread");
             $table->string('division');
             $table->string('action')->nullable();
             $table->timestamps();

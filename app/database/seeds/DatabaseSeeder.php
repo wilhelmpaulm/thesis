@@ -60,6 +60,14 @@ class DatabaseSeeder extends Seeder {
         $this->call('Complaint_type_tagsTableSeeder');
     	$this->call('TagsTableSeeder');
 		$this->call('Case_observationsTableSeeder');
+		$this->call('Case_formsTableSeeder');
+		$this->call('Form_coordinationsTableSeeder');
+		$this->call('Coordination_membersTableSeeder');
+		$this->call('Coordination_vehiclesTableSeeder');
+		$this->call('Form_dispositionsTableSeeder');
+		$this->call('Disposition_anexxesTableSeeder');
+		$this->call('Form_transmitalsTableSeeder');
+		$this->call('Transmital_anexxesTableSeeder');
 	}
 
 }

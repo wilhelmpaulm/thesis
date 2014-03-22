@@ -11,7 +11,7 @@
                 <span class="pull-right text-muted">
                     <em>{{$ml->created_at}}</em>
                 </span>
-            </div>
+            </div> 
             <div>{{$ml->body}}</div>
         </a>
     </li>

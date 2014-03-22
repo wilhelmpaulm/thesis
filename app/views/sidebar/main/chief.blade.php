@@ -46,10 +46,12 @@
                 <a href="{{URL::to("chief/reports-locations")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Locations</a>
                 <a href="{{URL::to("chief/reports-case-timeline-comparison")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Timeline Comparison</a>
             </div>
-            <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#forms"><i class="fa fa-file"></i> Form Generation</a>
+           <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#forms"><i class="fa fa-file"></i> Form Generation</a>
             <div id="forms" class="collapse">
                 <a href="{{URL::to("chief/form-subpoena")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Subpoena</a>
-                <a href="{{URL::to("chief/form-subpoena")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Coordination</a>
+                <a href="{{URL::to("chief/form-coordination")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Coordination</a>
+                <a href="{{URL::to("chief/form-disposition")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Disposition</a>
+                <a href="{{URL::to("cheif/form-transmital")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Transmital</a>
             </div>
            
             <!--<a href="{{URL::to('chief/reports')}}" class="list-group-item"><i class="fa fa-book"></i> Reports</a>-->

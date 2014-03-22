@@ -31,7 +31,7 @@
                 ?>
 
                 <li><a  id="" href="{{URL::to(strtolower(Auth::user()->job_title).'/cases-closed/'.$c->id)}}" data-case_id="{{$c->id}}" class="list-group-item c_link {{$la}}">
-                        <h4 class="list-group-item-heading list_name ">{{$c->name}}</h4>
+                        <strong class="list-group-item-heading list_name ">{{$c->name}}</strong>
                         <p class=" list_created_at text-muted label label-info">{{$c->created_at}}</p>
                         <p class="list-group-item-text list_details">{{$c->details}}</p>
                     </a></li>

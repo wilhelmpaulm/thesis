@@ -31,7 +31,7 @@ class AppointmentsController extends BaseController {
             System_logsController::createLog(Input::get("recipient_id")[$index], 0, $appointment->id, Auth::user()->id . " Created an appointment - ".Input::get('title'), "appointments");
         }
 
-        return Redirect::to("agent/calendar");
+        return Redirect::to(strtolower(Auth::user()->job_title)."/calendar");
     }
 
     public function getShow($id = null) {
@@ -64,7 +64,7 @@ class AppointmentsController extends BaseController {
         }
 
 
-        return Redirect::to("agent/calendar");
+        return Redirect::to(strtolower(Auth::user()->job_title)."/calendar");
     }
 
     public function postDestroy($id = null) {
@@ -75,7 +75,7 @@ class AppointmentsController extends BaseController {
          System_logsController::createLog($r->user_id, 0, $task->id, Auth::user()->id . " Closed the appointment ", "appointments");
         }
         $task->delete();
-         return Redirect::to("agent/calendar");
+         return Redirect::to(strtolower(Auth::user()->job_title)."/calendar");
     }
 
 }

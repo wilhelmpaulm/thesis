@@ -15,7 +15,7 @@ class MainController extends BaseController {
         if (Auth::user()) {
 //            BadgesController::addBadge(Auth::user()->id, 1);
             $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-            System_logsController::createLog($chief->id, 0, 0, "Logged in the system", "main");
+            System_logsController::createLog($chief->id, 0, 0, Auth::user()->id." logged in the system", "main");
 
             if (Auth::user()->job_title == "Chief") {
                 return Redirect::to('chief/dashboard');
@@ -33,7 +33,7 @@ class MainController extends BaseController {
 
     public function getLogout() {
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, 0, 0, "Logged out of the system", "main");
+        System_logsController::createLog($chief->id, 0, 0, Auth::user()->id." logged out of the system", "main");
         Auth::logout();
         return Redirect::to("index");
     }
@@ -71,6 +71,20 @@ class MainController extends BaseController {
 
     public function getAlertsMessages() {
         return View::make("alerts.messages");
+    }
+    
+    public function getNotificationsNum(){
+        $num = 0;
+        $logs = System_log::where("target_id", "=", Auth::user()->id)->orderBy('created_at', 'desc')->take(10)->get();
+        foreach ($logs as $l) {
+               
+            if($l->status == ""){
+                $num += 1;
+            }
+        }
+        return $num;
+        
+        
     }
 
 }

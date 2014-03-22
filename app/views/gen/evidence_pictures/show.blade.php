@@ -1,4 +1,4 @@
-\<div class="panel panel-black">
+<div class="panel panel-black">
     <div class="panel-heading clearfix">
         <p class="pull-left"><i class="fa fa-picture-o"></i> Pictures</p>
         <span class="btn-group btn-group-sm pull-right">

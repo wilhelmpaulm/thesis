@@ -42,7 +42,7 @@
                         <p class="hidden list_id">{{$task->id}}</p>
                         <h4 class="list-group-item-heading list_heading">{{$task->title}}</h4>
                         <p class="list-group-item-text pull-left list_date label label-success">Start: {{$task->date_start}}</p>
-                        <p class="list-group-item-text pull-right labe label-danger">End: {{$task->date_end}}</p>
+                        <p class="list-group-item-text pull-right label label-warning">End: {{$task->date_end}}</p>
                     </a>
                 </li>
                 @include("gen.tasks.edit")
