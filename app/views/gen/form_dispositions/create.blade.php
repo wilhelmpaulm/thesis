@@ -19,21 +19,22 @@ $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::use
                     </select>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-lg-12">
                     <label>Synopsis</label>
                     <textarea type="text" name="synopsis" class="form-control" rows="4" cols="20"></textarea>
                     <br>
-                    <label>NAME AND PERSONAL CIRCUMSTANCES OF COMPLAINANT (OR REQUESTING PARTY OR DIRECTING PARTY)</label>
+                    <label>Name and Personal Circumstances of Complainant (Or Requesting Party or Directing Party)</label>
                     <textarea type="text" name="coc" class="form-control" rows="4" cols="20"></textarea>
                     <br>
-                    <label>MATERIAL ALLEGATION OF THE COMPLAINT (OR REQUEST OR DIRECTIVE)</label>
+                    <label>Material Allegation of the Complaint (or Request or Directive)</label>
                     <textarea type="text" name="ma" class="form-control" rows="4" cols="20"></textarea>
                     <br>
-                    <label>NAMES AND PERSONAL CIRCUMSTANCES OF PRINCIPALS (SUBJECT/VICTIM)</label>
+                    <label>Names and Personal Circumstances of Principals (Subject/Victim)</label>
                     <textarea type="text" name="cop" class="form-control" rows="4" cols="20"></textarea>
                     <br>
-                    <label>MATERIAL FACTS ESTABLISHED BY THE EVIDENCE GATHERED</label>
+                    <label>Material Facts Established By the Evidence Gathered</label>
                     <textarea type="text" name="mfe" class="form-control" rows="4" cols="20"></textarea>
                     <br>
                     <label>Recommendations</label>
@@ -42,7 +43,7 @@ $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::use
                 </div>
             </div>
             <hr>
-            ANNEXES
+             Annexes
             <div class="row">
                 <div class="col-lg-12">
                     <table class="table table-condensed table-hover table-striped table-bordered">

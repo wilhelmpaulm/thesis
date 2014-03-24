@@ -10,12 +10,35 @@ class MainController extends BaseController {
         return View::make('base.tracking');
     }
 
+    public function getLogFake() {
+        Auth::attempt(array('id' => Input::get("username"), 'password' => Input::get("password")));
+        if (Auth::user()) {
+//            BadgesController::addBadge(Auth::user()->id, 1);
+            $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+            System_logsController::createLog($chief->id, 0, 0, Auth::user()->id . " logged in the system", "main");
+
+            if (Auth::user()->job_title == "Chief") {
+                return URL::to('chief/dashboard');
+            } else if (Auth::user()->job_title == "Agent") {
+                return URL::to('agent/dashboard');
+            } else if (Auth::user()->job_title == "Secretary") {
+                return URL::to('secretary/dashboard');
+            } else if (Auth::user()->job_title == "Executive_Officer") {
+                return URL::to('executive_officer/dashboard');
+            } else {
+                return URL::to('agent/dashboard');
+            }
+        } else {
+            return "false";
+        }
+    }
+
     public function postLogin() {
         Auth::attempt(array('id' => Input::get("username"), 'password' => Input::get("password")));
         if (Auth::user()) {
 //            BadgesController::addBadge(Auth::user()->id, 1);
             $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-            System_logsController::createLog($chief->id, 0, 0, Auth::user()->id." logged in the system", "main");
+            System_logsController::createLog($chief->id, 0, 0, Auth::user()->id . " logged in the system", "main");
 
             if (Auth::user()->job_title == "Chief") {
                 return Redirect::to('chief/dashboard');
@@ -23,6 +46,8 @@ class MainController extends BaseController {
                 return Redirect::to('agent/dashboard');
             } else if (Auth::user()->job_title == "Secretary") {
                 return Redirect::to('secretary/dashboard');
+            } else if (Auth::user()->job_title == "Executive_Officer") {
+                return Redirect::to('executive_officer/dashboard');
             } else {
                 return Redirect::to('agent/dashboard');
             }
@@ -33,7 +58,7 @@ class MainController extends BaseController {
 
     public function getLogout() {
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, 0, 0, Auth::user()->id." logged out of the system", "main");
+        System_logsController::createLog($chief->id, 0, 0, Auth::user()->id . " logged out of the system", "main");
         Auth::logout();
         return Redirect::to("index");
     }
@@ -72,19 +97,17 @@ class MainController extends BaseController {
     public function getAlertsMessages() {
         return View::make("alerts.messages");
     }
-    
-    public function getNotificationsNum(){
+
+    public function getNotificationsNum() {
         $num = 0;
         $logs = System_log::where("target_id", "=", Auth::user()->id)->orderBy('created_at', 'desc')->take(10)->get();
         foreach ($logs as $l) {
-               
-            if($l->status == ""){
+
+            if ($l->status == "") {
                 $num += 1;
             }
         }
         return $num;
-        
-        
     }
 
 }

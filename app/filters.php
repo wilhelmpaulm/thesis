@@ -83,6 +83,11 @@ Route::filter('csrf', function()
 
 
 
+Route::filter('executive_officer', function(){
+        if(Auth::user()->job_title != "Executive_Officer"){
+            return Redirect::to(strtolower(Auth::user()->job_title)."/dashboard");
+        } 
+});
 Route::filter('chief', function(){
         if(Auth::user()->job_title != "Chief"){
             return Redirect::to(strtolower(Auth::user()->job_title)."/dashboard");

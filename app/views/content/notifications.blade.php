@@ -16,8 +16,7 @@
                     <th>Division</th>
                     <th>Action</th>
                     <th>Case ID</th>
-                    <th>Table</th>
-                    <th>Reference ID</th>
+                    
                     <th>Date done</th>
                 </tr>
             </thead>
@@ -30,8 +29,7 @@
                     <td>{{$a->division}}</td>
                     <td>{{$a->action}}</td>
                     <td>{{$a->case_id}}</td>
-                    <td>{{$a->table}}</td>
-                    <td>{{$a->reference_id}}</td>
+                  
                     <td>{{$a->created_at}}</td>
                 </tr>
                 @endforeach
@@ -56,8 +54,7 @@
                     <th>Division</th>
                     <th>Action</th>
                     <th>Case ID</th>
-                    <th>Table</th>
-                    <th>Reference ID</th>
+                  
                     <th>Date done</th>
                 </tr>
             </thead>
@@ -70,8 +67,7 @@
                     <td>{{$a->division}}</td>
                     <td>{{$a->action}}</td>
                     <td>{{$a->case_id}}</td>
-                    <td>{{$a->table}}</td>
-                    <td>{{$a->reference_id}}</td>
+                  
                     <td>{{$a->created_at}}</td>
                 </tr>
                 @endforeach

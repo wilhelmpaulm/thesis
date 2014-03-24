@@ -80,22 +80,22 @@ body{
 }
 
 
-.bg-turquoise{background-color: #1ABC9C;}
-.bg-greensea{background-color: #16A085;}
-.bg-peterriver{background-color: #3498DB;}
-.bg-belizehole{background-color: #2980B9;}
-.bg-amethyst{background-color: #9B59B6;}
-.bg-wisteria{background-color: #8E44AD}
-.bg-sunflower{background-color: #F1C40F;}
-.bg-orange{background-color: #F39C12;}
-.bg-carrot{background-color: #E67E22;}
-.bg-pumpkin{background-color: #D35400;}
-.bg-alizarin{background-color: #E74C3C;}
-.bg-pomegranate{background-color: #C0392B;}
-.bg-clouds{background-color: #ECF0F1;}
-.bg-silver{background-color: #BDC3C7;}
-.bg-emerald{background-color: #2ECC71}
-.bg-nephritis{background-color: #27AE60}
+.bg-turquoise{background-color: #1ABC9C  !important;}
+.bg-greensea{background-color: #16A085  !important;}
+.bg-peterriver{background-color: #3498DB !important;}
+.bg-belizehole{background-color: #2980B9  !important;}
+.bg-amethyst{background-color: #9B59B6 !important;}
+.bg-wisteria{background-color: #8E44AD !important;}
+.bg-sunflower{background-color: #F1C40F !important;}
+.bg-orange{background-color: #F39C12 !important;}
+.bg-carrot{background-color: #E67E22 !important;}
+.bg-pumpkin{background-color: #D35400 !important;}
+.bg-alizarin{background-color: #E74C3C !important;}
+.bg-pomegranate{background-color: #C0392B !important;}
+.bg-clouds{background-color: #ECF0F1 !important;}
+.bg-silver{background-color: #BDC3C7 !important;}
+.bg-emerald{background-color: #2ECC71 !important;}
+.bg-nephritis{background-color: #27AE60 !important;}
 
 .c-turquoise{color: #1ABC9C;}
 .c-greensea{color: #16A085;}
@@ -114,35 +114,35 @@ body{
 .c-emerald{color: #2ECC71}
 .c-nephritis{color: #27AE60}
 
-.bg-brown{background-color: #632F00;}
-.bg-gray{background-color: #696969;}
-.bg-red{background-color: #E51400;}
-.bg-darkred{background-color: #B81B1B;}
-.bg-orange{background-color: #FF7D23;}
-.bg-green{background-color: #15992A;}
-.bg-lime{background-color: #8CBF26;}
-.bg-lightblue{background-color: #1BA1E2;}
-.bg-blue{background-color: #006AC1;}
-.bg-teal{background-color: #00ABA9;}
-.bg-pink{background-color: #FF76BC;}
-.bg-magenta{background-color: #AE113D;}
-.bg-purple{background-color: #7200AC;}
-.bg-black{background-color: #000;}
-.bg-p1{background-color: #649203;}
-.bg-p2{background-color: #8bb029;}
-.bg-p3{background-color: #f8ffd8;}
-.bg-p4{background-color: #e0daa8;}
-.bg-p5{background-color: #c2bd91;}
-.bg-p6{background-color: #1d4025;}
-.bg-p7{background-color: #45734c;}
-.bg-p8{background-color: #528c37;}
-.bg-p9{background-color: #9abf80;}
-.bg-p10{background-color: #f2f0d0;}
-.bg-s1{background-color: #012d3d;}
-.bg-s2{background-color: #38ad9e;}
-.bg-s3{background-color: #ffeb9e;}
-.bg-s4{background-color: #ff6867;}
-.bg-s5{background-color: #f9fcfc;}
+.bg-brown{background-color: #632F00 !important;}
+.bg-gray{background-color: #696969 !important;}
+.bg-red{background-color: #E51400 !important;}
+.bg-darkred{background-color: #B81B1B !important;}
+.bg-orange{background-color: #FF7D23 !important;}
+.bg-green{background-color: #15992A !important;}
+.bg-lime{background-color: #8CBF26 !important;}
+.bg-lightblue{background-color: #1BA1E2 !important;}
+.bg-blue{background-color: #006AC1 !important;}
+.bg-teal{background-color: #00ABA9 !important;}
+.bg-pink{background-color: #FF76BC !important;}
+.bg-magenta{background-color: #AE113D !important;}
+.bg-purple{background-color: #7200AC !important;}
+.bg-black{background-color: #000 !important;}
+.bg-p1{background-color: #649203 !important;}
+.bg-p2{background-color: #8bb029 !important;}
+.bg-p3{background-color: #f8ffd8 !important;}
+.bg-p4{background-color: #e0daa8 !important;}
+.bg-p5{background-color: #c2bd91 !important;}
+.bg-p6{background-color: #1d4025 !important;}
+.bg-p7{background-color: #45734c !important;}
+.bg-p8{background-color: #528c37 !important;}
+.bg-p9{background-color: #9abf80 !important;}
+.bg-p10{background-color: #f2f0d0 !important;}
+.bg-s1{background-color: #012d3d !important;}
+.bg-s2{background-color: #38ad9e !important;}
+.bg-s3{background-color: #ffeb9e !important;}
+.bg-s4{background-color: #ff6867 !important;}
+.bg-s5{background-color: #f9fcfc !important;}
 /*.bg-s5{background-color: #f9fcfc;}*/
 .bg-whitesmoke{background-color: whitesmoke;}
 .bg-white{background-color: white;}

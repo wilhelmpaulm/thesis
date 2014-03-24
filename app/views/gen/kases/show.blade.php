@@ -142,19 +142,7 @@
                             <tr>
                                 <td><strong>Date Assigned</strong></th>
                                 <td>{{$case->date_reported}}</th>
-                            </tr>
-                            <tr>
-                                <td><strong>Details</strong></th>
-                                <td>{{$case->details}}</th>
-                            </tr>
-                            <tr>
-                                <td><strong>Date Reported</strong></th>
-                                <td>{{$complaint->date_reported}}</th>
-                            </tr>
-                            <tr>
-                                <td><strong>Date Committed</strong></td>
-                                <td>{{$complaint->date_commited}}</td>
-                            </tr>
+                            </tr>  
                             <tr>
                                 <td><strong>Agent Assigned</strong></th>
                                 <td>
@@ -163,12 +151,30 @@
                                     <p>{{$a->last_name.", ".$a->first_name." ".$a->middle_name}}</p>
                                     </th>
                             </tr>
+                            
+                            <tr>
+                                <td><strong>Date Reported</strong></th>
+                                <td>{{$complaint->date_reported}}</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Date Committed</strong></td>
+                                <td>{{$complaint->date_commited}}</td>
+                            </tr>
+                          
+                            <tr>
+                                <td><strong>Details</strong></th>
+                                <td>{{$case->details}}</th>
+                            </tr>
                             <tr>
                                 <td><strong>Complainant</strong></th>
                                 <td>
                                     <?php $complainant = Client::find($case->complainant_id); ?>
                                     <p>{{$complainant->last_name.", ".$complainant->first_name." ".$complainant->middle_name}}</p>
-                                    <p>{{Time::getAge($complainant->birthdate)}} years old</p>
+                                    <p>@if(strlen($complainant->birthdate) == 10)
+                                        {{Time::getAge($complainant->birthdate)}} years old
+                                        @endif
+                                    </p>
+                                        
                                     <p><strong>Sex:</strong> {{$complainant->sex}} </p>
                                     <p><strong>Birthdate: </strong> {{$complainant->birthdate}} </p>
                                     <p><strong>Civil Status:</strong> {{$complainant->civil_status}} </p>
@@ -309,6 +315,8 @@
             <div class="modal-body">
                 <label>password</label>
                 <input class="form-control" name="password" type="password">
+                <label>Reason for closing</label>
+                <textarea class="form-control" name="reason" rows="4" cols="20"></textarea>
                 <label>Status</label>
                 <select class="form-control" name="status">
                     <option>Non-viable</option>
@@ -333,6 +341,8 @@
             <div class="modal-body">
                 <label>password</label>
                 <input class="form-control" name="password" type="password">
+                  <label>Reason for closing</label>
+                <textarea class="form-control" name="reason" rows="4" cols="20"></textarea>
                 <label>Status</label>
                 <select class="form-control" name="status">
                     <option>Non-viable</option>

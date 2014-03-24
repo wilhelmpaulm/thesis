@@ -3,44 +3,44 @@
 
 
 
-        
-                    
-                    <div id="loginbody">
-                        <form  class="" action="{{URL::to("login")}}" method="POST">
-                            <div class="row ">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon input-lg c-belizehole"><i class="fa fa-user"></i></span>
-                                        <input class="form-control input-lg  c-belizehole" placeholder="User ID"  type="text" name="username" value="" /><br>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <div class="input-group">
-                                        <span class="input-group-addon input-lg c-belizehole"><i class="fa fa-key"></i></span>
-                                        <input class="form-control input-lg c-belizehole" placeholder="Password" type="password" name="password" value="" /><br>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6 col-md-offset-3">
-                                    <input class="btn btn-primary btn-block " type="submit" value="login" />
-                                </div>
-                            </div>
-                        </form>
+<h4 id="login-message" class="c-orange lead"></h4>
 
-                    </div>
-              
-    <style>
-/*        #signuphead, #loginhead :hover{
-            cursor: pointer;
-        }*/
+<div id="loginbody">
+    <form  class="" action="{{URL::to("login")}}" method="POST" id="login-form">
+        <div class="row ">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="input-group">
+                    <span class="input-group-addon input-lg c-belizehole"><i class="fa fa-user"></i></span>
+                    <input id="username" class="form-control input-lg  c-belizehole" placeholder="User ID"  type="text" name="username" value="" /><br>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="input-group">
+                    <span class="input-group-addon input-lg c-belizehole"><i class="fa fa-key"></i></span>
+                    <input id="password" class="form-control input-lg c-belizehole" placeholder="Password" type="password" name="password" value="" /><br>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <input class="btn btn-primary btn-block " type="submit" value="login" />
+            </div>
+        </div>
+    </form>
 
-    </style>
-    <script>
+</div>
+
+<style>
+    /*        #signuphead, #loginhead :hover{
+                cursor: pointer;
+            }*/
+
+</style>
+<script>
 //        $("#signupbody").hide();
 //
 //        $("#signuphead").on("click", function() {
@@ -74,5 +74,40 @@
 //        }
 
 
-    </script>
-    @stop
+</script>
+<script>
+    $(document).ready(function() {
+        $("#login-form").submit(function() {
+            username = $("#username").val();
+            password = $("#password").val();
+            $.ajax({
+                type: "GET",
+                url: "log-fake",
+                data: "username=" + username + "&password=" + password,
+                success: function(html) {
+                    if (html == 'false') {
+                        $("#login-message").text("Log in attempt failed");
+                        
+                    }
+                    else {
+//                        alert(html);
+                        //$("#add_err").html("right username or password");
+                        $("#login-message").text("");
+                        @if(Auth::user()!= null)
+//                        window.location = "{{strtolower(Auth::user()->job_title).'/dashboard'}}";
+                        @endif
+                        window.location = html;
+                    }
+                },
+            });
+            return false;
+        });
+    });
+
+
+
+</script>
+
+
+
+@stop

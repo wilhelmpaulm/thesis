@@ -51,7 +51,7 @@
                 <div class="panel panel-black">
                     <div class="panel-heading">
 
-                        <p class=""><i class="fa fa-user "></i> COMPLAINANT</p>
+                        <p class=""><i class="fa fa-user "></i> Complainant</p>
 
                     </div>
                     <form id="f1">
@@ -81,7 +81,7 @@
             <div class="tab-pane  active" id="tab1">
                 <div class="panel panel-black">
                     <div class="panel-heading clearfix">
-                        <span class=""><i class="fa fa-group"></i> VICTIMS if any </span>
+                        <span class=""><i class="fa fa-group"></i> Victims if any </span>
                         <span class="btn-group btn-group-sm pull-right">
                             <button type="button"  id="add_victim_btn" class="pull-right btn btn-success"><i class="fa fa-plus"></i></button>
                         </span>
@@ -109,7 +109,7 @@
             <div class="tab-pane  active" id="tab1">
                 <div class="panel panel-black">
                     <div class="panel-heading clearfix">
-                        <span class=""><i class="fa fa-chain"></i> PERSONS COMPLAINED AGAINST OR SUSPECTS</span>
+                        <span class=""><i class="fa fa-chain"></i> Persons Complained Against or Suspects</span>
                         <span class="btn-group btn-group-sm pull-right">
                             <button type="button" id="add_subject_btn" class="pull-right btn btn-success"><i class="fa fa-plus"></i></button>
                         </span>
@@ -132,7 +132,7 @@
 
             <div class="panel panel-black">
                 <div class="panel-heading clearfix">
-                    <span class=""><i class="fa fa-book"></i> WHERE AND WHEN COMMITED</span>
+                    <span class=""><i class="fa fa-book"></i> Where and When Committed</span>
                 </div>
                 <div class="panel-body" id="">
                     @include("gen.complaint_addresses.create")

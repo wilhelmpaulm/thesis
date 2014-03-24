@@ -3,11 +3,13 @@
 Route::when('chief*', 'auth');
 Route::when('agent*', 'auth');
 Route::when('secretary*', 'auth');
+Route::when('executive_officer*', 'auth');
 
 
 Route::when('chief*', 'chief');
 Route::when('agent*', 'agent');
 Route::when('secretary*', 'secretary');
+Route::when('executive_officer*', 'executive_officer');
 
 
 
@@ -25,6 +27,7 @@ Route::controller('case_forms', 'Case_formsController');
 Route::controller('agent', 'AgentController');
 Route::controller('secretary', 'SecretaryController');
 Route::controller('chief', 'ChiefController');
+Route::controller('executive_officer', 'Executive_OfficerController');
 Route::controller('executive', 'ExecutiveOfficerController');
 Route::controller('director', 'DeputyDirectorController');
 Route::controller('users', 'UsersController');

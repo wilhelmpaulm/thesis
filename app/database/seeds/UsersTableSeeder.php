@@ -232,60 +232,60 @@ class UsersTableSeeder extends Seeder {
                 "civil_status" => "Married", "file_picture" => "10930210.jpg" , "status"=>"Active"],
 
 
-            //EXECUTIVE OFFICER 1 PER DIVISION
+            //Executive_Officer 1 PER DIVISION
             ["id" => 10930311, "last_name" => "Lagdameyo", "first_name" => "Raul",
                 "middle_name" => "Albores", "birthdate" => "1987-02-26", "date_hired" => "2014-02-10",
-                "job_title" => "Executive Officer", "division" => "AFAD", "sex" => "Male", "password" => Hash::make("pawie2062"),
+                "job_title" => "Executive_Officer", "division" => "AFAD", "sex" => "Male", "password" => Hash::make("pawie2062"),
                 "civil_status" => "Married", "file_picture" => "10930311.jpg" , "status"=>"Active"],  
 
             ["id" => 10930312, "last_name" => "Thompson", "first_name" => "Emile",
                 "middle_name" => "Gore", "birthdate" => "1987-02-26", "date_hired" => "2014-02-10",
-                "job_title" => "Executive Officer", "division" => "AGD", "sex" => "Male", "password" => Hash::make("pawie2062"),
+                "job_title" => "Executive_Officer", "division" => "AGD", "sex" => "Male", "password" => Hash::make("pawie2062"),
                 "civil_status" => "Married", "file_picture" => "10930311.jpg" , "status"=>"Active"],
                 
             ["id" => 10930313, "last_name" => "Tejada", "first_name" => "Sean",
                 "middle_name" => "Hamido", "birthdate" => "1987-02-26", "date_hired" => "2014-02-10",
-                "job_title" => "Executive Officer", "division" => "AHTRAD", "sex" => "Male", "password" => Hash::make("pawie2062"),
+                "job_title" => "Executive_Officer", "division" => "AHTRAD", "sex" => "Male", "password" => Hash::make("pawie2062"),
                 "civil_status" => "Married", "file_picture" => "10930311.jpg" , "status"=>"Active"],
                 
             ["id" => 10930314, "last_name" => "Kartillo", "first_name" => "Elaijon",
                 "middle_name" => "Fames", "birthdate" => "1987-02-26", "date_hired" => "2014-02-10",
-                "job_title" => "Executive Officer", "division" => "AOCD", "sex" => "Male", "password" => Hash::make("pawie2062"),
+                "job_title" => "Executive_Officer", "division" => "AOCD", "sex" => "Male", "password" => Hash::make("pawie2062"),
                 "civil_status" => "Married", "file_picture" => "10930311.jpg" , "status"=>"Active"],
                 
             ["id" => 10930315, "last_name" => "Dominguez", "first_name" => "Janzen",
                 "middle_name" => "Harte", "birthdate" => "1987-02-26", "date_hired" => "2014-02-10",
-                "job_title" => "Executive Officer", "division" => "CCD", "sex" => "Male", "password" => Hash::make("pawie2062"),
+                "job_title" => "Executive_Officer", "division" => "CCD", "sex" => "Male", "password" => Hash::make("pawie2062"),
                 "civil_status" => "Married", "file_picture" => "10930311.jpg" , "status"=>"Active"],
                 
             ["id" => 10930316, "last_name" => "Abbara", "first_name" => "Jong",
                 "middle_name" => "Robles", "birthdate" => "1987-02-26", "date_hired" => "2014-02-10",
-                "job_title" => "Executive Officer", "division" => "FLD", "sex" => "Male", "password" => Hash::make("pawie2062"),
+                "job_title" => "Executive_Officer", "division" => "FLD", "sex" => "Male", "password" => Hash::make("pawie2062"),
                 "civil_status" => "Married", "file_picture" => "10930311.jpg" , "status"=>"Active"],
                 
             ["id" => 10930317, "last_name" => "Miranda", "first_name" => "Robert",
                 "middle_name" => "Almazan", "birthdate" => "1987-02-26", "date_hired" => "2014-02-10",
-                "job_title" => "Executive Officer", "division" => "EWPID", "sex" => "Male", "password" => Hash::make("pawie2062"),
+                "job_title" => "Executive_Officer", "division" => "EWPID", "sex" => "Male", "password" => Hash::make("pawie2062"),
                 "civil_status" => "Married", "file_picture" => "10930311.jpg" , "status"=>"Active"],
                 
             ["id" => 10930318, "last_name" => "Alcaraz", "first_name" => "Keo",
                 "middle_name" => "Santos", "birthdate" => "1987-02-26", "date_hired" => "2014-02-10",
-                "job_title" => "Executive Officer", "division" => "IPRD", "sex" => "Male", "password" => Hash::make("pawie2062"),
+                "job_title" => "Executive_Officer", "division" => "IPRD", "sex" => "Male", "password" => Hash::make("pawie2062"),
                 "civil_status" => "Married", "file_picture" => "10930311.jpg" , "status"=>"Active"],
                 
             ["id" => 10930319, "last_name" => "Santiago", "first_name" => "Ricardo",
                 "middle_name" => "Bernardo", "birthdate" => "1987-02-26", "date_hired" => "2014-02-10",
-                "job_title" => "Executive Officer", "division" => "RAID", "sex" => "Male", "password" => Hash::make("pawie2062"),
+                "job_title" => "Executive_Officer", "division" => "RAID", "sex" => "Male", "password" => Hash::make("pawie2062"),
                 "civil_status" => "Married", "file_picture" => "10930311.jpg" , "status"=>"Active"],
                 
             ["id" => 10930320, "last_name" => "Ledesma", "first_name" => "Ivan",
                 "middle_name" => "Philip", "birthdate" => "1987-02-26", "date_hired" => "2014-02-10",
-                "job_title" => "Executive Officer", "division" => "VAWCD", "sex" => "Male", "password" => Hash::make("pawie2062"),
+                "job_title" => "Executive_Officer", "division" => "VAWCD", "sex" => "Male", "password" => Hash::make("pawie2062"),
                 "civil_status" => "Married", "file_picture" => "10930311.jpg" , "status"=>"Active"],
                 
             ["id" => 10930321, "last_name" => "Zapanta", "first_name" => "Carl",
                 "middle_name" => "So", "birthdate" => "1987-02-26", "date_hired" => "2014-02-10",
-                "job_title" => "Executive Officer", "division" => "DID", "sex" => "Male", "password" => Hash::make("pawie2062"),
+                "job_title" => "Executive_Officer", "division" => "DID", "sex" => "Male", "password" => Hash::make("pawie2062"),
                 "civil_status" => "Married", "file_picture" => "10930311.jpg" , "status"=>"Active"],
         );
 

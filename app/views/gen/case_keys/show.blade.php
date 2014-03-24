@@ -54,7 +54,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Edit Case Subject</h4>
+            <h4 class="modal-title" id="myModalLabel">Edit Case Key</h4>
         </div>
         <form action="{{URL::to('case_keys/update/'.$ck->id)}}" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="case_id" value="{{$case->id}}">

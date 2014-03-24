@@ -30,6 +30,7 @@ class KasesController extends BaseController {
         if (Hash::check(Input::get("password"), Auth::user()->password)) {
             $case = Kase::find($id);
             $case->status = Input::get("status");
+            $case->details = "CASE CLOSED   <br><hr> REASON FOR CLOSING <br><hr>".Input::get("reason")."<br><hr> ".$case->details;
             $case->save();
             $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
             System_logsController::createLog($chief->id, $case->id, $case->id, Auth::user()->id . " closed case " . $case->id, "kases");

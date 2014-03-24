@@ -181,6 +181,8 @@
                     @include("sidebar.main.agent")
                     @elseif(Auth::user()->job_title == "Chief")    
                     @include("sidebar.main.chief")
+                    @elseif(Auth::user()->job_title == "Executive_Officer")    
+                    @include("sidebar.main.executiveofficer")
                     @elseif(Auth::user()->job_title == "Secretary")    
                     @include("sidebar.main.secretary")
 
