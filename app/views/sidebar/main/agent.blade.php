@@ -11,7 +11,7 @@
             <a href="{{URL::to("agent/dashboard")}}" class="list-group-item "><i class="fa fa-dashboard"></i> Dashboard</a>
             <a href="{{URL::to("agent/calendar")}}" class="list-group-item "><i class="fa fa-calendar"></i> Calendar</a>
             <a href="{{URL::to("agent/messages")}}" class="list-group-item "><i class="fa fa-envelope"></i> Messages</a>
-            <a href="{{URL::to("agent/agents")}}" class="list-group-item "><i class="fa fa-shield"></i> Agents</a>
+            <a href="{{URL::to("agent/agents")}}" class="list-group-item "><i class="fa fa-shield"></i> Employees</a>
             <a href="{{URL::to("agent/clients")}}" class="list-group-item "><i class="fa fa-users"></i> Clients</a>
 
 <!--        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#messages"><i class="fa fa-envelope"></i> Messages</a>
@@ -24,7 +24,7 @@
             <div id="cases" class="collapse ">
                 <a href="{{URL::to("agent/cases-list")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Case List</a>
                 <a href="{{URL::to("agent/cases-add")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Add Complaint</a>
-                <a href="{{URL::to("agent/cases-pending")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Pending</a>
+                <!--<a href="{{URL::to("agent/cases-pending")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Pending</a>-->
                 <a href="{{URL::to("agent/cases-ongoing")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Ongoing</a>
                 <a href="{{URL::to("agent/cases-closed")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Closed</a>
                 <a href="{{URL::to("agent/cases-non-viable")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Non-viable</a>
@@ -51,7 +51,7 @@
                 <a href="{{URL::to("agent/form-subpoena")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Subpoena</a>
                 <a href="{{URL::to("agent/form-coordination")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Coordination</a>
                 <a href="{{URL::to("agent/form-disposition")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Disposition</a>
-                <a href="{{URL::to("agent/form-transmital")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Transmital</a>
+                <a href="{{URL::to("agent/form-transmital")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Transmittal</a>
             </div>
            
             <!--<a href="{{URL::to('agent/reports')}}" class="list-group-item"><i class="fa fa-book"></i> Reports</a>-->

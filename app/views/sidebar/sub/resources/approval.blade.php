@@ -351,7 +351,7 @@ $rhs_copy = $rhs->toArray();
                                     <td>{{$rh['amount']}}</td>
                                     <td>{{$amount_taken}}</td>
                                     <td>
-                                        @if($rh['amount'] < $amount_taken)
+                                        @if($rh['amount'] <= $amount_taken)
                                         <input type="radio" class="" name="request_id" value="{{$rh['id']}}">
                                         @endif
                                     </td>
@@ -377,7 +377,7 @@ $rhs_copy = $rhs->toArray();
                                     <td>{{$amount_taken}}</td>
                                     <td>
 
-                                        @if($rh['amount'] < $amount_taken)
+                                        @if($rh['amount'] <= $amount_taken)
                                         <input type="radio" class="" name="request_id" value="{{$rh['id']}}">
                                         @endif
                                     </td>

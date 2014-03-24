@@ -24,9 +24,10 @@
             </thead>
             <tbody id="lol">
                 @foreach($evidence_recordings as $ed)
+                  <?php $au = User::find($ed->user_id);?>
                 <tr>
                     <td>{{$ed->id}}</td>
-                    <td>{{$ed->user_id}}</td>
+                <td>{{$au->last_name.", ".$au->first_name}}</td>
                     <td>{{$ed->owner}}</td>
                     <td>{{$ed->details}}</td>
                     <td>{{$ed->date_recorded}}</td>
@@ -59,7 +60,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <h4 class="modal-title" id="myModalLabel">Evidence History</h4>
         </div>
         <div class="modal-body">
             <table class="table table-bordered table-hover ">
@@ -121,7 +122,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">Edit Evidence</h4>
             </div>
             <form action="{{URL::to('evidence_recordings/update/'.$ed->id)}}" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
@@ -172,11 +173,10 @@
 
 @foreach($evidence_recordings as $ed)
 <div id="viewEvidenceRecording_{{$ed->id}}" class="modal container fade" tabindex="-1" style="display: none;">
-    <div class="modal-dialog " style="">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">View</h4>
             </div>
             <div class="modal-body">
                 <audio controls class="center-block" style="width: 100%">
@@ -192,7 +192,6 @@
                 </span>
             </div>
         </div>
-    </div>
 </div>
 
 
@@ -226,7 +225,7 @@
                             <input type="date" class="form-control" id="date_received" placeholder="fraptiousday!" name="date_received" value="">
                             <label for="file_name">File Upload</label>
                             <input type="file" id="file_name" name="file_name" value="">
-                            <p class="help-block">Please attach a photo of the victim.</p>
+                            <p class="help-block">Please attach recording.</p>
                         </div>
                     </div>
                 </div>

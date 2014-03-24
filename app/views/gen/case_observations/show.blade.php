@@ -2,7 +2,7 @@
 
 <div class="panel panel-black">
     <div class="panel-heading clearfix">
-        <p class="pull-left"><i class="fa fa-search"></i> Case Observation</p>
+        <p class="pull-left"><i class="fa fa-search"></i> Case Observations</p>
         <span class="btn-group btn-group-sm pull-right">
 @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
             <button class="btn  btn-success  pull-right" type="button" data-toggle="modal" data-target="#addCaseObservation">
@@ -24,12 +24,13 @@
             </thead>
             <tbody>
                 @foreach($case_observations  as $ed)
+                  <?php $au = User::find($ed->user_id);?>
                 <?php
                 $tags = TagsController::getTags($ed->id, "case_observations");
                 ?>
                 <tr class="clickable" >
                     <td>{{$ed->created_at}}</td>
-                    <td>{{$ed->user_id}}</td>
+                    <td>{{$au->last_name.", ".$au->first_name}}</td>
                     <td>{{$ed->observation}}</td>
                     <td>
                         <?php 
@@ -68,7 +69,7 @@ $tags = TagsController::getTags($ed->id, "case_observations");
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Case Observation</h4>
+            <h4 class="modal-title" id="myModalLabel">Edit Case Observation</h4>
         </div>
 
         <form action="{{URL::to('case_observations/store')}}" method="POST" enctype="multipart/form-data">

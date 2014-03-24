@@ -23,9 +23,13 @@
             </thead>
             <tbody>
                 @foreach($evidence_objects as $ed)
+                <?php $au = User::find($ed->user_id);?>
+                
                 <tr class="clickable" type="button" >
                     <td>{{$ed->id}}</td>
-                    <td>{{$ed->user_id}}</td>
+                <td>{{$au->last_name.", ".$au->first_name}}</td>
+                
+                    
                     <td>{{$ed->owner}}</td>
                     <td>{{$ed->details}}</td>
                     <td>{{$ed->date_received}}</td>
@@ -62,7 +66,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <h4 class="modal-title" id="myModalLabel">Evidence History</h4>
         </div>
         <div class="modal-body">
             <table class="table table-bordered table-hover ">
@@ -117,7 +121,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">Edit Evidence</h4>
             </div>
             <form action="{{URL::to('evidence_objects/update/'.$ed->id)}}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="case_id" value="{{$case->id}}">
@@ -174,7 +178,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">View</h4>
             </div>
             <div class="modal-body">
                 <img src="{{URL::asset('nbi/evidences/objects/'.$ed->file_name)}}" class="img-responsive center-block">
@@ -221,7 +225,7 @@
                             <input type="date" class="form-control" id="date_received" placeholder="fraptiousday!" name="date_received"  value="">
                             <label for="file_name">File Upload</label>
                             <input type="file" id="file_name" name="file_name">
-                            <p class="help-block">Please attach a photo of the victim.</p>
+                            <p class="help-block">Please attach photo of object.</p>
                         </div>
                     </div>
                 </div>

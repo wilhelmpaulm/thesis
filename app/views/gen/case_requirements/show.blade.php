@@ -24,6 +24,7 @@
             </thead>
             <tbody>
                 @foreach($case_requirements as $cq)
+                
                 <tr  class="clickable" >
                     <td>{{$cq->id}}</td>
                     <td>{{$cq->requirement}} </td>

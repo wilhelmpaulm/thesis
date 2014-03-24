@@ -35,7 +35,7 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+	if (Auth::guest()) return Redirect::guest('');
 });
 
 
@@ -43,6 +43,8 @@ Route::filter('auth.basic', function()
 {
 	return Auth::basic();
 });
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +59,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if (Auth::check()) return Redirect::to('');
 });
 
 /*
@@ -77,4 +79,25 @@ Route::filter('csrf', function()
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
+});
+
+
+
+Route::filter('chief', function(){
+        if(Auth::user()->job_title != "Chief"){
+            return Redirect::to(strtolower(Auth::user()->job_title)."/dashboard");
+        } 
+});
+
+Route::filter('agent', function(){
+        if(Auth::user()->job_title != "Agent"){
+            return Redirect::to(strtolower(Auth::user()->job_title)."/dashboard");
+        } 
+});
+
+Route::filter('secretary', function(){
+        if(Auth::user()->job_title != "Secretary"){
+            return Redirect::to(strtolower(Auth::user()->job_title)."/dashboard");
+            
+        } 
 });

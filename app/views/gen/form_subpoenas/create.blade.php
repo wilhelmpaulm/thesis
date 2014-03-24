@@ -13,8 +13,8 @@ $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::use
             <div class="col-lg-4">
                 <label>Location</label>
                 <input type="text" name="location" class="form-control">
-                <label>Time</label>
-                <input type="time" name="time" class="form-control">
+                <label>Name</label>
+                <input type="text" name="time" class="form-control">
             </div>
             <div class="col-lg-4">
                 <label>Date Requested</label>

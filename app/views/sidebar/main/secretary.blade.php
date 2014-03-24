@@ -9,8 +9,9 @@
 
             <a href="{{URL::to("secretary/dashboard")}}" class="list-group-item "><i class="fa fa-dashboard"></i> Dashboard</a>
             <a href="{{URL::to("secretary/calendar")}}" class="list-group-item "><i class="fa fa-calendar"></i> Calendar</a>
+            <a href="{{URL::to("secretary/calendar-agents")}}" class="list-group-item "><i class="fa fa-group"></i>Agents Calendar</a>
             <a href="{{URL::to("secretary/messages")}}" class="list-group-item "><i class="fa fa-envelope"></i> Messages</a>
-            <a href="{{URL::to("secretary/agents")}}" class="list-group-item "><i class="fa fa-shield"></i> Agents</a>
+            <a href="{{URL::to("secretary/agents")}}" class="list-group-item "><i class="fa fa-shield"></i> Employees</a>
             <a href="{{URL::to("secretary/clients")}}" class="list-group-item "><i class="fa fa-users"></i> Clients</a>
 
 <!--        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#messages"><i class="fa fa-envelope"></i> Messages</a>

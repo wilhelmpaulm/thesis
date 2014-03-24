@@ -325,7 +325,7 @@ foreach ($agent_cases as $ac) {
                 type: 'column'
             },
             title: {
-                text: 'Case status and type cobination'
+                text: 'Case status and type combination'
             },
             yAxis: {
                 allowDecimals: false,

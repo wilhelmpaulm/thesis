@@ -24,7 +24,9 @@ class Resource_historiesController extends BaseController {
                     "date_requested" => Input::get("date_requested"),
                     "date_due" => Input::get("date_due"),
         ]);
-        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        $rs = Resource::find($history->resource_id);
+        
+        $chief = User::where("division", "=", $rs->division)->where("job_title", "=", "Chief")->first();
         
         System_logsController::createLog($chief->id, $history->case_id, $history->id, "Requested for resource -  ".Input::get('resource_id'), "resource_histories");
         return Redirect::back();

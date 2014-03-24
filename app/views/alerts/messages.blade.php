@@ -18,7 +18,7 @@
     <li class="divider"></li>
     @endforeach
     <li>
-        <a class="text-center" href="#">
+        <a class="text-center" href="{{URL::to(strtolower(Auth::user()->job_title)."/messages")}}">
             <strong>Read All Messages</strong>
             <i class="fa fa-angle-right"></i>
         </a>

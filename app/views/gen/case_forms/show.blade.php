@@ -8,6 +8,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Added by</th>
                     <th>Form ID</th>
                     <th>Form Type</th>
                     
@@ -16,9 +17,11 @@
             </thead>
             <tbody>
                 @foreach($forms as $a)
+                  <?php $au = User::find($ed->agent_id);?>
 
                 <tr class="text-center">
                     <td>{{$a->id}}</td>
+                    <td>{{$au->last_name.", ".$au->first_name}}</td>
                     <td>{{$a->form_id}}</td>
                     <td>{{$a->form_type}}</td>
                     @if($a->form_type == "Subpoena")

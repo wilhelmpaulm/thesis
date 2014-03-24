@@ -23,13 +23,13 @@
                 <li><a href="#res" data-toggle="tab">Resources</a></li>
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Evidences <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Evidence <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#recording" data-toggle="tab">Recording</a></li>
+                        <li><a href="#recording" data-toggle="tab">Recordings</a></li>
                         <li><a href="#photo" data-toggle="tab">Pictures</a></li>
-                        <li><a href="#video" data-toggle="tab">Video</a></li>
-                        <li><a href="#document" data-toggle="tab">Document</a></li>
-                        <li><a href="#object" data-toggle="tab">Object</a></li>
+                        <li><a href="#video" data-toggle="tab">Videos</a></li>
+                        <li><a href="#document" data-toggle="tab">Documents</a></li>
+                        <li><a href="#object" data-toggle="tab">Objects</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

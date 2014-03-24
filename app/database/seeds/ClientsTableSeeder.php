@@ -136,13 +136,13 @@ class ClientsTableSeeder extends Seeder {
                 "complexion" => "", "build" => "", "race" => ""],
             //22    
             ["last_name" => "Castro", "first_name" => "Kyle", "middle_name" => "Leon", "alias" => "Kyle",
-                "birthdate" => "1975-11-1", "occupation" => "Businessman", "sex" => "Male",
+                "birthdate" => "1975-11-01", "occupation" => "Businessman", "sex" => "Male",
                 "civil_status" => "Single", "citizenship" => "Filipino", "birth_place" => "",
                 "educational_attainment" => "", "hair_color" => "", "eye_color" => "",
                 "complexion" => "", "build" => "", "race" => ""],
             //23     
             ["last_name" => "Yalung", "first_name" => "Patrick", "middle_name" => "Midas", "alias" => "Pat",
-                "birthdate" => "1979-1-12", "occupation" => "Messenger", "sex" => "Male",
+                "birthdate" => "1979-01-12", "occupation" => "Messenger", "sex" => "Male",
                 "civil_status" => "Married", "citizenship" => "Filipino", "birth_place" => "",
                 "educational_attainment" => "", "hair_color" => "", "eye_color" => "",
                 "complexion" => "", "build" => "", "race" => ""],
@@ -1236,7 +1236,7 @@ class ClientsTableSeeder extends Seeder {
                 "complexion" => "", "build" => "", "race" => ""],
             //205
             ["last_name" => "Cojuangco", "first_name" => "Hazel", "middle_name" => "Laroy", "alias" => "Hazel",
-                "birthdate" => "1984-07-1q", "occupation" => "Editor", "sex" => "Female",
+                "birthdate" => "1984-07-10", "occupation" => "Editor", "sex" => "Female",
                 "civil_status" => "Married", "citizenship" => "Filipino", "birth_place" => "",
                 "educational_attainment" => "", "hair_color" => "", "eye_color" => "",
                 "complexion" => "", "build" => "", "race" => ""],

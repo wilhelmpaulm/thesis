@@ -24,9 +24,10 @@
             </thead>
             <tbody>
                 @foreach($evidence_videos as $ed)
+                  <?php $au = User::find($ed->user_id);?>
                 <tr>
                     <td>{{$ed->id}}</td>
-                    <td>{{$ed->user_id}}</td>
+                <td>{{$au->last_name.", ".$au->first_name}}</td>
                     <td>{{$ed->owner}}</td>
                     <td>{{$ed->title}}</td>
                     <td>{{$ed->date_recorded}}</td>
@@ -67,7 +68,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <h4 class="modal-title" id="myModalLabel">Evidence History</h4>
         </div>
         <div class="modal-body">
             <table class="table table-bordered table-hover ">
@@ -120,7 +121,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">Edit Video</h4>
             </div>
             <form class="update" action="{{URL::to('evidence_videos/update/'.$ed->id)}}" method="POST"  enctype="multipart/form-data">
                 <div class="modal-body">
@@ -140,7 +141,7 @@
                             <input type="date" class="form-control" id="date_received" placeholder="fraptiousday!" name="date_received" value="{{$ed->date_received}}">
                             <label for="file_name">File Upload</label>
                             <input type="file" id="file_name" name="file_name" value="{{$ed->file_name}}">
-                            <p class="help-block">Please attach a photo of the victim.</p>
+                            <p class="help-block">Please attach video.</p>
                         </div>
                     </div>
                 </div>
@@ -171,11 +172,10 @@
 
 @foreach($evidence_videos as $ed)
 <div id="viewEvidenceVideo_{{$ed->id}}" class="modal container fade" tabindex="-1" style="display: none;">
-    <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">{{$ed->title}}</h4>
+                <h4 class="modal-title" id="myModalLabel">View {{$ed->title}}</h4>
             </div>
             <div class="modal-body" >
 
@@ -194,7 +194,6 @@
                 </span>
             </div>
         </div>
-    </div>
 </div>
 
 
@@ -227,7 +226,7 @@
                             <input type="date" class="form-control" id="date_received" placeholder="fraptiousday!" name="date_received" value="">
                             <label for="file_name">File Upload</label>
                             <input type="file" id="file_name" name="file_name" value="">
-                            <p class="help-block">Please attach a photo of the victim.</p>
+                            <p class="help-block">Please attach video.</p>
                         </div>
                     </div>
                 </div>

@@ -16,7 +16,6 @@
                     <th>ID</th>
                     <th>Added by</th>
                     <th>Owner</th>
-                    <th>Title</th>
                     <th>Details</th>
                     <th>Date Taken</th>
                     <th>Date Received</th>
@@ -25,11 +24,11 @@
             </thead>
             <tbody>
                 @foreach($evidence_pictures as $ep)
+                  <?php $au = User::find($ep->user_id);?>
                 <tr  class="clickable" >
                     <td>{{$ep->id}}</td>
-                    <td>{{$ep->user_id}}</td>
+                <td>{{$au->last_name.", ".$au->first_name}}</td>
                     <td>{{$ep->owner}}</td>
-                    <td>{{$ep->title}}</td>
                     <td>{{$ep->details}}</td>
                     <td>{{$ep->date_taken}}</td>
                     <td>{{$ep->date_received}}</td>
@@ -43,7 +42,7 @@
                             <button class="btn btn-info"data-toggle="modal" data-target="#historyEvidencePictures_{{$ep->id}}"><i class="fa fa-list"></i></button>
                             <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryPicture_{{$ep->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
                             <button class="btn btn-default"data-toggle="modal" data-target="#crossEvidencePicture_{{$ep->id}}"><i class="fa fa-sitemap"></i></button>
-                            <button class="btn btn-default"data-toggle="modal" data-target="#addCrossEvidencePicture_{{$ep->id}}"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
+                           <button  class="btn btn-default addCross"data-table="evidence_pictures" data-reference_id="{{$ep->id}}" data-toggle="modal"  data-target="#addCross"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
                             @endif
                         </div>
                     </td>
@@ -64,7 +63,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <h4 class="modal-title" id="myModalLabel">Evidence History</h4>
         </div>
         <div class="modal-body">
             <table class="table table-bordered table-hover ">
@@ -122,7 +121,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">View</h4>
             </div>
             <div class="modal-body">
                 <img src="{{URL::asset('nbi/evidences/pictures/'.$ed->file_name)}}" class="img-responsive center-block">
@@ -146,7 +145,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">Edit Evidence</h4>
             </div>
             <form  id="evidence_picture_update_{{$ed->id}}" action="{{URL::to('evidence_pictures/update/'.$ed->id)}}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="case_id" value="{{$case->id}}">
@@ -168,7 +167,7 @@
                             <input type="date" class="form-control" id="date_received" placeholder="fraptiousday!" name="date_received" value="{{$ed->date_received}}">
                             <label for="file_name">File Upload</label>
                             <input type="file" id="file_name" name="file_name">
-                            <p class="help-block">Please attach a photo of the victim.</p>
+                            <p class="help-block">Please attach a photo.</p>
                         </div>
                     </div>
                 </div>
@@ -233,7 +232,7 @@
                             <input type="date" class="form-control" id="date_received" placeholder="fraptiousday!" name="date_received" value="">
                             <label for="file_name">File Upload</label>
                             <input type="file" id="file_name" name="file_name">
-                            <p class="help-block">Please attach a photo of the victim.</p>
+                            <p class="help-block">Please attach a photo.</p>
                         </div>
                     </div>
                 </div>

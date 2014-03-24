@@ -29,11 +29,17 @@
                     <td>{{$a->alias}}</td>
                     <td>{{$a->birthdate}}</td>
                     <td>
-                       
-                        @if(count_chars($a->birthdate) ==10)
-                        {{Time::getAge($a->birthdate)}} 
-                        
-                        years old
+                        @if(strlen($a->birthdate) ==10)
+                        {{  Time::getAge($a->birthdate)}}
+                        <?php
+//                            try {
+//                              echo  Time::getAge($a->birthdate);
+//                            } catch (Exception $exc) {
+//                                echo $exc->getTraceAsString();
+//                            }
+//                                                    
+                        ?>
+
                         @endif
                     </td>
                     <td>{{$a->sex}}</td>
@@ -55,8 +61,8 @@
 
 
 @foreach($clients as $a)
-<?php $addresses = Client_address::where("client_id", "=", $a->id)->get();?>
-<?php $contacts = Client_contact::where("client_id", "=", $a->id)->get();?>
+<?php $addresses = Client_address::where("client_id", "=", $a->id)->get(); ?>
+<?php $contacts = Client_contact::where("client_id", "=", $a->id)->get(); ?>
 
 
 <div class="modal container fade" id="viewAgent_{{$a->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -66,46 +72,46 @@
             <h4 class="modal-title" id="myModalLabel">Update user status</h4>
         </div>
         <div class="modal-body">
-             <div class="row">
-                    <div class="col-lg-2">
-                        <img src="{{URL::asset('nbi/client/picture/'.$a->img_picture)}}" width="100%" class="img-rounded">
-                    </div>
-                    <div class="col-lg-3">
-                        <h4>{{$a->last_name.", ".$a->first_name." ".$a->middle_name}}</h4>
-                        <hr>
-                        <p>id : {{$a->id}}</p>
-                        <p>alias : {{$a->alias}}</p>
-                        <p>educational attainment : {{$a->educational_attainment}}</p>
-                        <hr>
-                        <p>hair color : {{$a->hair_color}}</p>
-                        <p>weight : {{$a->weight}}</p>
-                        <p>height : {{$a->height}}</p>
-                        <p>complexion : {{$a->complexion}}</p>
-                        <p>build : {{$a->build}}</p>
-                        <p>race : {{$a->race}}</p>
-
-                    </div>
-                    <div class="col-lg-2">
-                        <h4>Contacts</h4>
-                        <hr>
-                        @foreach($contacts as $c)
-                        @if($c->type == "Email")<p class=""><i class="fa fa-envelope"></i> 
-                            @elseif($c->type == "Mobile")<p class=""><i class="fa fa-phone"></i> 
-                            @endif {{$c->contact}}</p>
-                        @endforeach
-                    </div>
-                    
-                    <div class="col-lg-3">
-                        <h4>Address</h4>
-                        <hr>
-                        @foreach($addresses as $a)
-                        <p class="">{{$a->street}} </p>
-                        <p class="">{{$a->city}} </p>
-                        <p class="">{{$a->province}} </p>
-                        <p class="">{{$a->barangay}} </p>
-                        @endforeach
-                    </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <img src="{{URL::asset('nbi/client/picture/'.$a->img_picture)}}" width="100%" class="img-rounded">
                 </div>
+                <div class="col-lg-3">
+                    <h4>{{$a->last_name.", ".$a->first_name." ".$a->middle_name}}</h4>
+                    <hr>
+                    <p>id : {{$a->id}}</p>
+                    <p>alias : {{$a->alias}}</p>
+                    <p>educational attainment : {{$a->educational_attainment}}</p>
+                    <hr>
+                    <p>hair color : {{$a->hair_color}}</p>
+                    <p>weight : {{$a->weight}}</p>
+                    <p>height : {{$a->height}}</p>
+                    <p>complexion : {{$a->complexion}}</p>
+                    <p>build : {{$a->build}}</p>
+                    <p>race : {{$a->race}}</p>
+
+                </div>
+                <div class="col-lg-2">
+                    <h4>Contacts</h4>
+                    <hr>
+                    @foreach($contacts as $c)
+                    @if($c->type == "Email")<p class=""><i class="fa fa-envelope"></i> 
+                        @elseif($c->type == "Mobile")<p class=""><i class="fa fa-phone"></i> 
+                        @endif {{$c->contact}}</p>
+                    @endforeach
+                </div>
+
+                <div class="col-lg-3">
+                    <h4>Address</h4>
+                    <hr>
+                    @foreach($addresses as $a)
+                    <p class="">{{$a->street}} </p>
+                    <p class="">{{$a->city}} </p>
+                    <p class="">{{$a->province}} </p>
+                    <p class="">{{$a->barangay}} </p>
+                    @endforeach
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
             <div class="btn-group btn-group-sm pull-right">

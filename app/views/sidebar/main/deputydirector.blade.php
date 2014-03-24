@@ -10,7 +10,7 @@
             <a href="{{URL::to("dd/dashboard")}}" class="list-group-item "><i class="fa fa-dashboard"></i> Dashboard</a>
             <a href="{{URL::to("dd/calendar")}}" class="list-group-item "><i class="fa fa-calendar"></i> Calendar</a>
             <a href="{{URL::to("dd/messages")}}" class="list-group-item "><i class="fa fa-envelope"></i> Messages</a>
-            <a href="{{URL::to("dd/agents")}}" class="list-group-item "><i class="fa fa-shield"></i> Agents</a>
+            <a href="{{URL::to("dd/agents")}}" class="list-group-item "><i class="fa fa-shield"></i> Employees</a>
             <a href="{{URL::to("dd/clients")}}" class="list-group-item "><i class="fa fa-users"></i> Clients</a>
 
 <!--        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#messages"><i class="fa fa-envelope"></i> Messages</a>

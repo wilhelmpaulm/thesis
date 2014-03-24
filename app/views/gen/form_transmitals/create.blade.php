@@ -5,7 +5,7 @@ $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::use
 
 <div class="panel panel-black">
     <div class="panel-heading">
-        <h3 class="panel-title">Create Transmital Report</h3>
+        <h3 class="panel-title">Create Transmittal Report</h3>
     </div>
     <form action="{{URL::to("form_transmitals/store")}}" method="post">
         <div class="panel-body">

@@ -10,7 +10,7 @@
             <a href="{{URL::to("chief/dashboard")}}" class="list-group-item "><i class="fa fa-dashboard"></i> Dashboard</a>
             <a href="{{URL::to("chief/calendar")}}" class="list-group-item "><i class="fa fa-calendar"></i> Calendar</a>
             <a href="{{URL::to("chief/messages")}}" class="list-group-item "><i class="fa fa-envelope"></i> Messages</a>
-            <a href="{{URL::to("chief/agents")}}" class="list-group-item "><i class="fa fa-shield"></i> Agents</a>
+            <a href="{{URL::to("chief/agents")}}" class="list-group-item "><i class="fa fa-shield"></i> Employees</a>
             <a href="{{URL::to("chief/clients")}}" class="list-group-item "><i class="fa fa-users"></i> Clients</a>
 
 <!--        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#messages"><i class="fa fa-envelope"></i> Messages</a>
@@ -51,7 +51,7 @@
                 <a href="{{URL::to("chief/form-subpoena")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Subpoena</a>
                 <a href="{{URL::to("chief/form-coordination")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Coordination</a>
                 <a href="{{URL::to("chief/form-disposition")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Disposition</a>
-                <a href="{{URL::to("cheif/form-transmital")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Transmital</a>
+                <a href="{{URL::to("chief/form-transmital")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Transmittal</a>
             </div>
            
             <!--<a href="{{URL::to('chief/reports')}}" class="list-group-item"><i class="fa fa-book"></i> Reports</a>-->

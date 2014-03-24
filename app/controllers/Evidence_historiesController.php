@@ -14,7 +14,7 @@ class Evidence_historiesController extends BaseController {
         $history = Evidence_history::create([
                     "evidence_id" => Input::get("evidence_id"),
                     "type" => Input::get("type"),
-            "user_id" => Auth::user()->id,
+//            "user_id" => Auth::user()->id,
                     "date_held" => Input::get("date_held"),
                     "date_released" => Input::get("date_released"),
                     "holder" => Input::get("holder"),

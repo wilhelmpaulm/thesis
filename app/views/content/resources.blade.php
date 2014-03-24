@@ -4,10 +4,11 @@
     <div class="panel-heading clearfix">
         <h3 class="panel-title">{{Auth::user()->division}} Agents</h3>
 
+        @if(Auth::user()->job_title == "Chief")
         <span class="btn-group btn-group-sm pull-right">
             <button class="btn btn-success" data-toggle="modal" data-target="#addResource"><i class="fa fa-plus"></i></button>
         </span>
-
+        @endif
     </div>
     <div class="panel-body">
 

@@ -1,5 +1,5 @@
 <?php $resources = Resource::all(); ?>
-<?php $resources_history = Resource_history::where("status", "=", "Approved")->orWhere("status", "=", "Received")->where("user_id", "=", Auth::user()->id)->get(); ?>
+<?php $resources_history = Resource_history::where("user_id", "=", Auth::user()->id)->where("status", "=", "Approved")->orWhere("status", "=", "Received")->get(); ?>
 
 <div class="panel panel-black">
     <div class="panel-heading">
