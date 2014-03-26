@@ -1,5 +1,11 @@
 <?php $date = new DateTime() ?>
-<?php $date2 = new DateTime($c->date) ?>
+<?php $date2 = new DateTime($c->date);
+        
+        
+        
+        
+$case_form = Case_form::where("form_type", "=", "Coordination")->where("form_id", "=", $c->id)->first();
+?>
 
 <html>
     <title>
@@ -86,6 +92,9 @@
 
                 <br>
                 <br>
+                 @if($case_form->status != "Approved")
+                <p style="font-size: 50px; color: #e82924;">This form is {{$case_form->status}}</p>
+                @endif
                 <br>
 
                 <div style=" display: block;">

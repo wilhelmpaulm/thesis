@@ -9,6 +9,7 @@
                     <th>ID</th>
                     <th>Status</th>
                     <th>Name</th>
+                    <th>Type</th>
                     <th>Agent</th>
                     <th>Date Reported</th>
                     <th>Date Assigned</th>
@@ -34,6 +35,15 @@
                         @endif
                         
                         {{$c->name}}</a></td>
+                    <td>
+                        <?php $case_type_tags = Case_type_tag::where("case_id", "=", $c->id)->get();?>
+                        @foreach($case_type_tags as $ctt)
+                        <p class="label label-info">
+                            {{$ctt->type}}
+                        </p> 
+                        @endforeach
+                        
+                    </td>
                     <td>{{$c->agent_id}}</td>
                     <td>{{$c->date_reported}}</td>
                     <td>{{$c->date_assigned}}</td>

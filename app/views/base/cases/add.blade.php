@@ -5,7 +5,7 @@
    
 </div>-->
 
-@if(Auth::user()->job_title != "Chief")
+@if(Auth::user()->job_title != "Chief" )
 <div class="col-md-12">
     @include("gen.complaints.create")
 </div>

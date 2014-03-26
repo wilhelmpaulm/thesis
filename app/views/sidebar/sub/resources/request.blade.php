@@ -63,7 +63,8 @@
         <?php $resources_gadget = Resource::where("status", "=", "Available")->where("category", "=", "Gadget")->get(); ?>
         <?php $resources_person = Resource::where("status", "=", "Available")->where("category", "=", "Person")->get(); ?>
         <?php $resources_vehicle = Resource::where("status", "=", "Available")->where("category", "=", "Vehicle")->get(); ?>
-        <?php $resources_misc = Resource::where("status", "=", "Available")->where("category", "=", "miscellaneous")->get(); ?>
+        <?php $resources_money = Resource::where("status", "=", "Available")->where("category", "=", "Money")->get(); ?>
+        <?php $resources_misc = Resource::where("status", "=", "Available")->where("category", "=", "Equipment")->get(); ?>
 
         <div class="tab-content">
             <div class="tab-pane active" id="gadget">
@@ -182,6 +183,44 @@
                     </ul>
                 </div>
             </div>
+            <div class="tab-pane list" id="money">
+                <div class="list-group-item">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="search form-control " placeholder="Search...">
+                        <span class="input-group-btn ">
+                            <button class="btn btn-default sort" type="button" data-sort="list_name">
+                                <i class="fa fa-sort"></i> A
+                            </button>
+                            <button class="btn btn-default sort" type="button" data-sort="list_created_at">
+                                <i class="fa fa-sort"></i> #
+                            </button>
+
+                        </span>
+
+                    </div>
+                </div>
+                <div style="height: 450px; overflow-y: auto">
+                    <ul class="list list-unstyled    ">
+                        @foreach($resources_money as $r)
+                        <li style="">
+                            <a  id="" href="#" data-toggle="modal" data-target="#resource_{{$r->id}}"  data-case_id="{{$r->id}}" class="list-group-item c_link">
+
+
+
+
+                                <h4 class=" list_name ">{{$r->name}}</h4>
+                                <p class="label label-info list_status">{{$r->status}}</p>
+                                <p class="label label-default list_category">{{$r->category}}</p>
+                                <p class="label label-default list_info">{{$r->division}}</p>
+                                <p class="list_created_at label label-info">{{$r->created_at}}</p>
+
+
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
             <div class="tab-pane list" id="misc">
                 <div class="list-group-item">
                     <div class="input-group input-group-sm">
@@ -238,14 +277,14 @@
         </div>
         <div class="modal-body">
             <div class="row">
-                <div class="col-md-2">
+                
+                <div class="col-md-8">
 
                     <p>{{$r->details}}</p>
                     <p class="label label-primary">{{$r->category}}</p>
                     <p class="label label-info">{{$r->status}}</p>
                     <p class="label label-default">{{$r->division}}</p>
-                </div>
-                <div class="col-md-7">
+                    <hr>
                     <?php $history = Resource_history::where("resource_id", "=", $r->id)->get(); ?>
                     <?php $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::user()->id)->get(); ?>
 
@@ -274,7 +313,7 @@
                     </table>
 
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <form method="POST" action="{{URL::to('resource_histories/request')}}">
                         <div class="form-group ">
                             <input type="hidden" name="resource_id" value="{{$r->id}}">
@@ -288,6 +327,8 @@
                             <input class="form-control" type="date" value="" name="date_requested">
                             <label >Date Due</label>
                             <input class="form-control" type="date" value="" name="date_due">
+                            <label >Details</label>
+                            <textarea name="details" class="form-control" rows="4" cols="20"></textarea>
                             <label >Amount</label>
                             <input class="form-control" min="1" max="{{$r->amount}}"  type="number" value="1" name="amount">
                         </div>

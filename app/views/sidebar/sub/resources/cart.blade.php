@@ -4,7 +4,7 @@
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-bell"></i> Pending Resource Requests</h3>
     </div>
-    <div   class="list-group" >
+    <div   class="list-group" id="listli">
         <div class="">
             <div class="list-group-item">
                 <div class="input-group input-group-sm">
@@ -63,15 +63,13 @@
         </div>
         <div class="modal-body">
             <div class="row">
-                <div class="col-md-2">
-
+                <div class="col-md-8">
                     <p>{{$resource->details}}</p>
                     <p class="label label-primary">{{$resource->category}}</p>
                     <p class="label label-info">{{$resource->status}}</p>
                     <p class="label label-default">{{$resource->division}}</p>
-                </div>
-                <div class="col-md-7">
-                    <?php $history = Resource_history::where("resource_id", "=", $resource->id)->get(); ?>
+                    <hr>
+                        <?php $history = Resource_history::where("resource_id", "=", $resource->id)->get(); ?>
                     <?php $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::user()->id)->get(); ?>
 
                     <table class="table table-bordered table-hover">
@@ -99,22 +97,28 @@
                     </table>
 
                 </div>
-                <div class="col-md-3">
-                    <form method="POST" action="{{URL::to('resource_histories/request')}}">
+                <div class="col-md-4">
+                    <form method="POST" action="{{URL::to('resource_histories/update/'.$rh->id)}}">
                         <div class="form-group ">
                             <input type="hidden" name="resource_id" value="{{$r->id}}">
                             <label >Case</label>
                             <select name="case_id" class="form-control">
                                 @foreach($cases as $c)
+                                @if($rh->case_id == $c->id)
+                                <option selected="" value="{{$c->id}}">{{$c->name}}</option>
+                                @else
                                 <option value="{{$c->id}}">{{$c->name}}</option>
+                                @endif
                                 @endforeach
                             </select>
                             <label >Date Requested</label>
-                            <input class="form-control" type="date" value="{{$r->date_requested}}" name="date_requested">
+                            <input class="form-control" type="date" value="{{$rh->date_requested}}" name="date_requested">
                             <label >Date Due</label>
-                            <input class="form-control" type="date" value="{{$r->date_due}}" name="date_due">
+                            <input class="form-control" type="date" value="{{$rh->date_due}}" name="date_due">
+                            <label >Details</label>
+                            <textarea name="details" class="form-control" rows="4" cols="20">{{$rh->details}}</textarea>
                             <label >Amount</label>
-                            <input class="form-control" min="1" max="{{$r->amount}}"  type="number" value="1" name="amount">
+                            <input class="form-control" min="1" max="{{$r->amount}}"  type="number" value="{{$rh->amount}}" name="amount">
                         </div>
                 </div>
 
@@ -149,7 +153,7 @@
 
     $(".table").dataTable();
 
-    var resList = new List('userResource', options);
+    var xList = new List('listli', options);
 
     //    $.fn.modal.defaults.maxHeight = function(){
     // subtract the height of the modal header and footer

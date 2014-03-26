@@ -31,9 +31,18 @@
                 ?>
 
                 <li><a  id="" href="{{URL::to(strtolower(Auth::user()->job_title).'/cases-closed/'.$c->id)}}" data-case_id="{{$c->id}}" class="list-group-item c_link {{$la}}">
-                        <strong class="list-group-item-heading list_name ">{{$c->name}}</strong>
-                        <p class=" list_created_at text-muted label label-info">{{$c->created_at}}</p>
-                        <p class="list-group-item-text list_details">{{$c->details}}</p>
+                       <h4 class="list-group-item-heading list_name ">{{$c->name}}</h4>
+                        <p class="list_created_at label label-info"><i class="fa fa-calendar"></i> {{$c->created_at}}</p>
+                        
+                        <p class=" list_details label label-success "><i class="fa fa-user"></i> {{$c->agent_id}}</p>
+                        <p class="label label-primary bg-lightblue">{{$c->division}}</p>
+                        <br>
+                        <?php $case_type_tags = Case_type_tag::where("case_id", "=", $c->id)->get();?>
+                        @foreach($case_type_tags as $ctt)
+                        <p class="label label-primary bg-orange">
+                            {{$ctt->type}}
+                        </p> 
+                        @endforeach
                     </a></li>
                 @endforeach
             </ul>

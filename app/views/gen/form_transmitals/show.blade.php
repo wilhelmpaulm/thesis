@@ -8,6 +8,8 @@ $chief = User::where("division", "=", $agent->division)->where("job_title", "=",
 $c_victims = Case_victim::where("case_id", "=", $t->case_id)->get();
 $c_subjects = Case_subject::where("case_id", "=", $t->case_id)->get();
 $c_natures = Case_type_tag::where("case_id", "=", $t->case_id)->get();
+
+$case_form = Case_form::where("form_type", "=", "Transmital")->where("form_id", "=", $t->id)->first();
 ?>
 
 <html>
@@ -99,6 +101,10 @@ $c_natures = Case_type_tag::where("case_id", "=", $t->case_id)->get();
                 <p class="indent">{{$s->first_name." ".$s->last_name}} with known address at {{$a->street." ".$a->city." ".$a->manila}}</p>
                 @endforeach
                 <br>
+                
+                @if($case_form->status != "Approved")
+                <p style="font-size: 50px; color: #e82924;">This form is {{$case_form->status}}</p>
+                @endif
                 <h4>COMPLAINANT/VICTIM:</h4>
                 <br>
                 <?php $a = Client_address::where("client_id", "=", $case->complainant_id)->first(); ?>

@@ -242,11 +242,13 @@
         //        $('body').modalmanager('loading');
     </script>
     <script>
-        $.get("{{URL::to(strtolower($user->job_title).'/notifications-num')}}", function(data) {
+        $.get("{{URL::to('notifications-num')}}", function(data) {
             if (data > 0) {
+                    console.log(data);
                 $("#notifNum").text(data);
                 $("#notifSpan").addClass("c-alizarin");
             } else {
+                    console.log(data);
                 $("#notifNum").text("");
                 $("#notifSpan").removeClass("c-alizarin");
             }
@@ -257,9 +259,11 @@
         setInterval(function() {
             $.get("{{URL::to('notifications-num')}}", function(data) {
                 if (data > 0) {
+                    console.log(data);
                     $("#notifNum").text(data);
                     $("#notifSpan").addClass("c-alizarin");
                 } else {
+                    console.log(data);
                     $("#notifNum").text("");
                     $("#notifSpan").removeClass("c-alizarin");
                 }

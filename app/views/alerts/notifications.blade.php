@@ -7,7 +7,7 @@
     @foreach($notifications as $n)
     <li class="">
         <a href="{{URL::to(strtolower(Auth::user()->job_title)."/notifications")}}">
-            @if($n->status == "")
+            @if($n->status == "unread")
             <div class="clearfix c-lightblue">
                 <strong class="">{{$n->division}} {{$n->user_id}}</strong>
                 <span class="pull-right text-muted c-lime">

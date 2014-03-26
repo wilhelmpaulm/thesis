@@ -192,6 +192,10 @@ class ResourcesTableSeeder extends Seeder {
             ["category" => "Person", "name" => "Translator - Jose Gonzales", "division" => "VAWCD", "details" => "Age: 55, Specialization: Slovak, Mongolian, French, Chinese", "amount" => "1", "status" => "Available"],
             ["category" => "Person", "name" => "Consultant - Rey Valdez", "division" => "VAWCD", "details" => "Age: 51, Specialization: Public Relations, Process, Human Resources", "amount" => "1", "status" => "Available"],
             ["category" => "Person", "name" => "Publisher", "division" => "VAWCD", "details" => "A person who prepares and issues books, journals, music, or other works", "amount" => "1", "status" => "Available"],
+            
+    
+            ["category" => "Money", "name" => "Marked money", "division" => "FLD", "details" => "Marked money used for entrapment operations", "amount" => "999999999", "status" => "Available"],
+            ["category" => "Money", "name" => "Reimbursement Money", "division" => "FLD", "details" => "Reembursement money for miscellaneous fees", "amount" => "999999999999", "status" => "Available"],
 //            //GADGET
 //            //GADGET
 //            //GADGET

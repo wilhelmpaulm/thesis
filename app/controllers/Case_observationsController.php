@@ -20,7 +20,7 @@ class Case_observationsController extends BaseController {
         TagsController::addTags($co->id, "case_observations", Input::get("tags").", ".$co->created_at);
         
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, Input::get("case_id"), $co->id, Auth::user()->id . " Added case observations to" . $co->id, "case_observations");
+        System_logsController::createLog($chief->id, Input::get("case_id"), $co->id, Auth::user()->id . " added case observation to" . $co->id, "case_observations");
 
         
         
@@ -46,7 +46,7 @@ class Case_observationsController extends BaseController {
         
         
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, Input::get("case_id"), $co->id, Auth::user()->id . " Deleted case observations to" . $co->id, "case_observations");
+        System_logsController::createLog($chief->id, Input::get("case_id"), $co->id, Auth::user()->id . " deleted case observation to" . $co->id, "case_observations");
         $co->delete();
 
         

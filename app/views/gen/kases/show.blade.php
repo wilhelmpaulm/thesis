@@ -66,10 +66,10 @@
                         @if($case->status == "Ongoing" && $case->agent_id == Auth::user()->id)
                         <li><a href="#" data-toggle="modal" data-target="#caseClose">Close Case</a></li>
                         @endif
-                        @if($case->status != "Ongoing" && Auth::user()->job_title == "Chief")
+                        @if($case->status != "Ongoing" && Auth::user()->job_title == "Chief"|| Auth::user()->job_title == "Executive_Officer")
                         <li><a href="#" data-toggle="modal" data-target="#caseReopen">Reopen Case</a></li>
                         @endif
-                        @if(Auth::user()->job_title == "Chief")
+                        @if(Auth::user()->job_title == "Chief" || Auth::user()->job_title == "Executive_Officer")
                         <li><a href="#" data-toggle="modal" data-target="#caseReassign">Reassign Case</a></li>
                         @endif
                     </ul>
@@ -132,12 +132,7 @@
 
 
                     <table class="table table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
+                      
                         <tbody>
                             <tr>
                                 <td><strong>Date Assigned</strong></th>
@@ -159,6 +154,14 @@
                             <tr>
                                 <td><strong>Date Committed</strong></td>
                                 <td>{{$complaint->date_commited}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Case Type</strong></th>
+                                <td>
+                                    @foreach($case_type_tags as $ctt)
+                                    {{$ctt->type}} /
+                                    @endforeach
+                                    </th>
                             </tr>
                           
                             <tr>
@@ -313,7 +316,7 @@
         </div>
         <form action="{{URL::to("cases/close/".$case->id)}}" method="post">
             <div class="modal-body">
-                <label>password</label>
+                <label>Password</label>
                 <input class="form-control" name="password" type="password">
                 <label>Reason for closing</label>
                 <textarea class="form-control" name="reason" rows="4" cols="20"></textarea>
@@ -339,7 +342,7 @@
         </div>
         <form action="{{URL::to("cases/close/".$case->id)}}" method="post">
             <div class="modal-body">
-                <label>password</label>
+                <label>Password</label>
                 <input class="form-control" name="password" type="password">
                   <label>Reason for closing</label>
                 <textarea class="form-control" name="reason" rows="4" cols="20"></textarea>
@@ -448,10 +451,10 @@
         </div>
         <form action="{{URL::to("cases/details/".$case->id)}}" method="post">
             <div class="modal-body">
-                <label>password</label>
+                <label>Password</label>
                 <input class="form-control" name="password" type="password">
                 <label>Details</label>
-                <textarea name="details" class="form-control" rows="4" cols="20">{{$case->details}}</textarea>
+                <textarea name="details" class="form-control" rows="20" cols="20">{{$case->details}}</textarea>
             </div>
             <div class="modal-footer">
                 <span class="btn-group btn-group-sm pull-right">

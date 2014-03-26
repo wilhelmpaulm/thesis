@@ -44,10 +44,13 @@ class Form_coordinationsController extends BaseController {
             "case_id" => $form->case_id,
             "agent_id" => Auth::user()->id,
             "form_id" => $form->id,
+            "division" => Auth::user()->division,
             "form_type" => "Coordination",
         ]);
 
-
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $form->case_id, $form->id, Auth::user()->id . " created form " . $form->id . "for " . $form->case_id, "form_coordinations");
+        
         return Redirect::to(strtolower(Auth::user()->job_title) . "/cases-ongoing/" . Input::get("case_id"));
     }
 
@@ -74,6 +77,9 @@ class Form_coordinationsController extends BaseController {
         $c_m = Coordination_member::where("coordination_id", "=", $id)->get();
         $c_v = Coordination_vehicle::where("coordination_id", "=", $id)->get();
         $case_form = Case_from::where("form_id", "=", $id)->where("form_type", "=", "Coordination")->get();
+        
+        $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
+        System_logsController::createLog($chief->id, $form->case_id, $form->id, Auth::user()->id . " deleted form " . $form->id . "for " . $form->case_id, "form_coordinations");
         
         $form->delete();
         $c_m->delete();

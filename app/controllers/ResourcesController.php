@@ -21,7 +21,7 @@ class ResourcesController extends BaseController {
         ]);
 
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, 0, $r->id, Auth::user()->id . " added a new resource with id " . $r->id, "resources");
+        System_logsController::createLog($chief->id, 0, $r->id, Auth::user()->id . " added new resource with ID " . $r->id, "resources");
    
         return Redirect::back();
         
@@ -45,7 +45,7 @@ class ResourcesController extends BaseController {
         $r->save();
 
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, 0, $r->id, Auth::user()->id . " updated resource with id " . $r->id, "resources");
+        System_logsController::createLog($chief->id, 0, $r->id, Auth::user()->id . " updated resource with ID " . $r->id, "resources");
         
         return Redirect::back();
         }
@@ -54,7 +54,7 @@ class ResourcesController extends BaseController {
         $r = Resource::find($id);
 
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, 0, $r->id, Auth::user()->id . " deleted resource with id " . $r->id, "resources");
+        System_logsController::createLog($chief->id, 0, $r->id, Auth::user()->id . " deleted resource with ID " . $r->id, "resources");
         
         $r->delete();
         return Redirect::back();

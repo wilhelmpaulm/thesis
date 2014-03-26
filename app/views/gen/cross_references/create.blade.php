@@ -29,42 +29,57 @@
                         <?php $i = Case_observation::find($t->reference_id); ?>
                         <h4 class="list-group-item-heading list_name ">{{$i->observation}}</h4>
                         <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                        <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+                        @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info">{{$ts}}</p>
+                        @endforeach
                         @elseif($t->table == "kases")
                         <?php $i = Kase::find($t->reference_id); ?>
                         <h4 class="list-group-item-heading list_name ">{{$i->name}}</h4>
                         <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                        <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+                        @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info"> {{$ts}}</p>
+                        @endforeach
                         @elseif($t->table == "evidence_objects")
                         <?php $i = Evidence_object::find($t->reference_id); ?>
                         <h4 class="list-group-item-heading list_name ">{{$i->details}}</h4>
                         <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                        <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+                        @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info"> {{$ts}}</p>
+                        @endforeach
                         @elseif($t->table == "evidence_pictures")
                         <?php $i = Evidence_picture::find($t->reference_id); ?>
                         <h4 class="list-group-item-heading list_name "></h4>
                         <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                        <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+                        @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info">{{$ts}}</p>
+                        @endforeach
                         @elseif($t->table == "evidence_recordings")
                         <?php $i = Evidence_picture::find($t->reference_id); ?>
                         <h4 class="list-group-item-heading list_name "></h4>
                         <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                        <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+                        @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info"> {{$ts}}</p>
+                        @endforeach
                         @elseif($t->table == "evidence_documents")
                         <?php $i = Evidence_document::find($t->reference_id); ?>
                         <h4 class="list-group-item-heading list_name ">{{$i->details}}</h4>
                         <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                        <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+                       @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info">{{$ts}}</p>
+                        @endforeach
                         @elseif($t->table == "evidence_videos")
                         <?php $i = Evidence_video::find($t->reference_id); ?>
                         <h4 class="list-group-item-heading list_name ">{{$i->details}}</h4>
                         <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                        <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+                        @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info">{{$ts}}</p>
+                        @endforeach
                         @else
                         <h4 class="list-group-item-heading list_name ">{{$t->reference_id}}</h4>
                         <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                        <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
-
+                       @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info"> {{$ts}}</p>
+                        @endforeach
                         @endif
 
                     </a>
@@ -111,42 +126,57 @@
                 <?php $i = Case_observation::find($t->reference_id); ?>
                 <h4 class="list-group-item-heading list_name ">{{$i->observation}}</h4>
                 <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+                @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info"> {{$ts}}</p>
+                        @endforeach
                 @elseif($t->table == "kases")
                 <?php $i = Kase::find($t->reference_id); ?>
                 <h4 class="list-group-item-heading list_name ">{{$i->name}}</h4>
                 <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+                @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info"> {{$ts}}</p>
+                        @endforeach
                 @elseif($t->table == "evidence_objects")
                 <?php $i = Evidence_object::find($t->reference_id); ?>
                 <h4 class="list-group-item-heading list_name ">{{$i->details}}</h4>
                 <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+                @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info"> {{$ts}}</p>
+                        @endforeach
                 @elseif($t->table == "evidence_pictures")
                 <?php $i = Evidence_picture::find($t->reference_id); ?>
                 <h4 class="list-group-item-heading list_name "></h4>
                 <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+                @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info"> {{$ts}}</p>
+                        @endforeach
                 @elseif($t->table == "evidence_recordings")
                 <?php $i = Evidence_picture::find($t->reference_id); ?>
                 <h4 class="list-group-item-heading list_name "></h4>
                 <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+               @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info"> {{$ts}}</p>
+                        @endforeach
                 @elseif($t->table == "evidence_documents")
                 <?php $i = Evidence_documents::find($t->reference_id); ?>
                 <h4 class="list-group-item-heading list_name ">{{$i->details}}</h4>
                 <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+               @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info"> {{$ts}}</p>
+                        @endforeach
                 @elseif($t->table == "evidence_videos")
                 <?php $i = Evidence_video::find($t->reference_id); ?>
                 <h4 class="list-group-item-heading list_name ">{{$i->details}}</h4>
                 <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
+               @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info"> {{$ts}}</p>
+                        @endforeach
                 @else
                 <h4 class="list-group-item-heading list_name ">{{$t->reference_id}}</h4>
                 <p class="list_created_at label label-default"><i class="fa fa-calendar"></i> {{$t->created_at}}</p>
-                <p class="list-group-item-text list_tags label label-info"><i class="fa fa-tags"></i> {{$t->tags}}</p>
-
+               @foreach(explode(",", $t->tags) as $ts)
+                        <p class="list-group-item-text list_tags label label-info"> {{$ts}}</p>
+                        @endforeach
                 @endif
 
             </div>

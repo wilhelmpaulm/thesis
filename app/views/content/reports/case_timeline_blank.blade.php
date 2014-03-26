@@ -500,12 +500,7 @@ rsort($dateLoop);
 
 
                     <table class="table table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
+                       
                         <tbody>
                             <tr>
                                 <td><strong>Date Assigned</strong></th>
@@ -527,6 +522,14 @@ rsort($dateLoop);
                             <tr>
                                 <td><strong>Date Committed</strong></td>
                                 <td>{{$complaint->date_commited}}</td>
+                            </tr>
+                              <tr>
+                                <td><strong>Case Type</strong></th>
+                                <td>
+                                    @foreach($case_type_tags as $ctt)
+                                    {{$ctt->type}} /
+                                    @endforeach
+                                    </th>
                             </tr>
                           
                             <tr>

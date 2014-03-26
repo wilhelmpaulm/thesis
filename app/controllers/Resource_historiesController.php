@@ -23,12 +23,13 @@ class Resource_historiesController extends BaseController {
                     "status" => "Pending",
                     "date_requested" => Input::get("date_requested"),
                     "date_due" => Input::get("date_due"),
+                    "details" => Input::get("details"),
         ]);
         $rs = Resource::find($history->resource_id);
         
         $chief = User::where("division", "=", $rs->division)->where("job_title", "=", "Chief")->first();
         
-        System_logsController::createLog($chief->id, $history->case_id, $history->id, "Requested for resource -  ".Input::get('resource_id'), "resource_histories");
+        System_logsController::createLog($chief->id, $history->case_id, $history->id, " requested for resource -  ".Input::get('resource_id'), "resource_histories");
         return Redirect::back();
     }
 
@@ -44,7 +45,7 @@ class Resource_historiesController extends BaseController {
             
             
         
-        System_logsController::createLog($resource_history->user_id, $resource_history->case_id, $resource_history->id, "Request for resource approved - id ".$resource_history->id, "resource_histories");
+        System_logsController::createLog($resource_history->user_id, $resource_history->case_id, $resource_history->id, "request for resource approved - id ".$resource_history->id, "resource_histories");
         }
 
         for ($index = 0; $index < count($rg); $index++) {
@@ -72,7 +73,7 @@ class Resource_historiesController extends BaseController {
                     $resource_history->save();
                     
                     
-        System_logsController::createLog($resource_history->user_id, $resource_history->case_id, $resource_history->id, "Request for resource dissapproved - id ".$resource_history->id, "resource_histories");
+        System_logsController::createLog($resource_history->user_id, $resource_history->case_id, $resource_history->id, "request for resource disapproved - id ".$resource_history->id, "resource_histories");
                 }
             }
         }
@@ -108,7 +109,17 @@ class Resource_historiesController extends BaseController {
     }
 
     public function postUpdate($id = null) {
-        
+        $h = Resource_history::find($id);
+                    $h->user_id = Auth::user()->id;
+                    $h->case_id = Input::get("case_id");
+                    $h->amount = Input::get("amount");
+                    $h->status = "Pending";
+                    $h->date_requested = Input::get("date_requested");
+                    $h->date_due = Input::get("date_due");
+                    $h->details = Input::get("details");
+                    $h->save();
+                    
+                   return Redirect::back();
     }
 
     public function postDestroy($id = null) {

@@ -20,7 +20,7 @@ class Case_requirementsController extends BaseController {
         ]);
         
          $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, Input::get("case_id"), $r->id, Auth::user()->id . " Added case requirement" , "case_requirements");
+        System_logsController::createLog($chief->id, Input::get("case_id"), $r->id, Auth::user()->id . " added case requirement" , "case_requirements");
 
 
         return Redirect::back();
@@ -43,7 +43,7 @@ class Case_requirementsController extends BaseController {
         $r->save();
 
          $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, $r->case_id, $r->id, Auth::user()->id . " Added updated requirement" , "case_requirements");
+        System_logsController::createLog($chief->id, $r->case_id, $r->id, Auth::user()->id . " updated requirement" , "case_requirements");
         return Redirect::back();
     }
 
@@ -51,7 +51,7 @@ class Case_requirementsController extends BaseController {
         $r = Case_requirement::find($id);
         
          $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, $r->case_id, $r->id, Auth::user()->id . " Added deleted requirement" , "case_requirements");
+        System_logsController::createLog($chief->id, $r->case_id, $r->id, Auth::user()->id . " deleted requirement" , "case_requirements");
         $r->delete();
         return Redirect::back();
     }

@@ -3,11 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/wamp/www/nbi/app/controllers/Evidence_historiesController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/Evidence_documentsController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/database/seeds/Evidence_historiesTableSeeder.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/layouts/base2.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/cases/agent_summary.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/kases/show.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/index.blade.php</file>
             <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/cases/agents.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/content/reports/chief_agents_hc.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/cases/ongoing.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/cases/complaint.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/controllers/MainController.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/main/executiveofficer.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/alerts/notifications.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/resources/request.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/complaints/create_chief.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/cases/assign.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/controllers/KasesController.php</file>
             <file>file:/D:/wamp/www/nbi/app/views/sidebar/main/chief.blade.php</file>
             <file>file:/D:/wamp/www/nbi/app/views/sidebar/main/agent.blade.php</file>
         </group>

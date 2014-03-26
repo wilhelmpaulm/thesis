@@ -7,6 +7,10 @@ $chief = User::where("division", "=", $agent->division)->where("job_title", "=",
 $c_victims = Case_victim::where("case_id", "=", $d->case_id)->get();
 $c_subjects = Case_subject::where("case_id", "=", $d->case_id)->get();
 $c_natures = Case_type_tag::where("case_id", "=", $d->case_id)->get();
+
+
+$case_form = Case_form::where("form_type", "=", "Disposition")->where("form_id", "=", $d->id)->first();
+
 ?>
 
 <html>
@@ -156,6 +160,9 @@ $c_natures = Case_type_tag::where("case_id", "=", $d->case_id)->get();
                 <br>
                 <p class="indent">{{$d->recommendations}}</p>
                 <br>
+                @if($case_form->status != "Approved")
+                <p style="font-size: 50px; color: #e82924;">This form is {{$case_form->status}}</p>
+                @endif
                 <br>
                 <h4>  ANNEXES</h4>
                 <br>

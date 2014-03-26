@@ -13,9 +13,9 @@
                     <p>{{$ag->id}}</p>
                 </div> 
                 <div class="col-md-6">
-                    <p>Cases Handle {{$ac['cases_held']}}</p>
-                    <p>Current Cases {{$ac['cases_ongoing']}}</p>
-                    <p>Successfully Closed {{$ac['cases_finished']}}</p>
+                    <p><strong>Total Cases Handled </strong>: {{$ac['cases_held']}}</p>
+                    <p><strong>Ongoing Cases </strong>: {{$ac['cases_ongoing']}}</p>
+                    <p><strong>Successfully Closed </strong>: {{$ac['cases_finished']}}</p>
                     
                 </div> 
 

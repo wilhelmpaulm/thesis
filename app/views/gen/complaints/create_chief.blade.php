@@ -66,11 +66,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="agency_reported">HAS THE MATTER BEEN REPORTED TO ANY AGENCY? IF SO, TO WHAT POLICE AGENCY?</label>
+                                    <label for="agency_reported">Has the matter been reported to any agency? If so, to what police agency?</label>
                                     <input type="text" class="form-control" id="agency_reported" name="agency_reported" placeholder="Agency name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="agency_report_details">IS THE MATTER COMPLAINED OF THE SUBJECT OF ANY COURT ACTION OR PROCEEDINGS? IF SO, WHERE?</label>
+                                    <label for="agency_report_details">Is the matter complained of the subject of any court action or proceedings? If so, where?</label>
                                     <textarea class="form-control" name="agency_report_details" rows="4" cols="20" placeholder="Details . . . "></textarea>
                                 </div>
                                 <div class="form-group">
@@ -84,7 +84,7 @@
                                     <input type="text" class="form-control" id="court_action_details" name="court_action_details" placeholder="eg. Pending / Accomplished / On Hold">
                                 </div>
                                 <div class="form-group">
-                                    <label for="consoiderations">WHAT CONSIDERATION/S IMPELLED YOU TO REPORT TO THE NBI?</label>
+                                    <label for="consoiderations">What consideration/s impelled you to report to the NBI?</label>
                                     <textarea class="form-control" name="considerations" rows="4" cols="20" placeholder="I chose to report this incident bacause . . ."></textarea>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <label for="narration">NARRATION OF FACTS</label>
+                                    <label for="narration">Narration of facts</label>
                                     <textarea class="form-control" name="narration" rows="10" cols="20" placeholder="I swoore . . ."></textarea>
                                 </div>
                             </div>

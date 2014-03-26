@@ -32,9 +32,12 @@
                 ?>
                 <?php $c = Client::find($case->client_id); ?>
                 <li><a  id="" href="{{URL::to(strtolower(Auth::user()->job_title).'/cases-add/'.$case->id)}}" data-case_id="{{$case->id}}" class="list-group-item c_link {{$la}}">
-                        <h4 class="list-group-item-heading list_name ">{{$case->id}} {{$c->last_name.", ".$c->first_name}}</h4>
-                        <p class=" list_created_at text-muted label label-info">{{$case->created_at}}</p>
-                        <p class="list-group-item-text list_details">{{$case->details}}</p>
+                      <h4 class="list-group-item-heading list_name ">{{$c->id." ".$c->last_name.", ".$c->first_name}}</h4>
+                        <p class="list_created_at label label-info"><i class="fa fa-calendar"></i> {{$case->date_reported}}</p>
+                        
+                        <p class=" list_details label label-warning "><i class="fa fa-calendar-o"></i> {{$case->date_commited}}</p>
+                        <p class="label label-primary bg-lightblue">{{$case->division}}</p>
+                        
                     </a></li>
                 @endforeach
             </ul>

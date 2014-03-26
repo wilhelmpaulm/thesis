@@ -29,7 +29,7 @@ class Evidence_recordingsController extends BaseController {
         $evidence->save();
         Case_evidencesController::addCaseEvidence($evidence->case_id, "Recording", $evidence->id);
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Uploaded new recording to " . $evidence->case_id, "evidence_recordings");
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " uploaded new recording to " . $evidence->case_id, "evidence_recordings");
 
         return Redirect::back();
     }
@@ -55,7 +55,7 @@ class Evidence_recordingsController extends BaseController {
         }
         $evidence->save();
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Updated recording " . $evidence->id . "from " . $evidence->case_id, "evidence_recordings");
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " updated recording " . $evidence->id . "from " . $evidence->case_id, "evidence_recordings");
 
         return Redirect::back();
     }
@@ -63,7 +63,7 @@ class Evidence_recordingsController extends BaseController {
     public function postDestroy($id = null) {
         $evidence = Evidence_recording::find($id);
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Deleted recording" . $evidence->id . "from " . $evidence->case_id, "evidence_recordings");
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " deleted recording" . $evidence->id . "from " . $evidence->case_id, "evidence_recordings");
 
         $evidence->delete();
         return Redirect::back();

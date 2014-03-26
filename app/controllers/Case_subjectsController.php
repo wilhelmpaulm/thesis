@@ -50,7 +50,7 @@ class Case_subjectsController extends BaseController {
             $complainant->save();
         }
  $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, Input::get("case_id"), $complainant->id, Auth::user()->id . " Added case subjects to" . $complainant->id, "case_victims");
+        System_logsController::createLog($chief->id, Input::get("case_id"), $complainant->id, Auth::user()->id . " added case subjects to" . $complainant->id, "case_victims");
 
         return Redirect::back();
     }

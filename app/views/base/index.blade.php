@@ -3,7 +3,7 @@
 
 
 
-<h4 id="login-message" class="c-orange lead"></h4>
+<h4 id="login-message" class="c-lightblue lead"></h4>
 
 <div id="loginbody">
     <form  class="" action="{{URL::to("login")}}" method="POST" id="login-form">
@@ -78,6 +78,7 @@
 <script>
     $(document).ready(function() {
         $("#login-form").submit(function() {
+            $("#login-message").text("Attempting to log in . . . ");
             username = $("#username").val();
             password = $("#password").val();
             $.ajax({
@@ -92,7 +93,7 @@
                     else {
 //                        alert(html);
                         //$("#add_err").html("right username or password");
-                        $("#login-message").text("");
+                        $("#login-message").text("Log in successful . . . loading");
                         @if(Auth::user()!= null)
 //                        window.location = "{{strtolower(Auth::user()->job_title).'/dashboard'}}";
                         @endif

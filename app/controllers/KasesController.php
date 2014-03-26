@@ -30,7 +30,7 @@ class KasesController extends BaseController {
         if (Hash::check(Input::get("password"), Auth::user()->password)) {
             $case = Kase::find($id);
             $case->status = Input::get("status");
-            $case->details = "CASE CLOSED   <br><hr> REASON FOR CLOSING <br><hr>".Input::get("reason")."<br><hr> ".$case->details;
+            $case->details = "<strong>Case Closed </strong><hr><strong>Reason for closing </strong> <br>".Input::get("reason")."<hr> ".$case->details;
             $case->save();
             $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
             System_logsController::createLog($chief->id, $case->id, $case->id, Auth::user()->id . " closed case " . $case->id, "kases");
@@ -49,7 +49,7 @@ class KasesController extends BaseController {
             System_logsController::createLog($case->agent_id, $case->id, $case->id, Auth::user()->id . " assigned case " . $case->id, "kases");
             return Redirect::to(strtolower(Auth::user()->job_title) . "/cases-ongoing");
         }
-        return Redirect::back();
+        return Redirect::to(strtolower(Auth::user()->job_title)."/cases-assign");
     }
 
     public function postReopen($id = null) {
@@ -71,7 +71,7 @@ class KasesController extends BaseController {
 
 
         System_logsController::createLog($case->agent_id, $case->id, $case->id, Auth::user()->id . " assigned case " . $case->id, "kases");
-        return Redirect::back();
+        return Redirect::to(strtolower(Auth::user()->job_title)."/cases-assign");
     }
 
     public function getShow($id = null) {

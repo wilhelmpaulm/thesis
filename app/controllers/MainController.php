@@ -103,7 +103,7 @@ class MainController extends BaseController {
         $logs = System_log::where("target_id", "=", Auth::user()->id)->orderBy('created_at', 'desc')->take(10)->get();
         foreach ($logs as $l) {
 
-            if ($l->status == "") {
+            if ($l->status == "unread") {
                 $num += 1;
             }
         }

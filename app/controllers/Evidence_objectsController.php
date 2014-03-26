@@ -31,7 +31,7 @@ class Evidence_objectsController extends BaseController {
         $evidence->save();
         Case_evidencesController::addCaseEvidence($evidence->case_id, "Object", $evidence->id);
           $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Uploaded object record" . $evidence->id . "to " . $evidence->case_id, "evidence_objects");
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " uploaded object record" . $evidence->id . "to " . $evidence->case_id, "evidence_objects");
 
         return Redirect::back();
     }
@@ -59,7 +59,7 @@ class Evidence_objectsController extends BaseController {
         }
         $evidence->save();
          $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Updated object record" . $evidence->id . "to " . $evidence->case_id, "evidence_objects");
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " updated object record" . $evidence->id . "to " . $evidence->case_id, "evidence_objects");
 
         return Redirect::back();
     }
@@ -67,7 +67,7 @@ class Evidence_objectsController extends BaseController {
     public function postDestroy($id = null) {
         $evidence = Evidence_object::find($id);
          $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Deleted object record " . $evidence->id . "to " . $evidence->case_id, "evidence_objects");
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " deleted object record " . $evidence->id . "to " . $evidence->case_id, "evidence_objects");
 
         $evidence->delete();
         return Redirect::back();

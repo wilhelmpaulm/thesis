@@ -29,7 +29,7 @@ class Evidence_picturesController extends BaseController {
         $evidence->save();
         Case_evidencesController::addCaseEvidence($evidence->case_id, "Picture", $evidence->id);
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Uploaded picture" . $evidence->id . "to " . $evidence->case_id, "evidence_pictures");
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " uploaded picture" . $evidence->id . "to " . $evidence->case_id, "evidence_pictures");
 
 
         return Redirect::back();
@@ -56,7 +56,7 @@ class Evidence_picturesController extends BaseController {
         }
         $evidence->save();
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Updated picture" . $evidence->id . "to " . $evidence->case_id, "evidence_pictures");
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " updated picture" . $evidence->id . "to " . $evidence->case_id, "evidence_pictures");
 
 
         return Redirect::back();
@@ -65,7 +65,7 @@ class Evidence_picturesController extends BaseController {
     public function postDestroy($id = null) {
         $evidence = Evidence_picture::find($id);
         $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();
-        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " Deleted picture" . $evidence->id . "to " . $evidence->case_id, "evidence_pictures");
+        System_logsController::createLog($chief->id, $evidence->case_id, $evidence->id, Auth::user()->id . " deleted picture" . $evidence->id . "to " . $evidence->case_id, "evidence_pictures");
 
         $evidence->delete();
         return Redirect::back();

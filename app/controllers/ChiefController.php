@@ -226,6 +226,13 @@ class ChiefController extends BaseController {
         return View::make("base.reports.case_timeline_comparison", $data);
     }
     
+    public function getFormList(){
+        $data = [
+        ];
+        return View::make("base.forms", $data);
+        
+        
+    }
     public function getFormSubpoena(){
         $data = [
             "agents" => User::where("division", "=", Auth::user()->division)->get()

@@ -82,7 +82,7 @@
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#home{{$a->id}}" data-toggle="tab">Profile</a></li>
                     <li><a href="#profile{{$a->id}}" data-toggle="tab">Case Type Status</a></li>
-                    <li><a href="#messages{{$a->id}}" data-toggle="tab">Status Summary</a></li>
+                    <li><a href="#messages{{$a->id}}" data-toggle="tab">Case Status Summary</a></li>
                     <li><a href="#settings{{$a->id}}" data-toggle="tab">Case Breakdown</a></li>
                 </ul>
 
