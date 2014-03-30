@@ -43,7 +43,9 @@
                     <td width="15%">
                         <div class="btn-group btn-group-sm pull-right">
                             @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
+                            @if(Auth::user()->id == $ed->user_id)
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editCaseObservation_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
+                            @endif
                             <button class="btn btn-default"data-toggle="modal" data-target="#crossCaseObservation_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
                             <button class="btn btn-default addCross"data-table="case_observations" data-reference_id="{{$ed->id}}" data-toggle="modal"  data-target="#addCross"><i class="fa fa-plus"></i> <i class="fa fa-sitemap"></i></button>
                             @endif

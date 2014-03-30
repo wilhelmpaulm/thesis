@@ -1,6 +1,6 @@
 <?php
 $user = Auth::user();
-$cases = Kase::where("division", "=", $user->division)->get();
+$cases = Kase::orderBy("date_reported", "desc")->get();
 $case1_id = null;
 $case2_id = null;
 
@@ -24,9 +24,9 @@ if (Input::get("case1") != null && Input::get("case2") != null) {
                             <select name="case1" class="form-control">
                                 @foreach($cases as $c)
                                 @if($case1_id == $c->id)
-                                <option selected="" value="{{$c->id}}">{{$c->name}}</option>
+                                <option selected="" value="{{$c->id}}">{{$c->date_reported}} / {{$c->division}} - {{$c->name}} </option>
                                 @else
-                                <option value="{{$c->id}}">{{$c->name}}</option>
+                                <option value="{{$c->id}}">{{$c->date_reported}} / {{$c->division}}  - {{$c->name}}</option>
                                 @endif
                                 @endforeach
                             </select>
@@ -35,9 +35,9 @@ if (Input::get("case1") != null && Input::get("case2") != null) {
                             <select name="case2" class="form-control">
                                 @foreach($cases as $c)
                                 @if($case2_id == $c->id)
-                                <option selected="" value="{{$c->id}}">{{$c->name}}</option>
+                                <option selected="" value="{{$c->id}}">{{$c->date_reported}} / {{$c->division}} - {{$c->name}} </option>
                                 @else
-                                <option value="{{$c->id}}">{{$c->name}}</option>
+                                <option value="{{$c->id}}">{{$c->date_reported}} / {{$c->division}} - {{$c->name}} </option>
                                 @endif
                                 @endforeach
                             </select>

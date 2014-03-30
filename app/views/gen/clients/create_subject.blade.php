@@ -66,6 +66,8 @@
           
 
             <div class="form-group ">
+                 <label for="citizenship">Citizenship</label>
+                    <input required required type="text" class="form-control" id="citizenship" placeholder="Filipino" name="citizenship_s[]">
                 <label for="exampleInputFile">Subject Photo</label>
                 <input type="file" id="exampleInputFile" name="img_picture_s[]" multiple="">
                 <p class="help-block">Please attach a photo of the victim.</p>

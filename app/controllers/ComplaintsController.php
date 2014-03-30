@@ -39,6 +39,7 @@ class ComplaintsController extends BaseController {
                     "first_name" => Input::get("first_name_c"),
                     "middle_name" => Input::get("middle_name_c"),
                     "birthdate" => Input::get("birthdate_c"),
+                    "citizenship" => Input::get("citizenship_c"),
                     "sex" => Input::get("sex_c"),
                     "occupation" => Input::get("occupation_c"),
                     "civil_status" => Input::get("civil_status_c")
@@ -85,6 +86,7 @@ class ComplaintsController extends BaseController {
                         "first_name" => Input::get("first_name_v")[$index],
                         "middle_name" => Input::get("middle_name_v")[$index],
                         "birthdate" => Input::get("birthdate_v")[$index],
+                        "citizenship" => Input::get("citizenship_v")[$index],
                         "sex" => Input::get("sex_v")[$index],
                         "occupation" => Input::get("occupation_v")[$index],
                         "civil_status" => Input::get("civil_status_v")[$index]
@@ -134,6 +136,7 @@ class ComplaintsController extends BaseController {
                         "first_name" => Input::get("first_name_s")[$index],
                         "middle_name" => Input::get("middle_name_s")[$index],
                         "birthdate" => Input::get("birthdate_s")[$index],
+                        "citizenship" => Input::get("citizenship_s")[$index],
                         "sex" => Input::get("sex_s")[$index],
                         "occupation" => Input::get("occupation_s")[$index],
                         "civil_status" => Input::get("civil_status_s")[$index]
@@ -216,6 +219,14 @@ class ComplaintsController extends BaseController {
                     "division" => $c->division,
                     "date_reported" => $c->date_reported,
         ]);
+        
+        foreach(Complaint_type_tag::where("complaint_id", "=", $case->complaint_id)->get() as $ctt)
+        {
+            $case_type_tags = Case_type_tag::create([
+                        "case_id" => $case->id,
+                        "type" => $ctt->type
+            ]);
+        }
 
 
  $chief = User::where("division", "=", Auth::user()->division)->where("job_title", "=", "Chief")->first();

@@ -1,32 +1,32 @@
 
 <div class="panel panel-black">
     <div class="panel-heading">
-        <h3 class="panel-title">Complaint steps</h3>
+        <h3 class="panel-title"> Complaint Sheet</h3>
     </div>
     <div class="panel-body">
         <div id="">
 
             <ul class="nav nav-pills nav-justified">
 
-                <li class="active">
+                <li class="active" id="tc1">
                     <a href="#tab1" data-toggle="tab">
                         <h4> Step 1 </h4>
                         <p class="">Complainant Information</p>
                     </a>
                 </li>
-                <li class="">
+                <li class="" id="tc2">
                     <a href="#tab2" data-toggle="tab">
                         <h4> Step 2 </h4>
                         <p class="">Victim Information</p>
                     </a>
                 </li>
-                <li class="" >
+                <li class="" id="tc3">
                     <a class="" href="#tab3" data-toggle="tab">
                         <h4> Step 3 </h4>
                         <p class="">Subject Information</p>
                     </a>
                 </li>
-                <li class="">
+                <li class="" id="tc4">
                     <a href="#tab4" data-toggle="tab">
                         <h4> Step 4 </h4>
                         <p class="">Complaint Information</p>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="panel-footer clearfix">
                             <div class="btn-group btn-group-sm pull-right">
-                                <a class="btn btn-primary" href="#tab2" data-toggle="tab">Next</a>
+                                <a class="btn btn-primary" href="#tab2" data-toggle="tab" id="tt2">Next</a>
                             </div>
                         </div>
                     </form>
@@ -98,7 +98,7 @@
                     <div class="panel-footer clearfix">
                         <div class="btn-group btn-group-sm pull-right">
 
-                            <a class="btn btn-primary" href="#tab3" data-toggle="tab">Next</a>
+                            <a class="btn btn-primary" href="#tab3" data-toggle="tab" id="tt3">Next</a>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                     <div class="panel-footer clearfix">
                         <div class="btn-group btn-group-sm pull-right">
 
-                            <a class="btn btn-primary" href="#tab4" data-toggle="tab">Next</a>
+                            <a class="btn btn-primary" href="#tab4" data-toggle="tab" id="tt4">Next</a>
                         </div>
                     </div>
                 </div>
@@ -234,6 +234,8 @@
         var x = 4;//number of forms
         var xx = ($(this).attr("href")).substring(4, 8); //would be the # tab based on href 
         xx *= (100 / x).toFixed(2);
+        var xef = $(this).attr("href");
+        
         $("#pg-add").css({width: xx + "%"}).removeClass("progress-bar-success");
         $("#pg-add-text").text("");
 
@@ -243,8 +245,26 @@
         else {
             $("#pg-add").removeClass("progress-bar-success");
         }
+       
     });
-
+    
+    
+   $("#tt1").click(function(){
+      $("ul li").removeClass("active");
+      $("#tc1").addClass("active"); 
+   });
+   $("#tt2").click(function(){
+      $("ul li").removeClass("active");
+      $("#tc2").addClass("active"); 
+   });
+   $("#tt3").click(function(){
+      $("ul li").removeClass("active");
+      $("#tc3").addClass("active"); 
+   });
+   $("#tt4").click(function(){
+      $("ul li").removeClass("active");
+      $("#tc4").addClass("active"); 
+   });
 
     $("#add_victim_btn").on("click", function() {
         var body = $("#add_victim_body").html();

@@ -1,10 +1,19 @@
-<?php $case_observations = Case_observation::where("user_id", "=", $case->agent_id)->where("case_id", "=", $case->id)->get(); ?>
+<?php $case_observations = Case_observation::where("case_id", "=", $case->id)->get(); ?>
 <?php $case_keys = Case_key::where("case_id", "=", $case->id)->get(); ?>
 <?php $case_requirements = Case_requirement::where("case_id", "=", $case->id)->get(); ?>
 <?php $case_resources = Resource_history::where("case_id", "=", $case->id)->where("status", "=", "Approved")->orWhere("status", "=", "Received")->orWhere("status", "=", "Returned")->get(); ?>
 <?php $complaint = Complaint::find($case->complaint_id); ?>
 <?php $logs = System_log::where("case_id", "=", $case->id)->orderBy("created_at", "desc")->get(); ?>
 <?php $forms = Case_form::where("case_id", "=", $case->id)->orderBy("created_at", "desc")->get(); ?>
+<?php 
+    $ctags = [];
+foreach($case_type_tags as $ctt){
+        array_push($ctags, $ctt->type);
+        
+    }
+
+?>
+<?php $typetags = Case_type::all(); ?>
 
 <div id="content">
     <div class="navbar navbar-default ">
@@ -21,7 +30,7 @@
                 <li class="active"><a href="#details" data-toggle="tab">Case No. {{$case->id}}</a></li>
                 <li class=""><a href="#observations" data-toggle="tab">Observations</a></li>
                 <li><a href="#res" data-toggle="tab">Resources</a></li>
-                
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Evidence <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -56,21 +65,23 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        @if($case->division == Auth::user()->division)
                         @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
                         <li><a href="#" data-toggle="modal" data-target="#editDetails">Edit Details</a></li>
                         <!--<li><a href="#">Set Permissions</a></li>-->
                         @endif
-                        @if($case->status == "Pending" && "Chief" == Auth::user()->job_title)
+                        @if($case->status == "Pending" && ("Chief" == Auth::user()->job_title|| "Executive_Officer" == Auth::user()->job_title))
                         <li><a href="#" data-toggle="modal" data-target="#caseSet">Set Case</a></li>
                         @endif
                         @if($case->status == "Ongoing" && $case->agent_id == Auth::user()->id)
                         <li><a href="#" data-toggle="modal" data-target="#caseClose">Close Case</a></li>
                         @endif
-                        @if($case->status != "Ongoing" && Auth::user()->job_title == "Chief"|| Auth::user()->job_title == "Executive_Officer")
+                        @if($case->status != "Ongoing" && ("Chief" == Auth::user()->job_title|| "Executive_Officer" == Auth::user()->job_title))
                         <li><a href="#" data-toggle="modal" data-target="#caseReopen">Reopen Case</a></li>
                         @endif
                         @if(Auth::user()->job_title == "Chief" || Auth::user()->job_title == "Executive_Officer")
                         <li><a href="#" data-toggle="modal" data-target="#caseReassign">Reassign Case</a></li>
+                        @endif
                         @endif
                     </ul>
                 </li>
@@ -88,7 +99,7 @@
 
     <div class="tab-content">
         <div class="tab-pane active" id="details">
-            
+
 
 
             <div class="panel panel-black">
@@ -132,7 +143,7 @@
 
 
                     <table class="table table-hover table-striped">
-                      
+
                         <tbody>
                             <tr>
                                 <td><strong>Date Assigned</strong></th>
@@ -146,7 +157,7 @@
                                     <p>{{$a->last_name.", ".$a->first_name." ".$a->middle_name}}</p>
                                     </th>
                             </tr>
-                            
+
                             <tr>
                                 <td><strong>Date Reported</strong></th>
                                 <td>{{$complaint->date_reported}}</th>
@@ -163,7 +174,7 @@
                                     @endforeach
                                     </th>
                             </tr>
-                          
+
                             <tr>
                                 <td><strong>Details</strong></th>
                                 <td>{{$case->details}}</th>
@@ -177,7 +188,7 @@
                                         {{Time::getAge($complainant->birthdate)}} years old
                                         @endif
                                     </p>
-                                        
+
                                     <p><strong>Sex:</strong> {{$complainant->sex}} </p>
                                     <p><strong>Birthdate: </strong> {{$complainant->birthdate}} </p>
                                     <p><strong>Civil Status:</strong> {{$complainant->civil_status}} </p>
@@ -185,8 +196,8 @@
                                     <p><strong>Occupation: </strong>{{$complainant->occupation}} </p>
                                     </th>
                             </tr>
-                            
-                            
+
+
                             <tr>
                                 <td><strong>Narration</strong></td>
                                 <td>{{$complaint->narration}}</td>
@@ -198,6 +209,9 @@
                             <tr>
                                 <td><strong>Agency Reported</strong></td>
                                 <td>{{$complaint->agency_reported}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Agency Reported Details</strong></td>
                                 <td>{{$complaint->agency_report_details}}</td>
                             </tr>
                         </tbody>
@@ -263,7 +277,7 @@
             @include("gen.resources.show")
         </div>
         <div class="tab-pane" id="form">
-            
+
             @include("gen.case_forms.show")
         </div>
 
@@ -344,7 +358,7 @@
             <div class="modal-body">
                 <label>Password</label>
                 <input class="form-control" name="password" type="password">
-                  <label>Reason for closing</label>
+                <label>Reason for closing</label>
                 <textarea class="form-control" name="reason" rows="4" cols="20"></textarea>
                 <label>Status</label>
                 <select class="form-control" name="status">
@@ -369,22 +383,34 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title" id="myModalLabel">Reopen Case</h4>
         </div>
-        <?php $aaa = User::find($case->agent_id);?>
+        <?php $aaa = User::find($case->agent_id); ?>
         @if($aaa->status != "Active")
         <div class=" text-center">
             <hr>
-        <p class="lead">The current assigned agents is {{$aaa->status}}</p>
-        <p class="lead">Please assign a new agent for the case.</p>
+            <p class="lead">The current assigned agents is {{$aaa->status}}</p>
+            <p class="lead">Please assign a new agent for the case.</p>
             <hr>
         </div>
-         <form action="{{URL::to("cases/reassign/".$case->id)}}" method="post">
+        <form action="{{URL::to("cases/reassign/".$case->id)}}" method="post">
             <div class="modal-body">
                 <label>password</label>
                 <input class="form-control" name="password" type="password">
                 <label>Agent</label>
                 <select class="form-control" name="agent_id">
-                    @foreach(User::where("division", "=", Auth::user()->division)->get() as $a)
+                    @foreach(User::where("division", "=", Auth::user()->division)->where("job_title", "!=", "Secretary")->where("status", "=", "Active")->get() as $a)
                     <option>{{$a->id." ".$a->last_name.", ".$a->first_name}}</option>
+                    @endforeach
+                </select>
+                <label>Reason for Assignment</label>
+                <textarea name="details" class="form-control" rows="20" cols="20"></textarea>
+                 <label for="type">Case Type</label>
+                <select name="type[]" class="selectpicker form-control " multiple data-live-search="true" >
+                    @foreach($typetags as $t)
+                    @if(in_array($t->type, $ctags))
+                    <option value="{{$t->type}}" selected="">{{$t->type}}</option>
+                    @else
+                    <option value="{{$t->type}}" >{{$t->type}}</option>
+                    @endif
                     @endforeach
                 </select>
 
@@ -396,13 +422,24 @@
                 </span>
             </div>
         </form>
-        
+
         @else
-       <form action="{{URL::to("cases/reopen/".$case->id)}}" method="post">
+        <form action="{{URL::to("cases/reopen/".$case->id)}}" method="post">
             <div class="modal-body">
                 <label>password</label>
                 <input class="form-control" name="password" type="password">
-
+                <label>Reason for Re-opening</label>
+                <textarea name="details" class="form-control" rows="20" cols="20"></textarea>
+                 <label for="type">Case Type</label>
+                <select name="type[]" class="selectpicker form-control " multiple data-live-search="true" >
+                    @foreach($typetags as $t)
+                    @if(in_array($t->type, $ctags))
+                    <option value="{{$t->type}}" selected="">{{$t->type}}</option>
+                    @else
+                    <option value="{{$t->type}}" >{{$t->type}}</option>
+                    @endif
+                    @endforeach
+                </select>
             </div>
             <div class="modal-footer">
                 <span class="btn-group btn-group-sm pull-right">
@@ -427,11 +464,24 @@
                 <input class="form-control" name="password" type="password">
                 <label>Agent</label>
                 <select class="form-control" name="agent_id">
-                    @foreach(User::where("division", "=", Auth::user()->division)->get() as $a)
+                    @foreach(User::where("division", "=", Auth::user()->division)->where("job_title", "!=", "Secretary")->where("status", "=", "Active")->get() as $a)
+                    
                     <option>{{$a->id." ".$a->last_name.", ".$a->first_name}}</option>
+                    
                     @endforeach
                 </select>
-
+                <label>Reason for Assignment</label>
+                <textarea name="details" class="form-control" rows="20" cols="20"></textarea>
+                 <label for="type">Case Type</label>
+                <select name="type[]" class="selectpicker form-control " multiple data-live-search="true" >
+                    @foreach($typetags as $t)
+                    @if(in_array($t->type, $ctags))
+                    <option value="{{$t->type}}" selected="">{{$t->type}}</option>
+                    @else
+                    <option value="{{$t->type}}" >{{$t->type}}</option>
+                    @endif
+                    @endforeach
+                </select>
             </div>
             <div class="modal-footer">
                 <span class="btn-group btn-group-sm pull-right">
@@ -455,6 +505,17 @@
                 <input class="form-control" name="password" type="password">
                 <label>Details</label>
                 <textarea name="details" class="form-control" rows="20" cols="20">{{$case->details}}</textarea>
+                
+                <label for="type">Case Type</label>
+                <select name="type[]" class="selectpicker form-control " multiple data-live-search="true" multiple >
+                    @foreach($typetags as $t)
+                    @if(in_array($t->type, $ctags))
+                    <option value="{{$t->type}}" selected="">{{$t->type}}</option>
+                    @else
+                    <option value="{{$t->type}}" >{{$t->type}}</option>
+                    @endif
+                    @endforeach
+                </select>
             </div>
             <div class="modal-footer">
                 <span class="btn-group btn-group-sm pull-right">
@@ -470,8 +531,8 @@
 <script>
     var table = "";
     var reference_id = "";
-    
-    $(".addCross").on("click", function(){
+
+    $(".addCross").on("click", function() {
         table = $(this).data("table");
         reference_id = $(this).data("reference_id");
         $(".cross_reference_id").val(reference_id);
@@ -479,10 +540,8 @@
     });
 
 </script>
-<?php 
+<?php
 $case_id = $case->id;
-
-
 ?>
 
 <div id="addCross" class="modal fade container" tabindex="-1" style="display: none;">
@@ -497,10 +556,13 @@ $case_id = $case->id;
         </div>
         <div class="modal-footer">
             <span class="btn-group btn-group-sm">
-                
+
                 <!--<button type="" class="btn btn-primary">Save changes</button>-->
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </span>
         </div>
     </div>
 </div>
+<script>
+$(".selectpicker").selectpicker();
+</script>

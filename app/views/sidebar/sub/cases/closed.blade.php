@@ -18,7 +18,7 @@
         </div>
         <div style="height: 450px; overflow-y: auto">
 
-            <?php $cases = Kase::where("status", "=", "Closed_unfinished")->orWhere("status", "=", "Closed_finished")->where("division", "=", Auth::user()->division)->get(); ?>
+            <?php $cases = Kase::where("status", "=", "Closed_unfinished")->orWhere("status", "=", "Closed_finished")->get(); ?>
             <ul class="list list-unstyled    ">
                 @foreach($cases as $c) <?php
                 $la = "";

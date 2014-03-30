@@ -53,6 +53,14 @@
                 <a href="{{URL::to("executive_officer/form-disposition")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Disposition</a>
                 <a href="{{URL::to("executive_officer/form-transmital")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Transmittal</a>
             </div>
+           <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#forms"><i class="fa fa-file"></i> Forms</a>
+            <div id="forms" class="collapse">
+                <a href="{{URL::to("executive_officer/form-list")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Form List</a>
+                <a href="{{URL::to("executive_officer/form-subpoena")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Subpoena</a>
+                <a href="{{URL::to("executive_officer/form-coordination")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Coordination</a>
+                <a href="{{URL::to("executive_officer/form-disposition")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Disposition</a>
+                <a href="{{URL::to("executive_officer/form-transmital")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Transmittal</a>
+            </div>
            
             <!--<a href="{{URL::to('executive_officer/reports')}}" class="list-group-item"><i class="fa fa-book"></i> Reports</a>-->
             <a href="{{URL::to('executive_officer/notifications')}}" class="list-group-item"><i class="fa fa-bullhorn"></i> Notifications</a>

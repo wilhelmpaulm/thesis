@@ -39,7 +39,9 @@
                             <button class="btn btn-success"data-toggle="modal" data-target="#viewEvidenceObjects_{{$ed->id}}"><i class="fa fa-eye"></i></button>
                              @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
                             <a class="btn btn-success"  href="{{URL::asset("nbi/evidences/objects/".$ed->file_name)}}"><i class="fa fa-download"></i></a>
+                            @if(Auth::user()->id == $ed->user_id)
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editEvidenceObjects_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
+                            @endif
                             <button class="btn btn-info"data-toggle="modal" data-target="#historyEvidenceObject_{{$ed->id}}"><i class="fa fa-list"></i></button>
                             <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryObject_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
                             <button class="btn btn-default"data-toggle="modal" data-target="#crossEvidenceObject_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
@@ -117,7 +119,6 @@
 
 @foreach($evidence_objects as $ed)
 <div id="editEvidenceObjects_{{$ed->id}}" class="modal container fade" tabindex="-1" style="display: none;">
-    <div class="modal-dialog " style="width: 100%">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -158,7 +159,6 @@
                 </div>
             </form>
         </div>
-    </div>
 </div>
 
 <script>
@@ -174,7 +174,6 @@
 
 @foreach($evidence_objects as $ed)
 <div id="viewEvidenceObjects_{{$ed->id}}" class="modal container fade" tabindex="-1" style="display: none;">
-    <div class="modal-dialog " style="">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -190,7 +189,6 @@
                 </span>
             </div>
         </div>
-    </div>
 </div>
 
 @endforeach

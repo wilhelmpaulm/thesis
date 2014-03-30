@@ -49,6 +49,7 @@
                                 @elseif($res->category == 'Money')<i class="fa fa-money"></i> 
                                 @elseif($res->category == 'Vehicle')<i class="fa fa-truck"></i> 
                                 @elseif($res->category == 'Person')<i class="fa fa-user"></i> 
+                                @elseif($res->category == 'Equipment')<i class="fa fa-cogs"></i> 
                                 @endif
                                 {{$res->category}}</p>
                             @if(Time::toNum($r->date_due)< Time::getDateTodayInt())<p class="list_created_at label label-danger"> 

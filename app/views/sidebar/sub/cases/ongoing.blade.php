@@ -17,8 +17,12 @@
             </div>
         </div>
         <div style="height: 450px; overflow-y: auto">
-
+            @if(Auth::user()->job_title == "Chief" || Auth::user()->job_title == "Executive_Officer" )
+            <?php $cases = Kase::where("status", "=", "Ongoing")->where("division", "=", Auth::user()->division)->get(); ?>
+            @else
             <?php $cases = Kase::where("status", "=", "Ongoing")->where("agent_id", "=", Auth::user()->id)->where("division", "=", Auth::user()->division)->get(); ?>
+            @endif
+            
             <ul class="list list-unstyled ">
                @foreach($cases as $c) <?php
                 $la = "";

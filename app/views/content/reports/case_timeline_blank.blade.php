@@ -566,6 +566,9 @@ rsort($dateLoop);
                             <tr>
                                 <td><strong>Agency Reported</strong></td>
                                 <td>{{$complaint->agency_reported}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Agency Reported Details</strong></td>
                                 <td>{{$complaint->agency_report_details}}</td>
                             </tr>
                         </tbody>

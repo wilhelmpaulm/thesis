@@ -63,7 +63,8 @@
         <?php $resources_gadget = Resource::where("status", "=", "Available")->where("category", "=", "Gadget")->where("division", "=", Auth::user()->division)->get(); ?>
         <?php $resources_person = Resource::where("status", "=", "Available")->where("category", "=", "Person")->where("division", "=", Auth::user()->division)->get(); ?>
         <?php $resources_vehicle = Resource::where("status", "=", "Available")->where("category", "=", "Vehicle")->where("division", "=", Auth::user()->division)->get(); ?>
-        <?php $resources_misc = Resource::where("status", "=", "Available")->where("category", "=", "miscellaneous")->where("division", "=", Auth::user()->division)->get(); ?>
+        <?php $resources_misc = Resource::where("status", "=", "Available")->where("category", "=", "Equipment")->where("division", "=", Auth::user()->division)->get(); ?>
+        <?php $resources_money = Resource::where("status", "=", "Available")->where("category", "=", "Money")->where("division", "=", Auth::user()->division)->get(); ?>
 
         <div class="tab-content">
             <div class="tab-pane active" id="gadget">
@@ -229,7 +230,41 @@
                 </div>
             </div>
             <div class="tab-pane" id="money">
+<div class="list-group-item">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="search form-control " placeholder="Search...">
+                        <span class="input-group-btn ">
+                            <button class="btn btn-default sort" type="button" data-sort="list_name">
+                                <i class="fa fa-sort"></i> A
+                            </button>
+                            <button class="btn btn-default sort" type="button" data-sort="list_created_at">
+                                <i class="fa fa-sort"></i> #
+                            </button>
 
+                        </span>
+
+                    </div>
+                </div>
+                <div style="height: 450px; overflow-y: auto">
+                    <ul class="list list-unstyled    ">
+                        @foreach($resources_money as $r)
+                        <li style="">
+                            <a  id="" href="#" data-toggle="modal" data-target="#resource_{{$r->id}}" data-case_id="{{$r->id}}" class="list-group-item c_link">
+
+
+
+
+                                <h4 class=" list_name ">{{$r->name}}</h4>
+                                <p class="label label-info list_status">{{$r->status}}</p>
+                                <p class="label label-default list_category">{{$r->category}}</p>
+                                <p class="list_created_at label label-info">{{$r->created_at}}</p>
+
+
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
 

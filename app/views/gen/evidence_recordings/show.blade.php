@@ -37,7 +37,9 @@
                             <button class="btn btn-success"data-toggle="modal" data-target="#viewEvidenceRecording_{{$ed->id}}"><i class="fa fa-eye"></i></button>
                             <a class="btn btn-success"  href="{{URL::asset("nbi/evidences/recordings/".$ed->file_name)}}"><i class="fa fa-download"></i></a>
                              @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
+                             @if(Auth::user()->id == $ed->user_id)
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editEvidenceRecording_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
+                            @endif
                             <button class="btn btn-info"data-toggle="modal" data-target="#historyEvidenceRecording_{{$ed->id}}"><i class="fa fa-list"></i></button>
                             <button class="btn btn-success"data-toggle="modal" data-target="#addEvidenceHistoryRecording_{{$ed->id}}"><i class="fa fa-plus"></i> <i class="fa fa-list"></i></button>
                             <button class="btn btn-default"data-toggle="modal" data-target="#crossEvidenceRecording_{{$ed->id}}"><i class="fa fa-sitemap"></i></button>
@@ -118,7 +120,6 @@
 
 @foreach($evidence_recordings as $ed)
 <div id="editEvidenceRecording_{{$ed->id}}" class="modal container fade" tabindex="-1" style="display: none;">
-    <div class="modal-dialog " style="width: 100%">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -156,7 +157,6 @@
                 </div>
             </form>
         </div>
-    </div>
 </div>
 
 <script>

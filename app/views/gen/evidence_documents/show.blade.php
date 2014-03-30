@@ -36,8 +36,9 @@
                         <div class="btn-group btn-group-sm pull-right">
                             <a class="btn btn-default"  href="{{URL::asset("nbi/evidences/documents/".$ed->file_name)}}"><i class="fa fa-download"></i></a>
                             @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
-                            
+                            @if(Auth::user()->id == $ed->user_id)
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editEvidenceDocument_{{$ed->id}}"><i class="fa fa-wrench"></i></button>
+                            @endif
                             <button class="btn btn-info"data-toggle="modal" data-target="#versionEvidenceDocument_{{$ed->id}}"><i class="fa fa-book"></i></button>
                             <br>
                             <button class="btn btn-info"data-toggle="modal" data-target="#historyEvidenceDocument_{{$ed->id}}"><i class="fa fa-list"></i></button>

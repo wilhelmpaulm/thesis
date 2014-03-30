@@ -1,6 +1,6 @@
 <div class="panel panel-black">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Steps</h3>
+                    <h3 class="panel-title"> Complaint Sheet</h3>
                 </div>
                 <div class="panel-body">
     <ul class="nav nav-pills nav-justified">
@@ -93,20 +93,20 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <label for="narration">Narration of facts</label>
-                                    <textarea class="form-control" name="narration" rows="10" cols="20" placeholder="I swoore . . ."></textarea>
+                                    <label for="narration"> Narration of Facts</label>
+                                    <textarea class="form-control" name="narration" rows="10" cols="20" placeholder=" I was . . ."></textarea>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group ">
-                                    <label for="img_signature">Signature Image</label>
+                                    <label for="img_signature">Signature Photo</label>
                                     <input type="file" id="img_signature" name="img_signature">
-                                    <p class="help-block">Please upload a cleat image.</p>
+                                    <p class="help-block">Please upload a clear image.</p>
                                 </div>
                                 <div class="form-group">
-                                    <label for="img_right_thumb">Right Thumb Image</label>
+                                    <label for="img_right_thumb">Right Thumb Photo</label>
                                     <input type="file" id="img_right_thumb" name="img_right_thumb">
-                                    <p class="help-block">Please upload a cleat image.</p>
+                                    <p class="help-block">Please upload a clear image.</p>
                                 </div>
                             </div>
                         </div>
