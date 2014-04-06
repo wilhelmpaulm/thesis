@@ -89,13 +89,13 @@ class KasesTableSeeder extends Seeder {
             ["name" => "3 prostitutes identified to be professors in well-known university", "complaint_id" => 27, "agent_id" => 10930217, "complainant_id" => 27,
                 "status" => "Ongoing", "date_assigned" => "2013-11-23", "date_reported" => "2013-10-22", "division" => "FLD"],
             //28        
-            ["name" => "2 Korean students in possession of drugs, caught dealing to high school students", "complaint_id" => 28, "agent_id" => 10930217, "complainant_id" => 28,
+            ["name" => "2 Korean students in possession of drugs, caught dealing to high school students", "complaint_id" => 28, "agent_id" => 10930193, "complainant_id" => 28,
                 "status" => "Ongoing", "date_assigned" => "2013-12-01", "date_reported" => "2013-10-28", "division" => "FLD"],
             //29        
             ["name" => "Girl raped by her own uncle on her birthday", "complaint_id" => 29, "agent_id" => 10930217, "complainant_id" => 29,
                 "status" => "Closed_Finished", "date_assigned" => "2013-12-18", "date_reported" => "2013-11-12", "division" => "FLD"],
             //30        
-            ["name" => "African-American businessmen counterfeiting cellular phones", "complaint_id" => 30, "agent_id" => 10930217, "complainant_id" => 30,
+            ["name" => "African-American businessmen counterfeiting cellular phones", "complaint_id" => 30, "agent_id" => 10930193, "complainant_id" => 30,
                 "status" => "Ongoing", "date_assigned" => "2013-12-27", "date_reported" => "2013-11-20", "division" => "FLD"],
             //**AFAD**//
             //31
