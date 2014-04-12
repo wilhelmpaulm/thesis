@@ -1,13 +1,24 @@
 @extends("layouts.main")
 
 @section("main")
-<div class="col-md-3">
-    <div id="content">
+
+<div id="sidebarsubhtml" class="hide">
         @include("sidebar.sub.agents")
-    </div>
 </div>
+
+
+<script >
+    $('a[href="#sub"]').tab('show');
+    var sidebarsub = $("#sidebarsubhtml").html();
+    $("#subheading").parent().removeClass("hide");
+    
+    $("#sub").append(sidebarsub);
+    $("#subheading").text("Agent Calendar");
+
+</script>
+
 @if($id != null)
-<div class="col-md-9">
+<div class="col-md-12">
     <div class="row">
         <div class="col-md-8">
             @include("gen.user_calendars.create_secretary")

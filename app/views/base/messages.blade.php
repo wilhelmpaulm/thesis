@@ -1,10 +1,23 @@
 @extends("layouts.main")
 
 @section("main")
-<div class="col-md-4">
-    @include("sidebar.sub.messages")
+<div id="sidebarsubhtml" class="hide">
+   @include("sidebar.sub.messages")
 </div>
-<div class="col-md-8">
+
+
+<script >
+    $('a[href="#sub"]').tab('show');
+    var sidebarsub = $("#sidebarsubhtml").html();
+    $("#subheading").parent().removeClass("hide");
+    
+    $("#sub").append(sidebarsub);
+    $("#subheading").text("Messages");
+
+</script>
+
+
+<div class="col-md-12">
     <div id="content">
         @if($message != null)
         @include("gen.messages.show")

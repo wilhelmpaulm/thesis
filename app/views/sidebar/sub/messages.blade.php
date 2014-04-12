@@ -6,12 +6,12 @@
 </style>
 
 
-
+<!--
 <div class="panel panel-black">
-    <!-- Default panel contents -->
+     Default panel contents 
     <div class="panel-heading ">
         <h3 class="panel-title"><i class="fa fa-envelope"></i> Messages</h3>
-    </div>
+    </div>-->
 
 
     <div id="messages_list"  class="list-group" >
@@ -72,7 +72,7 @@
 
     </div>
 
-</div>
+<!--</div>-->
 
 
 

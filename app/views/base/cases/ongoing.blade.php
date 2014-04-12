@@ -1,12 +1,22 @@
 @extends("layouts.main")
 
 @section("main")
-
-
-<div class="col-md-3">
+<div id="sidebarsubhtml" class="hide">
     @include("sidebar.sub.cases.ongoing")
 </div>
-<div class="col-md-9">
+
+
+<script >
+    $('a[href="#sub"]').tab('show');
+    var sidebarsub = $("#sidebarsubhtml").html();
+    $("#subheading").parent().removeClass("hide");
+    
+    $("#sub").append(sidebarsub);
+    $("#subheading").text("Ongoing Cases");
+
+</script>
+
+<div class="col-md-12">
     <!--    <div class="row">
             <div class="col-md-12">
                 <ol class="breadcrumb">

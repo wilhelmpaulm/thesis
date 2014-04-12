@@ -1,7 +1,7 @@
-<div class="panel panel-black">
+<!--<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-list-ul"></i> Pending Complaints</h3>
-    </div>
+    </div>-->
     <div  id="list_plug" class="list-group" >
         <div class="list-group-item ">
             <div class="input-group custom-search-form input-group-sm">
@@ -45,7 +45,7 @@
         </div>
 
     </div>
-</div>
+<!--</div>-->
 
 <script>
     var options = {

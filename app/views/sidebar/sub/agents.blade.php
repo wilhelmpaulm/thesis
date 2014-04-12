@@ -2,10 +2,10 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="panel panel-black">
+<!--        <div class="panel panel-black">
             <div class="panel-heading">
                 <h3 class="panel-title"><i class="fa fa-users"></i> {{Auth::user()->division}} Agents</h3>
-            </div>
+            </div>-->
             <div  id="agent_list" class="list-group" >
                 <div class="list-group-item ">
                     <div class="input-group custom-search-form input-group-sm">
@@ -26,7 +26,16 @@
 
                     <ul class="list list-unstyled    ">
                         @foreach($agents as $a)
-                        <li><a  id="" href="{{URL::to('secretary/calendar-agents/'.$a->id)}}" class="list-group-item c_link">
+                        <?php
+                $la = "";
+
+                if ($id != null) {
+                    if ($a->id == $id) {
+                        $la = "active";
+                    }
+                }
+                ?>
+                        <li><a  id="" href="{{URL::to('secretary/calendar-agents/'.$a->id)}}" class="list-group-item c_link {{$la}}">
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <img src="{{URL::asset('nbi/agent/picture/'.$a->file_picture)}}" width="100%" class="img-rounded">
@@ -45,7 +54,7 @@
 
                 </div>
 
-            </div>
+            <!--</div>-->
         </div>
     </div>
 

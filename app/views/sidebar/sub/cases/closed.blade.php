@@ -1,7 +1,8 @@
-<div class="panel panel-black">
+<!--<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-suitcase"></i> Closed Cases</h3>
-    </div><div  id="list_plug" class="list-group" >
+    </div>-->
+    <div  id="list_plug" class="list-group" >
         <div class="list-group-item ">
             <div class="input-group  input-group-sm">
                 <input type="text" class="search form-control " placeholder="Search...">
@@ -50,7 +51,7 @@
 
         </div>
     </div>
-</div>
+<!--</div>-->
 <script>
     var options = {
         valueNames: ['list_name', 'list_created_at', 'list_details']

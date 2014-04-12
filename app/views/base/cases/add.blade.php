@@ -10,11 +10,24 @@
     @include("gen.complaints.create")
 </div>
 @else
-<div class="col-md-3">
-    @include("sidebar.sub.cases.complaint")
 
+<div id="sidebarsubhtml" class="hide">
+    @include("sidebar.sub.cases.complaint")
 </div>
-<div class="col-md-9">
+
+
+<script >
+    $('a[href="#sub"]').tab('show');
+    var sidebarsub = $("#sidebarsubhtml").html();
+    $("#subheading").parent().removeClass("hide");
+    
+    $("#sub").append(sidebarsub);
+    $("#subheading").text("Continue Complaint");
+
+</script>
+
+
+<div class="col-md-12">
     @if($complaint != null)
     @include("gen.complaints.create_chief")
     @endif

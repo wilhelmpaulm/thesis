@@ -3,6 +3,15 @@
         <h3 class="panel-title"> {{Auth::user()->division}} DD {{Auth::user()->id}}<a href="#" type="button" class="text-right pull-right" data-toggle="collapse" data-target="#sb-content"><i class="fa fa-bars"></i></a>  </h3>
 
     </div>
+     <div class="panel-body">
+        <ul class="nav nav-pills ">
+            <li class="active"><a href="#main" data-toggle="tab">Main</a></li>
+            <li class="hide"><a id="subheading" href="#sub" data-toggle="tab" >Sub</a></li>
+            <li class="pull-right"><a href="#search" data-toggle="tab"><i class="fa fa-search"></i></a></li>
+        </ul>
+        <br>
+        <div class="tab-content">
+            <div class="tab-pane active" id="main">
     <div class="list-group ">
     <!--<a href="#" type="button" class="list-group-item text-right" data-toggle="collapse" data-target="#sb-content"><i class="fa fa-bars"></i></a>-->
         <div id="sb-content" class="collapse in">
@@ -54,6 +63,12 @@
            
             <!--<a href="{{URL::to('dd/reports')}}" class="list-group-item"><i class="fa fa-book"></i> Reports</a>-->
             <a href="{{URL::to('dd/notifications')}}" class="list-group-item"><i class="fa fa-bullhorn"></i> Notifications</a>
+
+        </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="sub"></div>
+            <div class="tab-pane" id="search"></div>
 
         </div>
     </div>

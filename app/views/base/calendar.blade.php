@@ -1,18 +1,31 @@
 @extends("layouts.main")
 
 @section("main")
-<div class="col-md-8">
+
+<div id="sidebarsubhtml" class="hide">
+   @include("sidebar.sub.calendar")
+</div>
+
+
+<script >
+    $('a[href="#sub"]').tab('show');
+    var sidebarsub = $("#sidebarsubhtml").html();
+    $("#subheading").parent().removeClass("hide");
+    
+    $("#sub").append(sidebarsub);
+    $("#subheading").text("Calendar Schedules");
+
+</script>
+
+
+<div class="col-md-12">
     <div class="row">
         <div class="col-md-12 ">
             @include("gen.user_calendars.create")
         </div>
     </div>
 </div>
-<div class="col-md-4">
-    <div id="content">
-        @include("sidebar.sub.calendar")
-    </div>
-</div>
+
 
 
 

@@ -176,11 +176,11 @@
 
         <div class="pad15">
             <div class="row">
-                <div class="col-md-2 hidden-print">
+                <div class="col-md-3 hidden-print">
                     @if(Auth::user()->job_title == "Agent")    
                     @include("sidebar.main.agent")
                     @elseif(Auth::user()->job_title == "Chief")    
-                    @include("sidebar.main.chief")
+                    @include("sidebar.main.chief2")
                     @elseif(Auth::user()->job_title == "Executive_Officer")    
                     @include("sidebar.main.executiveofficer")
                     @elseif(Auth::user()->job_title == "Secretary")    
@@ -188,7 +188,7 @@
 
                     @endif
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-9">
                     <div class="row">
                         @yield("main")
                     </div>

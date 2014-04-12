@@ -16,13 +16,15 @@
                 <p ><i class="fa fa-calendar"></i> {{$message->created_at}}</p>
                 <hr>
                 <?php $umr = User::find($message->sender) ?>
-                <p ><i class="fa fa-user"></i> {{$message->sender." ".$umr->last_name.", ".$umr->first_name}}</p>
+                
+                <p ><i class="fa fa-user"></i> Sender <br> {{" ".$umr->last_name.", ".$umr->first_name}}</p>
                 <!--<p ><i class="fa fa-user"></i> {{$message->sender}}</p>-->
                 <hr>
+                <p ><i class="fa fa-group"></i> Recipient/s</p>
                 @foreach($message_recipients as $mr)
                 @if($mr->user_id != $message->sender)
                 <?php $umr = User::find($mr->user_id) ?>
-                <p ><i class="fa fa-group"></i> {{$mr->user_id." ".$umr->last_name.", ".$umr->first_name}}</p>
+                <p > {{" ".$umr->last_name.", ".$umr->first_name}}</p>
                 @endif
                 @endforeach
             </div>

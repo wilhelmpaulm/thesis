@@ -1,7 +1,8 @@
-<div class="panel panel-black">
+<!--<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-suitcase"></i> Ongoing Cases</h3>
-    </div><div  id="list_plug" class="list-group" >
+    </div>-->
+    <div  id="list_plug" class="list-group" >
         <div class="list-group-item ">
             <div class="input-group custom-search-form input-group-sm">
                 <input type="text" class="search form-control " placeholder="Search...">
@@ -16,7 +17,7 @@
 
             </div>
         </div>
-        <div style="height: 450px; overflow-y: auto">
+        <div style="height: 450px; overflow-y: scroll">
             @if(Auth::user()->job_title == "Chief" || Auth::user()->job_title == "Executive_Officer" )
             <?php $cases = Kase::where("status", "=", "Ongoing")->where("division", "=", Auth::user()->division)->get(); ?>
             @else
@@ -24,7 +25,8 @@
             @endif
             
             <ul class="list list-unstyled ">
-               @foreach($cases as $c) <?php
+               @foreach($cases as $c) 
+                   <?php
                 $la = "";
 
                 if ($case != null) {
@@ -54,7 +56,7 @@
 
         </div>
     </div>
-</div>
+<!--</div>-->
 
 <script>
     var options = {

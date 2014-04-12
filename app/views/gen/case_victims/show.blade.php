@@ -88,8 +88,6 @@
             <input type="hidden" name="case_id" value="{{$case->id}}">
             <div class="modal-body">
                 @include("gen.clients.create")
-                <hr>
-                @include("gen.client_addresses.create")
             </div>
             <div class="modal-footer">
                 <span class="btn-group btn-group-sm">

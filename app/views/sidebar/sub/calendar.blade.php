@@ -1,7 +1,7 @@
-<div class="panel panel-black">
+<!--<div class="panel panel-black">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-bookmark"></i> Schedule</h3>
-    </div>
+    </div>-->
     <!--<div class="panel-body"></div>-->
     <div  id="list_plug" class="list-group" >
         <div class="list-group-item">
@@ -17,17 +17,22 @@
                     <button class="btn btn-default sort" type="button" data-sort="list_heading">
                         <i class="fa fa-sort"></i> A
                     </button>
-                    <button class="btn btn-success" type="button" data-toggle="modal" data-target="#addAppointment">
-                        <i class="fa fa-plus"></i> <i class="fa fa-group"></i> 
-                    </button>
-                    <button class="btn  btn-success" type="button" data-toggle="modal" data-target="#addTask">
-                        <i class="fa fa-plus"></i> <i class="fa fa-tasks"></i> 
-                    </button>
-                </span>
+                </span>    
+               
+                
 
             </div>
-
-
+            
+           <div class="btn-group btn-group-justified btn-group-sm">
+                    <a class="btn btn-success " type="button" data-toggle="modal" data-target="#addAppointment">
+                        <i class="fa fa-plus"></i> <i class="fa fa-group"></i> 
+                    </a>
+                    <a class="btn  btn-success" type="button" data-toggle="modal" data-target="#addTask">
+                        <i class="fa fa-plus"></i> <i class="fa fa-tasks"></i> 
+                    </a>
+            </div>
+               
+            
         </div>
         <div style="height: 450px; overflow-y: auto">
 
@@ -67,7 +72,7 @@
         </div>
     </div>
 
-</div>
+<!--</div>-->
 
 
 

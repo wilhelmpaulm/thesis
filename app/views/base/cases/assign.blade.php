@@ -4,11 +4,21 @@
 <?php
 $aCom = [];
 ?>
-
-<div class="col-md-4">
+<div id="sidebarsubhtml" class="hide">
         @include("sidebar.sub.cases.assign")
 </div>
-<div class="col-md-8">
+
+
+<script >
+    $('a[href="#sub"]').tab('show');
+    var sidebarsub = $("#sidebarsubhtml").html();
+    $("#subheading").parent().removeClass("hide");
+    
+    $("#sub").append(sidebarsub);
+    $("#subheading").text("Assign Case");
+
+</script>
+<div class="col-md-12">
 
     <div class="row">
         <div class="col-md-12">
