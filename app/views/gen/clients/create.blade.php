@@ -9,7 +9,7 @@
                     <img class="img img-thumbnail  blah" src="{{URL::asset("img/default-profile.jpg")}}" alt="your image" height="100%" width="100%" />
                 </div>
                 <br>
-                <p class="help-block">Please attach a photo of the victim.</p>
+                <p class="help-block">Please attach a photo of the complainant.</p>
                 <input  type="file" class="imgInp" name="img_picture_c">
             </div>
             <br>

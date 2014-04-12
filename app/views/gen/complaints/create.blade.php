@@ -92,7 +92,7 @@
                                 <div class="panel-heading clearfix">
                                     <!--<span class=""><i class="fa fa-group"></i> Victims if any </span>-->
                                     <span class="btn-group btn-group-sm pull-right">
-                                        <button type="button"  id="add_victim_btn" class="pull-right btn btn-success"><i class="fa fa-plus"></i></button>
+                                        <button type="button"  id="add_victim_btn" class="pull-right btn btn-success "><i class="fa fa-plus"></i></button>
                                     </span>
                                 </div>
                                 <div class="panel-body" id="add_victim_panel">

@@ -47,7 +47,7 @@ foreach($case_type_tags as $ctt){
                         <li><a href="#victims" data-toggle="tab">Victims</a></li>
                         <li><a href="#subjects" data-toggle="tab">Subjects</a></li>
                         <li><a href="#keys" data-toggle="tab">Generated Keys</a></li>
-                        <li><a href="#requests" data-toggle="tab">Requested Documents</a></li>
+                        <li><a href="#requests" data-toggle="tab">Case Requirements</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

@@ -4,7 +4,7 @@
 
 
             <div>
-                <label for="exampleInputFile">Complainant Photo</label>
+                <label for="exampleInputFile">Victim Photo</label>
                 <div class="text-center text-muted">
                     <img class="img img-thumbnail  blah" src="{{URL::asset("img/default-profile.jpg")}}" alt="your image" height="100%" width="100%" />
                 </div>

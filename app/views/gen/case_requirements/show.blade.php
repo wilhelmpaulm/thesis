@@ -2,11 +2,11 @@
     <div class="panel-heading clearfix">
         <p class="pull-left"><i class="fa fa-clipboard"></i> Case Requirements</p>
         <span class="btn-group btn-group-sm pull-right">
-             @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
+            @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
             <button class="btn  btn-success pull-right" type="button" data-toggle="modal" data-target="#addCaseRequirement">
                 <i class="fa fa-plus"></i> 
             </button>
-             @endif
+            @endif
         </span>
     </div>
     <div class="panel-body">
@@ -24,7 +24,7 @@
             </thead>
             <tbody>
                 @foreach($case_requirements as $cq)
-                
+
                 <tr  class="clickable" >
                     <td>{{$cq->id}}</td>
                     <td>{{$cq->requirement}} </td>
@@ -37,12 +37,12 @@
 
                             {{$cq->status}}</p></td>
                     <td>
-                         @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
+                        @if($case->agent_id == Auth::user()->id && $case->status == "Ongoing")
                         <div class="btn-group btn-group-sm pull-right pull-right">
-                            
+
                             <button class="btn btn-warning"data-toggle="modal" data-target="#editCaseRequirement_{{$cq->id}}"><i class="fa fa-wrench"></i></button>
                         </div>
-                         @endif
+                        @endif
                     </td>
                 </tr>
                 @endforeach
@@ -97,7 +97,7 @@
 </div>
 @endforeach
 
-<div id="addCaseRequirement" class="modal fade" tabindex="-1" style="display: none;">
+<div id="addCaseRequirement" class="modal container fade" tabindex="-1" style="display: none;">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -106,14 +106,134 @@
         <form action="{{URL::to('case_requirements/store')}}" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="case_id" value="{{$case->id}}">
             <div class="modal-body">
+                <!--                <label>Requirements</label>-->
+                                <!--<input class="form-control" type="text" name="requirement">-->
                 <label>Requirements</label>
-                <input class="form-control" type="text" name="requirement">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        
+                    </div>
+                    <div class="col-md-4">
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        
+                    </div>
+                    <div class="col-md-4">
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        <label class="btn btn-default btn-sm btn-block">
+                            <input class="" type="checkbox" name="requirement[]" value="Medico-legal"> Medico-legal
+                        </label>
+                        <br>
+                        
+                        
+                    </div>
+                    
+                </div>
                 <div class="row">
                     <div class="col-md-6">
+                    </div>
+                    <div class="col-md-3">
                         <label>Date Requested</label>
                         <input class="form-control" type="date" name="date_requested">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label>Date Due</label>
                         <input class="form-control" type="date" name="date_due">
                     </div>
