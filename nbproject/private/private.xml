@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>app/views/gen/case_victims/show.blade.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>90</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/case_victims/show.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/case_victims/create.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/clients/create_victim.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/client_addresses/create_subject.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/clients/create_subject.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/case_subjects/show.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/clients/create.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/complaints/create.blade.php</file>
+        </group>
     </open-files>
 </project-private>

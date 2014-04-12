@@ -198,8 +198,8 @@
             </div>
             <div class="panel-body" id="">
                 @include("gen.clients.create_victim")
-                <hr>
-                @include("gen.client_addresses.create_victim")
+<!--                <hr>
+                @include("gen.client_addresses.create_victim")-->
             </div>
         </div>
 
@@ -213,8 +213,8 @@
             </div>
             <div class="panel-body" id="">
                 @include("gen.clients.create_subject")
-                <hr>
-                @include("gen.client_addresses.create_subject")
+<!--                <hr>
+                @include("gen.client_addresses.create_subject")-->
 
             </div>
         </div>
