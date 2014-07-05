@@ -12,8 +12,8 @@
         <!--&#128269;-->
         <title>SHERLOCK</title>
 
-        {{HTML::style("css/ColumnFilterWidgets.css")}}
-        {{HTML::style("css/morris.css")}}
+        <!--{{HTML::style("css/ColumnFilterWidgets.css")}}-->
+        <!--{{HTML::style("css/morris.css")}}-->
         <!-- Bootstrap core CSS -->
         <!--{{HTML::style("css/daterangepicker-bs3.css")}}-->
         {{HTML::style("css/bootstrap-datetimepicker.css")}}
@@ -36,9 +36,9 @@
 
 
 
-        {{HTML::script("js/raphael.js")}}
+        <!--{{HTML::script("js/raphael.js")}}-->
         {{HTML::script("js/jquery.js")}}
-        {{HTML::script("js/morris.js")}}
+        <!--{{HTML::script("js/morris.js")}}-->
         {{HTML::script("js/moment.js")}}
         {{HTML::script("js/bootstrap-tagsinput.js")}}
         <!--{{HTML::script("js/daterangepicker.js")}}-->
@@ -60,7 +60,7 @@
         {{HTML::script("js/highcharts/highcharts.js")}}
         {{HTML::script("js/highcharts/modules/data.js")}}
         {{HTML::script("js/highcharts/modules/exporting.js")}}
-        {{HTML::script("js/ColumnFilterWidgets.js")}}
+        <!--{{HTML::script("js/ColumnFilterWidgets.js")}}-->
         <style>
 
 
@@ -137,6 +137,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{{URL::to("/")}}"><span class=""><i class="fa fa-shield"></i>  <span class="">N</span>ational <span class="">B</span>ureau of <span class="">I</span>nvestigation </span></a>
+                    <!--<a class="navbar-brand" href="{{URL::to("/")}}"><img src="{{URL::to('logo.png')}}"  class=" pull-left" style="width: 10%; "/></a>-->
                 </div>
                 <div class="navbar-collapse collapse">
 

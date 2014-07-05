@@ -1,80 +1,78 @@
-<div class="panel panel-black">
-    <div class="panel-heading">
-        <h3 class="panel-title"> {{Auth::user()->division}} Chief {{Auth::user()->first_name}} {{Auth::user()->last_name}}<a href="#" type="button" class="text-right pull-right" data-toggle="collapse" data-target="#sb-content"><i class="fa fa-bars"></i></a>  </h3>
+<ul class="sidebar-menu ">
+    <li>
+        <a href="{{URL::to("chief/dashboard")}}" class=""><i class="fa fa-dashboard"></i> Dashboard</a>
+    </li>
+    <li>
+        <a href="{{URL::to("chief/calendar")}}" class=""><i class="fa fa-calendar"></i> Calendar</a>
+    </li>
+    <li>
+        <a href="{{URL::to("chief/messages")}}" class=""><i class="fa fa-envelope"></i> Messages</a>
+    </li>
+    <li>
+        <a href="{{URL::to("chief/agents")}}" class=""><i class="fa fa-shield"></i> Employees</a>
+    </li>
+    <li>
+        <a href="{{URL::to("chief/clients")}}" class=""><i class="fa fa-users"></i> Clients</a>
+    </li>
 
-    </div>
-    <div class="panel-body">
-        <ul class="nav nav-pills ">
-            <li class="active"><a href="#main" data-toggle="tab">Main</a></li>
-            <li class="hide"><a id="subheading" href="#sub" data-toggle="tab" >Sub</a></li>
-            <li class="pull-right"><a href="#search" data-toggle="tab"><i class="fa fa-search"></i></a></li>
+
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-bar-chart-o"></i>
+            <span>Cases</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="{{URL::to("agent/cases-list")}}"  style=""><i class="fa fa-angle-double-right"></i> Case List</a></li>
+            <li> <a href="{{URL::to("agent/cases-add")}}" style=""><i class="fa fa-angle-double-right"></i> Add Complaint</a></li>
+            <!--<a href="{{URL::to("agent/cases-pending")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Pending</a>-->
+            <li> <a href="{{URL::to("agent/cases-ongoing")}}" style=""><i class="fa fa-angle-double-right"></i> Ongoing</a></li>
+            <li><a href="{{URL::to("agent/cases-closed")}}"  style=""><i class="fa fa-angle-double-right"></i> Closed</a></li>
+            <li><a href="{{URL::to("agent/cases-non-viable")}}" style=""><i class="fa fa-angle-double-right"></i> Non-viable</a></li>
         </ul>
-        <br>
-        <div class="tab-content">
-            <div class="tab-pane active" id="main">
-                <div class="list-group ">
-    <!--<a href="#" type="button" class="list-group-item text-right" data-toggle="collapse" data-target="#sb-content"><i class="fa fa-bars"></i></a>-->
-                    <div id="sb-content" class="collapse in">
+    </li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Resources</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="{{URL::to("chief/resources-list")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Resource List</a></li>
+            <li>    <a href="{{URL::to("chief/resources-request")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Request</a></li>
+            <li>     <a href="{{URL::to("chief/resources-approval")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Approve</a></li>
+            <li>  <a href="{{URL::to("chief/resources-current")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Current / History</a></li>
+        </ul>
+    </li>
 
-                        <a href="{{URL::to("chief/dashboard")}}" class="list-group-item "><i class="fa fa-dashboard"></i> Dashboard</a>
-                        <a href="{{URL::to("chief/calendar")}}" class="list-group-item "><i class="fa fa-calendar"></i> Calendar</a>
-                        <a href="{{URL::to("chief/messages")}}" class="list-group-item "><i class="fa fa-envelope"></i> Messages</a>
-                        <a href="{{URL::to("chief/agents")}}" class="list-group-item "><i class="fa fa-shield"></i> Employees</a>
-                        <a href="{{URL::to("chief/clients")}}" class="list-group-item "><i class="fa fa-users"></i> Clients</a>
 
-<!--        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#messages"><i class="fa fa-envelope"></i> Messages</a>
-<div id="messages" class="collapse ">
-    <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Compose</a>
-    <a href="{{URL::to("/dashboard")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Inbox</a>
-</div>-->
+    <li class="treeview ">
+        <a href="#">
+            <i class="fa fa-folder"></i> <span>Reports</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="{{URL::to("chief/reports-agents")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Agents</a></li>
+            <li> <a href="{{URL::to("chief/reports-complaints")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Cases</a></li>
+            <li><a href="{{URL::to("chief/reports-trends")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Trends</a></li>
+            <li> <a href="{{URL::to("chief/reports-demographics")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Demographics Victims</a></li>
+            <li><a href="{{URL::to("chief/reports-demographics-subjects")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Demographics Subjects</a></li>
+            <li><a href="{{URL::to("chief/reports-locations")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Locations</a></li>
+            <li> <a href="{{URL::to("chief/reports-case-timeline-comparison")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Timeline Comparison</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-edit"></i> <span>Forms</span>
+            <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="{{URL::to("chief/form-list")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Form List</a></li>
+            <li> <a href="{{URL::to("chief/form-subpoena")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Subpoena</a></li>
+            <li><a href="{{URL::to("chief/form-coordination")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Coordination</a></li>
+            <li><a href="{{URL::to("chief/form-disposition")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Disposition</a></li>
+            <li><a href="{{URL::to("chief/form-transmital")}}" class="" style=""><i class="fa fa-angle-double-right"></i> Transmittal</a></li>                        
+        </ul>
+    </li>
 
-                        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#cases"><i class="fa fa-suitcase"></i> Cases</a>
-                        <div id="cases" class="collapse ">
-                            <a href="{{URL::to("chief/cases-list")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Case List</a>
-                            <a href="{{URL::to("chief/cases-add")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Continue Complaint</a>
-                            <a href="{{URL::to("chief/cases-assign")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Assign Case</a>
-                            <a href="{{URL::to("chief/cases-pending")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Pending</a>
-                            <a href="{{URL::to("chief/cases-ongoing")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Ongoing</a>
-                            <a href="{{URL::to("chief/cases-closed")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Closed</a>
-                            <a href="{{URL::to("chief/cases-non-viable")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Non-viable</a>
-                        </div>
-                        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#resources"><i class="fa fa-list-alt"></i> Resources</a>
-                        <div id="resources" class="collapse">
-                            <a href="{{URL::to("chief/resources-list")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Resource List</a>
-                            <a href="{{URL::to("chief/resources-request")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Request</a>
-                            <a href="{{URL::to("chief/resources-approval")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Approve</a>
-                            <a href="{{URL::to("chief/resources-current")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Current / History</a>
-                        </div>
-                        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#reports"><i class="fa fa-book"></i> Reports</a>
-                        <div id="reports" class="collapse">
-                            <a href="{{URL::to("chief/reports-agents")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Agents</a>
-                            <a href="{{URL::to("chief/reports-complaints")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Cases</a>
-                            <a href="{{URL::to("chief/reports-trends")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Trends</a>
-                            <a href="{{URL::to("chief/reports-demographics")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Demographics Victims</a>
-                            <a href="{{URL::to("chief/reports-demographics-subjects")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Demographics Subjects</a>
-                            <a href="{{URL::to("chief/reports-locations")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Locations</a>
-                            <a href="{{URL::to("chief/reports-case-timeline-comparison")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Timeline Comparison</a>
-                        </div>
-                        <a href="#" type="button" class="list-group-item" data-toggle="collapse" data-target="#forms"><i class="fa fa-file"></i> Forms</a>
-                        <div id="forms" class="collapse">
-                            <a href="{{URL::to("chief/form-list")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Form List</a>
-                            <a href="{{URL::to("chief/form-subpoena")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Subpoena</a>
-                            <a href="{{URL::to("chief/form-coordination")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Coordination</a>
-                            <a href="{{URL::to("chief/form-disposition")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Disposition</a>
-                            <a href="{{URL::to("chief/form-transmital")}}" class="list-group-item " style=""><i class="fa fa-chevron-right"></i> Transmittal</a>
-                        </div>
-
- <!--<a href="{{URL::to('chief/reports')}}" class="list-group-item"><i class="fa fa-book"></i> Reports</a>-->
-                        <a href="{{URL::to('chief/notifications')}}" class="list-group-item"><i class="fa fa-bullhorn"></i> Notifications</a>
-
-                    </div>
-                </div>
-
-            </div>
-            <div class="tab-pane" id="sub"></div>
-            <div class="tab-pane" id="search"></div>
-
-        </div>
-    </div>
-
-</div>
+</ul>

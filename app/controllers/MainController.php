@@ -95,7 +95,7 @@ class MainController extends BaseController {
     }
 
     public function getAlertsMessages() {
-        return View::make("alerts.messages");
+        return View::make("alerts.messages2");
     }
 
     public function getNotificationsNum() {

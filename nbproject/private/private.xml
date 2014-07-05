@@ -12,14 +12,19 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/case_victims/show.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/case_victims/create.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/clients/create_victim.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/client_addresses/create_subject.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/clients/create_subject.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/case_subjects/show.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/clients/create.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/gen/complaints/create.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/layouts/base2.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/agent/dashboard.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/alerts/notifications2.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/controllers/ChiefController.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/main/agent2.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/controllers/MainController.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/layouts/new.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/alerts/messages2.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/alerts/notifications.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/layouts/main.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/controllers/AgentController.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/layouts/base.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/main/agent.blade.php</file>
         </group>
     </open-files>
 </project-private>

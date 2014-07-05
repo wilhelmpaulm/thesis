@@ -1,7 +1,5 @@
   <?php 
-  $notifications = System_log::where("target_id", "=", Auth::user()->id)->orderBy('created_at', 'desc')->take(10)->get();
-   
-          
+  $notifications = System_log::where("target_id", "=", Auth::user()->id)->orderBy('created_at', 'desc')->take(10)->get();  
           ?>
 <ul class="dropdown-menu long-down"  id="alert-notifications">
     @foreach($notifications as $n)

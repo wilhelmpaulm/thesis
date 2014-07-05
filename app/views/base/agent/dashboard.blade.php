@@ -1,25 +1,26 @@
-@extends("layouts.main")
+@extends("layouts.new")
 
 @section("main")
 
-<div class="col-md-12">
-<!--    <div class="row">
-        <div class="col-md-12">
-            <ol class="breadcrumb">
-                <li class="active">Dashboard</li>
-            </ol>
-        </div>
+<section class="content-header">
+    <h1>
+        Dashboard
+        <small>monitor task and progress in cases</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <!--<li><a href="#">Examples</a></li>-->
+        <!--<li class="active">Blank page</li>-->
+    </ol>
+</section>
 
+<!-- Main content -->
+<section class="content">
+    <!--<div class="row">-->
+        @include("content.dashboard")
+    <!--</div>-->
 
-    </div>-->
-    <div class="row">
-        <div class="col-md-12">
-            @include("content.dashboard")
-        </div>
-
-
-    </div>
-</div>
+</section><!-- /.content -->
 
 
 @if($num != null)
