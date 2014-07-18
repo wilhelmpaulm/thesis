@@ -15,7 +15,7 @@
 
 
     <div id="messages_list"  class="list-group" >
-        <div class="list-group-item">
+        <div class="">
             <div class="input-group input-group-sm">
                 <input type="text" class="search form-control " placeholder="Search...">
                 <span class="input-group-btn ">
@@ -32,8 +32,8 @@
 
             </div>
         </div>
-
-        <div style="height: 450px; overflow-y: auto">
+<br>
+        <div style="height: 60vh; overflow-y: auto; overflow-x: hidden">
             <ul class="list list-unstyled    ">
 
                 @foreach($messages as $m)
@@ -46,12 +46,14 @@
 
                 if ($message != null) {
                     if ($message->id == $mess->id) {
-                        $active = "active";
+                        $active = "bg-gray";
                     }
                 }
                 ?>
-                <li style="" class="">
-                    <a  id=""href="{{URL::to(strtolower(Auth::user()->job_title)."/messages/".$mess->id)}}"class=" list-group-item {{$active}} ">
+                <li style="" class="{{$active}}">
+                    <div class="row">
+                    <div class="col-lg-11 col-lg-offset-1">
+                    <a  id=""href="{{URL::to(strtolower(Auth::user()->job_title)."/messages/".$mess->id)}}"class=" {{$active}} ">
                         <h4 class=" list_subject">{{$mess->subject}}</h4>
                         <p class="list_date label label-info"><i class="fa fa-calendar"></i> {{$mess->created_at}}</p>
                         <p class="label label-success list_status"> <i class="fa fa-user"></i> {{$mess->sender}}</p>
@@ -64,6 +66,10 @@
 
 
                     </a>
+                    <br>
+                    <br>
+                </div>
+                </div>
                 </li>
                 @endforeach
             </ul>

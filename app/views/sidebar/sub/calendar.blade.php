@@ -4,7 +4,7 @@
     </div>-->
     <!--<div class="panel-body"></div>-->
     <div  id="list_plug" class="list-group" >
-        <div class="list-group-item">
+        <div class="">
             <div class="input-group custom-search-form input-group-sm">
                 <input type="text" class="search form-control " placeholder="Search...">
                 <span class="input-group-btn">
@@ -22,7 +22,6 @@
                 
 
             </div>
-            
            <div class="btn-group btn-group-justified btn-group-sm">
                     <a class="btn btn-success " type="button" data-toggle="modal" data-target="#addAppointment">
                         <i class="fa fa-plus"></i> <i class="fa fa-group"></i> 
@@ -31,10 +30,10 @@
                         <i class="fa fa-plus"></i> <i class="fa fa-tasks"></i> 
                     </a>
             </div>
-               
+            <br>
             
         </div>
-        <div style="height: 450px; overflow-y: auto">
+        <div style="height: 60vh; overflow-y: auto; overflow-x: hidden">
 
             <?php $tasks = Task::where("user_id", "=", Auth::user()->id)->get(); ?>
             <?php $app_rs = Appointment_recipient::where("user_id", "=", Auth::user()->id)->get(); ?>
@@ -43,11 +42,11 @@
             <ul class="list list-unstyled    ">
                 @foreach($tasks as $task)
                 <li>
-                    <a  id="" href="#"  class="list-group-item clearfix"  data-toggle="modal" data-target="#task_{{$task->id}}">
+                    <a  id="" href="#"  class=" clearfix"  data-toggle="modal" data-target="#task_{{$task->id}}">
                         <p class="hidden list_id">{{$task->id}}</p>
-                        <h4 class="list-group-item-heading list_heading">{{$task->title}}</h4>
-                        <p class="list-group-item-text pull-left list_date label label-success">Start: {{$task->date_start}}</p>
-                        <p class="list-group-item-text pull-right label label-warning">End: {{$task->date_end}}</p>
+                        <h4 class=" list_heading">{{$task->title}}</h4>
+                        <p class=" pull-right list_date label label-success">Start: {{$task->date_start}}</p>
+                        <p class="pull-right label label-warning">End: {{$task->date_end}}</p>
                     </a>
                 </li>
                 @include("gen.tasks.edit")
@@ -57,12 +56,16 @@
                 @foreach($app_rs as $ap)
                 <?php $a = Appointment::find($ap->appointment_id); ?>
                 <li>
-                    <a  id="" href="#"  class="list-group-item clearfix"  data-toggle="modal" data-target="#appointment_{{$a->id}}">
+                    <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1">
+                    <a  id="" href="#"  class=" clearfix"  data-toggle="modal" data-target="#appointment_{{$a->id}}">
                         <p class="hidden list_id">{{$a->id}}</p>
-                        <h4 class="list-group-item-heading list_heading">{{$a->title}}</h4>
-                        <p class="list-group-item-text pull-left list_date label label-success">Start: {{$a->date_start}}</p>
-                        <p class="list-group-item-text pull-right label label-danger">End: {{$a->date_end}}</p>
+                        <h5 class="list_heading">{{$a->title}}</h5>
+                        <p class=" pull-right list_date label label-success">Start: {{$a->date_start}}</p>
+                        <p class=" pull-right label label-danger">End: {{$a->date_end}}</p>
                     </a>
+                    </div>
+                    </div>
                 </li>
                 @include("gen.appointments.edit")
                 @endforeach

@@ -1,4 +1,4 @@
-@extends("layouts.main")
+@extends("layouts.new")
 
 @section("main")
 
@@ -10,14 +10,14 @@
 <script >
     $('a[href="#sub"]').tab('show');
     var sidebarsub = $("#sidebarsubhtml").html();
-    $("#subheading").parent().removeClass("hide");
+    $("#subheading").removeClass("hide");
     
     $("#sub").append(sidebarsub);
     $("#subheading").text("Pending Cases");
 
 </script>
 
-<div class="col-md-12">
+<div class="col-md-12 content">
 <!--    <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
@@ -28,6 +28,7 @@
 
 
     </div>-->
+
     <div class="row">
         <div class="col-md-12">
             @if($case == null )

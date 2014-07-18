@@ -7,20 +7,31 @@
         <title>Sherlock</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
-        {{HTML::style("LTE/css/bootstrap.min.css")}}
+        <style>
+          body {
+                
+                zoom: 87%;
+                /*height: 600vh;*/
+                /*transform: scale(.80);*/
+                /*transform-origin: 10% 10%;*/
+                /*font-size: 100%;*/
+                /*background: url('{{URL::asset("bg/congruentoutline.png")}}')*/
+               
+            }
+        </style>
         {{HTML::style("LTE/css/font-awesome.min.css")}}
         {{HTML::style("LTE/css/ionicons.min.css")}}
-        {{HTML::style("LTE/css/AdminLTE.css")}}
         {{HTML::style("css/bootstrap-datetimepicker.css")}}
         <!--{{HTML::style("css/fullcalendar.print.css")}}-->
         {{HTML::style("css/fullcalendar.css")}}
         {{HTML::style("css/dtable3.css")}}
+        {{HTML::style("LTE/css/bootstrap.min.css")}}
+        {{HTML::style("LTE/css/AdminLTE.css")}}
         <!--{{HTML::style("css/dataTables.css")}}-->
         <!--{{HTML::style("css/lumen.bootstrap.min.css")}}-->
         {{HTML::style("css/bootstrap-tagsinput.css")}}
         {{HTML::style("css/bootstrap-modal-bs3patch.css")}}
         {{HTML::style("css/bootstrap-modal.css")}}
-        {{HTML::style("css/bootstrap-select.css")}}
         {{HTML::style("css/bootstrap-datetimepicker.css")}}
         {{HTML::style("css/font-awesome.css")}}
         {{HTML::style("css/wilhelmpaulm.css")}}
@@ -28,6 +39,7 @@
         {{HTML::style("css/nv.d3.css")}}
         {{HTML::style("css/printer.css")}}
         {{HTML::style("css/wilhelm-panel.css")}}
+        {{HTML::style("css/bootstrap-select.css")}}
 
 
 
@@ -42,13 +54,16 @@
         <!--{{HTML::script("js/typeahead.js")}}-->
         {{HTML::script("js/dtable3.js")}}
         {{HTML::script("js/fullcalendar.js")}}
+         {{HTML::script("js/bootstrap.min.js")}}
+        {{HTML::script("LTE/js/AdminLTE/app.js")}}
+       
         <!--{{HTML::script("js/bootstrap.min.js")}}-->
         {{HTML::script("js/bootstrap-modalmanager.js")}}
         {{HTML::script("js/bootstrap-modal.js")}}
         {{HTML::script("js/bootstrap-datetimepicker.min.js")}}
-        {{HTML::script("js/bootstrap-select.js")}}
         {{HTML::script("js/list.js")}}
-        {{HTML::script("js/list.fuzzysearch.min.js")}}
+        <!--{{HTML::script("js/list.fuzzysearch.min.js")}}-->
+        {{HTML::script("js/bootstrap-select.js")}}
         {{HTML::script("js/d3.v3.js")}}
         {{HTML::script("js/nv.d3.js")}}
         {{HTML::script("js/colorbrewer.js")}}
@@ -68,19 +83,21 @@
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+       
         <![endif]-->
+        
     </head>
     <body class="skin-black">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="../../index.html" class="logo ">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
-                <div class="image" style="">
-                    <img src="{{asset('sherlock_logo.png')}}" style="" class="img-responsive"  alt="user image"/>
+                <div class="image" style="overflow: hidden; height: 100%; margin-top:-3px">
+                    <img src="{{asset('sherlock_logo.png')}}" style="width: 100%;" class=""  alt="user image"/>
                 </div>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
-            <nav class="navbar navbar-static-top" role="navigation">
+            <nav class="navbar navbar-static-top " role="navigation">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -262,7 +279,7 @@
         </header>
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Left side column. contains the logo and sidebar -->
-            <aside class="left-side sidebar-offcanvas">                
+            <aside class="left-side sidebar-offcanvas" >                
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
@@ -310,25 +327,26 @@
 
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">                
-
+                <!--<div style="height: 80vh; overflow: scroll">-->
                 @yield("main")
-
+                <!--</div>-->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
 
 
         <!-- jQuery 2.0.2 -->
-        {{HTML::script("js/jquery.js")}}
-        {{HTML::script("js/bootstrap.min.js")}}
-        {{HTML::script("LTE/js/AdminLTE/app.js")}}
+        
         <script>
             $(".refresh").on("click", function() {
-                $.get("{{URL::to('alerts-messages')}}", function(data) {
-                    $("#alert-messages").replaceWith(data);
-                });
-                $.get("{{URL::to('alerts-notifications')}}", function(data) {
-                    $("#alert-notifications").replaceWith(data);
-                });
+                 setTimeout(function() {
+                        $.get("{{URL::to('alerts-messages')}}", function(data) {
+                            $("#alert-messages").replaceWith(data);
+
+                        });
+                        $.get("{{URL::to('alerts-notifications')}}", function(data) {
+                            $("#alert-notifications").replaceWith(data);
+                        });
+                    }, 3000);
             });
 
 

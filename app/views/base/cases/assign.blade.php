@@ -1,4 +1,4 @@
-@extends("layouts.main")
+@extends("layouts.new")
 
 @section("main")
 <?php
@@ -12,7 +12,7 @@ $aCom = [];
 <script >
     $('a[href="#sub"]').tab('show');
     var sidebarsub = $("#sidebarsubhtml").html();
-    $("#subheading").parent().removeClass("hide");
+    $("#subheading").removeClass("hide");
     
     $("#sub").append(sidebarsub);
     $("#subheading").text("Assign Case");

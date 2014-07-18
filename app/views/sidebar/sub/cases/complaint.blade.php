@@ -3,44 +3,84 @@
         <h3 class="panel-title"><i class="fa fa-list-ul"></i> Pending Complaints</h3>
     </div>-->
     <div  id="list_plug" class="list-group" >
-        <div class="list-group-item ">
-            <div class="input-group custom-search-form input-group-sm">
-                <input type="text" class="search form-control " placeholder="Search...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default sort" type="button" data-sort="list_name">
-                        <i class="fa fa-sort-alpha-asc"></i>
-                    </button>
-                    <button class="btn btn-default sort" type="button" data-sort="list_created_at">
-                        <i class="fa fa-sort-numeric-asc"></i>
-                    </button>
-                </span>
+           <div class="">
+        <div class="input-group custom-search-form input-group-sm">
+            <input type="text" class="search form-control " placeholder="Search...">
+            <span class="input-group-btn">
+                <button class="btn btn-default sort" type="button" data-sort="list_name">
+                    <i class="fa fa-sort-alpha-asc"></i>
+                </button>
+                <button class="btn btn-default sort" type="button" data-sort="list_created_at">
+                    <i class="fa fa-sort-numeric-asc"></i>
+                </button>
+            </span>
 
-            </div>
         </div>
+    </div>
+    <br>
 
-        <div style="height: 450px; overflow-y:auto">
+        <div style="height: 60vh; overflow-y:auto; overflow-x: hidden">
             <?php $cases = Complaint::where("status", "=", "Pending")->where("division", "=", Auth::user()->division)->get(); ?>
-            <ul class="list list-unstyled">
-                @foreach($cases as $case) <?php
-                $la = "";
+             <ul class="list list-unstyled sidebar-menu">
+            @foreach($cases as $c) 
+            <?php
+            $la = "";
+            $lo = "";
 
-                if ($complaint != null) {
-                    if ($case->id == $complaint->id) {
-                        $la = "active";
-                    }
+            if ($case != null) {
+                if ($c->id == $case->id) {
+                    $la = "active";
+                    $lo = "bg-gray";
                 }
-                ?>
-                <?php $c = Client::find($case->client_id); ?>
-                <li><a  id="" href="{{URL::to(strtolower(Auth::user()->job_title).'/cases-add/'.$case->id)}}" data-case_id="{{$case->id}}" class="list-group-item c_link {{$la}}">
-                      <h4 class="list-group-item-heading list_name ">{{$c->id." ".$c->last_name.", ".$c->first_name}}</h4>
-                        <p class="list_created_at label label-info"><i class="fa fa-calendar"></i> {{$case->date_reported}}</p>
-                        
-                        <p class=" list_details label label-warning "><i class="fa fa-calendar-o"></i> {{$case->date_commited}}</p>
-                        <p class="label label-primary bg-lightblue">{{$case->division}}</p>
-                        
-                    </a></li>
-                @endforeach
-            </ul>
+            }
+            ?>
+            <li class="treeview {{$la}} {{$lo}}">
+                <a href="#">
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <div>
+                                <span class="label bg-teal">5</span>
+                            </div>
+                            <div>
+                                <span class="label label-warning">5</span>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-10">
+
+                            <span class="list_name"> {{$c->name}}</span>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-10 col-lg-offset-1">
+                            <p class=" list_details label label-success "><i class="fa fa-user"></i> {{$c->agent_id}}</p>
+                            <p class="label label-primary bg-lightblue ">{{$c->division}}</p>
+                            <a   id="" href="{{URL::to(strtolower(Auth::user()->job_title).'/cases-add/'.$c->id)}}" data-c_id="{{$c->id}}" class="list_name c_link {{$la}} label label-default">CASE {{$c->id}}</a>
+                        </div>
+                    </div>
+
+                    <br>
+                </a>
+                <ul class="treeview-menu">
+                    <div class="row">
+                        <div class="col-lg-offset-1 col-lg-10">
+                            
+                            <p class="list_created_at label label-info"><i class="fa fa-calendar"></i> {{$c->created_at}}</p>
+                            <?php $case_type_tags = Case_type_tag::where("case_id", "=", $c->id)->get(); ?>
+                            @foreach($case_type_tags as $ctt)
+                            <p class="label label-primary bg-orange">
+                                {{$ctt->type}}
+                            </p> 
+                            @endforeach
+                        </div >
+                           <br>
+                    </div >
+                </ul>
+            </li>
+            
+            @endforeach
+        </ul>
 
         </div>
 

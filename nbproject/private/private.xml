@@ -12,19 +12,31 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/wamp/www/nbi/app/views/layouts/base2.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/content/dashboard.blade.php</file>
             <file>file:/D:/wamp/www/nbi/app/views/base/agent/dashboard.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/alerts/notifications2.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/ChiefController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/sidebar/main/agent2.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/MainController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/layouts/new.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/alerts/messages2.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/alerts/notifications.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/cases/list.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/cases/ongoing.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/public/LTE/css/bootstrap.min.css</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/messages/index.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/calendar.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/cases/ongoing.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/clients.blade.php</file>
             <file>file:/D:/wamp/www/nbi/app/views/layouts/main.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/controllers/AgentController.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/layouts/base.blade.php</file>
-            <file>file:/D:/wamp/www/nbi/app/views/sidebar/main/agent.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/calendar_agents.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/main/chief2.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/content/reports/chief_agents_hc.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/cases/pending.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/gen/messages/show.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/resources.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/cases/closed.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/sidebar/sub/agents.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/cases/closed.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/layouts/new.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/cases/pending.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/cases/add.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/cases/assign.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/reports/chief_agents.blade.php</file>
+            <file>file:/D:/wamp/www/nbi/app/views/base/cases/nonviable.blade.php</file>
         </group>
     </open-files>
 </project-private>

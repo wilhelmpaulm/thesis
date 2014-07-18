@@ -1,7 +1,7 @@
 @extends("layouts.new")
 
 @section("main")
-
+<!--
 <section class="content-header">
     <h1>
         Dashboard
@@ -9,10 +9,10 @@
     </h1>
     <ol class="breadcrumb">
         <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <!--<li><a href="#">Examples</a></li>-->
-        <!--<li class="active">Blank page</li>-->
+        <li><a href="#">Examples</a></li>
+        <li class="active">Blank page</li>
     </ol>
-</section>
+</section>-->
 
 <!-- Main content -->
 <section class="content">

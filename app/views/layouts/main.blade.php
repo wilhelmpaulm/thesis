@@ -181,7 +181,7 @@
                     @if(Auth::user()->job_title == "Agent")    
                     @include("sidebar.main.agent")
                     @elseif(Auth::user()->job_title == "Chief")    
-                    @include("sidebar.main.chief2")
+                    @include("sidebar.main.chief")
                     @elseif(Auth::user()->job_title == "Executive_Officer")    
                     @include("sidebar.main.executiveofficer")
                     @elseif(Auth::user()->job_title == "Secretary")    
